@@ -71,8 +71,8 @@ export const BrowserApp = memo(function BrowserApp() {
         async function fetchStats() {
             try {
                 const [userRes, reposRes] = await Promise.all([
-                    fetch('https://api.github.com/users/sawyairhtet'),
-                    fetch('https://api.github.com/users/sawyairhtet/repos?per_page=100'),
+                    fetch('https://api.github.com/users/sawyehtet-dev'),
+                    fetch('https://api.github.com/users/sawyehtet-dev/repos?per_page=100'),
                 ]);
 
                 if (!userRes.ok || !reposRes.ok) throw new Error('API error');

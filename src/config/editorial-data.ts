@@ -49,7 +49,7 @@ export const PROJECTS: Project[] = [
             },
             {
                 label: 'View on GitHub',
-                href: 'https://github.com/sawyairhtet/portfolio',
+                href: 'https://github.com/sawyehtet-dev/portfolio',
                 icon: 'github',
             },
         ],
@@ -82,7 +82,7 @@ export const PROJECTS: Project[] = [
         links: [
             {
                 label: 'View on GitHub',
-                href: 'https://github.com/sawyairhtet/tokey',
+                href: 'https://github.com/sawyehtet-dev/tokey',
                 icon: 'github',
             },
         ],

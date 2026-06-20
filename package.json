@@ -60,11 +60,11 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/sawyairhtet/portfolio.git"
+        "url": "https://github.com/sawyehtet-dev/portfolio.git"
     },
     "homepage": "https://sawyehtet.com",
     "bugs": {
-        "url": "https://github.com/sawyairhtet/portfolio/issues"
+        "url": "https://github.com/sawyehtet-dev/portfolio/issues"
     },
     "engines": {
         "node": "^20.19.0 || >=22.12.0"

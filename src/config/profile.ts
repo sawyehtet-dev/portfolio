@@ -22,11 +22,11 @@ export const PROFILE = {
 
 export const SOCIAL_LINKS = [
     {
-        href: 'https://github.com/sawyairhtet',
+        href: 'https://github.com/sawyehtet-dev',
         icon: 'github',
         label: 'GitHub',
-        handle: '@sawyairhtet',
-        terminal: 'github.com/sawyairhtet',
+        handle: '@sawyehtet-dev',
+        terminal: 'github.com/sawyehtet-dev',
     },
     {
         href: 'https://www.linkedin.com/in/sawyehtet/',
