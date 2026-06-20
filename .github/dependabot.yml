@@ -5,10 +5,19 @@ updates:
       schedule:
           interval: weekly
       groups:
+          # Group only minor/patch bumps so they merge easily. Major bumps
+          # are deliberately excluded here, so Dependabot raises them as
+          # individual PRs that can be reviewed and upgraded one at a time.
           dev-dependencies:
               dependency-type: development
+              update-types:
+                  - minor
+                  - patch
           prod-dependencies:
               dependency-type: production
+              update-types:
+                  - minor
+                  - patch
 
     - package-ecosystem: github-actions
       directory: /
