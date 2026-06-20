@@ -31,7 +31,7 @@ registerIcons({
 const MESSAGE_MAX = 2000;
 const COOLDOWN_MS = 8000;
 
-const FORMSPREE_URL = import.meta.env.VITE_FORMSPREE_URL || 'https://formspree.io/f/mqewakad';
+const FORMSPREE_URL = import.meta.env.VITE_FORMSPREE_URL || 'https://formspree.io/f/xbdenqnb';
 
 const INJECTION_PATTERN = /<\s*\/?\s*(script|img|iframe|object|embed|link|style|svg|math)\b/i;
 
