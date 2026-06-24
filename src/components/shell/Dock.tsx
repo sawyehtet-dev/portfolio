@@ -84,7 +84,7 @@ export function Dock({ onShowApps }: DockProps) {
     const handleDockKeyDown = useCallback(
         (e: KeyboardEvent<HTMLDivElement>) => {
             const total = allDockItems.length;
-            let nextIndex = focusedIndex;
+            let nextIndex: number;
 
             switch (e.key) {
                 case 'ArrowRight':
