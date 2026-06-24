@@ -43,7 +43,7 @@ const lastBuild = posts.length ? toRfc822(posts[0].date) : null;
 const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>Saw Ye Htet — Writing</title>
+  <title>Saw Ye Htet - Writing</title>
   <link>${SITE_URL}/writing</link>
   <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />
   <description>Notes on IT support, troubleshooting, and building software.</description>

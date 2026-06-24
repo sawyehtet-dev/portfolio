@@ -10,7 +10,7 @@ import { PUBLISHED_POSTS, FEATURED_POSTS, formatPostDate, type BlogPost } from '
 // Contact) is the front door at /. Posts link to clean root slugs (/<slug>).
 
 // Featured cluster only appears once the archive is deep enough that pinning a
-// post adds signal — below 3 published posts it would just echo the feed.
+// post adds signal - below 3 published posts it would just echo the feed.
 const FEATURED_MIN_POSTS = 3;
 
 function Masthead() {
@@ -22,7 +22,7 @@ function Masthead() {
                 <span className="dot">.</span>
             </h1>
             <p className="ed-masthead-tagline">{PROFILE.tagline}</p>
-            {/* Placeholder intro — Saw to rewrite in his own voice. */}
+            {/* Placeholder intro - Saw to rewrite in his own voice. */}
             <p className="ed-masthead-intro">
                 I build software and write here about what I&apos;m working through, technical and
                 otherwise.
@@ -74,10 +74,10 @@ export function Home() {
 
     return (
         <div className="ed">
-            <title>Saw Ye Htet — Writing</title>
+            <title>Saw Ye Htet - Writing</title>
             <meta
                 name="description"
-                content="Writing by Saw Ye Htet — notes on IT support, troubleshooting, and building software. The portfolio lives on the home page."
+                content="Writing by Saw Ye Htet - notes on IT support, troubleshooting, and building software. The portfolio lives on the home page."
             />
             <Nav />
             <main id="main-content">
@@ -99,7 +99,7 @@ export function Home() {
                         <PostList posts={PUBLISHED_POSTS} />
                     ) : (
                         <div className="ed-feed-empty">
-                            <p>No posts published yet — writing in progress.</p>
+                            <p>No posts published yet - writing in progress.</p>
                             <Link className="ed-home-cta" to="/">
                                 Meanwhile, see the work
                                 <span className="a">→</span>

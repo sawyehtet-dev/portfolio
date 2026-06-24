@@ -1,5 +1,5 @@
 /* ============================================
-   DOCK — GNOME Adwaita dash
+   DOCK - GNOME Adwaita dash
    ============================================ */
 
 .dock {
@@ -121,7 +121,7 @@
     }
 }
 
-/* Show tooltip on keyboard focus (no delay — instant feedback for keyboard users) */
+/* Show tooltip on keyboard focus (no delay - instant feedback for keyboard users) */
 .dock-item:focus-visible .dock-tooltip {
     opacity: 1;
     visibility: visible;
@@ -129,7 +129,7 @@
 }
 
 /* ============================================
-   REDUCED MOTION — disable dock animations
+   REDUCED MOTION - disable dock animations
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
@@ -148,7 +148,7 @@
 }
 
 /* ============================================
-   DOCK ONBOARDING TIP — first-time visitors
+   DOCK ONBOARDING TIP - first-time visitors
    ============================================ */
 
 .dock-onboarding-tip {

@@ -1,7 +1,7 @@
 /* ── GNOME 49 / Fedora 43 Adwaita Design Tokens ── */
 
 :root {
-    /* ── Accent & Brand — GNOME default blue ── */
+    /* ── Accent & Brand - GNOME default blue ── */
     --accent: var(--accent-bg-color);
     --accent-light: var(--blue-1);
     --accent-dark: var(--blue-4);
@@ -22,7 +22,7 @@
     --fedora-purple: var(--accent-purple);
     --fedora-teal: var(--accent-teal);
 
-    /* ── Surfaces — libadwaita dark window/view backgrounds ── */
+    /* ── Surfaces - libadwaita dark window/view backgrounds ── */
     --surface-0: var(--window-bg-color);
     --surface-1: var(--headerbar-bg-color);
     --surface-2: var(--dialog-bg-color);
@@ -46,7 +46,7 @@
     --insensitive-fg-color: var(--text-disabled);
     --hover-color: color-mix(in srgb, var(--view-fg-color) 7%, transparent);
 
-    /* ── Borders — libadwaita uses ~15% opacity ── */
+    /* ── Borders - libadwaita uses ~15% opacity ── */
     --border-color: color-mix(in srgb, currentColor var(--border-opacity), transparent);
     --border-focus: var(--accent-bg-color);
     --border-subtle: color-mix(in srgb, currentColor 8%, transparent);
@@ -67,7 +67,7 @@
     --shell-panel-bg: #000000;
     --shell-panel-border: color-mix(in srgb, var(--light-1) 10%, transparent);
 
-    /* ── Shadows — Mutter-authentic window shadows ── */
+    /* ── Shadows - Mutter-authentic window shadows ── */
     --shadow-window: var(--window-shadow);
     --shadow-window-backdrop: var(--window-backdrop-shadow);
     --shadow-popover:
@@ -89,7 +89,7 @@
     --scrollbar-track: transparent;
     --scrollbar-width: 6px;
 
-    /* ── Typography — GNOME 49 Adwaita defaults ── */
+    /* ── Typography - GNOME 49 Adwaita defaults ── */
     --font-ui: var(--document-font-family);
     --font-mono: var(--monospace-font-family);
     --font-size-2xs: 75%;
@@ -126,7 +126,7 @@
     --btn-size: 14px;
     --btn-gap: 8px;
 
-    /* ── Top Bar — GNOME shell panel (~32px) ── */
+    /* ── Top Bar - GNOME shell panel (~32px) ── */
     --topbar-height: 32px;
     --topbar-bg: var(--shell-panel-bg);
     --topbar-bg-light: var(--view-bg-color);
@@ -226,7 +226,7 @@
     --dock-width: 60px;
 }
 
-/* ── Dark Mode (same as default — dark-first design) ── */
+/* ── Dark Mode (same as default - dark-first design) ── */
 [data-theme='dark'],
 .dark {
     --surface-0: var(--window-bg-color);
@@ -261,17 +261,17 @@
     --surface-overview: color-mix(in srgb, var(--overview-bg-color) 90%, transparent);
 }
 
-/* ── Light Mode — libadwaita light ── */
+/* ── Light Mode - libadwaita light ── */
 [data-theme='light'],
 .light {
-    /* ── Surfaces — libadwaita light window and view roles ── */
+    /* ── Surfaces - libadwaita light window and view roles ── */
     --surface-0: var(--window-bg-color);
     --surface-1: var(--view-bg-color);
     --surface-2: var(--overview-bg-color);
     --surface-3: var(--secondary-sidebar-bg-color);
     --surface-4: var(--sidebar-bg-color);
 
-    /* ── Text — Dark on light ── */
+    /* ── Text - Dark on light ── */
     --text-primary: var(--window-fg-color);
     --text-secondary: color-mix(
         in srgb,
@@ -285,7 +285,7 @@
     );
     --text-on-accent: var(--accent-fg-color);
 
-    /* ── Accent — Same GNOME blue; --accent-light here is a darker variant
+    /* ── Accent - Same GNOME blue; --accent-light here is a darker variant
        that reads on light surfaces (semantic dual; prefer --accent-on-surface) ── */
     --accent: var(--accent-bg-color);
     --accent-light: var(--blue-4);
@@ -295,7 +295,7 @@
     --accent-surface: color-mix(in srgb, var(--accent-bg-color) 7%, transparent);
     --accent-on-surface: var(--accent-color);
 
-    /* ── Borders — libadwaita ~15% ── */
+    /* ── Borders - libadwaita ~15% ── */
     --border-color: color-mix(in srgb, currentColor var(--border-opacity), transparent);
     --border-focus: var(--accent-bg-color);
     --border-subtle: color-mix(in srgb, currentColor 10%, transparent);
@@ -308,7 +308,7 @@
     --shell-panel-border: color-mix(in srgb, var(--window-fg-color) 10%, transparent);
     --surface-overview: color-mix(in srgb, var(--overview-bg-color) 90%, transparent);
 
-    /* ── Shadows — Mutter-authentic (light variant) ── */
+    /* ── Shadows - Mutter-authentic (light variant) ── */
     --shadow-window: var(--window-shadow);
     --shadow-window-backdrop: var(--window-backdrop-shadow);
     --shadow-popover:
@@ -323,22 +323,22 @@
     --scrollbar-thumb: color-mix(in srgb, var(--view-fg-color) 20%, transparent);
     --scrollbar-thumb-hover: color-mix(in srgb, var(--view-fg-color) 35%, transparent);
 
-    /* ── Window Chrome — libadwaita light header bars are white ── */
+    /* ── Window Chrome - libadwaita light header bars are white ── */
     --window-header-bg: var(--headerbar-bg-color);
     --window-header-border: var(--border-color);
     --window-body-bg: var(--view-bg-color);
     --window-shadow: var(--shadow-window);
 
-    /* ── Top Bar — GNOME shell light panel ── */
+    /* ── Top Bar - GNOME shell light panel ── */
     --topbar-bg: var(--shell-panel-bg);
     --topbar-bg-light: var(--view-bg-color);
 
-    /* ── Dock — libadwaita light ── */
+    /* ── Dock - libadwaita light ── */
     --dock-bg: color-mix(in srgb, var(--popover-bg-color) 94%, transparent);
     --dock-border: 1px solid var(--border-color);
     --dock-hover-bg: color-mix(in srgb, var(--popover-fg-color) 6%, transparent);
 
-    /* ── Terminal — Always dark (matches real GNOME Terminal) ── */
+    /* ── Terminal - Always dark (matches real GNOME Terminal) ── */
     --terminal-bg: var(--view-bg-color);
     --terminal-text: var(--view-fg-color);
     --terminal-prompt: var(--success-color);

@@ -51,7 +51,7 @@ export const ResumeApp = memo(function ResumeApp() {
                     <FilePdf weight="duotone" size={64} className="resume-mobile-icon" />
                     <h3>Resume PDF</h3>
                     <p>
-                        {PROFILE.name} — {PROFILE.role}
+                        {PROFILE.name} - {PROFILE.role}
                     </p>
                     <p className="resume-mobile-hint">
                         PDF preview is not available on mobile. Use the buttons above to open or

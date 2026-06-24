@@ -4,7 +4,7 @@ import { PUBLISHED_POSTS, formatPostDate } from '../blog/posts';
 // The three newest published posts, surfaced on the work page (the front door)
 // so the writing cadence stays visible. Each post links to its clean root slug
 // (/<slug>); the section links out to the full feed at /writing. Renders nothing
-// until at least one post is published — mirrors the Projects section's empty
+// until at least one post is published - mirrors the Projects section's empty
 // guard, and keeps it safely last in the numbered run (see WorkPage.tsx).
 const RECENT_COUNT = 3;
 

@@ -87,7 +87,7 @@ export const FilesApp = memo(function FilesApp() {
                     name: 'Projects',
                     type: 'folder',
                     modified: 'Today',
-                    size: '—',
+                    size: '-',
                     dotfile: false,
                 },
                 {
@@ -95,7 +95,7 @@ export const FilesApp = memo(function FilesApp() {
                     name: 'Documents',
                     type: 'folder',
                     modified: 'Today',
-                    size: '—',
+                    size: '-',
                     dotfile: false,
                 },
                 {
@@ -103,7 +103,7 @@ export const FilesApp = memo(function FilesApp() {
                     name: 'Pictures',
                     type: 'folder',
                     modified: 'Today',
-                    size: '—',
+                    size: '-',
                     dotfile: false,
                 },
                 {
@@ -127,7 +127,7 @@ export const FilesApp = memo(function FilesApp() {
                     name: '.config',
                     type: 'folder',
                     modified: 'Yesterday',
-                    size: '—',
+                    size: '-',
                     dotfile: true,
                 },
                 {
@@ -135,7 +135,7 @@ export const FilesApp = memo(function FilesApp() {
                     name: '.local',
                     type: 'folder',
                     modified: '3 days ago',
-                    size: '—',
+                    size: '-',
                     dotfile: true,
                 },
             ];

@@ -1,5 +1,5 @@
 /* ============================================
-   PLYMOUTH BOOT SPLASH — Premium
+   PLYMOUTH BOOT SPLASH - Premium
    ============================================ */
 
 .plymouth-splash {
@@ -19,7 +19,7 @@
     opacity: 0;
 }
 
-/* Logo with glow — Fedora 43 official brand blue */
+/* Logo with glow - Fedora 43 official brand blue */
 .plymouth-logo {
     font-size: 80px;
     color: var(--fedora-brand-primary);

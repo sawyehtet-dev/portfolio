@@ -1,7 +1,7 @@
 /* ============================================================
    EDITORIAL / SWISS DESIGN SYSTEM
    Big type · strict grid · minimal color · hairline structure.
-   Self-contained — scoped under .ed, reuses self-hosted Adwaita
+   Self-contained - scoped under .ed, reuses self-hosted Adwaita
    fonts, does not depend on the GNOME token system.
    ============================================================ */
 
@@ -50,7 +50,7 @@ body:has(.ed) {
     --ink-3: #6d685b; /* AA 4.5:1+ on paper for small mono labels */
     --line: #d8d3c6;
     --line-2: #c4bfb1;
-    --accent: #cc2a10; /* signal red — AA 4.5:1+ on paper & tinted panels at small sizes */
+    --accent: #cc2a10; /* signal red - AA 4.5:1+ on paper & tinted panels at small sizes */
     --accent-ink: #ffffff;
 
     /* ---- layout ---- */
@@ -74,7 +74,7 @@ body:has(.ed) {
     overflow-x: clip;
 }
 
-/* Scoped reset — reproduces the global `* { margin:0; padding:0 }` for the .ed
+/* Scoped reset - reproduces the global `* { margin:0; padding:0 }` for the .ed
    subtree so this site is self-contained and never loads the desktop's main.css. */
 .ed *,
 .ed *::before,
@@ -598,7 +598,7 @@ body:has(.ed) {
 }
 
 /* ============================================================
-   WORK — project case studies
+   WORK - project case studies
    ============================================================ */
 .ed-work-list {
     display: grid;
@@ -802,7 +802,7 @@ body:has(.ed) {
 }
 
 /* ============================================================
-   EXPERIENCE — work history
+   EXPERIENCE - work history
    ============================================================ */
 .ed-exp-list {
     display: grid;
@@ -893,7 +893,7 @@ body:has(.ed) {
 }
 
 /* ============================================================
-   SKILLS — strengths, no levels
+   SKILLS - strengths, no levels
    ============================================================ */
 .ed-skills-grid {
     display: grid;
@@ -906,18 +906,6 @@ body:has(.ed) {
 .ed-skill-group:first-child {
     padding-top: 0;
     border-top: 0;
-}
-.ed-learning {
-    margin: clamp(28px, 4vh, 44px) 0 0;
-    padding-top: clamp(20px, 3vh, 28px);
-    border-top: 1px solid var(--line);
-    font-family: var(--mono);
-    font-size: 0.74rem;
-    letter-spacing: 0.06em;
-    color: var(--ink-3);
-}
-.ed-learning .accent {
-    color: var(--accent);
 }
 
 /* ============================================================
@@ -1209,7 +1197,7 @@ body:has(.ed) {
 }
 /* WCAG 2.5.8: pad the stacked "Elsewhere" column links to a 24px hit area.
    Scoped to the column so the inline "Launch it ↗" link in the tagline
-   (display:inline — exempt as an inline target) stays untouched. */
+   (display:inline - exempt as an inline target) stays untouched. */
 .ed-footer-col .ed-footer-link {
     min-height: 24px;
 }
@@ -1242,7 +1230,7 @@ body:has(.ed) {
 }
 
 /* ============================================================
-   RESPONSIVE — added sections
+   RESPONSIVE - added sections
    ============================================================ */
 @media (max-width: 860px) {
     .ed-work-grid,
@@ -1512,7 +1500,7 @@ body:has(.ed) {
 }
 
 /* ============================================================
-   HOMEPAGE — writing-first masthead + feed
+   HOMEPAGE - writing-first masthead + feed
    The front door: a compact masthead (name, tagline, intro, a
    can't-miss link to /work) over the newest-first post feed.
    ============================================================ */

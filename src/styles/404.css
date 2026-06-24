@@ -1,4 +1,4 @@
-/* Adwaita tokens must be imported first — @import has to precede all other
+/* Adwaita tokens must be imported first - @import has to precede all other
    rules or browsers ignore it (and the build emits a PostCSS warning). */
 @import './adwaita-tokens.css';
 

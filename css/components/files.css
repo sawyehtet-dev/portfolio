@@ -1,5 +1,5 @@
 /* ============================================
-   Files — GNOME 49 Nautilus-inspired layout
+   Files - GNOME 49 Nautilus-inspired layout
    ============================================ */
 
 .files-app {
@@ -414,7 +414,7 @@
     opacity: 1;
 }
 
-/* ---------- Cut file — dashed outline ---------- */
+/* ---------- Cut file - dashed outline ---------- */
 
 .files-row.cut-file {
     border: 1px dashed var(--border-color);
@@ -455,7 +455,7 @@
     font-size: var(--font-size-sm);
 }
 
-/* ---------- Pill filters — Nautilus search result filters ---------- */
+/* ---------- Pill filters - Nautilus search result filters ---------- */
 
 .files-pill-filters {
     display: flex;

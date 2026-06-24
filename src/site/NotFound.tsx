@@ -8,7 +8,7 @@ import { Footer } from './sections/Footer';
 export function NotFound() {
     return (
         <div className="ed">
-            <title>Not found — Saw Ye Htet</title>
+            <title>Not found - Saw Ye Htet</title>
             <Nav />
             <main id="main-content">
                 <section className="ed-section ed-container" id="top">

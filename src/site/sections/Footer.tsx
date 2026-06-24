@@ -11,7 +11,7 @@ export function Footer() {
                         Saw Ye Htet<span className="dot">.</span>
                     </p>
                     <p className="ed-footer-tag">
-                        IT Support &amp; Operations Specialist — built from scratch in React +
+                        IT Support &amp; Operations Specialist - built from scratch in React +
                         TypeScript. Prefer the interactive desktop version?{' '}
                         <a className="ed-footer-link" href="/desktop" style={{ display: 'inline' }}>
                             Launch it ↗

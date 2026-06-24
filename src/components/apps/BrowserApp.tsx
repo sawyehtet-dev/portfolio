@@ -51,7 +51,7 @@ function writeCache(stats: GitHubStats) {
     try {
         sessionStorage.setItem(CACHE_KEY, JSON.stringify({ data: stats, ts: Date.now() }));
     } catch {
-        // private browsing or quota exceeded — ignore
+        // private browsing or quota exceeded - ignore
     }
 }
 
@@ -111,7 +111,7 @@ export const BrowserApp = memo(function BrowserApp() {
 
     return (
         <div className="browser-app">
-            <h1 className="sr-only">Firefox — GitHub Profile</h1>
+            <h1 className="sr-only">Firefox - GitHub Profile</h1>
             <div className="browser-toolbar" aria-label="Web toolbar">
                 <button type="button" aria-label="Back" disabled>
                     <Icon name="arrow-left" />

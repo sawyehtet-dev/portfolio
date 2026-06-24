@@ -92,7 +92,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
             try {
                 getAudioCtx();
             } catch {
-                // AudioContext unavailable (e.g. very old browser) — stay silent.
+                // AudioContext unavailable (e.g. very old browser) - stay silent.
             }
             teardown();
         };

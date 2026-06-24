@@ -178,7 +178,7 @@ export const MOBILE_LAUNCHER_APPS: AppDefinition[] = APP_DEFINITIONS.filter(app 
 // PORTFOLIO CONTENT DATA
 // ============================================
 
-// EXPERIENCE, PROJECTS, EDITORIAL_SKILLS, and LEARNING_NOW now live in
+// EXPERIENCE, PROJECTS, and EDITORIAL_SKILLS now live in
 // ./editorial-data so the eager front-door (/) bundle doesn't pull this
 // desktop-data module in. PROJECTS is re-exported here because the desktop apps
 // (Projects, Files, Software, Activities, MobileShell) still import it from
@@ -234,7 +234,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
             {
                 name: 'Unit Testing',
                 context:
-                    'JUnit for Java, Vitest + Testing Library for React — writing and maintaining automated test suites.',
+                    'JUnit for Java, Vitest + Testing Library for React - writing and maintaining automated test suites.',
                 usedIn: ['Fedora Portfolio', 'Java Path'],
                 level: 'intermediate',
             },
@@ -288,7 +288,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
             {
                 name: 'React + TypeScript',
                 context:
-                    'Component architecture, typed state management, context providers — this portfolio is the proof.',
+                    'Component architecture, typed state management, context providers - this portfolio is the proof.',
                 usedIn: ['Fedora Portfolio'],
                 level: 'proficient',
             },
@@ -308,7 +308,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
             {
                 name: 'ITIL Fundamentals',
                 context:
-                    'Service management concepts — incident, problem, and change management workflows.',
+                    'Service management concepts - incident, problem, and change management workflows.',
                 usedIn: ['Self-Study'],
                 level: 'learning',
             },
@@ -411,7 +411,7 @@ export const DEFAULT_FILE_SYSTEM: FileSystem = {
     '/home/sawyehtet/projects/README.md': {
         type: 'file',
         content:
-            '# Projects\n\nRecruiter scan:\n\n- **GNOME-Inspired Portfolio Desktop**: React 19, TypeScript, window management — shows systematic problem-solving and attention to detail.\n\nRun `projects`, `skills`, `resume`, or `contact` for the fastest path.',
+            '# Projects\n\nRecruiter scan:\n\n- **GNOME-Inspired Portfolio Desktop**: React 19, TypeScript, window management - shows systematic problem-solving and attention to detail.\n\nRun `projects`, `skills`, `resume`, or `contact` for the fastest path.',
     },
     '/home/sawyehtet/documents': { type: 'dir', children: ['notes.txt', 'ideas.md', 'about.md'] },
     '/home/sawyehtet/documents/about.md': {
@@ -475,7 +475,7 @@ export const terminalFortunes: string[] = [
 export const terminalJokes: string[] = [
     'Why do programmers prefer dark mode?\nBecause light attracts bugs.',
     "A SQL query walks into a bar, walks up to two tables and asks...\n'Can I join you?'",
-    "Why do Java developers wear glasses?\nBecause they can't see without them — just like their code can't run without a JVM.",
+    "Why do Java developers wear glasses?\nBecause they can't see without them - just like their code can't run without a JVM.",
     "!false - It's funny because it's true.",
     "A programmer's wife tells him: 'Go to the store and buy a loaf of bread. If they have eggs, buy a dozen.'\nHe comes home with 12 loaves of bread.",
     "There are only 10 types of people in the world:\nThose who understand binary and those who don't.",

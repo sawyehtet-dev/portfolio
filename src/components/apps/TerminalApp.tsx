@@ -28,7 +28,7 @@ function randomPick<T>(arr: T[]): T {
     return arr.at(Math.floor(Math.random() * arr.length)) ?? fallback;
 }
 
-/* ANSI escape codes — xterm renders these against the resolved theme palette below */
+/* ANSI escape codes - xterm renders these against the resolved theme palette below */
 const ANSI = {
     reset: '\x1b[0m',
     bold: '\x1b[1m',

@@ -1,5 +1,5 @@
 /* ============================================
-   TOP BAR — GNOME shell panel
+   TOP BAR - GNOME shell panel
    ============================================ */
 
 .top-bar {
@@ -19,7 +19,7 @@
     border-bottom: 1px solid var(--shell-panel-border);
 }
 
-/* Dark mode: same look — dark first design */
+/* Dark mode: same look - dark first design */
 [data-theme='dark'] .top-bar {
     background: var(--topbar-bg);
     color: var(--text-primary);
@@ -79,7 +79,7 @@
     display: none;
 }
 
-/* Activities button — GNOME pill */
+/* Activities button - GNOME pill */
 .activities-btn {
     color: inherit;
     font-size: var(--font-size-base);

@@ -11,7 +11,7 @@ import { Footer } from './sections/Footer';
 
 // Contact carries react-hook-form + zod (the vendor-forms chunk). The portfolio
 // is now the eager front door, so Contact is lazy-loaded behind a *local* Suspense
-// boundary (below) to keep that weight off the initial bundle — local so only the
+// boundary (below) to keep that weight off the initial bundle - local so only the
 // Contact slot waits while the rest of the page renders.
 const Contact = lazy(() => import('./sections/Contact').then(m => ({ default: m.Contact })));
 
@@ -28,7 +28,7 @@ function Hero() {
     return (
         <section className="ed-hero ed-container" id="top">
             <div className="ed-hero-top ed-reveal">
-                <span className="ed-eyebrow">Portfolio — 2026</span>
+                <span className="ed-eyebrow">Portfolio - 2026</span>
                 <span className="ed-eyebrow">Singapore · Remote-friendly</span>
             </div>
 
@@ -43,10 +43,10 @@ function Hero() {
             <div className="ed-hero-foot ed-reveal" data-d="2">
                 <div>
                     <p className="ed-hero-lead">
-                        Recent Singapore Polytechnic IT graduate who{' '}
-                        <strong>troubleshoots methodically</strong>, reads the logs, and documents
-                        the fix. Targeting application support, production support, and technical
-                        analyst roles.
+                        Recent Singapore Polytechnic IT graduate. I{' '}
+                        <strong>read the logs</strong>, find the actual cause, and write the fix
+                        down so the next person isn't stuck on it. Targeting application support,
+                        production support, and technical analyst roles.
                     </p>
                     <div className="ed-cta-row">
                         <a
@@ -112,26 +112,26 @@ function About() {
                         </div>
                         <div className="ed-spec-row">
                             <dt className="ed-spec-key">Study</dt>
-                            <dd className="ed-spec-val">Dip. IT — Singapore Poly, 2026</dd>
+                            <dd className="ed-spec-val">Dip. IT - Singapore Poly, 2026</dd>
                         </div>
                     </dl>
                 </div>
 
                 <div>
                     <p className="ed-lead">
-                        I turn rough problems into{' '}
-                        <span className="accent">documented, repeatable fixes</span>.
+                        I turn vague bug reports into{' '}
+                        <span className="accent">a fix and a paper trail</span>.
                     </p>
                     <div className="ed-prose">
                         <p>
-                            I'm comfortable in SQL, Linux, and Python, and I gravitate toward the work
-                            most people avoid: reading stack traces, tailing logs, and chasing a bug
-                            to its actual root cause instead of patching the symptom.
+                            I work in SQL, Linux, and Python, and the part I actually enjoy is the
+                            debugging: sitting with a stack trace until the real cause turns up, not
+                            just the line that happened to throw.
                         </p>
                         <p>
-                            My target is application or production support at a consultancy or
-                            product team — somewhere systematic troubleshooting, clear documentation,
-                            and attention to detail are the job, not an afterthought.
+                            I'm aiming for application or production support at a consultancy or
+                            product team. The kind of place where careful troubleshooting and
+                            writing things down clearly are most of what the day looks like.
                         </p>
                     </div>
 
@@ -152,7 +152,7 @@ function About() {
     );
 }
 
-// The portfolio — now the front door at /. Single page: Hero → About →
+// The portfolio - now the front door at /. Single page: Hero → About →
 // Experience → Projects → Skills → Résumé → Contact → Writing. The Writing
 // section surfaces the three newest posts and links out to the full feed at
 // /writing (see Home.tsx, which renders that feed).
@@ -162,7 +162,7 @@ export function WorkPage() {
             <title>Saw Ye Htet - IT Support &amp; Operations Specialist</title>
             <meta
                 name="description"
-                content="Saw Ye Htet — IT support & operations. Experience, projects, skills, résumé, and recent writing."
+                content="Saw Ye Htet - IT support & operations. Experience, projects, skills, résumé, and recent writing."
             />
             <Nav />
             <main id="main-content">
@@ -184,7 +184,7 @@ export function WorkPage() {
                     <Contact />
                 </Suspense>
                 {/* Writing is the only section that can be absent (no published
-                    posts), so it sits last — keeping the numbered run gap-free. */}
+                    posts), so it sits last - keeping the numbered run gap-free. */}
                 <Writing />
             </main>
             <Footer />

@@ -1,5 +1,13 @@
-import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom';
+import { lazy, Suspense, useEffect } from 'react';
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+    Navigate,
+    useParams,
+    useLocation,
+    useNavigationType,
+} from 'react-router-dom';
 import { DeviceProvider } from './context/DeviceContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { SoundProvider } from './context/SoundContext';
@@ -11,7 +19,7 @@ import { WorkPage } from './site/WorkPage';
 
 // The portfolio is the front door (eager) at /. The writing feed moved to
 // /writing, and the interactive desktop simulation is a showcased artifact at
-// /desktop — both lazy-loaded so the front door ships lean. WorkPage's Contact
+// /desktop - both lazy-loaded so the front door ships lean. WorkPage's Contact
 // form is itself lazy (see WorkPage.tsx) so react-hook-form/zod stay off the
 // initial bundle; react-markdown rides with BlogPost, the desktop bundle stays
 // on /desktop.
@@ -35,10 +43,29 @@ function BlogRedirect() {
     return <Navigate to={`/${slug ?? ''}`} replace />;
 }
 
+// Client-side <Link> navigation keeps the previous scroll offset, so opening a
+// post from the foot of the page (e.g. the Writing section) drops you at the
+// bottom of the article instead of its title. Reset to the top on forward
+// navigation. Skip POP so the browser still restores scroll on back/forward, and
+// skip hash targets so in-page anchors (e.g. /#about) still jump to their section.
+function ScrollToTop() {
+    const { pathname, hash } = useLocation();
+    const navigationType = useNavigationType();
+
+    useEffect(() => {
+        if (navigationType === 'POP') return;
+        if (hash) return;
+        window.scrollTo(0, 0);
+    }, [pathname, hash, navigationType]);
+
+    return null;
+}
+
 function App() {
     return (
         <ErrorBoundary level="app">
             <BrowserRouter>
+                <ScrollToTop />
                 <DeviceProvider>
                     <ThemeProvider>
                         <PreferencesProvider>

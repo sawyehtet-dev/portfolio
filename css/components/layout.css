@@ -1,5 +1,5 @@
 /* ============================================
-   MAIN CONTENT AREA & LAYOUT — Premium
+   MAIN CONTENT AREA & LAYOUT - Premium
    ============================================ */
 
 .main-content {
@@ -17,7 +17,7 @@
     display: none;
 }
 
-/* Wallpaper — Fedora-inspired image with restrained shell readability overlay */
+/* Wallpaper - Fedora-inspired image with restrained shell readability overlay */
 .wallpaper {
     position: absolute;
     top: 0;
@@ -324,7 +324,7 @@ body .wallpaper.custom-wallpaper {
         );
 }
 
-/* Noise grain — removed for Adwaita accuracy */
+/* Noise grain - removed for Adwaita accuracy */
 .wallpaper::after {
     display: none;
 }

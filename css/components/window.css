@@ -39,7 +39,7 @@
     display: none !important;
 }
 
-/* Focused window — Mutter-authentic CSD shadow */
+/* Focused window - Mutter-authentic CSD shadow */
 .window.is-focused,
 .window:focus-within {
     box-shadow: var(--window-shadow);
@@ -203,7 +203,7 @@
 }
 
 /* ============================================
-   WINDOW HEADER — Flat Adwaita headerbar
+   WINDOW HEADER - Flat Adwaita headerbar
    ============================================ */
 
 .window-header {
@@ -241,7 +241,7 @@
     font-size: var(--font-size-base);
 }
 
-/* Title — non-interactive so drags pass through to the header */
+/* Title - non-interactive so drags pass through to the header */
 .window-title {
     min-width: 0;
     overflow: hidden;
@@ -263,7 +263,7 @@
     transition: filter var(--backdrop_transition);
 }
 
-/* Window Controls — RIGHT side */
+/* Window Controls - RIGHT side */
 .window-controls {
     display: flex;
     align-items: center;
@@ -386,7 +386,7 @@
 }
 
 /* ============================================
-   HEADERBAR FLAT BUTTONS — Libadwaita pattern
+   HEADERBAR FLAT BUTTONS - Libadwaita pattern
    ============================================ */
 
 .window-header .headerbar-btn {
@@ -424,7 +424,7 @@
 }
 
 /* ============================================
-   LINKED BUTTON GROUP — Libadwaita .linked
+   LINKED BUTTON GROUP - Libadwaita .linked
    ============================================ */
 
 .linked {
@@ -534,7 +534,7 @@
 }
 
 /* ============================================
-   REDUCED MOTION — disable window animations
+   REDUCED MOTION - disable window animations
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {

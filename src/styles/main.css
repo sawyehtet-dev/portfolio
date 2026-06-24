@@ -1,8 +1,8 @@
 /* ============================================
-   CSS Entry Point — Layer ordering declared first
+   CSS Entry Point - Layer ordering declared first
    ============================================ */
 
-/* Layer ordering — declared before imports to guarantee cascade priority */
+/* Layer ordering - declared before imports to guarantee cascade priority */
 @layer reset, tokens, base, components, utilities;
 
 /* Reset */
@@ -127,7 +127,7 @@ i > svg {
     display: block;
 }
 
-/* Contact form honeypot — invisible to humans, off-screen so bots that
+/* Contact form honeypot - invisible to humans, off-screen so bots that
    indiscriminately fill all fields trip the spam filter. Use position
    (not display:none) because some bots skip display:none fields. */
 .contact-honeypot {
@@ -140,7 +140,7 @@ i > svg {
     opacity: 0;
 }
 
-/* Visually-soft submitting state — keeps the form readable while async work
+/* Visually-soft submitting state - keeps the form readable while async work
    is in flight. Inputs are also explicitly `disabled`-attribute'd in JS. */
 .adw-form.is-submitting {
     opacity: 0.65;
@@ -182,7 +182,7 @@ body,
 
 /* ============================================
    Window app loading skeletons
-   Built from existing Adwaita/terminal tokens —
+   Built from existing Adwaita/terminal tokens -
    no new visual language introduced.
    ============================================ */
 
@@ -677,7 +677,7 @@ body.focus-dim-active .window[data-app='focus-mode'] {
 }
 
 /* ============================================
-   RECRUITER TOUR — First-run onboarding
+   RECRUITER TOUR - First-run onboarding
    ============================================ */
 
 .recruiter-tour-overlay {

@@ -7,7 +7,7 @@ import App from '../App';
 //   /writing → the writing feed (Home, lazy)
 // keyboard-and-routing.test.tsx mounts DesktopShell against its OWN local route
 // table, so it can't catch a regression in this swap. This renders the real
-// <App> — its actual BrowserRouter + <Routes> — at each path and asserts on a
+// <App> - its actual BrowserRouter + <Routes> - at each path and asserts on a
 // marker unique to the body that should render there.
 function renderAppAt(path: string) {
     window.history.pushState({}, '', path);
@@ -24,9 +24,9 @@ describe('Front-door routing', () => {
     it('serves the portfolio (hero) at /', async () => {
         renderAppAt('/');
 
-        // "Portfolio — 2026" is the WorkPage hero eyebrow; the feed masthead
+        // "Portfolio - 2026" is the WorkPage hero eyebrow; the feed masthead
         // eyebrow ("Writing · Singapore") must not be on the page.
-        expect(await screen.findByText(/Portfolio — 2026/)).toBeInTheDocument();
+        expect(await screen.findByText(/Portfolio - 2026/)).toBeInTheDocument();
         expect(screen.queryByText(/Writing · Singapore/)).not.toBeInTheDocument();
     });
 
@@ -36,6 +36,6 @@ describe('Front-door routing', () => {
         // "Writing · Singapore" is the Home masthead eyebrow; the portfolio hero
         // eyebrow must not be on the page.
         expect(await screen.findByText(/Writing · Singapore/)).toBeInTheDocument();
-        expect(screen.queryByText(/Portfolio — 2026/)).not.toBeInTheDocument();
+        expect(screen.queryByText(/Portfolio - 2026/)).not.toBeInTheDocument();
     });
 });

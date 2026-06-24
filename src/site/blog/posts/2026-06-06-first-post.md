@@ -7,8 +7,8 @@ draft: true
 ---
 
 This is a **draft** placeholder. Because its frontmatter says `draft: true`, it
-is hidden everywhere — the blog index, the homepage teaser, the nav link, and
-even its own URL — until you publish it.
+is hidden everywhere - the blog index, the homepage teaser, the nav link, and
+even its own URL - until you publish it.
 
 ## How to publish
 
@@ -38,7 +38,7 @@ function fps(frames: number, seconds: number): number {
 }
 ```
 
-> Blockquotes work too — handy for pull quotes or citing a log line.
+> Blockquotes work too - handy for pull quotes or citing a log line.
 
 When you are ready, the first real post is the CEMS 72 FPS hunt: profiling a
 Unity VR build, isolating the bottleneck, and verifying the fix.

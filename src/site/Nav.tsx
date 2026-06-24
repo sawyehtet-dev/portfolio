@@ -4,7 +4,7 @@ import { hasPublishedPosts } from './blog/posts';
 // Shared editorial chrome. Minimal by design: the wordmark returns to the front
 // door (/, the portfolio), and the links are the About section, the writing feed
 // (/writing) and the RSS feed (shown once a post is published). About points at
-// /#about (a native anchor) so it works from any page — on the portfolio it just
+// /#about (a native anchor) so it works from any page - on the portfolio it just
 // scrolls, from /writing or a post it loads the front door and jumps to the section.
 export function Nav() {
     return (
@@ -24,7 +24,7 @@ export function Nav() {
                         <a
                             className="ed-nav-link"
                             href="/rss.xml"
-                            title="RSS feed — paste this URL into a reader app to follow new posts"
+                            title="RSS feed - paste this URL into a reader app to follow new posts"
                         >
                             RSS
                         </a>

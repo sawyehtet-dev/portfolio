@@ -8,7 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const reactRefreshPreambleHash = "'sha256-Z2/iFzh9VMlVkEOar1f/oSHWwQk3ve1qk/C2WdsC4Xk='";
 
 /**
- * Dev-only CSP meta tag — mirrors the production Netlify headers so CSP
+ * Dev-only CSP meta tag - mirrors the production Netlify headers so CSP
  * violations surface during development, not only after deploy.
  */
 const devCspPlugin = () => ({
@@ -48,7 +48,7 @@ export default defineConfig({
                     const hash = Date.now().toString(36);
                     writeFileSync(swPath, content.replace('__BUILD_HASH__', hash));
                 } catch {
-                    /* dev mode — sw.js not in dist */
+                    /* dev mode - sw.js not in dist */
                 }
             },
         },

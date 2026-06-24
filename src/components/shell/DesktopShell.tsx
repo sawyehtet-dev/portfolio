@@ -1,5 +1,5 @@
 import { lazy, Suspense, useState, useCallback, useEffect, useRef } from 'react';
-import '../../styles/main.css'; // GNOME desktop styles — scoped to the /desktop artifact, loaded with this lazy chunk
+import '../../styles/main.css'; // GNOME desktop styles - scoped to the /desktop artifact, loaded with this lazy chunk
 import { Icon } from '../ui/Icon';
 import { useWindowManager } from '../../context/WindowManagerContext';
 import { useSound } from '../../context/SoundContext';
@@ -264,7 +264,7 @@ export function DesktopShell() {
         navigator.serviceWorker.register('/sw.js').catch(() => {});
     }, []);
 
-    // Show dock once shell is active (mobile only — desktop dock is always visible)
+    // Show dock once shell is active (mobile only - desktop dock is always visible)
     useEffect(() => {
         document.body.classList.add('show-dock');
         return () => document.body.classList.remove('show-dock');
@@ -638,7 +638,7 @@ export function DesktopShell() {
                 Workspace {activeWorkspace + 1}
             </span>
 
-            {/* Windows — conditionally rendered to avoid wasted reconciliation */}
+            {/* Windows - conditionally rendered to avoid wasted reconciliation */}
             {windows.get('about')?.isOpen && (
                 <Window appId="about" title="About">
                     <ErrorBoundary level="window" appId="about">
@@ -764,7 +764,7 @@ export function DesktopShell() {
                 </Window>
             )}
 
-            {/* Dock — visible in Activities or when Recruiter Mode is on */}
+            {/* Dock - visible in Activities or when Recruiter Mode is on */}
             {(activitiesOpen || !preferences.dockHidden) && (
                 <Dock
                     onShowApps={() =>

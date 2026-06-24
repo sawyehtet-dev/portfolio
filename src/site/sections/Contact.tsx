@@ -76,7 +76,7 @@ export function Contact() {
             return;
         }
         if (isRateLimited()) {
-            setStatus({ type: 'err', msg: 'Too many messages — please wait a few minutes.' });
+            setStatus({ type: 'err', msg: 'Too many messages - please wait a few minutes.' });
             return;
         }
 
@@ -93,17 +93,17 @@ export function Contact() {
             });
 
             if (res.ok) {
-                setStatus({ type: 'ok', msg: "Message sent — I'll get back to you soon." });
+                setStatus({ type: 'ok', msg: "Message sent - I'll get back to you soon." });
                 reset();
                 recordSubmission();
             } else {
                 setStatus({
                     type: 'err',
-                    msg: 'Something went wrong — try emailing me directly.',
+                    msg: 'Something went wrong - try emailing me directly.',
                 });
             }
         } catch {
-            setStatus({ type: 'err', msg: 'Something went wrong — try emailing me directly.' });
+            setStatus({ type: 'err', msg: 'Something went wrong - try emailing me directly.' });
         }
     };
 

@@ -217,13 +217,13 @@ export const ContactApp = memo(function ContactApp() {
             showToast('Email copied', 'check-circle');
             window.setTimeout(() => setCopyState('idle'), 1800);
         } catch {
-            showToast('Copy unavailable — long-press to copy', 'circle-exclamation');
+            showToast('Copy unavailable - long-press to copy', 'circle-exclamation');
         }
     };
 
     return (
         <div className="contact-redesign">
-            {/* Left — Info Panel */}
+            {/* Left - Info Panel */}
             <div className="contact-info-panel">
                 <div className="contact-info-ambient" aria-hidden="true" />
                 <div className="contact-info-inner">
@@ -231,7 +231,7 @@ export const ContactApp = memo(function ContactApp() {
                         <h2 className="contact-intro-title">Let&apos;s work together</h2>
                         <p className="contact-intro-text">
                             Open to application and production support roles. Send a message and
-                            I&apos;ll get back to you — usually within a day.
+                            I&apos;ll get back to you - usually within a day.
                         </p>
                     </div>
 
@@ -301,7 +301,7 @@ export const ContactApp = memo(function ContactApp() {
                 </div>
             </div>
 
-            {/* Right — Form Panel */}
+            {/* Right - Form Panel */}
             <div className="contact-form-panel">
                 <form
                     className={`contact-form-v2${submitDisabled ? ' is-submitting' : ''}`}

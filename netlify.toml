@@ -32,7 +32,7 @@
     # --- MIME-sniffing ---
     X-Content-Type-Options = "nosniff"
 
-    # --- XSS filter (disabled — CSP supersedes it; "0" is safest) ---
+    # --- XSS filter (disabled - CSP supersedes it; "0" is safest) ---
     X-XSS-Protection = "0"
 
     # --- Referrer ---

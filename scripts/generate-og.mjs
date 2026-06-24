@@ -1,5 +1,5 @@
 /**
- * OG Image Generator — Editorial / Swiss
+ * OG Image Generator - Editorial / Swiss
  * Generates the 1200×630 Open Graph preview for sawyehtet.com to match the
  * editorial site: paper background, big display type, one signal-red accent,
  * mono labels, hairline structure. Uses the self-hosted Adwaita fonts (no
@@ -81,7 +81,7 @@ const html = /* html */ `<!DOCTYPE html>
           <span>Specialist</span>
         </h1>
         <p class="role">
-          <b>Application &amp; production support</b> — methodical troubleshooting,
+          <b>Application &amp; production support</b> - methodical troubleshooting,
           log analysis, and documented fixes.
         </p>
       </div>

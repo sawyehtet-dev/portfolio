@@ -25,7 +25,7 @@ const template = readFileSync(join(DIST, 'index.html'), 'utf8');
 function setHead(html, pattern, label, replacement) {
     if (!pattern.test(html)) {
         throw new Error(
-            `generate-meta: could not find ${label} in dist/index.html — keep this script in sync with index.html's <head>`
+            `generate-meta: could not find ${label} in dist/index.html - keep this script in sync with index.html's <head>`
         );
     }
     // Function replacement so '$' in content is never treated as a backreference.
@@ -102,15 +102,15 @@ const posts = loadPublishedPosts();
 const pages = [
     {
         route: 'writing',
-        title: 'Saw Ye Htet — Writing',
+        title: 'Saw Ye Htet - Writing',
         description:
-            'Writing by Saw Ye Htet — notes on IT support, troubleshooting, and building software. The portfolio lives on the home page.',
+            'Writing by Saw Ye Htet - notes on IT support, troubleshooting, and building software. The portfolio lives on the home page.',
         url: `${SITE_URL}/writing`,
         type: 'website',
     },
     {
         route: 'desktop',
-        title: 'Saw Ye Htet — Desktop',
+        title: 'Saw Ye Htet - Desktop',
         description:
             'A GNOME desktop simulation in the browser: boot sequence, windows, dock, and terminal. The previous version of sawyehtet.com, preserved.',
         url: `${SITE_URL}/desktop`,
@@ -118,8 +118,8 @@ const pages = [
     },
     ...posts.map(post => ({
         route: post.slug,
-        title: `${post.title} — Saw Ye Htet`,
-        description: post.summary || `${post.title} — a post by Saw Ye Htet.`,
+        title: `${post.title} - Saw Ye Htet`,
+        description: post.summary || `${post.title} - a post by Saw Ye Htet.`,
         url: `${SITE_URL}/${post.slug}`,
         type: 'article',
         jsonLd: blogPostingLd(post),

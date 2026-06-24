@@ -5,7 +5,7 @@ import { Nav } from './Nav';
 import { Footer } from './sections/Footer';
 import { getPublishedPost, formatPostDate } from './blog/posts';
 
-// Single post at a clean root slug (/<slug>). Only *published* posts resolve — a
+// Single post at a clean root slug (/<slug>). Only *published* posts resolve - a
 // draft (or unknown) slug shows the not-found state, never the draft content.
 // This file carries react-markdown, so it is lazy-loaded from App.tsx to keep it
 // off the front-door bundle.
@@ -16,12 +16,12 @@ export function BlogPost() {
     if (!post) {
         return (
             <div className="ed">
-                <title>Post not found — Saw Ye Htet</title>
+                <title>Post not found - Saw Ye Htet</title>
                 <Nav />
                 <main id="main-content">
                     <section className="ed-section ed-container">
                         <div className="ed-section-head ed-reveal">
-                            <span className="ed-section-num">—</span>
+                            <span className="ed-section-num">-</span>
                             <h1 className="ed-section-title">Not found</h1>
                             <span className="ed-section-meta">No such post</span>
                         </div>
@@ -40,7 +40,7 @@ export function BlogPost() {
 
     return (
         <div className="ed">
-            <title>{`${post.meta.title} — Saw Ye Htet`}</title>
+            <title>{`${post.meta.title} - Saw Ye Htet`}</title>
             {post.meta.summary && <meta name="description" content={post.meta.summary} />}
             <Nav />
             <main id="main-content">

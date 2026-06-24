@@ -1,6 +1,6 @@
 // Editorial blog loader. Posts are authored as plain Markdown files in
 // ./posts/*.md with a small frontmatter block, then bundled at build time via
-// Vite's import.meta.glob — publishing is "drop a .md file and rebuild".
+// Vite's import.meta.glob - publishing is "drop a .md file and rebuild".
 //
 // A post stays invisible everywhere (index, direct URL, nav link, homepage
 // teaser) until its frontmatter reads `draft: false`. See `hasPublishedPosts`.

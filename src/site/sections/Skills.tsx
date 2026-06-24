@@ -1,4 +1,4 @@
-import { EDITORIAL_SKILLS, LEARNING_NOW } from '../../config/editorial-data';
+import { EDITORIAL_SKILLS } from '../../config/editorial-data';
 
 export function Skills() {
     return (
@@ -23,10 +23,6 @@ export function Skills() {
                     </div>
                 ))}
             </div>
-
-            <p className="ed-learning">
-                <span className="accent">Currently learning:</span> {LEARNING_NOW.join(' · ')}
-            </p>
         </section>
     );
 }

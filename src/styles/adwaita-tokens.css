@@ -210,7 +210,7 @@
     --ADW_EASE_OUT: cubic-bezier(0, 0, 0.58, 1);
     --ADW_EASE_IN_OUT: cubic-bezier(0.42, 0, 0.58, 1);
 
-    /* Elevation — Mutter-authentic multi-layered shadows */
+    /* Elevation - Mutter-authentic multi-layered shadows */
     --headerbar-shade-color: rgb(0 0 6 / 12%);
     --headerbar-darker-shade-color: rgb(0 0 6 / 12%);
     --sidebar-shade-color: rgb(0 0 6 / 7%);
@@ -252,7 +252,7 @@
     --error-fg-color: #ffffff;
     --error-color: #ff938c;
 
-    /* Color: surfaces and chrome — Fedora 43 spec values */
+    /* Color: surfaces and chrome - Fedora 43 spec values */
     --window-bg-color: #242424;
     --window-fg-color: #ffffff;
     --view-bg-color: #1e1e1e;
@@ -283,7 +283,7 @@
     --popover-fg-color: #ffffff;
     --scrollbar-outline-color: rgb(0 0 6 / 50%);
 
-    /* Elevation — Mutter-authentic multi-layered shadows (dark) */
+    /* Elevation - Mutter-authentic multi-layered shadows (dark) */
     --headerbar-shade-color: rgb(0 0 6 / 36%);
     --headerbar-darker-shade-color: rgb(0 0 6 / 90%);
     --sidebar-shade-color: rgb(0 0 6 / 25%);

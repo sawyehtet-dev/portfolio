@@ -13,12 +13,12 @@ export function Resume() {
                 <div>
                     <p className="ed-resume-statement">
                         The full résumé lives as a{' '}
-                        <span className="accent">one-page PDF</span> — education, coursework, and the
+                        <span className="accent">one-page PDF</span> - education, coursework, and the
                         proof, ready to forward.
                     </p>
                     <p className="ed-resume-note">
-                        Built and maintained by hand, kept current for application support,
-                        production support, and technical analyst roles.
+                        Kept current and written for application support, production support, and
+                        technical analyst roles.
                     </p>
                     <div className="ed-cta-row">
                         <a
@@ -39,7 +39,7 @@ export function Resume() {
                     <div className="ed-spec-row">
                         <dt className="ed-spec-key">Education</dt>
                         <dd className="ed-spec-val">
-                            Diploma in Information Technology — Singapore Polytechnic, 2026
+                            Diploma in Information Technology - Singapore Polytechnic, 2026
                         </dd>
                     </div>
                     <div className="ed-spec-row">

@@ -13,7 +13,7 @@
 }
 
 /* ============================================
-   CUSTOM SCROLLBARS — Sleek thin overlay
+   CUSTOM SCROLLBARS - Sleek thin overlay
    ============================================ */
 
 ::-webkit-scrollbar {
@@ -50,7 +50,7 @@
 }
 
 /* ============================================
-   SELECTION — Accent-tinted
+   SELECTION - Accent-tinted
    ============================================ */
 
 ::selection {
@@ -85,7 +85,7 @@ body {
    ACCESSIBILITY - FOCUS INDICATORS
    ============================================ */
 
-/* Visible focus outlines for keyboard navigation — Premium ring style */
+/* Visible focus outlines for keyboard navigation - Premium ring style */
 .dock-item:focus-visible,
 .window-control:focus-visible,
 .activities-btn:focus-visible,
@@ -161,7 +161,7 @@ select:focus-visible {
 }
 
 /* ============================================
-   FORCED COLORS — Windows High Contrast
+   FORCED COLORS - Windows High Contrast
    ============================================ */
 
 @media (forced-colors: active) {

@@ -85,7 +85,7 @@
     font-weight: 700;
 }
 
-/* Card sections — Glass style */
+/* Card sections - Glass style */
 .settings-card {
     background: var(--surface-1);
     border: 1px solid var(--border-color);
@@ -299,7 +299,7 @@ body[data-time='night'] .wallpaper-grid .wallpaper-option[data-wallpaper='defaul
     color: var(--text-primary);
 }
 
-/* Toggle switch — Premium */
+/* Toggle switch - Premium */
 .toggle-switch {
     width: 42px;
     height: 24px;

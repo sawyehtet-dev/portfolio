@@ -14,7 +14,7 @@
     }
 }
 
-/* Window Open — GNOME-style zoom from launch origin */
+/* Window Open - GNOME-style zoom from launch origin */
 @keyframes windowOpen {
     0% {
         opacity: 0;
@@ -30,7 +30,7 @@
     }
 }
 
-/* Window Close — shrink toward launch origin */
+/* Window Close - shrink toward launch origin */
 @keyframes windowClose {
     0% {
         opacity: 1;
@@ -197,7 +197,7 @@
     }
 }
 
-/* Glow pulse (removed — not used in Adwaita) */
+/* Glow pulse (removed - not used in Adwaita) */
 @keyframes glowPulse {
     0%,
     100% {
@@ -254,7 +254,7 @@
 }
 
 /* ============================================
-   REDUCED MOTION — Global Override
+   REDUCED MOTION - Global Override
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
@@ -267,7 +267,7 @@
     }
 
     /* Elements that start invisible and rely on a `forwards` animation
-       to fade in — force the visible end-state since the animation no
+       to fade in - force the visible end-state since the animation no
        longer runs. */
     .desktop-welcome-kicker,
     .desktop-welcome h2,
