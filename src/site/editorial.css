@@ -572,6 +572,11 @@ body:has(.ed) {
         flex: 1;
         justify-content: center;
     }
+    /* Let the portrait fill the column so its edges align with the meta rows
+       below it, instead of stopping short and leaving a lopsided right gap. */
+    .ed-portrait {
+        max-width: none;
+    }
 }
 
 /* ---- entrance motion ---- */
@@ -1692,12 +1697,22 @@ body:has(.ed) {
     .ed-stats-grid {
         grid-template-columns: 1fr;
     }
+    /* Ledger rows: value in a fixed left column, label fills the rest, so the
+       number no longer floats over a dead right gutter. */
     .ed-stat {
+        display: grid;
+        grid-template-columns: 4.5rem 1fr;
+        align-items: start;
+        column-gap: clamp(16px, 5vw, 28px);
         border-left: none;
         padding-left: 0;
     }
     .ed-stat + .ed-stat {
         border-top: 1px solid var(--line);
+    }
+    .ed-stat-label {
+        margin-top: 0;
+        max-width: none;
     }
 }
 
