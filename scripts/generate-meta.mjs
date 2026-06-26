@@ -108,14 +108,6 @@ const pages = [
         url: `${SITE_URL}/writing`,
         type: 'website',
     },
-    {
-        route: 'desktop',
-        title: 'Saw Ye Htet - Desktop',
-        description:
-            'A GNOME desktop simulation in the browser: boot sequence, windows, dock, and terminal. The previous version of sawyehtet.com, preserved.',
-        url: `${SITE_URL}/desktop`,
-        type: 'website',
-    },
     ...posts.map(post => ({
         route: post.slug,
         title: `${post.title} - Saw Ye Htet`,

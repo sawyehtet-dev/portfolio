@@ -5,10 +5,8 @@ import App from '../App';
 // Guards the front-door decision encoded in App.tsx's route table:
 //   /        → the portfolio (WorkPage, eager)
 //   /writing → the writing feed (Home, lazy)
-// keyboard-and-routing.test.tsx mounts DesktopShell against its OWN local route
-// table, so it can't catch a regression in this swap. This renders the real
-// <App> - its actual BrowserRouter + <Routes> - at each path and asserts on a
-// marker unique to the body that should render there.
+// This renders the real <App> - its actual BrowserRouter + <Routes> - at each
+// path and asserts on a marker unique to the body that should render there.
 function renderAppAt(path: string) {
     window.history.pushState({}, '', path);
     return render(<App />);

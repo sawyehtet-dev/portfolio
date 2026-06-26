@@ -1,10 +1,8 @@
-import type { Project, ExperienceItem } from '../types';
+import type { Project, ExperienceItem, StatItem, Testimonial } from '../types';
 
-// Editorial front-door content (the / portfolio, /writing, posts). Kept in its
-// own module - separate from the desktop-only data in ./data.ts (virtual
-// filesystem, boot logs, wallpapers, terminal easter eggs, app definitions) -
-// so the eager front-door bundle doesn't drag that desktop data in. data.ts
-// re-exports PROJECTS for the desktop apps that still consume it.
+// Editorial content for the site: the / portfolio, the /writing feed, and posts.
+// PROJECTS, EXPERIENCE, STATS, TESTIMONIALS, and EDITORIAL_SKILLS are consumed by
+// the section components in src/site/sections/.
 
 export const EXPERIENCE: ExperienceItem[] = [
     {
@@ -13,13 +11,38 @@ export const EXPERIENCE: ExperienceItem[] = [
         period: 'Apr 2025 – Feb 2026',
         location: 'Singapore',
         bullets: [
-            'Profiled a Unity VR app frame by frame and cleared the bottlenecks holding it back, getting it to a stable 72 FPS on the target headset.',
-            'Sat with maritime subject-matter experts to turn their real procedures into technical specs, then tested each feature back against how the work is actually done.',
-            'Ran QA and documentation across the hardware (Meta Quest 3, bHaptics gloves), logging exact reproduction steps so a bug could be retraced instead of re-guessed.',
+            'Set up, configured, and troubleshot a Unity VR training system on Meta Quest 3 headsets and bHaptics gloves, keeping user sessions running.',
+            'Owned testing end to end: designed and ran structured user testing sessions and turned the findings into clear, actionable reports for the dev team.',
+            'Reproduced reported issues with exact steps, tracked them to resolution, and wrote setup and troubleshooting guides so other staff could run the system without me.',
         ],
-        stack: ['Unity', 'C#', 'Profiling', 'QA', 'Technical Writing'],
+        stack: ['Troubleshooting', 'User Testing', 'QA', 'Technical Writing', 'Unity / C#'],
     },
 ];
+
+// Hero stats ribbon. Every figure here is something already evidenced further
+// down the page (Experience bullets, the Tokey write-up) - pulled up so a
+// recruiter sees the proof in the first scroll. No GPA, no padded counts.
+export const STATS: StatItem[] = [
+    {
+        value: '1',
+        unit: 'yr',
+        label: 'Hands-on technical experience: setup, troubleshooting, testing, and docs at CEMS.',
+    },
+    {
+        value: '70+',
+        label: 'Tests behind my open-source tool, written test-first before I trusted it.',
+    },
+    {
+        value: '50',
+        unit: '%',
+        label: "Of that tool's code cut in a refactor - the tests caught everything, so nothing regressed.",
+    },
+];
+
+// Social proof. Renders only when a real, attributed quote is present - an
+// empty array renders nothing, so no placeholder ever ships. Fill with one line
+// from your CEMS supervisor (reliability / QA) when you have it.
+export const TESTIMONIALS: Testimonial[] = [];
 
 export const PROJECTS: Project[] = [
     {
@@ -53,27 +76,36 @@ export const PROJECTS: Project[] = [
     },
 ];
 
-// Editorial homepage only. The desktop SkillsApp still uses SKILL_CATEGORIES.
+// Skill groups for the Skills section on the front door.
 export const EDITORIAL_SKILLS = [
     {
-        title: 'Support & QA',
+        title: 'IT Support',
         skills: [
-            'Log analysis & troubleshooting',
-            'Incident triage & escalation',
-            'Manual & API testing (Postman)',
+            'Troubleshooting & issue diagnosis',
+            'Issue reproduction & defect tracking',
+            'User support & technical documentation',
+            'Windows (daily use) · Linux (CLI, scripting)',
         ],
     },
     {
-        title: 'Technical',
+        title: 'Software QA',
         skills: [
-            'SQL querying & debugging',
-            'Linux & shell',
-            'Git & version control',
-            'REST / HTTP debugging',
+            'End-to-end, functional & user testing',
+            'Test case design & UAT',
+            'pytest & test-driven development',
+            'Reads & writes code - tests from the inside',
         ],
     },
     {
-        title: 'Languages',
-        skills: ['Python', 'JavaScript / TypeScript'],
+        title: 'Code & tools',
+        skills: ['Python', 'React & TypeScript', 'Git (clean, atomic history)'],
+    },
+    {
+        title: 'Currently learning',
+        skills: [
+            'SQL (SQLBolt)',
+            'Computer networking (Coursera)',
+            'Microsoft 365 Fundamentals (MS-900)',
+        ],
     },
 ] as const;

@@ -77,12 +77,12 @@ const html = /* html */ `<!DOCTYPE html>
       <div class="text">
         <h1 class="head">
           <span>IT Support &amp;</span>
-          <span class="accent">Operations</span>
+          <span class="accent">QA</span>
           <span>Specialist</span>
         </h1>
         <p class="role">
-          <b>Application &amp; production support</b> - methodical troubleshooting,
-          log analysis, and documented fixes.
+          <b>IT support and software QA</b> - methodical troubleshooting, end-to-end
+          testing, and documented fixes. I read code and understand APIs.
         </p>
       </div>
       <div class="portrait">
@@ -94,7 +94,7 @@ const html = /* html */ `<!DOCTYPE html>
     <div class="rule"></div>
     <div class="bottom">
       <div class="specs">
-        <span><b>Stack</b>SQL · Linux · Python · React</span>
+        <span><b>Stack</b>Python · React · Linux · Git</span>
         <span><b>Status</b>Open to work</span>
       </div>
       <div class="url">sawyehtet.com</div>

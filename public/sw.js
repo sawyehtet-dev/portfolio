@@ -2,15 +2,15 @@
 // vite.config.js fills in the build hash below (in dist/sw.js), so every
 // deploy activates a fresh cache and the activate handler purges the old one.
 // The placeholder must appear EXACTLY once in this file (the plugin replaces
-// the first occurrence). In dev it stays literal, which is fine: DesktopShell
+// the first occurrence). In dev it stays literal, which is fine: main.tsx
 // unregisters all service workers in dev mode.
 const CACHE = 'portfolio-__BUILD_HASH__';
 
 // Hashed build output and self-hosted fonts never change at a given URL, so
 // cache-first is safe for them. Everything else static (unhashed images,
-// icons, root-level scripts like head-bootstrap.js) is served from cache for
-// speed but refreshed in the background, so an edit reaches returning
-// visitors on their next view instead of never.
+// icons, root-level scripts) is served from cache for speed but refreshed in
+// the background, so an edit reaches returning visitors on their next view
+// instead of never.
 const IMMUTABLE_PATHS = /^\/(assets|fonts)\//;
 const STATIC_EXTENSIONS = /\.(?:woff2?|ttf|otf|png|jpg|jpeg|webp|svg|ico|css|js)$/i;
 
@@ -18,18 +18,15 @@ self.addEventListener('install', event => {
     // Only what the offline fallback needs. HTML pages are deliberately not
     // precached: navigations are network-first and fall back to offline.html.
     event.waitUntil(
-        caches
-            .open(CACHE)
-            .then(cache =>
-                cache.addAll([
-                    '/offline.html',
-                    // Front-door (editorial) fonts. The full Adwaita fonts used by
-                    // /desktop are runtime-cached (cache-first) on first visit, so
-                    // they are intentionally not precached here.
-                    '/fonts/AdwaitaSans-Regular.subset.woff2',
-                    '/fonts/AdwaitaMono-Regular.subset.woff2',
-                ])
-            )
+        caches.open(CACHE).then(cache =>
+            cache.addAll([
+                '/offline.html',
+                // The subsetted editorial fonts. Any other static assets are
+                // runtime-cached (cache-first) on first visit rather than precached.
+                '/fonts/AdwaitaSans-Regular.subset.woff2',
+                '/fonts/AdwaitaMono-Regular.subset.woff2',
+            ])
+        )
     );
     self.skipWaiting();
 });

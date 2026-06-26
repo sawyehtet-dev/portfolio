@@ -1,30 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useState, type ReactNode } from 'react';
+import { useState } from 'react';
 import { describe, expect, it, beforeEach, vi } from 'vitest';
 import { ErrorBoundary } from '../components/ErrorBoundary';
-import { DeviceProvider } from '../context/DeviceContext';
-import { ThemeProvider } from '../context/ThemeContext';
-import { PreferencesProvider } from '../context/PreferencesContext';
-import { SoundProvider } from '../context/SoundContext';
-import { NotificationProvider } from '../context/NotificationContext';
-import { WindowManagerProvider } from '../context/WindowManagerContext';
-
-function Providers({ children }: { children: ReactNode }) {
-    return (
-        <DeviceProvider>
-            <ThemeProvider>
-                <PreferencesProvider>
-                    <SoundProvider>
-                        <WindowManagerProvider>
-                            <NotificationProvider>{children}</NotificationProvider>
-                        </WindowManagerProvider>
-                    </SoundProvider>
-                </PreferencesProvider>
-            </ThemeProvider>
-        </DeviceProvider>
-    );
-}
 
 function ThrowOnce({ shouldThrow }: { shouldThrow: boolean }) {
     if (shouldThrow) throw new Error('Test crash');
@@ -54,11 +32,9 @@ describe('ErrorBoundary', () => {
 
     it('renders window-level error UI when a child throws', () => {
         render(
-            <Providers>
-                <ErrorBoundary level="window" appId="about">
-                    <ThrowOnce shouldThrow={true} />
-                </ErrorBoundary>
-            </Providers>
+            <ErrorBoundary level="window" appId="about">
+                <ThrowOnce shouldThrow={true} />
+            </ErrorBoundary>
         );
 
         expect(screen.getByText('This app encountered an error')).toBeInTheDocument();
@@ -79,11 +55,7 @@ describe('ErrorBoundary', () => {
     it('recovers when Retry is clicked after fixing the error source', async () => {
         const user = userEvent.setup();
 
-        render(
-            <Providers>
-                <WindowErrorHarness />
-            </Providers>
-        );
+        render(<WindowErrorHarness />);
 
         expect(screen.getByText('This app encountered an error')).toBeInTheDocument();
 
@@ -97,11 +69,9 @@ describe('ErrorBoundary', () => {
 
     it('passes children through when no error occurs', () => {
         render(
-            <Providers>
-                <ErrorBoundary level="window" appId="terminal">
-                    <p>Normal content</p>
-                </ErrorBoundary>
-            </Providers>
+            <ErrorBoundary level="window" appId="terminal">
+                <p>Normal content</p>
+            </ErrorBoundary>
         );
 
         expect(screen.getByText('Normal content')).toBeInTheDocument();

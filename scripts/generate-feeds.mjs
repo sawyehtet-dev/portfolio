@@ -72,7 +72,6 @@ const pages = [
         changefreq: 'monthly',
         priority: '0.7',
     })),
-    { loc: `${SITE_URL}/desktop`, lastmod: null, changefreq: 'monthly', priority: '0.4' },
 ];
 
 const urlEntries = pages

@@ -76,11 +76,10 @@ export default defineConfig({
                     }
                     // Only EAGER vendors (react, router above) get manual chunks.
                     // Rolldown hoists manual chunks into the entry's static
-                    // imports, so naming lazy-only vendors here (phosphor icons,
-                    // framer-motion, zod/react-hook-form) made the front door
-                    // modulepreload code that only /desktop or the lazy Contact
-                    // section needs. Left to natural code splitting, they ride
-                    // with their lazy importers.
+                    // imports, so naming lazy-only vendors here (zod/react-hook-form)
+                    // made the front door modulepreload code that only the lazy
+                    // Contact section needs. Left to natural code splitting, they
+                    // ride with their lazy importers.
                 },
             },
         },

@@ -4,258 +4,218 @@
 
 ## ⚡ Current architecture (read first)
 
-The site is **portfolio-first**. The **front door (`/`) is the portfolio**
-(`src/site/WorkPage.tsx`) - the single-page Editorial / Swiss layout: Hero · About ·
-Experience · Projects · Skills · Résumé · Contact, closing with a **Writing** section
-(`src/site/sections/Writing.tsx`) that surfaces the three newest posts and links out to
-the feed. The **writing feed lives at `/writing`** (`src/site/Home.tsx`): a compact
-masthead (name · tagline · intro · a link back to the portfolio) over the newest-first
-list of published posts. Individual posts render at **clean root slugs** (`/<slug>`,
-e.g. `/the-plain-door`). It all shares one Editorial / Swiss language: big display type,
-strict grid, hairline structure, one signal-red accent, warm "paper" light theme,
-self-hosted Adwaita Sans/Mono. Styles live in `src/site/editorial.css` (scoped under
-`.ed`, independent of the GNOME token system). Portfolio content comes from
-`src/config/data.ts` + `src/config/profile.ts`; posts are Markdown in
-`src/site/blog/posts/*.md` (loader: `src/site/blog/posts.ts`).
+This is a **single portfolio site** in the Editorial / Swiss style: big display type,
+strict grid, hairline structure, one signal-red accent, a warm "paper" light theme, and
+self-hosted Adwaita Sans/Mono. There is no desktop simulation - it was removed; everything
+lives in `src/site/`.
 
-The **GNOME/Fedora desktop simulation is preserved as a showcased artifact at
-`/desktop`** (and `/app/:appId` deep links). It is **lazy-loaded**, so it is not
-shipped on the front door. Everything under `src/components/` (shell, window, apps)
-belongs to that desktop artifact. The "Do-Not-Touch Zones" below still apply **to the
-`/desktop` experience** - it is not the main site.
+- **Front door (`/`) is the portfolio** (`src/site/WorkPage.tsx`), a single page:
+  Hero · **Stats ribbon** · About · Experience · **Testimonial** · Projects · Skills ·
+  Résumé · Contact · **Writing**. Stats and Testimonial are un-numbered ribbons, so the
+  numbered run (`01 About … 03 Projects …`) stays gap-free; Testimonial renders nothing
+  while `TESTIMONIALS` is empty. The Writing section surfaces the three newest posts and
+  links out to the feed.
+- **Writing feed at `/writing`** (`src/site/Home.tsx`): a compact masthead (name ·
+  tagline · intro · link back to the portfolio) over the newest-first list of posts.
+- **Posts render at clean root slugs** (`/<slug>`, e.g. `/my-post`),
+  `src/site/BlogPost.tsx`. (No posts are published right now - the only published
+  essay was removed; `first-post.md` is a draft, so the feed shows its empty state.)
 
-When the task is about the primary site (the `/` portfolio, the `/writing` feed, or
-posts), work in `src/site/`. When it is about the interactive desktop demo, work in
-`src/components/`.
+Styles live in `src/site/editorial.css` (scoped under `.ed`, self-contained: it declares
+its own `@font-face` for the subset fonts and depends on no token system). Portfolio
+content comes from `src/config/editorial-data.ts` + `src/config/profile.ts`; posts are
+Markdown in `src/site/blog/posts/*.md` (loader: `src/site/blog/posts.ts`).
+
+## 🎯 Positioning (content rule - do not drift)
+
+This site sells **one person, two target lanes**. Hold this across every section, every
+edit, every session. Do not reintroduce retired framing.
+
+- **Primary lane: IT Support / Service Desk** (service desk, desktop support, IT
+  technician, IT support engineer). Lead with troubleshooting, end-to-end testing, user
+  testing, issue reproduction, and documentation.
+- **Secondary lane: Software QA** - the real edge, because he can **read code and
+  understand APIs**, which is the differentiator over most manual testers. Lean on this,
+  not on "developer."
+- **Seniority:** a **fresh grad with one year of technical experience** (the CEMS VR
+  work), not zero, and not a senior. Singapore Polytechnic IT diploma, 2026.
+- **RETIRED framing - never reintroduce:** "Application Support" / "Production Support",
+  "Java developer", "Operations Specialist", or anything that positions him as a software
+  developer by trade. App Support is dead.
+- **VR/Unity stays light** - it's the setting for the support/testing/documentation story,
+  not the headline. Don't foreground FPS, headsets, or game-dev.
+- **Tools rule:** list only tools genuinely used. **In-progress items must be marked "in
+  progress":** SQL (via SQLBolt), computer networking course (Coursera), Microsoft 365
+  Fundamentals (MS-900). **Do NOT list AZ-900** (dropped). Do not claim hands-on Windows or
+  M365 admin, ServiceNow, hardware repair, ITIL, or AV gear.
+- Canonical résumé content lives in two `.docx` lanes (IT Support, Software QA) in the
+  user's local files; the site copy is derived from them. The OG image
+  (`scripts/generate-og.mjs`) bakes this positioning too - keep it in sync and regenerate
+  with `npm run generate:og` when the headline/role copy changes.
 
 ## Stack & Key Dependencies
 
-| Layer     | Technology                                       | Version | Notes                                                                                                                                                                                             |
-| --------- | ------------------------------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Framework | React                                            | 19      | StrictMode enabled                                                                                                                                                                                |
-| Language  | TypeScript                                       | 5       | Strict, `noEmit`, bundler module resolution                                                                                                                                                       |
-| Bundler   | Vite                                             | 8       | Dev on `:3000`, builds to `dist/`                                                                                                                                                                 |
-| Styling   | CSS Layers (vanilla)                             | -       | `@layer reset, tokens, base, components, utilities` ordering. Predominantly vanilla CSS - no Tailwind                                                                                             |
-| Routing   | React Router DOM                                 | 7       | BrowserRouter. Routes: `/` (portfolio), `/writing` (feed), `/:slug` (posts), `/desktop`, `/app/:appId`; `/work`→`/`, `/blog`→`/writing`, `/blog/:slug`→`/:slug` (301); `*` → 404                  |
-| Forms     | React Hook Form + Zod                            | 7 / 4   | Used by the `/` Contact section (lazy) + desktop ContactApp; rides in shared lazy chunks (deliberately NOT a manual chunk)                                                                        |
-| Terminal  | @xterm/xterm                                     | 6       | Real xterm.js instance inside TerminalApp                                                                                                                                                         |
-| Icons     | @phosphor-icons/react                            | 2       | Single icon system. String keys → Phosphor components via `src/components/ui/Icon.tsx`. Rides with the lazy desktop chunks                                                                        |
-| Fonts     | Adwaita Sans/Mono (self-hosted WOFF2, subsetted) | -       | Fully self-hosted in `public/fonts/` with SIL license. **No external font requests** (no Google Fonts)                                                                                            |
-| Testing   | Vitest + Testing Library + jsdom                 | 4 / 16  | `vmForks` pool, globals enabled                                                                                                                                                                   |
-| Linting   | ESLint flat config + Prettier                    | 9 / 3   | 4-space indent, single quotes, trailing comma es5                                                                                                                                                 |
-| Analytics | Plausible                                        | -       | Script tag in index.html, domain `sawyehtet.com`                                                                                                                                                  |
-| Deploy    | Netlify                                          | -       | Build: `npm run build`, publish: `dist/`; SPA rewrite `/app/*`, 301s for `/work`→`/` and legacy `/blog*`; RSS + sitemap + per-route head shells generated at build                                |
-| PWA       | Service worker (`public/sw.js`) + manifest.json  | -       | Per-build cache version (`__BUILD_HASH__` injected by vite.config.js); cache-first for `/assets/` + `/fonts/`, stale-while-revalidate for other statics, network-first HTML with offline fallback |
+| Layer     | Technology                                    | Version | Notes                                                                                                                                   |
+| --------- | --------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Framework | React                                         | 19      | StrictMode enabled                                                                                                                      |
+| Language  | TypeScript                                    | 5       | Strict, `noEmit`, bundler module resolution                                                                                             |
+| Bundler   | Vite                                          | 8       | Dev on `:3000`, builds to `dist/`                                                                                                       |
+| Styling   | Vanilla CSS                                   | -       | `src/site/editorial.css`, scoped under `.ed`. No Tailwind, no CSS-in-JS                                                                 |
+| Routing   | React Router DOM                              | 7       | BrowserRouter. `/` (portfolio), `/writing` (feed), `/:slug` (posts); `/work`→`/`, `/blog`→`/writing`, `/blog/:slug`→`/:slug`; `*` → 404 |
+| Forms     | React Hook Form + Zod                         | 7 / 4   | Used by the `/` Contact section (lazy); rides in its lazy chunk (deliberately NOT a manual chunk)                                       |
+| Markdown  | react-markdown + remark-gfm                   | 10 / 4  | Renders posts; rides with the lazy `BlogPost` chunk                                                                                     |
+| Fonts     | Adwaita Sans/Mono (self-hosted WOFF2, subset) | -       | Self-hosted in `public/fonts/` with SIL license. **No external font requests**                                                          |
+| Testing   | Vitest + Testing Library + jsdom              | 4 / 16  | `vmForks` pool, globals enabled                                                                                                         |
+| Linting   | ESLint flat config + Prettier                 | 9 / 3   | 4-space indent, single quotes, trailing comma es5                                                                                       |
+| Analytics | Plausible                                     | -       | Script tag in index.html, domain `sawyehtet.com`                                                                                        |
+| Deploy    | Netlify                                       | -       | Build: `npm run build`, publish: `dist/`; SPA rewrite + 301s; RSS + sitemap + per-route head shells at build                            |
+| PWA       | Service worker (`public/sw.js`) + manifest    | -       | Per-build cache version (`__BUILD_HASH__`); registered in `main.tsx` (prod) / unregistered (dev)                                        |
 
 ## Entry Point & Routing
 
 ```
-index.html                          ← Vite HTML entry, loads /src/main.tsx
-  └─ src/main.tsx                   ← ReactDOM.createRoot, imports main.css
-       └─ src/App.tsx               ← BrowserRouter + 6 context providers
-            ├─ /                    → WorkPage        (src/site/, the portfolio - eager)
-            ├─ /writing             → Home            (lazy, the writing feed)
-            ├─ /work                → Navigate → /          (redirect - old portfolio route)
-            ├─ /desktop             → DesktopShell    (lazy, the desktop artifact)
-            ├─ /app/:appId          → DeepLinkHandler (lazy, opens a desktop window)
-            ├─ /blog                → Navigate → /writing   (legacy redirect)
-            ├─ /blog/:slug          → Navigate → /:slug     (legacy redirect)
-            ├─ /:slug               → BlogPost        (lazy, a published post; unknown/draft → not-found)
-            └─ *                    → NotFound        (editorial 404)
+index.html                       ← Vite HTML entry, loads /src/main.tsx
+  └─ src/main.tsx                ← ReactDOM.createRoot; registers the service worker
+       └─ src/App.tsx            ← ErrorBoundary + BrowserRouter + ScrollToTop + Routes
+            ├─ /                 → WorkPage   (src/site/, the portfolio - EAGER)
+            ├─ /writing          → Home       (lazy, the writing feed)
+            ├─ /work             → Navigate → /        (redirect)
+            ├─ /blog             → Navigate → /writing (legacy redirect)
+            ├─ /blog/:slug       → Navigate → /:slug   (legacy redirect via BlogRedirect)
+            ├─ /:slug            → BlogPost   (lazy; unknown/draft slug → not-found)
+            └─ *                 → NotFound   (lazy, editorial 404)
 ```
 
-`WorkPage` is eager (the front-door portfolio); `Home`, `BlogPost`, `NotFound`,
-`DesktopShell`, and `DeepLinkHandler` are `React.lazy`-loaded inside a `Suspense`
-boundary. The portfolio's `Contact` section is _itself_ lazy (a local `Suspense` inside
-`WorkPage`) so the react-hook-form/zod runtime is code-split out of the front door's
-bundle; `react-markdown` rides with `BlogPost`, and the desktop bundle (Phosphor icons,
-`TerminalApp`, framer-motion) stays on `/desktop`. Lazy-only vendors are deliberately
-NOT listed in `manualChunks` (vite.config.js): Rolldown hoists manual chunks into the
-entry's static imports, which made the front door modulepreload desktop/Contact code.
+`WorkPage` is eager (the front door); `Home`, `BlogPost`, and `NotFound` are
+`React.lazy`-loaded inside a `Suspense` boundary. The portfolio's `Contact` section is
+_itself_ lazy (a local `Suspense` inside `WorkPage`) so the react-hook-form/zod runtime is
+code-split out of the front door's bundle; `react-markdown` rides with `BlogPost`.
 
-**Deep linking:** `/app/about`, `/app/projects`, etc. The `DeepLinkHandler` validates the `appId` against the `AppId` union type and calls `openWindow()`. Netlify rewrites `/app/*` and a catch-all `/*` → `/index.html` (status 200) for SPA refresh; `/work` → `/`, legacy `/blog` → `/writing` and `/blog/*` → `/:splat` are **301 redirects** (`netlify.toml`). `scripts/generate-feeds.mjs` (chained into `npm run build`, before `vite build`) writes `public/rss.xml` + `public/sitemap.xml` (committed, deterministic, served in dev too); `scripts/generate-meta.mjs` (after `vite build`) writes static head shells `dist/<route>/index.html` (per-post/`/writing`/`/desktop` title, OG, canonical) so social crawlers - which don't run JS - see the right card. Netlify serves static files before redirects, so shells win over the SPA catch-all.
+**No context providers.** `App.tsx` is just `ErrorBoundary` → `BrowserRouter` →
+`ScrollToTop` → `Routes`. The editorial site is theme-independent (light only) and uses no
+global state, so there is no theme bootstrap and no `data-theme` handling.
 
-**Head bootstrap:** `public/head-bootstrap.js` runs synchronously before React to read `localStorage('theme')` and set `data-theme` on `<html>`, preventing a dark→light flash.
+## Project Layout
 
-## Context Providers (wrap order in App.tsx)
-
-1. **DeviceProvider** - detects `mobile` / `tablet` / `desktop` from `window.innerWidth` (debounced resize)
-2. **ThemeProvider** - `isDark` toggle, accent color. Syncs `data-theme` attribute + CSS custom properties on `:root`
-3. **PreferencesProvider** - wallpaper, brightness, snap/resize/focusDim/fastBoot toggles. Persisted to `localStorage('portfolioPreferences')`
-4. **SoundProvider** - Web Audio API oscillator startup drum. Mute/volume persisted
-5. **WindowManagerProvider** - the core window manager. `Map<AppId, WindowInfo>` with open/close/minimize/maximize/bringToFront/snap/resize. Z-index stacking, MAXIMIZED_Z_FLOOR at 1050
-6. **NotificationProvider** - notification center entries + ephemeral toasts. DND mode. Welcome notification on first visit
-
-## Component Architecture
-
-### Shell (`src/components/shell/`)
-
-| Component         | What it does                                                                                                                                                                                                                                                       |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `DesktopShell`    | **The god component.** Renders TopBar, Dock, Wallpaper, BootScreen, conditionally-rendered Window instances (lazy-loaded), Activities overlay, QuickSettings, NotificationCenter, ContextMenu, ToastContainer, keyboard shortcuts, alt-tab switcher, welcome hero. |
-| `TopBar`          | GNOME-style panel: Activities button, live clock, status indicators (wifi/volume/battery). Click zones toggle overlays                                                                                                                                             |
-| `Dock`            | Desktop dock (filtered by `desktopDock`) + mobile dock (filtered by `mobileDock`). Mobile has an "Apps" launcher drawer                                                                                                                                            |
-| `Wallpaper`       | Renders the selected wallpaper (image or gradient). Supports light/dark image variants. Uses `<img>` with `object-fit: cover`                                                                                                                                      |
-| `BootScreen`      | Plymouth-style boot: log lines → spinner → Fedora logo. First-time visitors see full boot; returning visitors with `fastBoot` skip instantly. Skippable on any key/click                                                                                           |
-| `DeepLinkHandler` | Reads `:appId` from URL, opens the matching window, renders `DesktopShell`                                                                                                                                                                                         |
-
-### Window (`src/components/window/`)
-
-| Component | What it does                                                                                                                                                                                                                                                                  |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Window`  | Generic draggable/resizable window container. Header bar with close/minimize/maximize. Snap zones (left/right half). Mobile: full-viewport sheet with swipe-to-close. Container queries via `container-name: app-window`. Escape closes via `onKeyDown` on the dialog element |
-
-### Apps (`src/components/apps/`) - all lazy-loaded
-
-| App             | AppId         | Description                                                                                                                                                                                                                                 |
-| --------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `AboutApp`      | `about`       | Recruiter summary - profile pic, bio, education, CTA buttons, social links, recruiter path (About → Skills → Projects → Resume → Contact)                                                                                                   |
-| `SkillsApp`     | `skills`      | Skill categories with proficiency dots (3-dot system: proficient/intermediate/learning)                                                                                                                                                     |
-| `ProjectsApp`   | `projects`    | Featured project cards with tech stack badges, proof points, links, expand/collapse, WIP status badge                                                                                                                                       |
-| `ContactApp`    | `contact`     | Email/resume actions, copy-email button, Formspree-powered contact form (React Hook Form + Zod validation), honeypot spam filter                                                                                                            |
-| `FilesApp`      | `files`       | Nautilus-style file browser showing projects as file entries                                                                                                                                                                                |
-| `BrowserApp`    | `browser`     | Simulated Firefox window pointing at GitHub profile                                                                                                                                                                                         |
-| `TerminalApp`   | `terminal`    | Full xterm.js terminal with custom shell: `ls`, `cd`, `cat`, `open`, `help`, `neofetch`, `fortune`, `joke`, `hello`, `uptime`, `whoami`, `clear`, `history`, `nano`, `exit`. Can open app windows via command. ~28KB, the largest component |
-| `TextEditorApp` | `text-editor` | Displays resume.md content in a read-only editor view                                                                                                                                                                                       |
-| `SettingsApp`   | `settings`    | Multi-panel settings: Appearance (wallpaper, accent color, dark mode), Sound (volume, mute), Windows (snap, resize, buttons), System (boot, preferences reset)                                                                              |
-| `FocusModeApp`  | `focus-mode`  | Pomodoro timer with presets, pause/resume, session stats, optional focus dimming of other windows                                                                                                                                           |
-
-### UI (`src/components/ui/`)
-
-| Component            | What it does                                                                               |
-| -------------------- | ------------------------------------------------------------------------------------------ |
-| `ActivitiesOverlay`  | GNOME Activities overview - open window thumbnails + app grid. Click to focus/open         |
-| `QuickSettingsPanel` | Slide-down panel from top bar - Wi-Fi, Bluetooth, DND, dark mode, volume, brightness tiles |
-| `NotificationCenter` | Slide-down from clock area - grouped notifications with dismiss/clear-all                  |
-| `ToastContainer`     | Fixed position toast stack (top-right), auto-dismiss 3s                                    |
-| `ContextMenu`        | Right-click desktop context menu                                                           |
+```
+src/
+  main.tsx               ← createRoot, SW register/unregister, axe in dev
+  App.tsx                ← router + routes (no providers)
+  site/                  ← THE SITE
+    WorkPage.tsx         ← front-door portfolio (Hero/About defined inline here)
+    Home.tsx             ← /writing feed (masthead + post list)
+    BlogPost.tsx         ← a published post (react-markdown)
+    NotFound.tsx         ← editorial 404 (catch-all route)
+    Nav.tsx
+    editorial.css        ← the entire design system, scoped .ed, self-contained
+    sections/            ← Stats, Experience, Testimonial, Work (projects), Skills,
+                           Resume, Contact (lazy), Writing, Footer
+    blog/
+      posts.ts           ← Vite Markdown loader (frontmatter + reading time)
+      posts/*.md         ← the posts
+  config/
+    editorial-data.ts    ← PROJECTS, EXPERIENCE, STATS, TESTIMONIALS, EDITORIAL_SKILLS
+    profile.ts           ← PROFILE (name, role, taglines, email, resume) + SOCIAL_LINKS
+  types/index.ts         ← front-door content types (Project, ExperienceItem, StatItem,
+                           Testimonial, ProjectLink, ProjectMedia)
+  components/
+    ErrorBoundary.tsx    ← the only remaining component; generic, used by App + windows
+  styles/404.css         ← styles for the STATIC 404.html (editorial, self-contained)
+  tests/                 ← see Tests below
+```
 
 ## Data & Config
 
-- **`src/config/data.ts`** - The single source of truth for all portfolio content: app definitions (`APP_DEFINITIONS`), projects (`PROJECTS`), skills (`SKILL_CATEGORIES`), boot log messages, virtual filesystem (`DEFAULT_FILE_SYSTEM`), terminal easter eggs (fortunes/jokes/greetings), wallpapers (`WALLPAPERS`), accent colors, default notifications, timing constants
-- **`src/config/profile.ts`** - Personal info (name, email, resume path, availability, location) and social links
-- **`src/types/index.ts`** - All TypeScript types: `AppId` union (11 apps), `WindowInfo`, `AppDefinition`, `Project`, `SkillCategory`, `Notification`, `Toast`, `WallpaperOption`, `PortfolioPreferences`, filesystem types
+- **`src/config/editorial-data.ts`** - the single source of truth for portfolio content:
+    - `PROJECTS` (`Project[]`) - title, role, problem/solution/impact narrative, `techStack`,
+      `proofPoints`, `links`, optional `media` (screenshot), `status`.
+    - `EXPERIENCE` (`ExperienceItem[]`) - org, role, period, bullets, stack.
+    - `STATS` (`StatItem[]`) - the hero ribbon's headline figures (each is something already
+      evidenced elsewhere on the page).
+    - `TESTIMONIALS` (`Testimonial[]`) - references. **Empty renders nothing**, so a
+      placeholder never ships; add only real, attributed quotes.
+    - `EDITORIAL_SKILLS` - skill groups for the Skills section.
+- **`src/config/profile.ts`** - `PROFILE` (name, role, taglines, email, resume path,
+  availability, location) and `SOCIAL_LINKS`.
+- **Posts** - Markdown in `src/site/blog/posts/*.md`. `src/site/blog/posts.ts` parses
+  frontmatter, computes reading time, and exposes `PUBLISHED_POSTS` / `FEATURED_POSTS`.
+  `scripts/lib/posts.mjs` is a standalone Node mirror used by the feed/meta scripts - keep
+  its frontmatter parser in sync with `posts.ts`.
 
-## CSS Architecture
+## Build & Deploy
 
-```
-src/styles/main.css               ← Entry point, declares layer order, imports everything
-  @layer reset      ← css/base/reset.css
-  @layer tokens     ← css/base/variables.css + src/styles/adwaita-tokens.css
-  @layer base       ← css/base/typography.css + css/base/animations.css
-  @layer components ← 18 files in css/components/
-  @layer utilities  ← css/components/responsive.css
-  (unlayered)       ← inline React-specific styles (incl. `i > svg` icon alignment)
-```
-
-**Key design tokens:**
-
-- `src/styles/adwaita-tokens.css` - Faithful reproduction of GNOME 49 / libadwaita tokens (colors, typography, spacing, radius, motion, elevation) with full light/dark variants
-- `css/base/variables.css` - Portfolio-specific tokens (glass effects, shadows, z-index scale, font stacks)
-
-**Theme switching:** `data-theme="dark|light"` attribute on `<html>`. CSS uses `[data-theme='dark']` / `[data-theme='light']` selectors.
-
-## ⛔ Do-Not-Touch Zones (the `/desktop` artifact)
-
-> [!CAUTION]
-> The following are **deliberate design decisions** for the desktop simulation at
-> `/desktop`, not oversights. Do not "fix" or "modernize" them. (The primary `/`
-> site is the editorial redesign in `src/site/` - that is where new portfolio work
-> goes; these constraints do not apply to it.)
-
-1. **Fedora 43 / GNOME 49 retro styling** - The desktop artifact's visual language is an intentional Fedora desktop simulation. The Adwaita tokens, Cantarell font, window chrome, top bar, dock, Activities overlay, Plymouth boot, terminal styling - all deliberate. Do not replace with generic modern web aesthetics.
-
-2. **Persistent dock** - GNOME 49 only shows the dash in Activities. This site intentionally keeps the dock always-visible (Dash-to-Dock style) for portfolio UX so recruiters can navigate without learning gestures.
-
-3. **Icon-plus-label buttons** - HIG prefers icon-or-label outside header bars. Combined form is intentional for recruiter scanning speed.
-
-4. **Boot sequence** - The Plymouth boot screen is a signature feature. First-time visitors see the full boot; returning visitors skip via `fastBoot`. Do not remove it.
-
-5. **`window.__portfolioLoadTime`** - Global set on mount for the terminal `uptime` command. Intentional.
-
-6. **Adwaita font self-hosting** - `public/fonts/` contains Adwaita Sans/Mono WOFF2 (subsetted to Latin + Latin Extended) with their SIL license. These are deliberately self-hosted for offline PWA support and GNOME authenticity. Do not replace with Google Fonts equivalents.
-
-7. **`head-bootstrap.js`** - Synchronous script that sets `data-theme` before React hydration. Prevents dark→light flash. Must remain synchronous and in `<head>`.
-
-8. **The `tailwindcss` keyword in `package.json` keywords** - Tailwind has been removed from the build (it generated no CSS - there was no `@import 'tailwindcss'`). The keyword string is left in place intentionally. The CSS Layer architecture is the only styling system.
-
-9. **Service worker unregistration in dev** - `DesktopShell` intentionally unregisters all SWs in dev mode to prevent stale cache issues.
+- **Build:** `npm run build` → typecheck → `scripts/generate-feeds.mjs` → `vite build` →
+  `scripts/generate-meta.mjs`. Manual chunks (eager vendors ONLY):
+    - `vendor-react` (react, react-dom, scheduler)
+    - `vendor-router` (react-router)
+    - zod/react-hook-form (Contact) and react-markdown (BlogPost) are intentionally unlisted;
+      Rolldown hoists manual chunks into the entry's static imports, so naming lazy-only
+      vendors there would modulepreload code the front door does not need. They ride with
+      their lazy importers.
+- **Multi-page:** Vite builds `index.html`, `offline.html`, and `404.html` as entries.
+- **Feeds:** `scripts/generate-feeds.mjs` writes `public/rss.xml` + `public/sitemap.xml`
+  (committed, deterministic, served in dev too).
+- **Head shells:** `scripts/generate-meta.mjs` (post-build) copies `dist/index.html` to
+  `dist/<route>/index.html` for `/writing` and every published post, rewriting title,
+  description, OG/Twitter, and canonical per route so social crawlers (which don't run JS)
+  see the right card. Shell titles must match what the React components set at runtime; it
+  throws if `index.html`'s head shape drifts.
+- **Netlify** (`netlify.toml`): publish `dist/`. SPA catch-all `/*` → `/index.html`
+  (status 200); `/work` → `/`, legacy `/blog` → `/writing` and `/blog/*` → `/:splat` are
+  **301 redirects**. Static files (offline.html, 404.html, assets, head shells) are served
+  before redirects, so shells win over the SPA catch-all.
+- **PWA:** `main.tsx` registers `public/sw.js` in production and unregisters stale workers
+  in dev. Cache-first for `/assets/` + `/fonts/`, stale-while-revalidate for other statics,
+  network-first HTML with `offline.html` fallback. Cache version is per-build
+  (`__BUILD_HASH__` injected by `vite.config.js`).
 
 ## Scripts Reference
 
 ```bash
-# Development
 npm run dev              # Vite dev server on :3000, auto-opens browser
-
-# Quality checks
 npm run lint             # ESLint on src/**/*.{ts,tsx}
-npm run lint:fix         # ESLint with --fix
+npm run lint:fix
 npm run typecheck        # tsc --noEmit
 npm run test             # Vitest run (single pass)
-npm run test:watch       # Vitest watch mode
+npm run test:watch
 npm run validate         # lint → typecheck → test (full CI gate)
 npm run format           # Prettier write
-npm run format:check     # Prettier check
-
-# Build
+npm run format:check
 npm run build            # typecheck → generate:feeds → vite build → generate:meta → dist/
 npm run preview          # Serve dist/ locally
-
-# Utilities
-npm run generate:og      # Puppeteer script to regenerate OG preview image
-npm run generate:feeds   # public/rss.xml + public/sitemap.xml from published posts (runs in build)
+npm run generate:og      # Puppeteer script to regenerate the OG preview image
+npm run generate:feeds   # public/rss.xml + public/sitemap.xml (runs in build)
 npm run generate:meta    # dist/<route>/index.html head shells (runs in build, needs dist/)
 ```
 
-## Build & Deploy
-
-- **Build:** `npm run build` → typecheck → `scripts/generate-feeds.mjs` → `vite build` → `scripts/generate-meta.mjs`. Manual chunks (eager vendors ONLY - see the Rolldown hoisting note above):
-    - `vendor-react` (react, react-dom, scheduler)
-    - `vendor-router` (react-router)
-    - framer-motion, @phosphor-icons, zod/react-hook-form are intentionally unlisted; they ride with their lazy importers
-- **Multi-page:** Vite builds `index.html`, `offline.html`, and `404.html` as separate entries
-- **Feeds:** `scripts/generate-feeds.mjs` re-reads `src/site/blog/posts/*.md` via `scripts/lib/posts.mjs` (a standalone Node mirror of the Vite loader - keep its frontmatter parser in sync with `posts.ts`) and writes `public/rss.xml` + `public/sitemap.xml`. Both are committed and deterministic (dates derive from posts), served in dev and copied to `dist/` on build.
-- **Head shells:** `scripts/generate-meta.mjs` (post-build) copies `dist/index.html` to `dist/<route>/index.html` for `/writing`, `/desktop`, and every published post, rewriting `<title>`, meta description, OG/Twitter tags, and canonical per route. Shell titles must match what the React components set at runtime. It throws if `index.html`'s head shape drifts.
-- **Deploy target:** Netlify (config in `netlify.toml`). Build command: `npm run build`, publish: `dist/`
-- **SPA rewrite:** `/app/*` and catch-all `/*` → `/index.html` (status 200); `/work` → `/`, legacy `/blog` → `/writing` and `/blog/*` → `/:splat` are **301 redirects**
-- **CI:** GitHub Actions (`.github/workflows/ci.yml`) on push/PR to `main`: checkout → Node 22 → `npm ci` → typecheck → lint → test → build
-
 ## Tests
 
-- **6 test files** in `src/tests/`:
-    - `portfolio-interactions.test.tsx` - 12 tests: activities overlay, dock interactions, window lifecycle, settings panel switching, accent color update, Escape key, focus mode pause/resume, terminal commands
-    - `additional-interactions.test.tsx` - 7 tests: ContactApp form rendering, validation, `aria-invalid`, BootScreen skip behavior, fastBoot, ResumeApp rendering
-    - `keyboard-and-routing.test.tsx` - 6 tests: deep link routing (valid/invalid), window lifecycle, Escape on multi-window (mounts DesktopShell against its OWN local route table - does not exercise App.tsx's real routes)
-    - `front-door-routing.test.tsx` - 2 tests: renders the real `<App>` (its BrowserRouter + route table) and asserts the portfolio hero at `/` and the writing-feed masthead at `/writing` - guards the front-door swap
-    - `deep-coverage.test.tsx` - 19 tests: terminal command parsing (help, whoami, neofetch, uptime, ls, cd, cat, pwd, clear, fortune, joke, echo, date, shortcuts), contact form rate limiting, ErrorBoundary resilience (persistent failures, app-level crash)
-    - `error-boundary.test.tsx` - 4 tests: window-level error UI, app-level crash screen, retry recovery, normal rendering
-- **Test setup** (`src/tests/setup.ts`): mocks `matchMedia`, `AudioContext`, and `localStorage`
-- **Environment:** jsdom with `vmForks` pool
-- **All tests wrap components in a `Providers` harness** that mirrors the App.tsx provider nesting
+- **`src/tests/front-door-routing.test.tsx`** - renders the real `<App>` and asserts the
+  portfolio hero at `/` and the writing-feed masthead at `/writing`. Guards the routing.
+- **`src/tests/error-boundary.test.tsx`** - window-level error UI, app-level crash screen,
+  retry recovery, normal pass-through. Tests `ErrorBoundary` standalone.
+- **Setup** (`src/tests/setup.ts`): mocks `matchMedia`, `AudioContext`, `localStorage`.
+- **Environment:** jsdom with `vmForks` pool.
 
-## Non-Obvious Details
+## Conventions & Non-Obvious Details
 
-1. **Container queries** - `Window` sets `container-name: app-window` on `.window-body`. App CSS uses `@container app-window (max-width: ...)` for responsive layouts inside windows, independent of viewport.
-
-2. **Launch origin animation** - `openWindow()` accepts an optional `LaunchOrigin` `{x, y}` for dock icon position, enabling a "zoom from icon" animation on window open.
-
-3. **Snap zones** - Dragging a window to the left/right edge triggers half-screen snap. State tracked in `WindowInfo.snapState`.
-
-4. **Virtual filesystem** - `DEFAULT_FILE_SYSTEM` in data.ts defines a full fake Linux filesystem (`/home/sawyehtet/...`) that the terminal navigates with `cd`, `ls`, `cat`.
-
-5. **Honeypot spam field** - ContactApp includes a hidden `website_url` field positioned off-screen (not `display:none`, because bots detect that). Bots that fill it get filtered.
-
-6. **Formspree integration** - Contact form POSTs to `https://formspree.io/f/{formId}` via native `fetch()`. No external HTTP client dependency.
-
-7. **Two CSS token systems coexist** - `css/base/variables.css` (portfolio tokens like `--glass-bg-heavy`, `--shadow-popover`) and `src/styles/adwaita-tokens.css` (upstream libadwaita tokens like `--window-bg-color`, `--headerbar-bg-color`). Both are in the `tokens` layer. The Adwaita tokens are the source of truth for GNOME-authentic colors.
-
-8. **`google0e39a960e13ab711.html`** - Google Search Console verification file. Do not delete.
-
-9. **The `docs/` directory** contains a fidelity rubric and gap analysis from a previous GNOME design audit. Reference material, not build artifacts.
-
-10. **No React Router `<Link>` components** - All navigation is via the window manager (`openWindow()`), not URL transitions. The router exists solely for deep-link entry and catch-all.
-
-11. **String-keyed icon system** - Content is declarative: `data.ts`/`profile.ts` and the toast/notification system store icons as short string keys (`'terminal'`, `'github'`). `src/components/ui/Icon.tsx` is the single registry mapping those keys → Phosphor components. It renders the glyph inside an `<i>` wrapper at `size="1em"` with `currentColor`, so the existing CSS rules that target `i` (font-size, color, width) keep working. To add an icon: add the key→component entry to `ICON_MAP`. The static `404.html` (no React) inlines Phosphor SVGs directly, wrapped in `<i class="ph">`.
+1. **No em dashes anywhere** in the project - use a spaced hyphen or restructure.
+2. **`editorial.css` is the whole design system** - scoped `.ed`, self-contained, declares
+   its own subset `@font-face`. Add new sections with the existing `ed-*` vocabulary
+   (`ed-section`, `ed-container`, `ed-section-head`, `ed-chip`, hairline `--line` borders,
+   the single `--accent`). Numbered sections use `ed-section-num`; ribbons (Stats,
+   Testimonial) are un-numbered to keep the numbered run gap-free.
+3. **Contact form** - React Hook Form + Zod, POSTs to Formspree via native `fetch()`.
+   Includes a hidden off-screen honeypot field (`website_url`, positioned off-screen, NOT
+   `display:none`, because bots detect that). It is lazy so its runtime stays off the front
+   door.
+4. **Self-hosted fonts** - `public/fonts/` holds subset Adwaita Sans/Mono (used by the site)
+   plus the full weights (kept for `scripts/generate-og.mjs`) and the SIL license.
+5. **Static 404** - `404.html` + `src/styles/404.css` are a no-React editorial 404 served
+   by Netlify on hard 404s; they mirror `src/site/NotFound.tsx`. Self-contained, no shared
+   imports.
+6. **`google0e39a960e13ab711.html`** - Google Search Console verification. Do not delete.
+7. **`docs/`** - reference material from a previous design audit, not build artifacts.
 
 ## Prettier Config
 

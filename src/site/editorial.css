@@ -2,11 +2,11 @@
    EDITORIAL / SWISS DESIGN SYSTEM
    Big type · strict grid · minimal color · hairline structure.
    Self-contained - scoped under .ed, reuses self-hosted Adwaita
-   fonts, does not depend on the GNOME token system.
+   fonts, does not depend on any external token system.
    ============================================================ */
 
-/* Override the desktop shell's body { overflow:hidden } so the page can scroll.
-   editorial.css is unlayered, so this beats the @layer reset rule. */
+/* Base page scroll + paper background for editorial pages. This is the only
+   global body styling now (there is no separate reset stylesheet). */
 html:has(.ed) {
     overflow-y: auto;
 }
@@ -26,7 +26,8 @@ body:has(.ed) {
     font-family: 'Adwaita Sans';
     /* Subset: Latin-1 + Latin Ext-A + punctuation/arrows/currency, opsz axis
        pinned to 14, wght instanced to the 400–800 the editorial site uses.
-       The full font (all glyphs, opsz + wght 100–900) is kept for /desktop. */
+       The full font (all glyphs, opsz + wght 100–900) is kept for OG image
+       generation (scripts/generate-og.mjs). */
     src: url('/fonts/AdwaitaSans-Regular.subset.woff2') format('woff2');
     font-display: swap;
     font-weight: 400 800;
@@ -34,7 +35,7 @@ body:has(.ed) {
 }
 @font-face {
     font-family: 'Adwaita Mono';
-    /* Subset: same glyph range; static 400 weight. Full font kept for /desktop. */
+    /* Subset: same glyph range; static 400 weight. Full font kept for OG image generation. */
     src: url('/fonts/AdwaitaMono-Regular.subset.woff2') format('woff2');
     font-display: swap;
     font-weight: 400;
@@ -74,8 +75,8 @@ body:has(.ed) {
     overflow-x: clip;
 }
 
-/* Scoped reset - reproduces the global `* { margin:0; padding:0 }` for the .ed
-   subtree so this site is self-contained and never loads the desktop's main.css. */
+/* Scoped reset - the `* { margin:0; padding:0 }` base for the .ed subtree, so
+   the site needs no separate global reset stylesheet. */
 .ed *,
 .ed *::before,
 .ed *::after {
@@ -1627,4 +1628,136 @@ body:has(.ed) {
 }
 .ed-post-tags {
     margin-top: 16px;
+}
+
+/* ---- stats ribbon (hero → about) ---- */
+.ed-stats {
+    margin-top: clamp(8px, 3vh, 24px);
+    margin-bottom: clamp(40px, 7vh, 88px);
+}
+.ed-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--line);
+}
+.ed-stat {
+    padding: clamp(20px, 3vw, 32px) clamp(16px, 2vw, 28px) clamp(20px, 3vw, 28px);
+    border-left: 1px solid var(--line);
+}
+.ed-stat:first-child {
+    border-left: none;
+    padding-left: 0;
+}
+.ed-stat-value {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+}
+.ed-stat-unit {
+    font-size: 0.42em;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--accent);
+}
+.ed-stat-label {
+    margin: 14px 0 0;
+    max-width: 24ch;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    line-height: 1.45;
+    letter-spacing: 0.04em;
+    color: var(--ink-3);
+}
+@media (max-width: 860px) {
+    .ed-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .ed-stat:nth-child(odd) {
+        border-left: none;
+        padding-left: 0;
+    }
+    .ed-stat:nth-child(n + 3) {
+        border-top: 1px solid var(--line);
+    }
+}
+@media (max-width: 520px) {
+    .ed-stats-grid {
+        grid-template-columns: 1fr;
+    }
+    .ed-stat {
+        border-left: none;
+        padding-left: 0;
+    }
+    .ed-stat + .ed-stat {
+        border-top: 1px solid var(--line);
+    }
+}
+
+/* ---- testimonial pull-quote (experience → projects) ---- */
+.ed-quote {
+    margin-top: clamp(48px, 9vh, 104px);
+    margin-bottom: clamp(48px, 9vh, 104px);
+}
+.ed-quote-fig {
+    margin: 0;
+    max-width: 62ch;
+}
+.ed-quote-fig::before {
+    content: '\201C';
+    display: block;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(3rem, 7vw, 4.5rem);
+    line-height: 0.6;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+.ed-quote-text {
+    margin: 0;
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: clamp(1.4rem, 3.4vw, 2.1rem);
+    line-height: 1.32;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+}
+.ed-quote-text p {
+    margin: 0;
+}
+.ed-quote-cite {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 12px;
+    margin-top: clamp(20px, 3vh, 32px);
+    padding-top: clamp(14px, 2vh, 20px);
+    border-top: 1px solid var(--line);
+    font-style: normal;
+}
+.ed-quote-name {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--ink);
+}
+.ed-quote-title,
+.ed-quote-rel {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+.ed-quote-rel::before {
+    content: '\00B7';
+    margin-right: 10px;
+    color: var(--line-2);
 }

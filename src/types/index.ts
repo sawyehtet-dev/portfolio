@@ -1,80 +1,8 @@
 // ============================================
-// FILE SYSTEM TYPES
-// ============================================
-
-export interface FileNode {
-    type: 'file';
-    content: string;
-}
-
-export interface DirNode {
-    type: 'dir';
-    children: string[];
-}
-
-export type FileSystemNode = FileNode | DirNode;
-
-export type FileSystem = Record<string, FileSystemNode>;
-
-// ============================================
-// DEVICE / LAYOUT TYPES
-// ============================================
-
-export type DeviceType = 'desktop' | 'tablet' | 'mobile';
-
-export type AppId =
-    | 'about'
-    | 'browser'
-    | 'files'
-    | 'resume'
-    | 'skills'
-    | 'projects'
-    | 'contact'
-    | 'terminal'
-    | 'settings'
-    | 'text-editor'
-    | 'focus-mode'
-    | 'calendar'
-    | 'image-viewer'
-    | 'software';
-
-export interface LaunchOrigin {
-    x: number;
-    y: number;
-}
-
-export interface WindowInfo {
-    appId: AppId;
-    isOpen: boolean;
-    isMinimized: boolean;
-    isMaximized: boolean;
-    zIndex: number;
-    position: { top: string; left: string };
-    size: { width: string; height: string };
-    snapState: 'none' | 'left' | 'right';
-    launchOrigin?: LaunchOrigin;
-    workspaceIndex?: number;
-}
-
-// ============================================
-// APP DEFINITION TYPES
-// ============================================
-
-export interface AppDefinition {
-    id: AppId;
-    label: string;
-    icon: string;
-    dockTooltip: string;
-    gradient: string;
-    description: string;
-    aliases: string[];
-    desktopDock: boolean;
-    mobileDock: boolean;
-}
-
-// ============================================
 // PORTFOLIO CONTENT TYPES
 // ============================================
+// Types for the editorial front door (the / portfolio, /writing, posts).
+// Consumed from src/config/editorial-data.ts.
 
 export interface ProjectLink {
     label: string;
@@ -116,79 +44,19 @@ export interface ExperienceItem {
     stack?: string[];
 }
 
-export interface SkillItem {
+// One cell in the hero stats ribbon. `value` is the number, `unit` the small
+// trailing qualifier (FPS, mo, %), `label` the one-line context under it.
+export interface StatItem {
+    value: string;
+    unit?: string;
+    label: string;
+}
+
+// A reference quote. The section renders nothing while the list is empty, so a
+// placeholder never ships - fill only with a real, attributed line.
+export interface Testimonial {
+    quote: string;
     name: string;
-    context: string;
-    usedIn: string[];
-    level: 'proficient' | 'intermediate' | 'learning';
-}
-
-export interface SkillCategory {
     title: string;
-    icon: string;
-    skills: SkillItem[];
-}
-
-// ============================================
-// NOTIFICATION TYPES
-// ============================================
-
-export interface Notification {
-    id: string;
-    title: string;
-    body: string;
-    icon: string;
-    iconBg: string;
-    time: string;
-    group: string;
-    action?: {
-        label: string;
-        appId?: AppId;
-        href?: string;
-    };
-}
-
-export interface Toast {
-    id: string;
-    message: string;
-    icon: string;
-    action?: {
-        label: string;
-        appId?: AppId;
-        href?: string;
-    };
-}
-
-// ============================================
-// WALLPAPER TYPES
-// ============================================
-
-export interface WallpaperOption {
-    id: string;
-    label: string;
-    gradient: string | null;
-    image?: string;
-    darkImage?: string;
-    sourceUrl?: string;
-}
-
-// ============================================
-// SETTINGS TYPES
-// ============================================
-
-export interface AccentColor {
-    color: string;
-    label: string;
-}
-
-export interface PortfolioPreferences {
-    wallpaperId: string;
-    brightness: number;
-    showWindowButtons: boolean;
-    enableSnap: boolean;
-    enableResize: boolean;
-    focusDim: boolean;
-    fastBoot: boolean;
-    wallpaperTimeOfDay: boolean;
-    dockHidden: boolean;
+    relationship?: string;
 }

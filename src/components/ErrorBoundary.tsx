@@ -10,6 +10,15 @@ interface State {
     hasError: boolean;
 }
 
+// Editorial palette (mirrors src/site/editorial.css), inlined so the boundary
+// has no stylesheet dependency and renders correctly even if CSS failed to load.
+const PAPER = '#f7f5ef';
+const INK = '#161410';
+const INK_2 = '#57534a';
+const LINE = '#d8d3c6';
+const ACCENT = '#cc2a10';
+const SANS = "'Adwaita Sans', 'Inter', system-ui, sans-serif";
+
 export class ErrorBoundary extends Component<Props, State> {
     state: State = { hasError: false };
 
@@ -33,19 +42,20 @@ export class ErrorBoundary extends Component<Props, State> {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        background: '#1e1e1e',
-                        color: '#fff',
-                        fontFamily: "'Adwaita Sans', 'Cantarell', sans-serif",
+                        background: PAPER,
+                        color: INK,
+                        fontFamily: SANS,
                     }}
                 >
                     <div
                         style={{
                             textAlign: 'center',
                             maxWidth: 400,
-                            background: '#2e2e32',
-                            borderRadius: 12,
+                            background: '#fff',
+                            border: `1px solid ${LINE}`,
+                            borderRadius: 4,
                             padding: '48px 36px',
-                            boxShadow: '0 4px 24px rgba(0,0,0,0.5)',
+                            boxShadow: '0 24px 60px rgba(22, 20, 16, 0.08)',
                         }}
                     >
                         <div
@@ -53,7 +63,7 @@ export class ErrorBoundary extends Component<Props, State> {
                                 width: 56,
                                 height: 56,
                                 borderRadius: '50%',
-                                background: '#c01c28',
+                                background: ACCENT,
                                 color: '#fff',
                                 fontSize: 28,
                                 fontWeight: 800,
@@ -71,7 +81,7 @@ export class ErrorBoundary extends Component<Props, State> {
                         <p
                             style={{
                                 fontSize: 14,
-                                opacity: 0.7,
+                                color: INK_2,
                                 margin: '0 0 24px',
                                 lineHeight: 1.5,
                             }}
@@ -83,7 +93,7 @@ export class ErrorBoundary extends Component<Props, State> {
                             style={{
                                 padding: '10px 32px',
                                 borderRadius: 8,
-                                background: '#3584e4',
+                                background: ACCENT,
                                 color: '#fff',
                                 border: 'none',
                                 fontSize: 14,
@@ -108,8 +118,8 @@ export class ErrorBoundary extends Component<Props, State> {
                     height: '100%',
                     gap: 12,
                     padding: 24,
-                    color: 'var(--window-fg-color, #fff)',
-                    fontFamily: "'Adwaita Sans', 'Cantarell', sans-serif",
+                    color: INK,
+                    fontFamily: SANS,
                 }}
             >
                 <div
@@ -117,7 +127,7 @@ export class ErrorBoundary extends Component<Props, State> {
                         width: 40,
                         height: 40,
                         borderRadius: '50%',
-                        background: 'var(--error-bg-color, #c01c28)',
+                        background: ACCENT,
                         color: '#fff',
                         fontSize: 20,
                         fontWeight: 800,
@@ -128,7 +138,7 @@ export class ErrorBoundary extends Component<Props, State> {
                 >
                     !
                 </div>
-                <p style={{ fontSize: 14, opacity: 0.8, textAlign: 'center' }}>
+                <p style={{ fontSize: 14, color: INK_2, textAlign: 'center' }}>
                     This app encountered an error
                 </p>
                 <button
@@ -136,7 +146,7 @@ export class ErrorBoundary extends Component<Props, State> {
                     style={{
                         padding: '8px 24px',
                         borderRadius: 8,
-                        background: 'var(--accent-bg-color, #3584e4)',
+                        background: ACCENT,
                         color: '#fff',
                         border: 'none',
                         fontSize: 13,

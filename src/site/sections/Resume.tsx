@@ -12,13 +12,11 @@ export function Resume() {
             <div className="ed-resume-grid">
                 <div>
                     <p className="ed-resume-statement">
-                        The full résumé lives as a{' '}
-                        <span className="accent">one-page PDF</span> - education, coursework, and the
-                        proof, ready to forward.
+                        The full résumé lives as a <span className="accent">one-page PDF</span> -
+                        education, coursework, and the proof, ready to forward.
                     </p>
                     <p className="ed-resume-note">
-                        Kept current and written for application support, production support, and
-                        technical analyst roles.
+                        Kept current, written for IT support / service desk roles.
                     </p>
                     <div className="ed-cta-row">
                         <a

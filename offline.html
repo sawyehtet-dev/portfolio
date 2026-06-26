@@ -4,108 +4,101 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="noindex, nofollow" />
-        <title>Offline - Saw Ye Htet | Java-focused Software Developer</title>
+        <meta name="theme-color" content="#f7f5ef" />
+        <title>Offline - Saw Ye Htet</title>
         <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
         <style>
-            :root {
-                --fedora-blue: #3584e4;
-                --fedora-dark: #1e1e2e;
-                --fedora-darker: #0d2137;
+            @font-face {
+                font-family: 'Adwaita Sans';
+                src: url('/fonts/AdwaitaSans-Regular.subset.woff2') format('woff2');
+                font-display: swap;
+                font-weight: 400 800;
+                font-style: normal;
             }
-
+            @font-face {
+                font-family: 'Adwaita Mono';
+                src: url('/fonts/AdwaitaMono-Regular.subset.woff2') format('woff2');
+                font-display: swap;
+                font-weight: 400;
+                font-style: normal;
+            }
+            :root {
+                --paper: #f7f5ef;
+                --ink: #161410;
+                --ink-3: #6d685b;
+                --line: #d8d3c6;
+                --accent: #cc2a10;
+                --sans: 'Adwaita Sans', 'Inter', system-ui, sans-serif;
+                --mono: 'Adwaita Mono', 'SF Mono', ui-monospace, monospace;
+            }
             * {
                 margin: 0;
                 padding: 0;
                 box-sizing: border-box;
             }
-
             body {
-                font-family:
-                    'Cantarell',
-                    -apple-system,
-                    BlinkMacSystemFont,
-                    'Segoe UI',
-                    Roboto,
-                    sans-serif;
-                background: linear-gradient(
-                    135deg,
-                    var(--fedora-dark) 0%,
-                    var(--fedora-darker) 100%
-                );
-                min-height: 100vh;
+                font-family: var(--sans);
+                background: var(--paper);
+                color: var(--ink);
+                min-height: 100dvh;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: #fff;
                 padding: 20px;
+                -webkit-font-smoothing: antialiased;
             }
-
-            .offline-container {
-                text-align: center;
-                max-width: 400px;
+            .offline {
+                width: 100%;
+                max-width: 460px;
             }
-
-            .offline-icon {
-                font-size: 64px;
-                margin-bottom: 24px;
-                opacity: 0.8;
+            .offline-eyebrow {
+                font-family: var(--mono);
+                font-size: 0.66rem;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--accent);
             }
-
             h1 {
-                font-size: 28px;
-                margin-bottom: 16px;
-                font-weight: 500;
+                margin: 8px 0 0;
+                font-size: clamp(2.2rem, 7vw, 3.2rem);
+                font-weight: 800;
+                letter-spacing: -0.03em;
+                line-height: 0.95;
             }
-
+            h1 .dot {
+                color: var(--accent);
+            }
             p {
-                font-size: 16px;
+                max-width: 42ch;
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 1px solid var(--line);
+                font-size: 1.05rem;
                 line-height: 1.6;
-                opacity: 0.9;
-                margin-bottom: 24px;
             }
-
-            .retry-btn {
+            .retry {
                 display: inline-block;
-                background: var(--fedora-blue);
-                color: #fff;
-                padding: 12px 32px;
-                border: none;
-                border-radius: 6px;
-                font-size: 16px;
-                font-weight: 500;
-                cursor: pointer;
+                margin-top: 28px;
+                font-family: var(--mono);
+                font-size: 0.78rem;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                color: var(--ink);
                 text-decoration: none;
-                transition:
-                    transform 0.2s,
-                    box-shadow 0.2s;
-            }
-
-            .retry-btn:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(53, 132, 228, 0.4);
-            }
-
-            .retry-btn:active {
-                transform: translateY(0);
-            }
-
-            .brand {
-                margin-top: 48px;
-                font-size: 14px;
-                opacity: 0.6;
+                border-bottom: 1px solid var(--accent);
+                padding-bottom: 2px;
             }
         </style>
     </head>
     <body>
-        <div class="offline-container">
-            <div class="offline-icon" aria-hidden="true">!</div>
-            <h1>You're Offline</h1>
+        <main class="offline">
+            <span class="offline-eyebrow">No connection</span>
+            <h1>Offline<span class="dot">.</span></h1>
             <p>
-                Saw Ye Htet's Java-focused portfolio will reconnect when your network is back.
-                Resume, projects, and contact details are available on the main site.
+                This page will reconnect when your network is back. The résumé, projects, and
+                contact details are all on the main site once you are online again.
             </p>
-            <a class="retry-btn" href="/">Try Again</a>
-            <div class="brand">Saw Ye Htet - Java-focused Software Developer</div>
-        </div>
+            <a class="retry" href="/">Try again &rarr;</a>
+        </main>
     </body>
 </html>

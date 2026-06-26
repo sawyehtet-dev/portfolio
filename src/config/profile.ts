@@ -1,23 +1,17 @@
+// Two target lanes: IT support / service desk is primary, software QA is the
+// secondary lane and the coding-backed edge. Kept in sync with the IT Support
+// and Software QA résumés.
 export const PROFILE = {
     name: 'Saw Ye Htet',
-    role: 'IT Support & Operations Specialist',
-    // Writing-first homepage tagline (sits under the name in the masthead).
-    // Placeholder - Saw to rewrite in his own voice.
-    tagline: 'IT support & operations - and notes on building things.',
-    roleTarget: 'Application Support / Production Support / Technical Analyst',
-    headline:
-        'IT support specialist targeting application support, production support, and technical analyst roles in Singapore.',
-    summary:
-        'Recent Singapore Polytechnic IT graduate with hands-on SQL, Linux, and Python skills. Targeting application support and production support roles where systematic troubleshooting, log analysis, and attention to detail matter.',
-    subtitle: 'Application Support · Production Support · Technical Analyst',
-    secondaryTarget: 'QA / API Testing',
-    carryOverTarget: 'IT Service Management / ITIL',
-    education: 'Diploma in Information Technology - Singapore Polytechnic, 2026',
+    role: 'IT Support & QA Specialist',
+    // Writing-first homepage tagline (sits under the name in the /writing masthead).
+    tagline: 'IT support and software QA - and notes on building things.',
+    roleTarget: 'IT Support / Service Desk · Software QA',
     email: 'sawyehtet.dev@gmail.com',
     resumePath: '/resume/SawYeHtet_Resume.pdf',
-    availability: 'Open to opportunities',
+    availability: 'Fresh grad · open to opportunities',
     location: 'Singapore / remote-friendly',
-    primaryStack: ['SQL', 'Linux', 'Python', 'API Testing', 'React + TypeScript'],
+    primaryStack: ['Python', 'React + TypeScript', 'Linux', 'Git'],
 };
 
 export const SOCIAL_LINKS = [

@@ -68,11 +68,6 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-[[redirects]]
-  from = "/app/*"
-  to = "/index.html"
-  status = 200
-
 # Moved/legacy URLs → new shapes. The portfolio is now the front door at /, and
 # the writing feed moved to /writing: /work → / (old portfolio route), /blog →
 # /writing, and /blog/:slug → the clean root slug /:slug. 301 so old links and
@@ -92,7 +87,7 @@
   to = "/:splat"
   status = 301
 
-# SPA catch-all: deep links like /desktop and client routes resolve to the app.
+# SPA catch-all: client routes (/, /writing, /:slug) resolve to the app.
 # Static files (offline.html, 404.html, assets) are served before this applies.
 [[redirects]]
   from = "/*"

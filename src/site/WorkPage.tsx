@@ -2,7 +2,9 @@ import './editorial.css';
 import { lazy, Suspense } from 'react';
 import { PROFILE } from '../config/profile';
 import { Nav } from './Nav';
+import { Stats } from './sections/Stats';
 import { Experience } from './sections/Experience';
+import { Testimonial } from './sections/Testimonial';
 import { Work } from './sections/Work';
 import { Skills } from './sections/Skills';
 import { Resume } from './sections/Resume';
@@ -16,12 +18,12 @@ import { Footer } from './sections/Footer';
 const Contact = lazy(() => import('./sections/Contact').then(m => ({ default: m.Contact })));
 
 const FOCUS_AREAS = [
-    'Application & Production Support',
-    'Incident Triage & Escalation',
-    'Log Analysis & Troubleshooting',
-    'SQL Debugging & Querying',
-    'API Testing & QA',
-    'IT Service Management (ITIL)',
+    'IT Support & Service Desk',
+    'Troubleshooting & Issue Diagnosis',
+    'End-to-End & User Testing',
+    'Issue Reproduction & Defect Tracking',
+    'Technical Documentation',
+    'Software QA (manual & test-driven)',
 ];
 
 function Hero() {
@@ -34,7 +36,7 @@ function Hero() {
 
             <h1 className="ed-hero-head ed-reveal" data-d="1">
                 <span>IT Support &amp;</span>
-                <span className="accent">Operations</span>
+                <span className="accent">QA</span>
                 <span>
                     Specialist<span className="arrow">↘</span>
                 </span>
@@ -43,10 +45,11 @@ function Hero() {
             <div className="ed-hero-foot ed-reveal" data-d="2">
                 <div>
                     <p className="ed-hero-lead">
-                        Recent Singapore Polytechnic IT graduate. I{' '}
-                        <strong>read the logs</strong>, find the actual cause, and write the fix
-                        down so the next person isn't stuck on it. Targeting application support,
-                        production support, and technical analyst roles.
+                        IT diploma graduate with a year of hands-on technical work - setup,
+                        troubleshooting, end-to-end testing, and documentation for a VR training
+                        system. I <strong>find the actual cause</strong> and write the fix down so
+                        the next person isn't stuck on it. Targeting IT support and service desk
+                        roles; software QA is my edge, because I read and write code.
                     </p>
                     <div className="ed-cta-row">
                         <a
@@ -67,12 +70,12 @@ function Hero() {
                     <div className="ed-spec-row">
                         <dt className="ed-spec-key">Focus</dt>
                         <dd className="ed-spec-val">
-                            Application &amp; Production Support · QA / Test Documentation
+                            IT Support / Service Desk · Software QA &amp; Testing
                         </dd>
                     </div>
                     <div className="ed-spec-row">
                         <dt className="ed-spec-key">Stack</dt>
-                        <dd className="ed-spec-val">SQL · Linux · Python · React</dd>
+                        <dd className="ed-spec-val">Python · React · Linux · Git</dd>
                     </div>
                     <div className="ed-spec-row">
                         <dt className="ed-spec-key">Status</dt>
@@ -104,7 +107,7 @@ function About() {
                     <dl className="ed-spec ed-about-meta">
                         <div className="ed-spec-row">
                             <dt className="ed-spec-key">Role</dt>
-                            <dd className="ed-spec-val">IT Support &amp; Ops</dd>
+                            <dd className="ed-spec-val">IT Support &amp; QA</dd>
                         </div>
                         <div className="ed-spec-row">
                             <dt className="ed-spec-key">Based</dt>
@@ -124,14 +127,17 @@ function About() {
                     </p>
                     <div className="ed-prose">
                         <p>
-                            I work in SQL, Linux, and Python, and the part I actually enjoy is the
-                            debugging: sitting with a stack trace until the real cause turns up, not
-                            just the line that happened to throw.
+                            I just finished an IT diploma, but I have a year of real technical work
+                            behind me: a maritime research centre where I set up and troubleshot a
+                            VR training system, ran user testing, reproduced and tracked issues, and
+                            wrote the guides so other staff could run it without me.
                         </p>
                         <p>
-                            I'm aiming for application or production support at a consultancy or
-                            product team. The kind of place where careful troubleshooting and
-                            writing things down clearly are most of what the day looks like.
+                            I'm aiming for IT support and service desk roles, with software QA a
+                            close second - and that is my edge, because I read and write code (70+
+                            tests on my own tool) instead of only clicking through a UI. The part I
+                            actually enjoy is the debugging: sitting with a stack trace until the
+                            real cause turns up, not the line that happened to throw.
                         </p>
                     </div>
 
@@ -152,23 +158,27 @@ function About() {
     );
 }
 
-// The portfolio - now the front door at /. Single page: Hero → About →
-// Experience → Projects → Skills → Résumé → Contact → Writing. The Writing
-// section surfaces the three newest posts and links out to the full feed at
-// /writing (see Home.tsx, which renders that feed).
+// The portfolio - now the front door at /. Single page: Hero → Stats →
+// About → Experience → Testimonial → Projects → Skills → Résumé → Contact →
+// Writing. Stats and Testimonial are un-numbered ribbons, so the numbered run
+// (01 About … 03 Projects …) stays gap-free; Testimonial renders nothing while
+// TESTIMONIALS is empty. The Writing section surfaces the three newest posts
+// and links out to the full feed at /writing (see Home.tsx, which renders it).
 export function WorkPage() {
     return (
         <div className="ed">
-            <title>Saw Ye Htet - IT Support &amp; Operations Specialist</title>
+            <title>Saw Ye Htet - IT Support &amp; QA Specialist</title>
             <meta
                 name="description"
-                content="Saw Ye Htet - IT support & operations. Experience, projects, skills, résumé, and recent writing."
+                content="Saw Ye Htet - IT support and software QA. Experience, projects, skills, résumé, and recent writing."
             />
             <Nav />
             <main id="main-content">
                 <Hero />
+                <Stats />
                 <About />
                 <Experience />
+                <Testimonial />
                 <Work />
                 <Skills />
                 <Resume />

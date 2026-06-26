@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
         <meta
             name="description"
-            content="Saw Ye Htet is an IT support specialist targeting application support, production support, and technical analyst roles in Singapore. View projects, skills, resume, and contact details."
+            content="Saw Ye Htet is an IT support and service desk graduate in Singapore, with software QA as a coding-backed edge. View experience, projects, skills, resume, and contact details."
         />
         <meta name="robots" content="index, follow" />
         <meta name="application-name" content="Saw Ye Htet Portfolio" />
@@ -14,38 +14,37 @@
         <!-- Open Graph / facebook -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://sawyehtet.com/" />
-        <meta property="og:title" content="Saw Ye Htet - IT Support & Operations Specialist" />
+        <meta property="og:title" content="Saw Ye Htet - IT Support & QA Specialist" />
         <meta
             property="og:description"
-            content="IT support specialist targeting application support, production support, and technical analyst roles in Singapore. Recruiter-friendly portfolio with projects, resume, and contact."
+            content="IT support and service desk graduate in Singapore, with software QA as a coding-backed edge. Recruiter-friendly portfolio with experience, projects, resume, and contact."
         />
         <meta property="og:image" content="https://sawyehtet.com/images/og-preview.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta
             property="og:image:alt"
-            content="Saw Ye Htet - IT Support & Operations Specialist portfolio"
+            content="Saw Ye Htet - IT Support & QA Specialist portfolio"
         />
 
         <!-- Twitter Card -->
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Saw Ye Htet - IT Support & Operations Specialist" />
+        <meta name="twitter:title" content="Saw Ye Htet - IT Support & QA Specialist" />
         <meta
             name="twitter:description"
-            content="IT support specialist targeting application support, production support, and technical analyst roles in Singapore. Recruiter-friendly portfolio with projects, resume, and contact."
+            content="IT support and service desk graduate in Singapore, with software QA as a coding-backed edge. Recruiter-friendly portfolio with experience, projects, resume, and contact."
         />
         <meta name="twitter:url" content="https://sawyehtet.com/" />
         <meta name="twitter:image" content="https://sawyehtet.com/images/og-preview.png" />
         <meta
             name="twitter:image:alt"
-            content="Saw Ye Htet - IT Support & Operations Specialist portfolio"
+            content="Saw Ye Htet - IT Support & QA Specialist portfolio"
         />
 
         <meta name="author" content="Saw Ye Htet" />
 
         <link rel="canonical" href="https://sawyehtet.com/" />
-        <title>Saw Ye Htet - IT Support & Operations Specialist</title>
-        <script src="/head-bootstrap.js"></script>
+        <title>Saw Ye Htet - IT Support & QA Specialist</title>
         <!-- Fonts fully self-hosted (Adwaita Sans/Mono in /fonts). No external font requests. -->
         <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
         <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180" />
@@ -55,10 +54,10 @@
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-        <!-- Profile photo: shown when the About/Contact apps open, not on the
-             initial desktop. Prefetch (not preload) warms the cache at low
-             priority so it's instant on open, without a wasted-preload warning
-             or competing with the critical font/JS for initial paint. -->
+        <!-- Profile photo: shown in the About section, below the fold. Prefetch
+             (not preload) warms the cache at low priority so it's instant on
+             scroll, without a wasted-preload warning or competing with the
+             critical font/JS for initial paint. -->
         <link rel="prefetch" href="/images/profile-picture.webp" as="image" type="image/webp" />
         <link
             rel="preload"
@@ -110,8 +109,8 @@
                 "url": "https://sawyehtet.com",
                 "image": "https://sawyehtet.com/images/profile-picture.webp",
                 "email": "sawyehtet.dev@gmail.com",
-                "jobTitle": "IT Support & Operations Specialist",
-                "description": "Singapore Polytechnic IT graduate (2026) targeting application support, production support, and technical analyst roles. Built this React and TypeScript portfolio as technical proof.",
+                "jobTitle": "IT Support & QA Specialist",
+                "description": "Singapore Polytechnic IT graduate (2026) with a year of hands-on technical experience, targeting IT support and service desk roles, with software QA as a coding-backed edge. Built this React and TypeScript portfolio as technical proof.",
                 "address": {
                     "@type": "PostalAddress",
                     "addressCountry": "SG"
@@ -131,13 +130,14 @@
                     }
                 },
                 "knowsAbout": [
-                    "Application Support",
-                    "Production Support",
-                    "Incident Triage",
-                    "Log Analysis",
-                    "SQL",
+                    "IT Support",
+                    "Service Desk",
+                    "Troubleshooting",
+                    "Software QA",
+                    "Software Testing",
+                    "Test-Driven Development",
+                    "Python",
                     "Linux",
-                    "API Testing",
                     "React",
                     "TypeScript"
                 ],
@@ -159,12 +159,7 @@
              (No-JS users get the <noscript> block below instead.) -->
         <div
             id="static-shell"
-            style="
-                position: fixed;
-                inset: 0;
-                z-index: 9999;
-                background: #f7f5ef;
-            "
+            style="position: fixed; inset: 0; z-index: 9999; background: #f7f5ef"
         >
             <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 5.5vw, 72px)">
                 <div style="display: flex; align-items: center; height: 64px">
@@ -198,25 +193,26 @@
                     max-width: 600px;
                     margin: 4rem auto;
                     padding: 0 20px;
-                    color: rgba(255, 255, 255, 0.87);
-                    background: #1e1e1e;
+                    color: #161410;
+                    background: #f7f5ef;
                 "
             >
                 <h1 style="font-size: 26px; margin: 0 0 4px; font-weight: 700">Saw Ye Htet</h1>
                 <p style="margin: 0 0 16px; font-size: 17px; opacity: 0.85; font-weight: 600">
-                    IT Support &amp; Operations Specialist
+                    IT Support &amp; QA Specialist
                 </p>
                 <p style="margin: 0 0 24px; font-size: 14px; opacity: 0.7; line-height: 1.6">
-                    Singapore Polytechnic IT graduate (2026) targeting application support,
-                    production support, and technical analyst roles. Built this React and TypeScript
-                    portfolio as technical proof of problem-solving ability.
+                    Singapore Polytechnic IT graduate (2026) with a year of hands-on technical
+                    experience. Targeting IT support and service desk roles, with software QA as a
+                    coding-backed edge. Built this React and TypeScript portfolio as technical
+                    proof.
                 </p>
                 <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px">
                     <a
                         href="mailto:sawyehtet.dev@gmail.com"
                         style="
                             padding: 10px 20px;
-                            background: #3584e4;
+                            background: #cc2a10;
                             color: #fff;
                             text-decoration: none;
                             border-radius: 6px;
@@ -230,7 +226,7 @@
                         href="/resume/SawYeHtet_Resume.pdf"
                         style="
                             padding: 10px 20px;
-                            background: #3a3a3a;
+                            background: #161410;
                             color: #fff;
                             text-decoration: none;
                             border-radius: 6px;
@@ -245,7 +241,7 @@
                         rel="noopener noreferrer"
                         style="
                             padding: 10px 20px;
-                            background: #3a3a3a;
+                            background: #161410;
                             color: #fff;
                             text-decoration: none;
                             border-radius: 6px;
@@ -260,7 +256,7 @@
                         rel="noopener noreferrer"
                         style="
                             padding: 10px 20px;
-                            background: #3a3a3a;
+                            background: #161410;
                             color: #fff;
                             text-decoration: none;
                             border-radius: 6px;

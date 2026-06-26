@@ -8,29 +8,16 @@ import {
     useLocation,
     useNavigationType,
 } from 'react-router-dom';
-import { DeviceProvider } from './context/DeviceContext';
-import { ThemeProvider } from './context/ThemeContext';
-import { SoundProvider } from './context/SoundContext';
-import { WindowManagerProvider } from './context/WindowManagerContext';
-import { NotificationProvider } from './context/NotificationContext';
-import { PreferencesProvider } from './context/PreferencesContext';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { WorkPage } from './site/WorkPage';
 
-// The portfolio is the front door (eager) at /. The writing feed moved to
-// /writing, and the interactive desktop simulation is a showcased artifact at
-// /desktop - both lazy-loaded so the front door ships lean. WorkPage's Contact
-// form is itself lazy (see WorkPage.tsx) so react-hook-form/zod stay off the
-// initial bundle; react-markdown rides with BlogPost, the desktop bundle stays
-// on /desktop.
+// The portfolio is the front door (eager) at /. The writing feed lives at
+// /writing and posts at clean root slugs - both lazy-loaded so the front door
+// ships lean. WorkPage's Contact form is itself lazy (see WorkPage.tsx) so
+// react-hook-form/zod stay off the initial bundle; react-markdown rides with
+// BlogPost.
 const Home = lazy(() => import('./site/Home').then(m => ({ default: m.Home })));
 const NotFound = lazy(() => import('./site/NotFound').then(m => ({ default: m.NotFound })));
-const DesktopShell = lazy(() =>
-    import('./components/shell/DesktopShell').then(m => ({ default: m.DesktopShell }))
-);
-const DeepLinkHandler = lazy(() =>
-    import('./components/shell/DeepLinkHandler').then(m => ({ default: m.DeepLinkHandler }))
-);
 
 // Posts render at clean root slugs (/<slug>). BlogPost carries react-markdown, so
 // it stays lazy to keep that weight off the front-door bundle.
@@ -66,48 +53,19 @@ function App() {
         <ErrorBoundary level="app">
             <BrowserRouter>
                 <ScrollToTop />
-                <DeviceProvider>
-                    <ThemeProvider>
-                        <PreferencesProvider>
-                            <SoundProvider>
-                                <WindowManagerProvider>
-                                    <NotificationProvider>
-                                        <Suspense fallback={null}>
-                                            <Routes>
-                                                {/* Explicit routes first, then the
-                                                    dynamic post slug, then the 404. */}
-                                                <Route path="/" element={<WorkPage />} />
-                                                <Route path="/writing" element={<Home />} />
-                                                <Route
-                                                    path="/work"
-                                                    element={<Navigate to="/" replace />}
-                                                />
-                                                <Route
-                                                    path="/desktop"
-                                                    element={<DesktopShell />}
-                                                />
-                                                <Route
-                                                    path="/app/:appId"
-                                                    element={<DeepLinkHandler />}
-                                                />
-                                                <Route
-                                                    path="/blog"
-                                                    element={<Navigate to="/writing" replace />}
-                                                />
-                                                <Route
-                                                    path="/blog/:slug"
-                                                    element={<BlogRedirect />}
-                                                />
-                                                <Route path="/:slug" element={<BlogPost />} />
-                                                <Route path="*" element={<NotFound />} />
-                                            </Routes>
-                                        </Suspense>
-                                    </NotificationProvider>
-                                </WindowManagerProvider>
-                            </SoundProvider>
-                        </PreferencesProvider>
-                    </ThemeProvider>
-                </DeviceProvider>
+                <Suspense fallback={null}>
+                    <Routes>
+                        {/* Explicit routes first, then the dynamic post slug,
+                            then the 404. */}
+                        <Route path="/" element={<WorkPage />} />
+                        <Route path="/writing" element={<Home />} />
+                        <Route path="/work" element={<Navigate to="/" replace />} />
+                        <Route path="/blog" element={<Navigate to="/writing" replace />} />
+                        <Route path="/blog/:slug" element={<BlogRedirect />} />
+                        <Route path="/:slug" element={<BlogPost />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                </Suspense>
             </BrowserRouter>
         </ErrorBoundary>
     );
