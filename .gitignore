@@ -34,6 +34,8 @@ Thumbs.db
 
 # Build outputs (Vite generates dist/ on build)
 dist/
+# SSR bundle for the build-time homepage prerender (scripts/prerender.mjs)
+dist-ssr/
 build/
 
 # Logs

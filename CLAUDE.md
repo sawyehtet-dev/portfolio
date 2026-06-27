@@ -145,7 +145,8 @@ src/
 ## Build & Deploy
 
 - **Build:** `npm run build` → typecheck → `scripts/generate-feeds.mjs` → `vite build` →
-  `scripts/generate-meta.mjs`. Manual chunks (eager vendors ONLY):
+  `scripts/generate-meta.mjs` → `build:ssr` (`vite build --ssr src/entry-server.tsx` →
+  `dist-ssr/`) → `scripts/prerender.mjs`. Manual chunks (eager vendors ONLY):
     - `vendor-react` (react, react-dom, scheduler)
     - `vendor-router` (react-router)
     - zod/react-hook-form (Contact) and react-markdown (BlogPost) are intentionally unlisted;
@@ -160,6 +161,16 @@ src/
   description, OG/Twitter, and canonical per route so social crawlers (which don't run JS)
   see the right card. Shell titles must match what the React components set at runtime; it
   throws if `index.html`'s head shape drifts.
+- **Homepage prerender:** `scripts/prerender.mjs` (post-build, AFTER generate-meta) renders
+  `WorkPage` to static markup via `src/entry-server.tsx` (compiled to `dist-ssr/` by
+  `build:ssr`) and injects it into `dist/index.html`'s `#root`, so non-JS crawlers/scrapers
+  get the real front-door body (head/OG/JSON-LD already carry the positioning; this fills
+  the body). Pure Node `react-dom/server` - no headless browser, so it stays Netlify-safe.
+  Runs after generate-meta so the per-route head shells keep their empty-root bodies; only
+  `/` is prerendered. It strips React's hoisted `<title>`/`<meta>`/`<link>` hints from the
+  fragment (the head owns those, and the head's image `prefetch` is deliberately
+  low-priority). The client boots with `createRoot`, which replaces the markup on mount, so
+  there is no hydration step to mismatch.
 - **Netlify** (`netlify.toml`): publish `dist/`. SPA catch-all `/*` → `/index.html`
   (status 200); `/work` → `/`, legacy `/blog` → `/writing` and `/blog/*` → `/:splat` are
   **301 redirects**. Static files (offline.html, 404.html, assets, head shells) are served
@@ -181,8 +192,10 @@ npm run test:watch
 npm run validate         # lint → typecheck → test (full CI gate)
 npm run format           # Prettier write
 npm run format:check
-npm run build            # typecheck → generate:feeds → vite build → generate:meta → dist/
+npm run build            # typecheck → feeds → vite build → meta → build:ssr → prerender → dist/
 npm run preview          # Serve dist/ locally
+npm run build:ssr        # Compile src/entry-server.tsx → dist-ssr/ (runs in build)
+npm run prerender        # Inject prerendered homepage body into dist/index.html (runs in build)
 npm run generate:og      # Puppeteer script to regenerate the OG preview image
 npm run generate:feeds   # public/rss.xml + public/sitemap.xml (runs in build)
 npm run generate:meta    # dist/<route>/index.html head shells (runs in build, needs dist/)

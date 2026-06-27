@@ -6,7 +6,9 @@
     "main": "index.html",
     "scripts": {
         "dev": "vite",
-        "build": "npm run typecheck && npm run generate:feeds && vite build && npm run generate:meta",
+        "build": "npm run typecheck && npm run generate:feeds && vite build && npm run generate:meta && npm run build:ssr && npm run prerender",
+        "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist-ssr",
+        "prerender": "node scripts/prerender.mjs",
         "generate:feeds": "node scripts/generate-feeds.mjs",
         "generate:meta": "node scripts/generate-meta.mjs",
         "preview": "vite preview",
