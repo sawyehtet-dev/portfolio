@@ -51,12 +51,12 @@ body:has(.ed) {
     --ink-3: #6d685b; /* AA 4.5:1+ on paper for small mono labels */
     --line: #d8d3c6;
     --line-2: #c4bfb1;
-    --accent: #cc2a10; /* signal red - AA 4.5:1+ on paper & tinted panels at small sizes */
+    --accent: #a8432b; /* muted brick - AA 4.5:1+ on paper & tinted panels at small sizes */
     --accent-ink: #ffffff;
 
     /* ---- layout ---- */
-    --maxw: 1240px;
-    --gutter: clamp(20px, 5.5vw, 72px);
+    --maxw: 768px;
+    --gutter: clamp(20px, 5vw, 32px);
 
     /* ---- type families ---- */
     --sans: 'Adwaita Sans', 'Inter', system-ui, sans-serif;
@@ -227,32 +227,18 @@ body:has(.ed) {
 }
 
 .ed-hero-head {
-    margin: clamp(28px, 5vh, 64px) 0 0;
-    font-weight: 800;
-    font-size: clamp(3rem, 12.5vw, 10rem);
-    line-height: 0.9;
-    letter-spacing: -0.045em;
-    text-transform: uppercase;
-}
-.ed-hero-head span {
-    display: block;
-}
-.ed-hero-head .accent {
-    color: var(--accent);
-}
-.ed-hero-head .arrow {
-    display: inline-block;
-    font-size: 0.5em;
-    vertical-align: middle;
-    transform: translateY(-0.18em);
-    margin-left: 0.1em;
-    color: var(--ink-3);
+    margin: clamp(24px, 4vh, 44px) 0 0;
+    max-width: 24ch;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 4vw, 2.7rem);
+    line-height: 1.14;
+    letter-spacing: -0.02em;
 }
 
 .ed-hero-foot {
     display: grid;
-    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-    gap: clamp(28px, 5vw, 64px);
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 4vh, 40px);
     align-items: start;
     margin-top: clamp(32px, 5vh, 56px);
     padding-top: clamp(24px, 3vh, 36px);
@@ -368,76 +354,27 @@ body:has(.ed) {
 
 /* ============================================================
    SECTION SHELL
-   Each section is a clearly bounded block: a loud display title
-   over a mono "NN / DESCRIPTOR" eyebrow, and every other section
-   sits on a full-bleed paper-2 tone band for spatial rhythm.
+   Each section is a display title on a hairline rule, on a single
+   flat paper ground - no tone bands, kept deliberately quiet.
    ============================================================ */
 .ed-section {
-    position: relative;
-    isolation: isolate; /* contains the tint band's -1 z-index */
     padding-top: clamp(56px, 9vh, 128px);
     padding-bottom: clamp(8px, 2vh, 24px);
     scroll-margin-top: 80px;
 }
 
-/* alternating full-bleed tone band (applied to every other section) */
-.ed-section--tint {
-    padding-bottom: clamp(48px, 8vh, 104px);
-}
-.ed-section--tint::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    left: 50%;
-    width: 100vw; /* safe: html/body/.ed all clip overflow-x */
-    transform: translateX(-50%);
-    background: var(--paper-2);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    z-index: -1;
-}
-
 .ed-section-head {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    grid-template-areas:
-        'num   meta'
-        'title title';
-    column-gap: 14px;
-    row-gap: clamp(12px, 2vh, 20px);
-    align-items: baseline;
-    padding-bottom: clamp(18px, 2.4vh, 28px);
-    border-bottom: 2px solid var(--ink);
-    margin-bottom: clamp(28px, 4.5vh, 56px);
-}
-.ed-section-num {
-    grid-area: num;
-    font-family: var(--mono);
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    color: var(--accent);
-}
-.ed-section-meta {
-    grid-area: meta;
-    font-family: var(--mono);
-    font-size: 0.74rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-}
-.ed-section-meta::before {
-    content: '/';
-    margin-right: 10px;
-    color: var(--line-2);
+    padding-bottom: clamp(14px, 2vh, 20px);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: clamp(24px, 4vh, 44px);
 }
 .ed-section-title {
-    grid-area: title;
     margin: 0;
     font-family: var(--sans);
-    font-size: clamp(2.1rem, 5.5vw, 4rem);
-    font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.035em;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     text-transform: none;
     color: var(--ink);
 }
@@ -447,51 +384,18 @@ body:has(.ed) {
    ============================================================ */
 .ed-about-grid {
     display: grid;
-    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.35fr);
-    gap: clamp(32px, 5vw, 80px);
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 4vh, 40px);
     align-items: start;
-}
-
-.ed-portrait {
-    position: relative;
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-    border: 1px solid var(--line-2);
-    background: var(--paper-2);
-}
-.ed-portrait img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 18%;
-}
-.ed-portrait-tag {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    padding: 7px 12px;
-    background: var(--ink);
-    color: var(--paper);
-    font-family: var(--mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-}
-
-.ed-about-meta {
-    margin-top: 22px;
 }
 
 .ed-lead {
     margin: 0 0 28px;
-    font-size: clamp(1.5rem, 2.6vw, 2.15rem);
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
     font-weight: 600;
-    line-height: 1.18;
+    line-height: 1.3;
     letter-spacing: -0.02em;
     text-wrap: balance;
-}
-.ed-lead .accent {
-    color: var(--accent);
 }
 
 .ed-prose p {
@@ -505,46 +409,6 @@ body:has(.ed) {
     margin-bottom: 0;
 }
 
-.ed-focus {
-    margin-top: 34px;
-}
-.ed-focus-label {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    margin-bottom: 14px;
-}
-.ed-focus-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    border-top: 1px solid var(--line);
-}
-.ed-focus-list li {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    padding: 13px 4px;
-    border-bottom: 1px solid var(--line);
-    font-size: 1rem;
-    font-weight: 500;
-}
-.ed-focus-list li .n {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--accent);
-}
-@media (max-width: 620px) {
-    .ed-focus-list {
-        grid-template-columns: 1fr;
-    }
-}
-
 /* ============================================================
    RESPONSIVE
    ============================================================ */
@@ -555,9 +419,6 @@ body:has(.ed) {
     }
     .ed-about-grid {
         grid-template-columns: 1fr;
-    }
-    .ed-portrait {
-        max-width: 320px;
     }
     .ed-nav-links {
         gap: 14px;
@@ -571,35 +432,6 @@ body:has(.ed) {
     .ed-cta-row .ed-btn {
         flex: 1;
         justify-content: center;
-    }
-    /* Let the portrait fill the column so its edges align with the meta rows
-       below it, instead of stopping short and leaving a lopsided right gap. */
-    .ed-portrait {
-        max-width: none;
-    }
-}
-
-/* ---- entrance motion ---- */
-@media (prefers-reduced-motion: no-preference) {
-    .ed-reveal {
-        opacity: 0;
-        transform: translateY(16px);
-        animation: ed-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-    .ed-reveal[data-d='1'] {
-        animation-delay: 0.06s;
-    }
-    .ed-reveal[data-d='2'] {
-        animation-delay: 0.13s;
-    }
-    .ed-reveal[data-d='3'] {
-        animation-delay: 0.2s;
-    }
-    @keyframes ed-rise {
-        to {
-            opacity: 1;
-            transform: none;
-        }
     }
 }
 
@@ -633,10 +465,10 @@ body:has(.ed) {
 }
 .ed-work-title {
     margin: 0 0 8px;
-    font-size: clamp(1.7rem, 4vw, 2.9rem);
-    font-weight: 800;
-    line-height: 1.02;
-    letter-spacing: -0.03em;
+    font-size: clamp(1.35rem, 3vw, 1.8rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
 }
 .ed-work-sub {
     display: flex;
@@ -715,8 +547,8 @@ body:has(.ed) {
 
 .ed-work-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.32fr) minmax(0, 0.92fr);
-    gap: clamp(32px, 5vw, 72px);
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 4vh, 40px);
     align-items: start;
 }
 .ed-narrative {
@@ -834,10 +666,10 @@ body:has(.ed) {
 }
 .ed-exp-org {
     margin: 0 0 8px;
-    font-size: clamp(1.4rem, 2.6vw, 2rem);
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
     font-weight: 700;
-    line-height: 1.08;
-    letter-spacing: -0.02em;
+    line-height: 1.14;
+    letter-spacing: -0.01em;
 }
 .ed-exp-role {
     display: flex;
@@ -919,20 +751,17 @@ body:has(.ed) {
    ============================================================ */
 .ed-resume-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-    gap: clamp(32px, 5vw, 72px);
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 4vh, 40px);
     align-items: start;
 }
 .ed-resume-statement {
     margin: 0 0 28px;
-    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
     font-weight: 600;
-    line-height: 1.18;
+    line-height: 1.3;
     letter-spacing: -0.02em;
     text-wrap: balance;
-}
-.ed-resume-statement .accent {
-    color: var(--accent);
 }
 .ed-resume-note {
     margin: 0 0 28px;
@@ -947,20 +776,17 @@ body:has(.ed) {
    ============================================================ */
 .ed-contact-grid {
     display: grid;
-    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
-    gap: clamp(36px, 6vw, 88px);
+    grid-template-columns: 1fr;
+    gap: clamp(32px, 5vh, 48px);
     align-items: start;
 }
 .ed-contact-lead {
     margin: 0 0 28px;
-    font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+    font-size: clamp(1.5rem, 2.5vw, 1.9rem);
     font-weight: 700;
-    line-height: 1.08;
-    letter-spacing: -0.03em;
+    line-height: 1.16;
+    letter-spacing: -0.02em;
     text-wrap: balance;
-}
-.ed-contact-lead .accent {
-    color: var(--accent);
 }
 .ed-contact-email {
     display: inline-flex;
@@ -1155,16 +981,16 @@ body:has(.ed) {
 }
 .ed-footer-inner {
     display: grid;
-    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-    gap: clamp(28px, 5vw, 64px);
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 4vh, 40px);
     padding-top: clamp(40px, 6vh, 64px);
     padding-bottom: clamp(36px, 5vh, 56px);
 }
 .ed-footer-word {
-    font-size: clamp(2rem, 6vw, 4.2rem);
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 0.95;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
     text-transform: uppercase;
     margin: 0 0 14px;
 }
@@ -1482,10 +1308,10 @@ body:has(.ed) {
 }
 .ed-post-title {
     margin: 0 0 16px;
-    font-size: clamp(1.9rem, 4vw, 3rem);
-    font-weight: 600;
-    line-height: 1.08;
-    letter-spacing: -0.025em;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    line-height: 1.14;
+    letter-spacing: -0.02em;
     text-wrap: balance;
 }
 .ed-post-summary {
@@ -1521,10 +1347,10 @@ body:has(.ed) {
 }
 .ed-masthead-name {
     margin: 0;
-    font-size: clamp(2.4rem, 7vw, 4.5rem);
-    font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.04em;
+    font-size: clamp(1.9rem, 4vw, 2.7rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
     text-transform: uppercase;
 }
 .ed-masthead-name .dot {
@@ -1644,7 +1470,7 @@ body:has(.ed) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin: 0;
-    border-top: 1px solid var(--ink);
+    border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
 }
 .ed-stat {
@@ -1661,8 +1487,8 @@ body:has(.ed) {
     gap: 4px;
     font-family: var(--sans);
     font-weight: 700;
-    font-size: clamp(2.4rem, 5.5vw, 3.6rem);
-    line-height: 0.95;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    line-height: 1;
     letter-spacing: -0.02em;
     color: var(--ink);
 }
@@ -1739,8 +1565,8 @@ body:has(.ed) {
     margin: 0;
     font-family: var(--sans);
     font-weight: 500;
-    font-size: clamp(1.4rem, 3.4vw, 2.1rem);
-    line-height: 1.32;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    line-height: 1.4;
     letter-spacing: -0.01em;
     color: var(--ink);
 }

@@ -19,7 +19,6 @@ const b64 = (rel, mime) =>
 
 const sans = b64('../public/fonts/AdwaitaSans-Regular.woff2', 'font/woff2');
 const mono = b64('../public/fonts/AdwaitaMono-Regular.woff2', 'font/woff2');
-const photo = b64('../public/images/profile-picture.webp', 'image/webp');
 
 const html = /* html */ `<!DOCTYPE html>
 <html>
@@ -54,9 +53,11 @@ const html = /* html */ `<!DOCTYPE html>
   .role { margin-top: 28px; max-width: 30ch; font-size: 19px; line-height: 1.45; color: var(--ink-2); }
   .role b { color: var(--ink); font-weight: 600; }
 
-  .portrait { position: relative; width: 268px; height: 336px; flex-shrink: 0; border: 1px solid var(--line-2); overflow: hidden; background: #ece8df; }
-  .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 16%; }
-  .portrait .tag { position: absolute; left: 0; bottom: 0; padding: 7px 12px; background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .specsheet { flex-shrink: 0; width: 320px; }
+  .specsheet .srow { padding: 17px 0; border-top: 1px solid var(--line); }
+  .specsheet .srow:last-child { border-bottom: 1px solid var(--line); }
+  .specsheet .skey { display: block; margin-bottom: 7px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+  .specsheet .sval { display: block; font-size: 18px; font-weight: 500; line-height: 1.3; color: var(--ink); }
 
   .bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 18px; }
   .specs { display: flex; gap: 36px; font-family: var(--mono); font-size: 14px; letter-spacing: 0.04em; color: var(--ink); }
@@ -85,9 +86,10 @@ const html = /* html */ `<!DOCTYPE html>
           testing, and documented fixes. I read code and understand APIs.
         </p>
       </div>
-      <div class="portrait">
-        <img src="${photo}" alt="Saw Ye Htet" />
-        <span class="tag">Singapore</span>
+      <div class="specsheet">
+        <div class="srow"><span class="skey">Focus</span><span class="sval">IT Support / Service Desk</span></div>
+        <div class="srow"><span class="skey">Edge</span><span class="sval">Software QA &amp; Testing</span></div>
+        <div class="srow"><span class="skey">Based</span><span class="sval">Singapore</span></div>
       </div>
     </div>
 

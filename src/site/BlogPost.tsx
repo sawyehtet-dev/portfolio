@@ -20,10 +20,8 @@ export function BlogPost() {
                 <Nav />
                 <main id="main-content">
                     <section className="ed-section ed-container">
-                        <div className="ed-section-head ed-reveal">
-                            <span className="ed-section-num">-</span>
+                        <div className="ed-section-head">
                             <h1 className="ed-section-title">Not found</h1>
-                            <span className="ed-section-meta">No such post</span>
                         </div>
                         <p className="ed-blog-empty">
                             That post doesn&apos;t exist or hasn&apos;t been published yet.
@@ -45,7 +43,7 @@ export function BlogPost() {
             <Nav />
             <main id="main-content">
                 <article className="ed-section ed-container ed-post">
-                    <header className="ed-post-head ed-reveal" id="top">
+                    <header className="ed-post-head" id="top">
                         <span className="ed-post-meta">
                             {formatPostDate(post.meta.date)} · {post.meta.readingMinutes} min read
                         </span>
@@ -72,11 +70,7 @@ export function BlogPost() {
                                     const external =
                                         typeof href === 'string' && /^https?:\/\//.test(href);
                                     return external ? (
-                                        <a
-                                            href={href}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
+                                        <a href={href} target="_blank" rel="noopener noreferrer">
                                             {children}
                                         </a>
                                     ) : (

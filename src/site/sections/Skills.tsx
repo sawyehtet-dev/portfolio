@@ -2,11 +2,9 @@ import { EDITORIAL_SKILLS } from '../../config/editorial-data';
 
 export function Skills() {
     return (
-        <section className="ed-section ed-section--tint ed-container" id="skills">
+        <section className="ed-section ed-container" id="skills">
             <div className="ed-section-head">
-                <span className="ed-section-num">04</span>
                 <h2 className="ed-section-title">Skills</h2>
-                <span className="ed-section-meta">What I work with</span>
             </div>
 
             <div className="ed-skills-grid">

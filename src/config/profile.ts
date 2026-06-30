@@ -8,7 +8,7 @@ export const PROFILE = {
     tagline: 'IT support and software QA - and notes on building things.',
     roleTarget: 'IT Support / Service Desk · Software QA',
     email: 'sawyehtet.dev@gmail.com',
-    resumePath: '/resume/SawYeHtet_Resume.pdf',
+    resumePath: '/resume/SawYeHtet_ITSupport.pdf',
     availability: 'Fresh grad · open to opportunities',
     location: 'Singapore / remote-friendly',
     primaryStack: ['Python', 'React + TypeScript', 'Linux', 'Git'],

@@ -118,18 +118,14 @@ export function Contact() {
     };
 
     return (
-        <section className="ed-section ed-section--tint ed-container" id="contact">
+        <section className="ed-section ed-container" id="contact">
             <div className="ed-section-head">
-                <span className="ed-section-num">06</span>
                 <h2 className="ed-section-title">Contact</h2>
-                <span className="ed-section-meta">Usually replies in a day</span>
             </div>
 
             <div className="ed-contact-grid">
                 <div>
-                    <p className="ed-contact-lead">
-                        Let&apos;s work <span className="accent">together.</span>
-                    </p>
+                    <p className="ed-contact-lead">Let&apos;s work together.</p>
                     <a className="ed-contact-email" href={`mailto:${PROFILE.email}`}>
                         {PROFILE.email}
                     </a>

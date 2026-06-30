@@ -45,8 +45,9 @@ edit, every session. Do not reintroduce retired framing.
 - **VR/Unity stays light** - it's the setting for the support/testing/documentation story,
   not the headline. Don't foreground FPS, headsets, or game-dev.
 - **Tools rule:** list only tools genuinely used. **In-progress items must be marked "in
-  progress":** SQL (via SQLBolt), computer networking course (Coursera), Microsoft 365
-  Fundamentals (MS-900). **Do NOT list AZ-900** (dropped). Do not claim hands-on Windows or
+  progress":** SQL (via SQLBolt), computer networking course (Coursera), Azure Fundamentals
+  (AZ-900). **Do NOT list MS-900** (retired - Microsoft 365 Fundamentals no longer offered).
+  Do not claim hands-on Windows or
   M365 admin, ServiceNow, hardware repair, ITIL, or AV gear.
 - Canonical résumé content lives in two `.docx` lanes (IT Support, Software QA) in the
   user's local files; the site copy is derived from them. The OG image

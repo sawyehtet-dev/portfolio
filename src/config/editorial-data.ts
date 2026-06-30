@@ -12,7 +12,7 @@ export const EXPERIENCE: ExperienceItem[] = [
         location: 'Singapore',
         bullets: [
             'Set up, configured, and troubleshot a Unity VR training system on Meta Quest 3 headsets and bHaptics gloves, keeping user sessions running.',
-            'Owned testing end to end: designed and ran structured user testing sessions and turned the findings into clear, actionable reports for the dev team.',
+            'Ran testing end to end: designed and ran user testing sessions, and turned the findings into reports for the dev team.',
             'Reproduced reported issues with exact steps, tracked them to resolution, and wrote setup and troubleshooting guides so other staff could run the system without me.',
         ],
         stack: ['Troubleshooting', 'User Testing', 'QA', 'Technical Writing', 'Unity / C#'],
@@ -26,16 +26,16 @@ export const STATS: StatItem[] = [
     {
         value: '1',
         unit: 'yr',
-        label: 'Hands-on technical experience: setup, troubleshooting, testing, and docs at CEMS.',
+        label: 'Technical experience: setup, troubleshooting, testing, and docs at CEMS.',
     },
     {
         value: '70+',
-        label: 'Tests behind my open-source tool, written test-first before I trusted it.',
+        label: 'Tests behind my open-source tool, written test-first.',
     },
     {
         value: '50',
         unit: '%',
-        label: "Of that tool's code cut in a refactor - the tests caught everything, so nothing regressed.",
+        label: "Of that tool's code removed in a refactor, with no regressions - the tests caught them.",
     },
 ];
 
@@ -105,7 +105,7 @@ export const EDITORIAL_SKILLS = [
         skills: [
             'SQL (SQLBolt)',
             'Computer networking (Coursera)',
-            'Microsoft 365 Fundamentals (MS-900)',
+            'Azure Fundamentals (AZ-900)',
         ],
     },
 ] as const;

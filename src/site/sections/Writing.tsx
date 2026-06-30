@@ -16,9 +16,7 @@ export function Writing() {
     return (
         <section className="ed-section ed-container" id="writing">
             <div className="ed-section-head">
-                <span className="ed-section-num">07</span>
                 <h2 className="ed-section-title">Writing</h2>
-                <span className="ed-section-meta">Notes &amp; essays</span>
             </div>
 
             <ul className="ed-blog-list">

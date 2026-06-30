@@ -17,39 +17,24 @@ import { Footer } from './sections/Footer';
 // Contact slot waits while the rest of the page renders.
 const Contact = lazy(() => import('./sections/Contact').then(m => ({ default: m.Contact })));
 
-const FOCUS_AREAS = [
-    'IT Support & Service Desk',
-    'Troubleshooting & Issue Diagnosis',
-    'End-to-End & User Testing',
-    'Issue Reproduction & Defect Tracking',
-    'Technical Documentation',
-    'Software QA (manual & test-driven)',
-];
-
 function Hero() {
     return (
         <section className="ed-hero ed-container" id="top">
-            <div className="ed-hero-top ed-reveal">
+            <div className="ed-hero-top">
                 <span className="ed-eyebrow">Portfolio - 2026</span>
                 <span className="ed-eyebrow">Singapore · Remote-friendly</span>
             </div>
 
-            <h1 className="ed-hero-head ed-reveal" data-d="1">
-                <span>IT Support &amp;</span>
-                <span className="accent">QA</span>
-                <span>
-                    Specialist<span className="arrow">↘</span>
-                </span>
-            </h1>
+            <h1 className="ed-hero-head">IT support &amp; software QA</h1>
 
-            <div className="ed-hero-foot ed-reveal" data-d="2">
+            <div className="ed-hero-foot">
                 <div>
                     <p className="ed-hero-lead">
-                        IT diploma graduate with a year of hands-on technical work - setup,
-                        troubleshooting, end-to-end testing, and documentation for a VR training
-                        system. I <strong>find the actual cause</strong> and write the fix down so
-                        the next person isn't stuck on it. Targeting IT support and service desk
-                        roles; software QA is my edge, because I read and write code.
+                        IT diploma graduate with a year of technical work: setup, troubleshooting,
+                        testing, and documentation for a VR training system. I trace problems to the{' '}
+                        <strong>root cause</strong> and document the fix. Looking for IT support and
+                        service desk roles; software QA is the second lane, since I read and write
+                        code.
                     </p>
                     <div className="ed-cta-row">
                         <a
@@ -65,25 +50,6 @@ function Hero() {
                         </a>
                     </div>
                 </div>
-
-                <dl className="ed-spec">
-                    <div className="ed-spec-row">
-                        <dt className="ed-spec-key">Focus</dt>
-                        <dd className="ed-spec-val">
-                            IT Support / Service Desk · Software QA &amp; Testing
-                        </dd>
-                    </div>
-                    <div className="ed-spec-row">
-                        <dt className="ed-spec-key">Stack</dt>
-                        <dd className="ed-spec-val">Python · React · Linux · Git</dd>
-                    </div>
-                    <div className="ed-spec-row">
-                        <dt className="ed-spec-key">Status</dt>
-                        <dd className="ed-spec-val">
-                            <span className="live">Open to opportunities</span>
-                        </dd>
-                    </div>
-                </dl>
             </div>
         </section>
     );
@@ -93,64 +59,29 @@ function About() {
     return (
         <section className="ed-section ed-container" id="about">
             <div className="ed-section-head">
-                <span className="ed-section-num">01</span>
                 <h2 className="ed-section-title">About</h2>
-                <span className="ed-section-meta">Who I am</span>
             </div>
 
             <div className="ed-about-grid">
                 <div>
-                    <figure className="ed-portrait">
-                        <img src="/images/profile-picture.webp" alt="Saw Ye Htet" />
-                        <figcaption className="ed-portrait-tag">Saw Ye Htet</figcaption>
-                    </figure>
-                    <dl className="ed-spec ed-about-meta">
-                        <div className="ed-spec-row">
-                            <dt className="ed-spec-key">Role</dt>
-                            <dd className="ed-spec-val">IT Support &amp; QA</dd>
-                        </div>
-                        <div className="ed-spec-row">
-                            <dt className="ed-spec-key">Based</dt>
-                            <dd className="ed-spec-val">Singapore</dd>
-                        </div>
-                        <div className="ed-spec-row">
-                            <dt className="ed-spec-key">Study</dt>
-                            <dd className="ed-spec-val">Dip. IT - Singapore Poly, 2026</dd>
-                        </div>
-                    </dl>
-                </div>
-
-                <div>
                     <p className="ed-lead">
-                        I turn vague bug reports into{' '}
-                        <span className="accent">a fix and a paper trail</span>.
+                        I find the root cause, then write it down so it stays fixed.
                     </p>
                     <div className="ed-prose">
                         <p>
-                            I just finished an IT diploma, but I have a year of real technical work
-                            behind me: a maritime research centre where I set up and troubleshot a
-                            VR training system, ran user testing, reproduced and tracked issues, and
-                            wrote the guides so other staff could run it without me.
+                            I just finished an IT diploma at Singapore Polytechnic (2026) and have a
+                            year of technical work behind it: at a maritime research centre I set up
+                            and troubleshot a VR training system, ran user testing, reproduced and
+                            tracked issues, and wrote the guides so other staff could run it without
+                            me.
                         </p>
                         <p>
                             I'm aiming for IT support and service desk roles, with software QA a
-                            close second - and that is my edge, because I read and write code (70+
-                            tests on my own tool) instead of only clicking through a UI. The part I
-                            actually enjoy is the debugging: sitting with a stack trace until the
-                            real cause turns up, not the line that happened to throw.
+                            close second. The difference from most manual testers is that I read and
+                            write code - 70+ tests on my own tool - so I can test from the inside.
+                            The part I like most is debugging: staying with a stack trace until the
+                            real cause shows up, not the line that happened to throw.
                         </p>
-                    </div>
-
-                    <div className="ed-focus">
-                        <div className="ed-focus-label">Focus areas</div>
-                        <ul className="ed-focus-list">
-                            {FOCUS_AREAS.map((area, i) => (
-                                <li key={area}>
-                                    <span className="n">{String(i + 1).padStart(2, '0')}</span>
-                                    <span>{area}</span>
-                                </li>
-                            ))}
-                        </ul>
                     </div>
                 </div>
             </div>

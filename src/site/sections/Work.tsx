@@ -8,9 +8,7 @@ export function Work() {
     return (
         <section className="ed-section ed-container" id="projects">
             <div className="ed-section-head">
-                <span className="ed-section-num">03</span>
                 <h2 className="ed-section-title">Projects</h2>
-                <span className="ed-section-meta">Selected work</span>
             </div>
 
             <div className="ed-work-list">

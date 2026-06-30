@@ -4,16 +4,14 @@ export function Resume() {
     return (
         <section className="ed-section ed-container" id="resume">
             <div className="ed-section-head">
-                <span className="ed-section-num">05</span>
                 <h2 className="ed-section-title">Résumé</h2>
-                <span className="ed-section-meta">PDF · source of truth</span>
             </div>
 
             <div className="ed-resume-grid">
                 <div>
                     <p className="ed-resume-statement">
-                        The full résumé lives as a <span className="accent">one-page PDF</span> -
-                        education, coursework, and the proof, ready to forward.
+                        The full résumé is a one-page PDF: education, coursework, and the work,
+                        ready to forward.
                     </p>
                     <p className="ed-resume-note">
                         Kept current, written for IT support / service desk roles.
