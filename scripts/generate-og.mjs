@@ -82,8 +82,8 @@ const html = /* html */ `<!DOCTYPE html>
           <span>Specialist</span>
         </h1>
         <p class="role">
-          <b>IT support and software QA</b> - methodical troubleshooting, end-to-end
-          testing, and documented fixes. I read code and understand APIs.
+          <b>IT support and software QA</b> - troubleshooting, end-to-end testing, and
+          documented fixes. I read code and understand APIs.
         </p>
       </div>
       <div class="specsheet">

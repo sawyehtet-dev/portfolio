@@ -1,7 +1,7 @@
 import { STATS } from '../../config/editorial-data';
 
-// Un-numbered ribbon between the hero and About. Surfaces the headline figures
-// that are otherwise buried inside Experience bullets and the Tokey write-up.
+// Ribbon between the hero and About. Surfaces the headline figures that are
+// otherwise buried inside Experience bullets and the Tokey write-up.
 export function Stats() {
     if (STATS.length === 0) return null;
 

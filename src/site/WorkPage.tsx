@@ -89,19 +89,21 @@ function About() {
     );
 }
 
-// The portfolio - now the front door at /. Single page: Hero → Stats →
-// About → Experience → Testimonial → Projects → Skills → Résumé → Contact →
-// Writing. Stats and Testimonial are un-numbered ribbons, so the numbered run
-// (01 About … 03 Projects …) stays gap-free; Testimonial renders nothing while
-// TESTIMONIALS is empty. The Writing section surfaces the three newest posts
-// and links out to the full feed at /writing (see Home.tsx, which renders it).
+// The portfolio - the front door at /. Single page: Hero → Stats → About →
+// Experience → Testimonial → Projects → Skills → Résumé → Contact → Writing.
+// Testimonial renders nothing while TESTIMONIALS is empty. The Writing section
+// surfaces the three newest posts and links out to the full feed at /writing
+// (see Home.tsx, which renders it).
 export function WorkPage() {
     return (
         <div className="ed">
             <title>Saw Ye Htet - IT Support &amp; QA Specialist</title>
+            {/* Must stay identical to the static description in index.html - React
+                hoists this into <head> alongside it, and two different strings would
+                leave crawlers picking one at random. */}
             <meta
                 name="description"
-                content="Saw Ye Htet - IT support and software QA. Experience, projects, skills, résumé, and recent writing."
+                content="Saw Ye Htet is an IT support and service desk graduate in Singapore, with software QA as a coding-backed edge. View experience, projects, skills, resume, and contact details."
             />
             <Nav />
             <main id="main-content">
@@ -124,8 +126,8 @@ export function WorkPage() {
                 >
                     <Contact />
                 </Suspense>
-                {/* Writing is the only section that can be absent (no published
-                    posts), so it sits last - keeping the numbered run gap-free. */}
+                {/* Writing renders nothing until a post is published, so it sits
+                    last where its absence leaves no visible gap. */}
                 <Writing />
             </main>
             <Footer />

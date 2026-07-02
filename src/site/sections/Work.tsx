@@ -61,11 +61,11 @@ export function Work() {
                                     <p>{project.problem}</p>
                                 </div>
                                 <div className="ed-narr-row">
-                                    <span className="ed-narr-key">Approach</span>
+                                    <span className="ed-narr-key">Solution</span>
                                     <p>{project.solution}</p>
                                 </div>
                                 <div className="ed-narr-row">
-                                    <span className="ed-narr-key">Outcome</span>
+                                    <span className="ed-narr-key">Result</span>
                                     <p>{project.impact}</p>
                                 </div>
                             </div>

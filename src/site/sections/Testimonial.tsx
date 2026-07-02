@@ -1,8 +1,8 @@
 import { TESTIMONIALS } from '../../config/editorial-data';
 
-// Un-numbered pull-quote after Experience: someone vouching for the work, right
-// where a recruiter has just read what that work was. Renders nothing until a
-// real, attributed quote exists in TESTIMONIALS - never a placeholder.
+// Pull-quote after Experience: someone vouching for the work, right where a
+// recruiter has just read what that work was. Renders nothing until a real,
+// attributed quote exists in TESTIMONIALS - never a placeholder.
 export function Testimonial() {
     if (TESTIMONIALS.length === 0) return null;
     const ref = TESTIMONIALS[0];

@@ -11,10 +11,9 @@ lives in `src/site/`.
 
 - **Front door (`/`) is the portfolio** (`src/site/WorkPage.tsx`), a single page:
   Hero · **Stats ribbon** · About · Experience · **Testimonial** · Projects · Skills ·
-  Résumé · Contact · **Writing**. Stats and Testimonial are un-numbered ribbons, so the
-  numbered run (`01 About … 03 Projects …`) stays gap-free; Testimonial renders nothing
-  while `TESTIMONIALS` is empty. The Writing section surfaces the three newest posts and
-  links out to the feed.
+  Résumé · Contact · **Writing**. Section heads are unnumbered; Stats and Testimonial
+  are ribbons, and Testimonial renders nothing while `TESTIMONIALS` is empty. The
+  Writing section surfaces the three newest posts and links out to the feed.
 - **Writing feed at `/writing`** (`src/site/Home.tsx`): a compact masthead (name ·
   tagline · intro · link back to the portfolio) over the newest-first list of posts.
 - **Posts render at clean root slugs** (`/<slug>`, e.g. `/my-post`),
@@ -217,17 +216,20 @@ npm run generate:meta    # dist/<route>/index.html head shells (runs in build, n
 2. **`editorial.css` is the whole design system** - scoped `.ed`, self-contained, declares
    its own subset `@font-face`. Add new sections with the existing `ed-*` vocabulary
    (`ed-section`, `ed-container`, `ed-section-head`, `ed-chip`, hairline `--line` borders,
-   the single `--accent`). Numbered sections use `ed-section-num`; ribbons (Stats,
-   Testimonial) are un-numbered to keep the numbered run gap-free.
+   the single `--accent`). Section heads are unnumbered; `ed-section-num` survives only
+   as the 404 page's "404" label.
 3. **Contact form** - React Hook Form + Zod, POSTs to Formspree via native `fetch()`.
    Includes a hidden off-screen honeypot field (`website_url`, positioned off-screen, NOT
    `display:none`, because bots detect that). It is lazy so its runtime stays off the front
    door.
 4. **Self-hosted fonts** - `public/fonts/` holds subset Adwaita Sans/Mono (used by the site)
    plus the full weights (kept for `scripts/generate-og.mjs`) and the SIL license.
-5. **Static 404** - `404.html` + `src/styles/404.css` are a no-React editorial 404 served
-   by Netlify on hard 404s; they mirror `src/site/NotFound.tsx`. Self-contained, no shared
-   imports.
+5. **Static 404** - `404.html` + `src/styles/404.css` are a no-React editorial 404 that
+   mirrors `src/site/NotFound.tsx`. Note: the SPA catch-all (`/* → /index.html 200`)
+   means Netlify never actually returns a hard 404 - unknown paths get the React
+   NotFound with HTTP 200 (a soft 404, the standard SPA tradeoff). `404.html` is only
+   served if requested directly, and is kept as a fallback should the redirect rules
+   ever change.
 6. **`google0e39a960e13ab711.html`** - Google Search Console verification. Do not delete.
 7. **`docs/`** - reference material from a previous design audit, not build artifacts.
 

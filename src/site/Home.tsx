@@ -22,10 +22,9 @@ function Masthead() {
                 <span className="dot">.</span>
             </h1>
             <p className="ed-masthead-tagline">{PROFILE.tagline}</p>
-            {/* Placeholder intro - Saw to rewrite in his own voice. */}
             <p className="ed-masthead-intro">
-                I build software and write here about what I&apos;m working through, technical and
-                otherwise.
+                My background is IT support and software QA. These are notes on troubleshooting,
+                testing, and what I&apos;m learning along the way.
             </p>
             <Link className="ed-home-cta" to="/">
                 My experience and projects are on the <strong>home page</strong>
