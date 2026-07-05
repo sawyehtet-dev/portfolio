@@ -7,7 +7,7 @@ import type { Project, ExperienceItem, StatItem, Testimonial } from '../types';
 export const EXPERIENCE: ExperienceItem[] = [
     {
         org: 'Centre of Excellence in Maritime Safety (CEMS)',
-        role: 'Research Assistant & Software Developer',
+        role: 'QA & Support',
         period: 'Apr 2025 – Feb 2026',
         location: 'Singapore',
         bullets: [

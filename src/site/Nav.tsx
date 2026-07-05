@@ -30,10 +30,7 @@ export function Nav() {
                         </a>
                     )}
                 </nav>
-                <span className="ed-nav-status">
-                    <span className="ed-status-dot" />
-                    Open to work
-                </span>
+                <span className="ed-nav-status">Open to work</span>
             </div>
         </header>
     );

@@ -196,13 +196,6 @@ body:has(.ed) {
     text-transform: uppercase;
     color: var(--ink-2);
 }
-.ed-status-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #1f9d55;
-    box-shadow: 0 0 0 3px color-mix(in srgb, #1f9d55 22%, transparent);
-}
 @media (min-width: 720px) {
     .ed-nav-status {
         display: inline-flex;
@@ -338,20 +331,6 @@ body:has(.ed) {
     color: var(--ink);
     line-height: 1.35;
 }
-.ed-spec-val .live {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-.ed-spec-val .live::before {
-    content: '';
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #1f9d55;
-    box-shadow: 0 0 0 3px color-mix(in srgb, #1f9d55 20%, transparent);
-}
-
 /* ============================================================
    SECTION SHELL
    Each section is a display title on a hairline rule, on a single

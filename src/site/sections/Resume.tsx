@@ -52,9 +52,7 @@ export function Resume() {
                     </div>
                     <div className="ed-spec-row">
                         <dt className="ed-spec-key">Status</dt>
-                        <dd className="ed-spec-val">
-                            <span className="live">{PROFILE.availability}</span>
-                        </dd>
+                        <dd className="ed-spec-val">{PROFILE.availability}</dd>
                     </div>
                 </dl>
             </div>
