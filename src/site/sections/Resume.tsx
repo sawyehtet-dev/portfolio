@@ -14,7 +14,8 @@ export function Resume() {
                         ready to forward.
                     </p>
                     <p className="ed-resume-note">
-                        Kept current, written for IT support / service desk roles.
+                        Two one-page versions, kept current: one for IT support / service desk, one
+                        for software QA.
                     </p>
                     <div className="ed-cta-row">
                         <a
@@ -23,10 +24,15 @@ export function Resume() {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            Download PDF <span className="ed-btn-arrow">↗</span>
+                            IT Support PDF <span className="ed-btn-arrow">↗</span>
                         </a>
-                        <a className="ed-btn ed-btn-ghost" href="#contact">
-                            Ask a question
+                        <a
+                            className="ed-btn ed-btn-ghost"
+                            href={PROFILE.resumeQaPath}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Software QA PDF <span className="ed-btn-arrow">↗</span>
                         </a>
                     </div>
                 </div>

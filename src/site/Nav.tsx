@@ -10,9 +10,9 @@ export function Nav() {
     return (
         <header className="ed-nav">
             <div className="ed-nav-inner ed-container">
-                <a className="ed-wordmark" href="/">
+                <Link className="ed-wordmark" to="/">
                     Saw Ye Htet<span className="dot">.</span>
-                </a>
+                </Link>
                 <nav className="ed-nav-links" aria-label="Primary">
                     <a className="ed-nav-link" href="/#about">
                         About

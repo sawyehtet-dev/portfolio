@@ -25,7 +25,9 @@ function Hero() {
                 <span className="ed-eyebrow">Singapore · Remote-friendly</span>
             </div>
 
-            <h1 className="ed-hero-head">IT support &amp; software QA</h1>
+            <h1 className="ed-hero-head">
+                <span className="ed-sr-only">Saw Ye Htet - </span>IT support &amp; software QA
+            </h1>
 
             <div className="ed-hero-foot">
                 <div>

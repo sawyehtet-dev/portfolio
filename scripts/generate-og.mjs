@@ -17,8 +17,11 @@ const __dirname = dirname(__filename);
 const b64 = (rel, mime) =>
     `data:${mime};base64,${readFileSync(join(__dirname, rel)).toString('base64')}`;
 
-const sans = b64('../public/fonts/AdwaitaSans-Regular.woff2', 'font/woff2');
-const mono = b64('../public/fonts/AdwaitaMono-Regular.woff2', 'font/woff2');
+// Full-weight fonts live outside public/ so they are not shipped to visitors
+// (the site loads only the subset woff2 in public/fonts/). They exist solely to
+// render this OG image at build time.
+const sans = b64('../assets-src/fonts/AdwaitaSans-Regular.woff2', 'font/woff2');
+const mono = b64('../assets-src/fonts/AdwaitaMono-Regular.woff2', 'font/woff2');
 
 const html = /* html */ `<!DOCTYPE html>
 <html>

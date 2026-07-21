@@ -170,10 +170,11 @@ export function Contact() {
                             autoComplete="name"
                             disabled={isSubmitting}
                             aria-invalid={errors.name ? 'true' : 'false'}
+                            aria-describedby={errors.name ? 'ed-name-error' : undefined}
                             {...register('name')}
                         />
                         {errors.name && (
-                            <span className="ed-error" aria-live="polite">
+                            <span id="ed-name-error" className="ed-error" aria-live="polite">
                                 {errors.name.message}
                             </span>
                         )}
@@ -189,10 +190,11 @@ export function Contact() {
                             autoComplete="email"
                             disabled={isSubmitting}
                             aria-invalid={errors.email ? 'true' : 'false'}
+                            aria-describedby={errors.email ? 'ed-email-error' : undefined}
                             {...register('email')}
                         />
                         {errors.email && (
-                            <span className="ed-error" aria-live="polite">
+                            <span id="ed-email-error" className="ed-error" aria-live="polite">
                                 {errors.email.message}
                             </span>
                         )}
@@ -213,10 +215,11 @@ export function Contact() {
                             placeholder="Role, timeline, and what you'd like me to look at."
                             disabled={isSubmitting}
                             aria-invalid={errors.message ? 'true' : 'false'}
+                            aria-describedby={errors.message ? 'ed-message-error' : undefined}
                             {...register('message')}
                         />
                         {errors.message && (
-                            <span className="ed-error" aria-live="polite">
+                            <span id="ed-message-error" className="ed-error" aria-live="polite">
                                 {errors.message.message}
                             </span>
                         )}

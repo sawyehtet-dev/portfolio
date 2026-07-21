@@ -90,6 +90,18 @@ body:has(.ed) {
     color: var(--accent-ink);
 }
 
+/* Keyboard focus: one explicit, brand-consistent ring on every interactive
+   element (buttons, links, wordmark). Replaces the inconsistent, low-contrast
+   default outline the filled buttons would otherwise show. Mouse clicks don't
+   trigger :focus-visible, so it stays keyboard-only. Form fields keep their own
+   box-shadow focus style below. WCAG 2.4.7. */
+.ed a:focus-visible,
+.ed button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 1px;
+}
+
 .ed-container {
     width: 100%;
     max-width: var(--maxw);
@@ -110,6 +122,20 @@ body:has(.ed) {
 .ed-rule {
     height: 1px;
     background: var(--line);
+    border: 0;
+}
+
+/* Visually hidden but exposed to screen readers and crawlers (e.g. the name
+   folded into the hero h1, which the nav wordmark already shows visually). */
+.ed-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
     border: 0;
 }
 

@@ -1,7 +1,7 @@
 {
     "name": "sawyehtet-com",
     "version": "3.0.0",
-    "description": "Personal site of Saw Ye Htet: an editorial portfolio and writing feed built with React, TypeScript, and Vite, with the earlier GNOME desktop simulation preserved at /desktop",
+    "description": "Personal site of Saw Ye Htet: an editorial portfolio and writing feed built with React, TypeScript, and Vite.",
     "type": "module",
     "main": "index.html",
     "scripts": {
@@ -33,7 +33,6 @@
         "react",
         "typescript",
         "vite",
-        "tailwindcss",
         "react-router",
         "modern-css"
     ],
