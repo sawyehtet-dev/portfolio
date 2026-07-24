@@ -2,11 +2,14 @@
 // @ts-check
 
 import js from '@eslint/js';
-import globals from 'globals';
 import tsParser from '@typescript-eslint/parser';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import pluginSecurity from 'eslint-plugin-security';
 
+// No `globals` declarations anywhere below. `no-undef` is off (TypeScript
+// already catches undefined identifiers, and it does it better), which makes a
+// globals list inert - it existed here for browser and vitest names that nothing
+// was checking. Don't add one back without turning `no-undef` on first.
 export default [
     js.configs.recommended,
     pluginSecurity.configs.recommended,
@@ -20,12 +23,6 @@ export default [
                 ecmaFeatures: {
                     jsx: true,
                 },
-            },
-            globals: {
-                ...globals.browser,
-                ...globals.es2021,
-                document: 'readonly',
-                window: 'readonly',
             },
         },
         plugins: {
@@ -43,20 +40,6 @@ export default [
             'no-eval': 'error',
             'no-implied-eval': 'error',
             'no-new-func': 'error',
-        },
-    },
-    {
-        files: ['src/tests/**/*.{ts,tsx}'],
-        languageOptions: {
-            globals: {
-                afterEach: 'readonly',
-                beforeEach: 'readonly',
-                describe: 'readonly',
-                expect: 'readonly',
-                it: 'readonly',
-                test: 'readonly',
-                vi: 'readonly',
-            },
         },
     },
     {

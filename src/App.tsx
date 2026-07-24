@@ -50,7 +50,7 @@ function ScrollToTop() {
 
 function App() {
     return (
-        <ErrorBoundary level="app">
+        <ErrorBoundary>
             <BrowserRouter>
                 <ScrollToTop />
                 <Suspense fallback={null}>

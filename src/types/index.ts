@@ -7,21 +7,15 @@
 export interface ProjectLink {
     label: string;
     href: string;
-    icon: string;
-    primary?: boolean;
 }
 
-export interface ProjectMedia {
-    type: 'image';
-    src: string;
-    alt: string;
-}
-
+// Every field here is rendered by src/site/sections/Work.tsx. If you add one,
+// render it in the same change - this interface previously carried `summary`,
+// `featured`, `icon`, `status` and `ProjectLink.icon` that nothing ever read.
 export interface Project {
     id: string;
     title: string;
     role: string;
-    summary: string;
     problem: string;
     solution: string;
     impact: string;
@@ -29,10 +23,6 @@ export interface Project {
     platform: string;
     proofPoints: string[];
     links: ProjectLink[];
-    featured: boolean;
-    icon: string;
-    media?: ProjectMedia;
-    status?: 'completed' | 'wip';
 }
 
 export interface ExperienceItem {

@@ -49,8 +49,6 @@ export const PROJECTS: Project[] = [
         id: 'tokey',
         title: 'Tokey',
         role: 'Developer & Maintainer',
-        summary:
-            'A live token-cost panel for Claude Code. It shows IN / OUT / CACHE counts while you work. I run it every session, so I covered the counting logic with 70+ tests before I trusted a number it printed.',
         problem:
             'I use it constantly, so a wrong number is worse than no number at all: I would read it, believe it, and act on bad math without noticing. I did not want a tool I had to babysit.',
         solution:
@@ -67,12 +65,8 @@ export const PROJECTS: Project[] = [
             {
                 label: 'View on GitHub',
                 href: 'https://github.com/sawyehtet-dev/tokey',
-                icon: 'github',
             },
         ],
-        featured: true,
-        icon: 'terminal',
-        status: 'completed',
     },
 ];
 
@@ -102,10 +96,6 @@ export const EDITORIAL_SKILLS = [
     },
     {
         title: 'Currently learning',
-        skills: [
-            'SQL (SQLBolt)',
-            'Computer networking (Coursera)',
-            'Azure Fundamentals (AZ-900)',
-        ],
+        skills: ['SQL (SQLBolt)', 'Computer networking (Coursera)', 'Azure Fundamentals (AZ-900)'],
     },
 ] as const;

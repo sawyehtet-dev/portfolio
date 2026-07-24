@@ -43,17 +43,6 @@ export function Work() {
                             </div>
                         </div>
 
-                        {project.media && (
-                            <figure className="ed-work-shot">
-                                <img
-                                    src={project.media.src}
-                                    alt={project.media.alt}
-                                    loading="lazy"
-                                />
-                                <figcaption>{project.platform}</figcaption>
-                            </figure>
-                        )}
-
                         <div className="ed-work-grid">
                             <div className="ed-narrative">
                                 <div className="ed-narr-row">

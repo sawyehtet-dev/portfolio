@@ -88,7 +88,7 @@
   status = 301
 
 # SPA catch-all: client routes (/, /writing, /:slug) resolve to the app.
-# Static files (offline.html, 404.html, assets) are served before this applies.
+# Static files (offline.html, assets, head shells) are served before this applies.
 [[redirects]]
   from = "/*"
   to = "/index.html"

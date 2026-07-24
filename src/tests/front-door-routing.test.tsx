@@ -14,8 +14,6 @@ function renderAppAt(path: string) {
 
 describe('Front-door routing', () => {
     beforeEach(() => {
-        localStorage.clear();
-        localStorage.setItem('hasVisitedBefore', 'true');
         window.history.pushState({}, '', '/');
     });
 
