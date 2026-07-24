@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Nav } from './Nav';
+import { NotFound } from './NotFound';
 import { Footer } from './sections/Footer';
 import { getPublishedPost, formatPostDate } from './blog/posts';
 
@@ -13,28 +14,10 @@ export function BlogPost() {
     const { slug } = useParams<{ slug: string }>();
     const post = getPublishedPost(slug);
 
-    if (!post) {
-        return (
-            <div className="ed">
-                <title>Post not found - Saw Ye Htet</title>
-                <Nav />
-                <main id="main-content">
-                    <section className="ed-section ed-container">
-                        <div className="ed-section-head">
-                            <h1 className="ed-section-title">Not found</h1>
-                        </div>
-                        <p className="ed-blog-empty">
-                            That post doesn&apos;t exist or hasn&apos;t been published yet.
-                        </p>
-                        <Link className="ed-blog-back" to="/writing">
-                            ← Back to writing
-                        </Link>
-                    </section>
-                </main>
-                <Footer />
-            </div>
-        );
-    }
+    // /:slug catches every single-segment path, so most misses here are mistyped
+    // page URLs, not missing posts. Render the real 404 rather than telling
+    // someone who typed /contct that a post was not published.
+    if (!post) return <NotFound />;
 
     return (
         <div className="ed">
