@@ -62,7 +62,7 @@ edit, every session. Do not reintroduce retired framing.
 | Bundler   | Vite                                          | 8       | Dev on `:3000`, builds to `dist/`                                                                                                       |
 | Styling   | Vanilla CSS                                   | -       | `src/site/editorial.css`, scoped under `.ed`. No Tailwind, no CSS-in-JS                                                                 |
 | Routing   | React Router DOM                              | 7       | BrowserRouter. `/` (portfolio), `/writing` (feed), `/:slug` (posts); `/work`→`/`, `/blog`→`/writing`, `/blog/:slug`→`/:slug`; `*` → 404 |
-| Forms     | React Hook Form + Zod                         | 7 / 4   | Used by the `/` Contact section (lazy); rides in its lazy chunk (deliberately NOT a manual chunk)                                       |
+| Forms     | None - plain React state                      | -       | The `/` Contact section validates in ~20 lines against HTML constraints. React Hook Form, Zod, and `@hookform/resolvers` were removed   |
 | Markdown  | react-markdown + remark-gfm                   | 10 / 4  | Renders posts; rides with the lazy `BlogPost` chunk                                                                                     |
 | Fonts     | Adwaita Sans/Mono (self-hosted WOFF2, subset) | -       | Self-hosted in `public/fonts/` with SIL license. **No external font requests**                                                          |
 | Testing   | Vitest + Testing Library + jsdom              | 4 / 16  | `vmForks` pool, globals enabled                                                                                                         |
@@ -88,8 +88,12 @@ index.html                       ← Vite HTML entry, loads /src/main.tsx
 
 `WorkPage` is eager (the front door); `Home`, `BlogPost`, and `NotFound` are
 `React.lazy`-loaded inside a `Suspense` boundary. The portfolio's `Contact` section is
-_itself_ lazy (a local `Suspense` inside `WorkPage`) so the react-hook-form/zod runtime is
-code-split out of the front door's bundle; `react-markdown` rides with `BlogPost`.
+_itself_ lazy (a local `Suspense` inside `WorkPage`) so its markup stays off the initial
+bundle; `react-markdown` rides with `BlogPost`.
+
+An unknown `/:slug` is a **mistyped page far more often than a missing post**, so
+`BlogPost` renders `<NotFound />` on a miss rather than its own "that post doesn't exist"
+copy. There is one 404 component in the codebase.
 
 **No context providers.** `App.tsx` is just `ErrorBoundary` → `BrowserRouter` →
 `ScrollToTop` → `Routes`. The editorial site is theme-independent (light only) and uses no
@@ -115,12 +119,12 @@ src/
       posts/*.md         ← the posts
   config/
     editorial-data.ts    ← PROJECTS, EXPERIENCE, STATS, TESTIMONIALS, EDITORIAL_SKILLS
-    profile.ts           ← PROFILE (name, role, taglines, email, resume) + SOCIAL_LINKS
+    profile.ts           ← PROFILE (name, role, email, resume paths) + SOCIAL_LINKS
   types/index.ts         ← front-door content types (Project, ExperienceItem, StatItem,
-                           Testimonial, ProjectLink, ProjectMedia)
+                           Testimonial, ProjectLink). Every field is rendered - keep it
+                           that way
   components/
-    ErrorBoundary.tsx    ← the only remaining component; generic, used by App + windows
-  styles/404.css         ← styles for the STATIC 404.html (editorial, self-contained)
+    ErrorBoundary.tsx    ← the only remaining component; generic, wraps the router in App
   tests/                 ← see Tests below
 ```
 
@@ -149,11 +153,10 @@ src/
   `dist-ssr/`) → `scripts/prerender.mjs`. Manual chunks (eager vendors ONLY):
     - `vendor-react` (react, react-dom, scheduler)
     - `vendor-router` (react-router)
-    - zod/react-hook-form (Contact) and react-markdown (BlogPost) are intentionally unlisted;
-      Rolldown hoists manual chunks into the entry's static imports, so naming lazy-only
-      vendors there would modulepreload code the front door does not need. They ride with
-      their lazy importers.
-- **Multi-page:** Vite builds `index.html`, `offline.html`, and `404.html` as entries.
+    - react-markdown (BlogPost) is intentionally unlisted; Rolldown hoists manual chunks
+      into the entry's static imports, so naming a lazy-only vendor there would
+      modulepreload code the front door does not need. It rides with its lazy importer.
+- **Multi-page:** Vite builds `index.html` and `offline.html` as entries.
 - **Feeds:** `scripts/generate-feeds.mjs` writes `public/rss.xml` + `public/sitemap.xml`
   (committed, deterministic, served in dev too).
 - **Head shells:** `scripts/generate-meta.mjs` (post-build) copies `dist/index.html` to
@@ -173,7 +176,7 @@ src/
   there is no hydration step to mismatch.
 - **Netlify** (`netlify.toml`): publish `dist/`. SPA catch-all `/*` → `/index.html`
   (status 200); `/work` → `/`, legacy `/blog` → `/writing` and `/blog/*` → `/:splat` are
-  **301 redirects**. Static files (offline.html, 404.html, assets, head shells) are served
+  **301 redirects**. Static files (offline.html, assets, head shells) are served
   before redirects, so shells win over the SPA catch-all.
 - **PWA:** `main.tsx` registers `public/sw.js` in production and unregisters stale workers
   in dev. Cache-first for `/assets/` + `/fonts/`, stale-while-revalidate for other statics,
@@ -205,8 +208,19 @@ npm run generate:meta    # dist/<route>/index.html head shells (runs in build, n
 
 - **`src/tests/front-door-routing.test.tsx`** - renders the real `<App>` and asserts the
   portfolio hero at `/` and the writing-feed masthead at `/writing`. Guards the routing.
-- **`src/tests/error-boundary.test.tsx`** - window-level error UI, app-level crash screen,
-  retry recovery, normal pass-through. Tests `ErrorBoundary` standalone.
+- **`src/tests/error-boundary.test.tsx`** - crash screen, error logging, and pass-through
+  when nothing throws. `ErrorBoundary` takes only `children` now: the second "window
+  level" render branch and its `appId` prop were desktop-sim leftovers that only the
+  tests still exercised.
+- **`src/tests/frontmatter-parity.test.tsx`** - runs the same fixtures through the app
+  parser (`src/site/blog/posts.ts`) and the Node mirror (`scripts/lib/posts.mjs`) and
+  fails if they disagree. **This is the guard that makes the duplication safe** - without
+  it, drift silently gives RSS/sitemap/head-shells a different view of the posts than the
+  pages render, at build time, with no error. Both files export `parseFrontmatter` and
+  `parseTags` solely for this test.
+- **`src/tests/contact-form.test.tsx`** - validation (empty, whitespace-only, bad email,
+  short message), the trimmed POST body, success/failure/network-error states, the
+  honeypot drop, and the live character counter.
 - **Setup** (`src/tests/setup.ts`): mocks `matchMedia`, `AudioContext`, `localStorage`.
 - **Environment:** jsdom with `vmForks` pool.
 
@@ -218,20 +232,42 @@ npm run generate:meta    # dist/<route>/index.html head shells (runs in build, n
    (`ed-section`, `ed-container`, `ed-section-head`, `ed-chip`, hairline `--line` borders,
    the single `--accent`). Section heads are unnumbered; `ed-section-num` survives only
    as the 404 page's "404" label.
-3. **Contact form** - React Hook Form + Zod, POSTs to Formspree via native `fetch()`.
-   Includes a hidden off-screen honeypot field (`website_url`, positioned off-screen, NOT
-   `display:none`, because bots detect that). It is lazy so its runtime stays off the front
-   door.
-4. **Self-hosted fonts** - `public/fonts/` holds subset Adwaita Sans/Mono (used by the site)
-   plus the full weights (kept for `scripts/generate-og.mjs`) and the SIL license.
-5. **Static 404** - `404.html` + `src/styles/404.css` are a no-React editorial 404 that
-   mirrors `src/site/NotFound.tsx`. Note: the SPA catch-all (`/* → /index.html 200`)
-   means Netlify never actually returns a hard 404 - unknown paths get the React
-   NotFound with HTTP 200 (a soft 404, the standard SPA tradeoff). `404.html` is only
-   served if requested directly, and is kept as a fallback should the redirect rules
-   ever change.
+3. **Contact form** - plain `useState` plus a ~20-line `validate()`, POSTing to Formspree
+   via native `fetch()`. Inputs carry the real HTML constraints (`required`, `type=email`,
+   `maxlength`) for autofill and mobile keyboards; `validate()` re-checks on **trimmed**
+   values so a field of spaces fails like an empty one. Includes an off-screen honeypot
+   (`website_url`, positioned off-screen, NOT `display:none`, because bots detect that).
+   Do not reintroduce a form/validation library for three fields. **The Formspree
+   endpoint is hardcoded in `Contact.tsx` and there is no `.env`** - a form ID is public
+   by design (it ships in the bundle regardless), so the env var bought no secrecy and
+   the two copies drifted, leaving local dev posting to a dead form. One value, one place.
+4. **Self-hosted fonts** - `public/fonts/` holds ONLY the subset Adwaita Sans/Mono the site
+   loads, plus the SIL license. The full weights live in `assets-src/fonts/` (outside
+   `public/`, so they are never shipped to visitors) and exist solely for
+   `scripts/generate-og.mjs`, which inlines them as base64.
+5. **One 404, and it is `src/site/NotFound.tsx`.** A static `404.html` + `src/styles/404.css`
+   pair used to mirror it; both were deleted because the SPA catch-all
+   (`/* → /index.html 200`) meant Netlify never served them, and the two copies had
+   already drifted. Unknown paths get the React NotFound with HTTP 200 - a soft 404, the
+   standard SPA tradeoff, accepted deliberately.
 6. **`google0e39a960e13ab711.html`** - Google Search Console verification. Do not delete.
-7. **`docs/`** - reference material from a previous design audit, not build artifacts.
+7. **There is no `docs/`.** It held ~1,250 lines of GNOME HIG / libadwaita / design-token
+   reference for the deleted desktop simulation, opening "this portfolio is judged as a
+   desktop simulation" and citing a `src/styles/adwaita-tokens.css` that no longer exists.
+   Deleted as actively misleading. This file is the only architecture doc.
+8. **The writing surface hides itself while empty.** With zero published posts, the Nav
+   drops both the Writing and RSS links, the front-door Writing section renders nothing,
+   and `generate-feeds.mjs` omits `/writing` from the sitemap. All four gate on the same
+   `hasPublishedPosts` / `posts.length` check, and all four come back on their own the
+   moment a post ships. This is deliberate: pointing a recruiter at a page reading "no
+   posts published yet" costs more than the missing link does. `/writing` still routes.
+9. **No pre-React splash in `index.html`.** `scripts/prerender.mjs` bakes the real
+   homepage into `#root`, so the first paint is already the page. The old `#static-shell`
+   overlay covered that prerendered markup and was removed. Don't add one back.
+10. **Images are palette-quantized.** The icons and OG card are 256-colour PNGs (flat
+    editorial art, so it is visually lossless at ~45-64 dB PSNR and roughly a third of the
+    bytes). `generate-og.mjs` re-applies this after each screenshot via ImageMagick, and
+    skips the step with a note if ImageMagick is missing.
 
 ## Prettier Config
 
