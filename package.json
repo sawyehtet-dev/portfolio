@@ -56,10 +56,10 @@
         "node": "^20.19.0 || >=22.12.0"
     },
     "dependencies": {
-        "react": "^19.2.7",
-        "react-dom": "^19.2.7",
+        "react": "^19.2.8",
+        "react-dom": "^19.2.8",
         "react-markdown": "^10.1.0",
-        "react-router-dom": "^7.14.2",
+        "react-router-dom": "^7.18.1",
         "remark-gfm": "^4.0.1"
     }
 }
