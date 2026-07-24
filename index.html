@@ -148,32 +148,9 @@
     <body>
         <a href="#main-content" class="skip-link">Skip to content</a>
 
-        <!-- Pre-React paint. A quiet paper splash that mirrors the editorial
-             nav wordmark position, so when React mounts there is no jarring
-             content swap. Removed by src/main.tsx once the app has rendered.
-             (No-JS users get the <noscript> block below instead.) -->
-        <div
-            id="static-shell"
-            style="position: fixed; inset: 0; z-index: 9999; background: #f7f5ef"
-        >
-            <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 5.5vw, 72px)">
-                <div style="display: flex; align-items: center; height: 64px">
-                    <span
-                        style="
-                            font-family: 'Adwaita Sans', 'Inter', system-ui, sans-serif;
-                            font-weight: 800;
-                            font-size: 16px;
-                            letter-spacing: -0.02em;
-                            text-transform: uppercase;
-                            color: #161410;
-                            white-space: nowrap;
-                        "
-                        >Saw Ye Htet<span style="color: #a8432b">.</span></span
-                    >
-                </div>
-            </div>
-        </div>
-
+        <!-- No pre-React splash here: scripts/prerender.mjs bakes the real
+             homepage into #root at build time, so the first paint is already
+             the page. An overlay would only hide it. -->
         <div id="root"></div>
 
         <script type="module" src="/src/main.tsx"></script>
@@ -181,8 +158,11 @@
         <!-- Plausible Analytics -->
         <script defer data-domain="sawyehtet.com" src="https://plausible.io/js/script.js"></script>
 
+        <!-- Fallback for routes the prerender does not cover (only / is baked).
+             Deliberately a plain div: on / the prerendered body already owns the
+             main landmark, and a second one would be invalid. -->
         <noscript>
-            <main
+            <div
                 style="
                     font-family: system-ui, sans-serif;
                     max-width: 600px;
@@ -262,7 +242,7 @@
                         LinkedIn
                     </a>
                 </div>
-            </main>
+            </div>
         </noscript>
     </body>
 </html>

@@ -14,10 +14,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     </React.StrictMode>
 );
 
-// Tear down the pre-React paint splash only after the app has mounted, so the
-// real UI is already painted underneath when the overlay is removed (no bare frame).
-document.getElementById('static-shell')?.remove();
-
 // Service worker: register in production for offline support (public/sw.js,
 // versioned per build), and in dev unregister any stale worker so a cached
 // build never shadows the dev server. Previously lived in the desktop shell.
