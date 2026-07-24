@@ -22,20 +22,6 @@
         "validate": "npm run lint && npm run typecheck && npm run test",
         "generate:og": "node scripts/generate-og.mjs"
     },
-    "keywords": [
-        "portfolio",
-        "personal-site",
-        "writing",
-        "blog",
-        "rss",
-        "editorial-design",
-        "typography",
-        "react",
-        "typescript",
-        "vite",
-        "react-router",
-        "modern-css"
-    ],
     "author": "Saw Ye Htet <sawyehtet.dev@gmail.com>",
     "license": "MIT",
     "devDependencies": {
@@ -51,7 +37,6 @@
         "@vitejs/plugin-react": "^6.0.3",
         "eslint": "^10.5.0",
         "eslint-plugin-security": "^4.0.1",
-        "globals": "^17.6.0",
         "jsdom": "^29.0.2",
         "prettier": "^3.8.4",
         "puppeteer": "^24.42.0",
@@ -70,19 +55,11 @@
     "engines": {
         "node": "^20.19.0 || >=22.12.0"
     },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions",
-        "not dead"
-    ],
     "dependencies": {
-        "@hookform/resolvers": "^5.4.0",
         "react": "^19.2.7",
         "react-dom": "^19.2.7",
-        "react-hook-form": "^7.80.0",
         "react-markdown": "^10.1.0",
         "react-router-dom": "^7.14.2",
-        "remark-gfm": "^4.0.1",
-        "zod": "^4.3.6"
+        "remark-gfm": "^4.0.1"
     }
 }
