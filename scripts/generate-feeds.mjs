@@ -58,14 +58,21 @@ ${items}
 const isoDate = date => (Number.isNaN(Date.parse(date)) ? null : date);
 const newestPostDate = posts.length ? isoDate(posts[0].date) : null;
 
+// /writing is only listed once it has something on it. Submitting a page whose
+// entire content is "no posts published yet" invites a thin-content/soft-404
+// judgement, and it comes back automatically with the first published post.
 const pages = [
     { loc: `${SITE_URL}/`, lastmod: newestPostDate, changefreq: 'weekly', priority: '1.0' },
-    {
-        loc: `${SITE_URL}/writing`,
-        lastmod: newestPostDate,
-        changefreq: 'weekly',
-        priority: '0.9',
-    },
+    ...(posts.length
+        ? [
+              {
+                  loc: `${SITE_URL}/writing`,
+                  lastmod: newestPostDate,
+                  changefreq: 'weekly',
+                  priority: '0.9',
+              },
+          ]
+        : []),
     ...posts.map(post => ({
         loc: `${SITE_URL}/${post.slug}`,
         lastmod: isoDate(post.date),
