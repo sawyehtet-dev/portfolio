@@ -1,4 +1,4 @@
-import { SOCIAL_LINKS } from '../../config/profile';
+import { PROFILE, SOCIAL_LINKS } from '../../config/profile';
 
 export function Footer() {
     const year = new Date().getFullYear();
@@ -8,7 +8,8 @@ export function Footer() {
             <div className="ed-footer-inner ed-container">
                 <div>
                     <p className="ed-footer-word">
-                        Saw Ye Htet<span className="dot">.</span>
+                        {PROFILE.name}
+                        <span className="dot">.</span>
                     </p>
                     <p className="ed-footer-tag">
                         IT Support &amp; QA Specialist. This site is built from scratch in React +
@@ -33,7 +34,9 @@ export function Footer() {
             </div>
 
             <div className="ed-footer-bar ed-container">
-                <span>© {year} Saw Ye Htet · Singapore</span>
+                <span>
+                    © {year} {PROFILE.name} · Singapore
+                </span>
                 <a className="ed-totop" href="#top">
                     Back to top ↑
                 </a>

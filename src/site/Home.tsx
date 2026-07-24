@@ -1,6 +1,5 @@
 import './editorial.css';
 import { Link } from 'react-router-dom';
-import { PROFILE } from '../config/profile';
 import { Nav } from './Nav';
 import { Footer } from './sections/Footer';
 import { PUBLISHED_POSTS, FEATURED_POSTS, formatPostDate, type BlogPost } from './blog/posts';
@@ -13,15 +12,18 @@ import { PUBLISHED_POSTS, FEATURED_POSTS, formatPostDate, type BlogPost } from '
 // post adds signal - below 3 published posts it would just echo the feed.
 const FEATURED_MIN_POSTS = 3;
 
+// The nav already carries the wordmark and the footer repeats it, so the h1 here
+// names the page rather than the person - three wordmarks in one viewport was
+// the old layout's worst tic. The mono tagline went with it: it sat above the
+// intro at half the size, inverting the hierarchy.
 function Masthead() {
     return (
         <header className="ed-masthead ed-container" id="top">
             <span className="ed-eyebrow">Writing · Singapore</span>
             <h1 className="ed-masthead-name">
-                {PROFILE.name}
+                Notes
                 <span className="dot">.</span>
             </h1>
-            <p className="ed-masthead-tagline">{PROFILE.tagline}</p>
             <p className="ed-masthead-intro">
                 My background is IT support and software QA. These are notes on troubleshooting,
                 testing, and what I&apos;m learning along the way.

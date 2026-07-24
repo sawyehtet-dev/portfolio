@@ -63,6 +63,10 @@ body:has(.ed) {
     --mono: 'Adwaita Mono', 'SF Mono', ui-monospace, monospace;
 
     position: relative;
+    /* Flex column so the footer sits at the bottom on short pages (404, an empty
+       feed) instead of floating mid-viewport over a dead band of paper. */
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
     background: var(--paper);
     color: var(--ink);
@@ -73,6 +77,12 @@ body:has(.ed) {
     text-rendering: optimizeLegibility;
     color-scheme: light;
     overflow-x: clip;
+}
+
+/* Takes the slack, so the footer is pushed to the bottom rather than the page
+   ending early. */
+.ed > main {
+    flex: 1;
 }
 
 /* Scoped reset - the `* { margin:0; padding:0 }` base for the .ed subtree, so
@@ -112,7 +122,7 @@ body:has(.ed) {
 /* ---- reusable type primitives ---- */
 .ed-eyebrow {
     font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     font-weight: 400;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -205,10 +215,12 @@ body:has(.ed) {
     transform-origin: left;
     transition: transform 0.22s ease;
 }
-.ed-nav-link:hover {
+.ed-nav-link:hover,
+.ed-nav-link[aria-current='page'] {
     color: var(--ink);
 }
-.ed-nav-link:hover::after {
+.ed-nav-link:hover::after,
+.ed-nav-link[aria-current='page']::after {
     transform: scaleX(1);
 }
 
@@ -234,6 +246,7 @@ body:has(.ed) {
 .ed-hero {
     padding-top: clamp(40px, 7vh, 96px);
     padding-bottom: clamp(32px, 5vh, 64px);
+    scroll-margin-top: 80px; /* clears the sticky nav for "back to top" */
 }
 
 .ed-hero-top {
@@ -438,6 +451,13 @@ body:has(.ed) {
         flex: 1;
         justify-content: center;
     }
+    /* Side by side, both labels wrap to two lines and collide into a ragged
+       two-column block. Stack them instead. */
+    .ed-hero-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
 }
 
 /* ============================================================
@@ -523,33 +543,6 @@ body:has(.ed) {
     transform: translate(2px, -2px);
 }
 
-.ed-work-shot {
-    position: relative;
-    margin: 0 0 clamp(32px, 5vh, 56px);
-    aspect-ratio: 16 / 10;
-    overflow: hidden;
-    border: 1px solid var(--line-2);
-    background: var(--paper-2);
-}
-.ed-work-shot img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-}
-.ed-work-shot figcaption {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    padding: 7px 12px;
-    background: var(--ink);
-    color: var(--paper);
-    font-family: var(--mono);
-    font-size: 0.64rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-}
-
 .ed-work-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -593,8 +586,8 @@ body:has(.ed) {
 }
 .ed-side-label {
     font-family: var(--mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.14em;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--ink-3);
     margin-bottom: 12px;
@@ -1268,9 +1261,6 @@ body:has(.ed) {
     color: var(--accent);
     transform: translate(2px, -2px);
 }
-.ed-blog-readall {
-    margin-top: 28px;
-}
 .ed-blog-empty {
     font-family: var(--mono);
     font-size: 0.8rem;
@@ -1349,6 +1339,7 @@ body:has(.ed) {
     padding-top: clamp(44px, 7.5vh, 96px);
     padding-bottom: clamp(30px, 5vh, 52px);
     border-bottom: 1px solid var(--line);
+    scroll-margin-top: 80px; /* clears the sticky nav for "back to top" */
 }
 .ed-masthead .ed-eyebrow {
     display: block;
@@ -1364,13 +1355,6 @@ body:has(.ed) {
 }
 .ed-masthead-name .dot {
     color: var(--accent);
-}
-.ed-masthead-tagline {
-    margin: clamp(14px, 2vh, 20px) 0 0;
-    font-family: var(--mono);
-    font-size: clamp(0.78rem, 1vw, 0.92rem);
-    letter-spacing: 0.06em;
-    color: var(--ink-3);
 }
 .ed-masthead-intro {
     margin: clamp(18px, 3vh, 26px) 0 0;
@@ -1509,26 +1493,16 @@ body:has(.ed) {
 }
 .ed-stat-label {
     margin: 14px 0 0;
-    max-width: 24ch;
+    max-width: 26ch;
     font-family: var(--mono);
-    font-size: 0.66rem;
+    font-size: 0.75rem;
     line-height: 1.45;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.02em;
     color: var(--ink-3);
 }
+/* Straight from 3 columns to ledger rows - no 2-column step, which would orphan
+   the third stat alone on row two at tablet widths. */
 @media (max-width: 860px) {
-    .ed-stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .ed-stat:nth-child(odd) {
-        border-left: none;
-        padding-left: 0;
-    }
-    .ed-stat:nth-child(n + 3) {
-        border-top: 1px solid var(--line);
-    }
-}
-@media (max-width: 520px) {
     .ed-stats-grid {
         grid-template-columns: 1fr;
     }
