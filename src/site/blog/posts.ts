@@ -37,7 +37,9 @@ interface ParsedFrontmatter {
 // leading `---` fence and the next `---`. Kept deliberately tiny (no dependency)
 // and written without variable bracket-indexing so eslint-plugin-security stays
 // quiet. Anything richer than key/value is out of scope on purpose.
-function parseFrontmatter(raw: string): ParsedFrontmatter {
+// Exported only so src/tests/frontmatter-parity.test.ts can assert this stays
+// byte-for-byte equivalent to the Node mirror in scripts/lib/posts.mjs.
+export function parseFrontmatter(raw: string): ParsedFrontmatter {
     const data = new Map<string, string>();
     const noBom = raw.charCodeAt(0) === 0xfeff ? raw.slice(1) : raw;
     const normalized = noBom.replace(/\r\n/g, '\n');
@@ -81,7 +83,7 @@ function estimateReadingMinutes(body: string): number {
 // `tags: [meta, design]` and `tags: meta, design`, with optional quotes per item.
 // Written with array methods only (no bracket-indexing) so eslint-plugin-security
 // stays quiet, consistent with parseFrontmatter above.
-function parseTags(raw: string | undefined): string[] {
+export function parseTags(raw: string | undefined): string[] {
     if (!raw) return [];
     let value = raw.trim();
     if (value.startsWith('[') && value.endsWith(']')) {

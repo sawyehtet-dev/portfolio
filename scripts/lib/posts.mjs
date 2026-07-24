@@ -15,7 +15,9 @@ export const SITE_URL = 'https://sawyehtet.com'; // matches package.json "homepa
 export const POSTS_DIR = join(__dirname, '../../src/site/blog/posts');
 
 // --- frontmatter parsing (mirror of src/site/blog/posts.ts) ---
-function parseFrontmatter(raw) {
+// Exported for src/tests/frontmatter-parity.test.ts, which fails if this drifts
+// from the app-side parser.
+export function parseFrontmatter(raw) {
     const data = new Map();
     const noBom = raw.charCodeAt(0) === 0xfeff ? raw.slice(1) : raw;
     const normalized = noBom.replace(/\r\n/g, '\n');
@@ -39,7 +41,7 @@ function parseFrontmatter(raw) {
     return { data };
 }
 
-function parseTags(raw) {
+export function parseTags(raw) {
     if (!raw) return [];
     let value = raw.trim();
     if (value.startsWith('[') && value.endsWith(']')) value = value.slice(1, -1);
