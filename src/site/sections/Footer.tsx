@@ -1,5 +1,7 @@
-import { PROFILE, SOCIAL_LINKS } from '../../config/profile';
+import { PROFILE } from '../../config/profile';
 
+// SOCIAL_LINKS renders in Contact only; this points there rather than repeating
+// it. /#contact is a cross-page anchor, same as Nav's /#about.
 export function Footer() {
     const year = new Date().getFullYear();
 
@@ -17,19 +19,11 @@ export function Footer() {
                     </p>
                 </div>
 
-                <nav className="ed-footer-col" aria-label="Elsewhere">
-                    <span className="ed-side-label">Elsewhere</span>
-                    {SOCIAL_LINKS.map(link => (
-                        <a
-                            key={link.label}
-                            className="ed-footer-link"
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            {link.label} ↗
-                        </a>
-                    ))}
+                <nav className="ed-footer-col" aria-label="Contact">
+                    <span className="ed-side-label">Get in touch</span>
+                    <a className="ed-footer-link" href="/#contact">
+                        Email, socials, and the form →
+                    </a>
                 </nav>
             </div>
 

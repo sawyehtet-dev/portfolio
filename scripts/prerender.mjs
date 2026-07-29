@@ -37,14 +37,9 @@ const { renderHome } = await import(pathToFileURL(SSR_ENTRY).href);
 
 let body = renderHome();
 
-// React 19 hoists document metadata and resource hints into the rendered markup:
-//   - <title> / <meta name="description"> - index.html's <head> already carries
-//     the canonical pair, so a copy inside #root would just be a stray duplicate.
-//   - <link rel="preload" as="image"> for the profile photo - the <head>
-//     deliberately uses prefetch (low priority) for that image so it does not
-//     compete with the critical font/JS on first paint; a high-priority body
-//     preload would undercut that. The client re-emits hints as needed on mount.
-// Strip them from the prerendered body (each is a no-op if React kept it out).
+// React 19 hoists metadata and resource hints into the markup. Strip them: the
+// head already owns title/description, and its image hint is deliberately a
+// low-priority prefetch that a body preload would outrank. No-op if absent.
 body = body
     .replace(/<title[^>]*>[\s\S]*?<\/title>/gi, '')
     .replace(/<meta\s+name="description"[^>]*\/?>/gi, '')

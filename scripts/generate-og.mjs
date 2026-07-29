@@ -15,11 +15,8 @@ import { dirname, join } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-/**
- * Shrink the screenshot to a 256-colour palette PNG in place. Returns a
- * "before -> after" summary, or null when ImageMagick is unavailable (the
- * unoptimized PNG is still perfectly valid, just larger).
- */
+/** Shrink to a 256-colour PNG in place. Null if ImageMagick is missing - the
+ *  unoptimized PNG is still valid, just larger. */
 function quantize(file) {
     const before = statSync(file).size;
     for (const bin of ['magick', 'convert']) {

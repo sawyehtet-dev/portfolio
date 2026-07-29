@@ -1,9 +1,6 @@
-// Editorial blog loader. Posts are authored as plain Markdown files in
-// ./posts/*.md with a small frontmatter block, then bundled at build time via
-// Vite's import.meta.glob - publishing is "drop a .md file and rebuild".
-//
-// A post stays invisible everywhere (index, direct URL, nav link, homepage
-// teaser) until its frontmatter reads `draft: false`. See `hasPublishedPosts`.
+// Blog loader. Posts are Markdown in ./posts/*.md, bundled via import.meta.glob -
+// publishing is "drop a .md file and rebuild". A post stays invisible everywhere,
+// including its own URL, until its frontmatter reads `draft: false`.
 
 export interface BlogPostMeta {
     title: string;
@@ -33,12 +30,9 @@ interface ParsedFrontmatter {
     body: string;
 }
 
-// Minimal YAML-ish frontmatter parser: only flat `key: value` pairs between a
-// leading `---` fence and the next `---`. Kept deliberately tiny (no dependency)
-// and written without variable bracket-indexing so eslint-plugin-security stays
-// quiet. Anything richer than key/value is out of scope on purpose.
-// Exported only so src/tests/frontmatter-parity.test.ts can assert this stays
-// byte-for-byte equivalent to the Node mirror in scripts/lib/posts.mjs.
+// Flat `key: value` pairs only, no dependency, and no bracket-indexing (keeps
+// eslint-plugin-security quiet). Exported solely for frontmatter-parity.test.ts,
+// which pins it to the Node mirror in scripts/lib/posts.mjs.
 export function parseFrontmatter(raw: string): ParsedFrontmatter {
     const data = new Map<string, string>();
     const noBom = raw.charCodeAt(0) === 0xfeff ? raw.slice(1) : raw;

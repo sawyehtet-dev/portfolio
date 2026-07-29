@@ -584,6 +584,19 @@ body:has(.ed) {
     border: 1px solid var(--line);
     background: color-mix(in srgb, var(--paper-2) 60%, transparent);
 }
+/* ed-spec is shared with the Résumé, which is narrower and unboxed. Here: cap the
+   key column, and drop the outer rules that would double the panel's border. */
+.ed-work-side .ed-spec-row {
+    grid-template-columns: minmax(0, 128px) minmax(0, 1fr);
+}
+.ed-work-side .ed-spec-row:first-child {
+    padding-top: 0;
+    border-top: 0;
+}
+.ed-work-side .ed-spec-row:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
 .ed-side-label {
     font-family: var(--mono);
     font-size: 0.75rem;
@@ -610,31 +623,14 @@ body:has(.ed) {
     color: var(--ink);
     background: var(--paper);
 }
-.ed-proof {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: grid;
-}
-.ed-proof li {
-    display: grid;
-    grid-template-columns: 26px 1fr;
-    gap: 10px;
-    align-items: baseline;
-    padding: 12px 0;
-    border-top: 1px solid var(--line);
-    font-size: 0.95rem;
+/* What the project is, above body size so it lands before the narrative. */
+.ed-work-summary {
+    margin-top: 10px;
+    max-width: 46ch;
+    font-size: 1.05rem;
     line-height: 1.45;
-    color: var(--ink-2);
-}
-.ed-proof li:first-child {
-    border-top: 0;
-    padding-top: 0;
-}
-.ed-proof .n {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--accent);
+    color: var(--ink);
+    text-wrap: pretty;
 }
 
 /* ============================================================
@@ -729,19 +725,100 @@ body:has(.ed) {
 }
 
 /* ============================================================
-   SKILLS - strengths, no levels
+   SKILLS - two lanes, no levels
    ============================================================ */
-.ed-skills-grid {
+.ed-lanes {
     display: grid;
-    gap: clamp(24px, 3.5vh, 40px);
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 4vw, 44px);
 }
-.ed-skill-group {
-    padding-top: clamp(20px, 3vh, 30px);
+.ed-lanes > .ed-lane + .ed-lane {
+    padding-left: clamp(24px, 4vw, 44px);
+    border-left: 1px solid var(--line);
+}
+.ed-lane-title {
+    margin: 0 0 clamp(16px, 2.5vh, 22px);
+    font-family: var(--sans);
+    font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+}
+.ed-lane-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+}
+.ed-lane-item {
+    padding: 11px 0;
     border-top: 1px solid var(--line);
+    font-size: 0.98rem;
+    line-height: 1.4;
+    color: var(--ink-2);
+    text-wrap: pretty;
 }
-.ed-skill-group:first-child {
-    padding-top: 0;
-    border-top: 0;
+.ed-lane-item:last-child {
+    padding-bottom: 0;
+}
+
+/* Supporting detail, deliberately quieter than the lanes above it. */
+.ed-bands {
+    margin: clamp(32px, 5vh, 48px) 0 0;
+    padding-top: clamp(20px, 3vh, 28px);
+    border-top: 1px solid var(--line-2);
+    display: grid;
+    gap: clamp(16px, 2.5vh, 22px);
+}
+.ed-band {
+    display: grid;
+    grid-template-columns: 128px 1fr;
+    gap: 16px;
+    align-items: baseline;
+}
+.ed-band-key {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+.ed-band-note {
+    display: block;
+    margin-top: 4px;
+    letter-spacing: 0.08em;
+    text-transform: none;
+    color: var(--accent);
+}
+.ed-band-val {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+@media (max-width: 640px) {
+    /* One column: the vertical rule becomes a horizontal one so the lanes stay
+       separated when they stack. */
+    .ed-lanes {
+        grid-template-columns: 1fr;
+    }
+    .ed-lanes > .ed-lane + .ed-lane {
+        padding-left: 0;
+        padding-top: clamp(24px, 4vh, 32px);
+        border-left: 0;
+        border-top: 1px solid var(--line-2);
+    }
+    .ed-band {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .ed-band-note {
+        display: inline;
+        margin-top: 0;
+        margin-left: 8px;
+    }
 }
 
 /* ============================================================
@@ -1029,9 +1106,9 @@ body:has(.ed) {
 .ed-footer-link:hover {
     color: var(--accent);
 }
-/* WCAG 2.5.8: pad the stacked "Elsewhere" column links to a 24px hit area.
-   Scoped to the column so the inline "Launch it ↗" link in the tagline
-   (display:inline - exempt as an inline target) stays untouched. */
+/* WCAG 2.5.8: pad the footer column's links to a 24px hit area. Scoped to the
+   column so the inline "Launch it ↗" link in the tagline (display:inline -
+   exempt as an inline target) stays untouched. */
 .ed-footer-col .ed-footer-link {
     min-height: 24px;
 }
@@ -1459,9 +1536,12 @@ body:has(.ed) {
     margin-top: clamp(8px, 2vh, 20px);
     margin-bottom: clamp(32px, 5vh, 64px);
 }
+/* One equal column per stat, whatever the count - no dead gutter if STATS grows
+   or shrinks. */
 .ed-stats-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
     margin: 0;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
@@ -1503,7 +1583,9 @@ body:has(.ed) {
 /* Straight from 3 columns to ledger rows - no 2-column step, which would orphan
    the third stat alone on row two at tablet widths. */
 @media (max-width: 860px) {
+    /* grid-auto-flow must be reset explicitly; the columns override alone won't. */
     .ed-stats-grid {
+        grid-auto-flow: row;
         grid-template-columns: 1fr;
     }
     /* Ledger rows: value in a fixed left column, label fills the rest, so the

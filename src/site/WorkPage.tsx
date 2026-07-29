@@ -11,10 +11,10 @@ import { Resume } from './sections/Resume';
 import { Writing } from './sections/Writing';
 import { Footer } from './sections/Footer';
 
-// Contact carries react-hook-form + zod (the vendor-forms chunk). The portfolio
-// is now the eager front door, so Contact is lazy-loaded behind a *local* Suspense
-// boundary (below) to keep that weight off the initial bundle - local so only the
-// Contact slot waits while the rest of the page renders.
+// Contact is the page's heaviest section (the form, its validation, and the
+// social list). The portfolio is the eager front door, so Contact is lazy-loaded
+// behind a *local* Suspense boundary (below) to keep that markup off the initial
+// bundle - local so only the Contact slot waits while the rest of the page renders.
 const Contact = lazy(() => import('./sections/Contact').then(m => ({ default: m.Contact })));
 
 function Hero() {
@@ -91,11 +91,8 @@ function About() {
     );
 }
 
-// The portfolio - the front door at /. Single page: Hero → Stats → About →
-// Experience → Testimonial → Projects → Skills → Résumé → Contact → Writing.
-// Testimonial renders nothing while TESTIMONIALS is empty. The Writing section
-// surfaces the three newest posts and links out to the full feed at /writing
-// (see Home.tsx, which renders it).
+// The portfolio - the front door at /. Testimonial and Writing each render
+// nothing while their data is empty.
 export function WorkPage() {
     return (
         <div className="ed">

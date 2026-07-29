@@ -22,6 +22,7 @@ export function Work() {
                                     <span className="sep">/</span>
                                     <span>{project.platform}</span>
                                 </p>
+                                <p className="ed-work-summary">{project.summary}</p>
                             </div>
                             <div className="ed-link-row">
                                 {project.links.map(link => (
@@ -60,29 +61,14 @@ export function Work() {
                             </div>
 
                             <div className="ed-work-side">
-                                <div>
-                                    <div className="ed-side-label">Built with</div>
-                                    <div className="ed-chip-row">
-                                        {project.techStack.map(tech => (
-                                            <span key={tech} className="ed-chip">
-                                                {tech}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="ed-side-label">What it proves</div>
-                                    <ul className="ed-proof">
-                                        {project.proofPoints.map((point, i) => (
-                                            <li key={point}>
-                                                <span className="n">
-                                                    {String(i + 1).padStart(2, '0')}
-                                                </span>
-                                                <span>{point}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
+                                <dl className="ed-spec">
+                                    {project.facts.map(fact => (
+                                        <div className="ed-spec-row" key={fact.key}>
+                                            <dt className="ed-spec-key">{fact.key}</dt>
+                                            <dd className="ed-spec-val">{fact.value}</dd>
+                                        </div>
+                                    ))}
+                                </dl>
                             </div>
                         </div>
                     </article>

@@ -1,27 +1,29 @@
-// ============================================
-// PORTFOLIO CONTENT TYPES
-// ============================================
-// Types for the editorial front door (the / portfolio, /writing, posts).
-// Consumed from src/config/editorial-data.ts.
+// Content types for the front door. Consumed from src/config/editorial-data.ts.
 
 export interface ProjectLink {
     label: string;
     href: string;
 }
 
+// One row of a project's spec list. Facts only - the narrative makes the claims.
+export interface ProjectFact {
+    key: string;
+    value: string;
+}
+
 // Every field here is rendered by src/site/sections/Work.tsx. If you add one,
-// render it in the same change - this interface previously carried `summary`,
-// `featured`, `icon`, `status` and `ProjectLink.icon` that nothing ever read.
+// render it in the same change - this interface previously carried `featured`,
+// `icon`, `status` and `ProjectLink.icon` that nothing ever read.
 export interface Project {
     id: string;
     title: string;
     role: string;
+    summary: string; // What the thing IS, in one line, before the narrative.
     problem: string;
     solution: string;
     impact: string;
-    techStack: string[];
     platform: string;
-    proofPoints: string[];
+    facts: ProjectFact[];
     links: ProjectLink[];
 }
 

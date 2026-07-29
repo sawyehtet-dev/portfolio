@@ -2,11 +2,9 @@ import { describe, it, expect } from 'vitest';
 import { parseFrontmatter as parseApp, parseTags as tagsApp } from '../site/blog/posts';
 import { parseFrontmatter as parseNode, parseTags as tagsNode } from '../../scripts/lib/posts.mjs';
 
-// The app parses posts through Vite's import.meta.glob (src/site/blog/posts.ts);
-// the build scripts can't use that, so scripts/lib/posts.mjs duplicates the
-// frontmatter parser. If the two drift, RSS, the sitemap, and the per-route head
-// shells silently describe different posts than the pages render - at build time,
-// with no error. These cases pin them together.
+// posts.ts and scripts/lib/posts.mjs duplicate the frontmatter parser (the build
+// scripts can't use import.meta.glob). Drift is silent: RSS, the sitemap, and the
+// head shells would describe different posts than the pages render. Don't delete.
 
 const CASES: Array<[name: string, raw: string]> = [
     ['plain key/value', '---\ntitle: Hello\ndraft: false\n---\nBody text.'],

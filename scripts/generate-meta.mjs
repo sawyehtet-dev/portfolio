@@ -34,11 +34,9 @@ function setHead(html, pattern, label, replacement) {
 
 const attr = (kind, name) => new RegExp(`(<meta\\s+${kind}="${name}"\\s+content=")[^"]*(")`);
 
-// Post routes get a BlogPosting schema sourced from frontmatter. The author is
-// the same person the homepage's Person schema describes, nested here so the post
-// route carries exactly one schema (the Person block is replaced, not appended).
-// Every "<" in the JSON is escaped to a unicode entity so post content can
-// never break out of the surrounding script tag.
+// BlogPosting schema for post routes, replacing (not appending to) the homepage's
+// Person block so each route carries exactly one. Every "<" is escaped so post
+// content can't break out of the script tag.
 function blogPostingLd(post) {
     const pageUrl = `${SITE_URL}/${post.slug}`;
     const obj = {

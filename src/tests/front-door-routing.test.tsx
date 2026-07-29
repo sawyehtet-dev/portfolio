@@ -2,11 +2,8 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it, beforeEach } from 'vitest';
 import App from '../App';
 
-// Guards the front-door decision encoded in App.tsx's route table:
-//   /        → the portfolio (WorkPage, eager)
-//   /writing → the writing feed (Home, lazy)
-// This renders the real <App> - its actual BrowserRouter + <Routes> - at each
-// path and asserts on a marker unique to the body that should render there.
+// Guards App.tsx's route table: / is the portfolio, /writing is the feed. Renders
+// the real <App> at each path and asserts on a marker unique to that page.
 function renderAppAt(path: string) {
     window.history.pushState({}, '', path);
     return render(<App />);

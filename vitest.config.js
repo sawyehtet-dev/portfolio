@@ -1,17 +1,10 @@
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
-import { fileURLToPath } from 'url';
-import path from 'path';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
+// Relative imports only. Adding an `@` alias here needs a matching `paths` in
+// tsconfig.json or typecheck won't see it.
 export default defineConfig({
     plugins: [react()],
-    resolve: {
-        alias: {
-            '@': path.resolve(__dirname, './src'),
-        },
-    },
     test: {
         pool: 'vmForks',
         environment: 'jsdom',

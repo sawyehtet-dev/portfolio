@@ -118,7 +118,8 @@ src/
       posts.ts           ← Vite Markdown loader (frontmatter + reading time)
       posts/*.md         ← the posts
   config/
-    editorial-data.ts    ← PROJECTS, EXPERIENCE, STATS, TESTIMONIALS, EDITORIAL_SKILLS
+    editorial-data.ts    ← PROJECTS, EXPERIENCE, STATS, TESTIMONIALS, SKILL_LANES,
+                           SKILL_BANDS
     profile.ts           ← PROFILE (name, role, email, resume paths) + SOCIAL_LINKS
   types/index.ts         ← front-door content types (Project, ExperienceItem, StatItem,
                            Testimonial, ProjectLink). Every field is rendered - keep it
@@ -131,14 +132,16 @@ src/
 ## Data & Config
 
 - **`src/config/editorial-data.ts`** - the single source of truth for portfolio content:
-    - `PROJECTS` (`Project[]`) - title, role, problem/solution/impact narrative, `techStack`,
-      `proofPoints`, `links`, optional `media` (screenshot), `status`.
+    - `PROJECTS` (`Project[]`) - title, role, one-line `summary`, problem/solution/impact
+      narrative, `platform`, `facts` (the spec list), `links`.
     - `EXPERIENCE` (`ExperienceItem[]`) - org, role, period, bullets, stack.
     - `STATS` (`StatItem[]`) - the hero ribbon's headline figures (each is something already
       evidenced elsewhere on the page).
     - `TESTIMONIALS` (`Testimonial[]`) - references. **Empty renders nothing**, so a
       placeholder never ships; add only real, attributed quotes.
-    - `EDITORIAL_SKILLS` - skill groups for the Skills section.
+    - `SKILL_LANES` / `SKILL_BANDS` - the Skills section's two shapes: the target roles
+      side by side, then the tools/coursework rows. Lane claims are running text, **not**
+      chips.
 - **`src/config/profile.ts`** - `PROFILE` (name, role, taglines, email, resume path,
   availability, location) and `SOCIAL_LINKS`.
 - **Posts** - Markdown in `src/site/blog/posts/*.md`. `src/site/blog/posts.ts` parses
@@ -221,7 +224,7 @@ npm run generate:meta    # dist/<route>/index.html head shells (runs in build, n
 - **`src/tests/contact-form.test.tsx`** - validation (empty, whitespace-only, bad email,
   short message), the trimmed POST body, success/failure/network-error states, the
   honeypot drop, and the live character counter.
-- **Setup** (`src/tests/setup.ts`): mocks `matchMedia`, `AudioContext`, `localStorage`.
+- **Setup** (`src/tests/setup.ts`): imports `@testing-library/jest-dom`, nothing else.
 - **Environment:** jsdom with `vmForks` pool.
 
 ## Conventions & Non-Obvious Details
@@ -268,6 +271,9 @@ npm run generate:meta    # dist/<route>/index.html head shells (runs in build, n
     editorial art, so it is visually lossless at ~45-64 dB PSNR and roughly a third of the
     bytes). `generate-og.mjs` re-applies this after each screenshot via ImageMagick, and
     skips the step with a note if ImageMagick is missing.
+11. **`SOCIAL_LINKS` renders in exactly one place: the Contact section**, with handles,
+    beside the email and form. The footer links to `/#contact` rather than repeating the
+    list. Don't re-add a social list to the footer.
 
 ## Prettier Config
 

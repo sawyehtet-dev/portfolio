@@ -2,16 +2,9 @@ import { Link, NavLink } from 'react-router-dom';
 import { PROFILE } from '../config/profile';
 import { hasPublishedPosts } from './blog/posts';
 
-// Shared editorial chrome. Minimal by design: the wordmark returns to the front
-// door (/, the portfolio), and the links are the About section, the writing feed
-// (/writing) and the RSS feed. About points at /#about (a native anchor) so it
-// works from any page - on the portfolio it just scrolls, from /writing or a post
-// it loads the front door and jumps to the section.
-//
-// Writing and RSS both wait for `hasPublishedPosts`: sending a recruiter to a feed
-// that reads "no posts published yet" costs more than the missing link does. The
-// route still resolves, and both links return on their own the moment a post
-// ships - same gate the Writing section and the sitemap use.
+// About is a native /#about anchor so it works from any page. Writing and RSS
+// gate on `hasPublishedPosts` - same gate as the Writing section and the sitemap,
+// so an empty feed is never linked. Both return on their own with the first post.
 export function Nav() {
     return (
         <header className="ed-nav">

@@ -1,11 +1,8 @@
 import { Link } from 'react-router-dom';
 import { PUBLISHED_POSTS, formatPostDate } from '../blog/posts';
 
-// The three newest published posts, surfaced on the work page (the front door)
-// so the writing cadence stays visible. Each post links to its clean root slug
-// (/<slug>); the section links out to the full feed at /writing. Renders nothing
-// until at least one post is published - mirrors the Projects section's empty
-// guard (see WorkPage.tsx, where it deliberately sits last).
+// The newest posts on the front door, linking out to the full feed. Renders
+// nothing until a post is published, which is why it sits last on the page.
 const RECENT_COUNT = 3;
 
 export function Writing() {

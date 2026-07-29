@@ -1,8 +1,8 @@
 import type { Project, ExperienceItem, StatItem, Testimonial } from '../types';
 
 // Editorial content for the site: the / portfolio, the /writing feed, and posts.
-// PROJECTS, EXPERIENCE, STATS, TESTIMONIALS, and EDITORIAL_SKILLS are consumed by
-// the section components in src/site/sections/.
+// PROJECTS, EXPERIENCE, STATS, TESTIMONIALS, SKILL_LANES, and SKILL_BANDS are all
+// consumed by the section components in src/site/sections/.
 
 export const EXPERIENCE: ExperienceItem[] = [
     {
@@ -19,9 +19,9 @@ export const EXPERIENCE: ExperienceItem[] = [
     },
 ];
 
-// Hero stats ribbon. Every figure here is something already evidenced further
-// down the page (Experience bullets, the Tokey write-up) - pulled up so a
-// recruiter sees the proof in the first scroll. No GPA, no padded counts.
+// Hero stats ribbon. Every figure is evidenced further down the page. The ribbon
+// sizes itself to the count, so any length works - but a third entry should come
+// from the CEMS work, not Tokey, to keep the primary lane in front.
 export const STATS: StatItem[] = [
     {
         value: '1',
@@ -29,13 +29,8 @@ export const STATS: StatItem[] = [
         label: 'Technical experience: setup, troubleshooting, testing, and docs at CEMS.',
     },
     {
-        value: '70+',
-        label: 'Tests behind my open-source tool, written test-first.',
-    },
-    {
-        value: '50',
-        unit: '%',
-        label: "Of that tool's code removed in a refactor, with no regressions - the tests caught them.",
+        value: '293',
+        label: 'Tests behind Tokey, my open-source tool - the spec its code is written against.',
     },
 ];
 
@@ -44,22 +39,27 @@ export const STATS: StatItem[] = [
 // from your CEMS supervisor (reliability / QA) when you have it.
 export const TESTIMONIALS: Testimonial[] = [];
 
+// Figures here are checkable against the tokey repo (README, CHANGELOG,
+// pyproject.toml, `grep -c 'def test_' tests/`). Check before editing - this
+// entry has drifted from the repo once already.
 export const PROJECTS: Project[] = [
     {
         id: 'tokey',
         title: 'Tokey',
         role: 'Developer & Maintainer',
+        summary:
+            'A live terminal panel showing what each Claude Code prompt costs, in tokens and in dollars.',
         problem:
-            'I use it constantly, so a wrong number is worse than no number at all: I would read it, believe it, and act on bad math without noticing. I did not want a tool I had to babysit.',
+            "Claude Code's statusline tells you how full your context is, but never what the last turn actually spent. That per-prompt number is the one worth seeing while you can still change how you are asking, not after the session has ended.",
         solution:
-            'I wrote the tests first, covering the token math and the session-discovery path, then built the tool on top of them. They act as the spec, so a later refactor cannot quietly change what the counts mean.',
-        impact: 'That let me delete about half the original code, dropping a fragile transcript dependency for direct session discovery, with nothing regressing. I have run it daily since without rechecking its math by hand.',
-        techStack: ['Python', 'Rich', 'Standard library', 'MIT'],
+            'I wrote the tests as the spec: 293 of them, across the token math, the per-model pricing, and session discovery. The rules live in the suite, so a later refactor cannot quietly change what a number means.',
+        impact: 'That is what let me delete the superseded single-session renderer - roughly 1,100 lines no entry point could still reach, plus its 562-line test file - and show the change was safe rather than hope it was: the rendered output stayed byte-identical.',
         platform: 'Command-line tool',
-        proofPoints: [
-            'Wrote the test suite before the tool was usable, not after it shipped.',
-            'Leaned on it to swap a fragile transcript dependency for direct session discovery.',
-            'Zero-config, MIT-licensed, and runs on both Windows and Linux.',
+        facts: [
+            { key: 'Tests', value: '293, across pricing, parsing, and session discovery' },
+            { key: 'Stack', value: 'Python 3.11+ · Rich, its only dependency' },
+            { key: 'Runs on', value: 'Linux · macOS · Windows' },
+            { key: 'License', value: 'MIT' },
         ],
         links: [
             {
@@ -70,9 +70,11 @@ export const PROJECTS: Project[] = [
     },
 ];
 
-// Skill groups for the Skills section on the front door.
-export const EDITORIAL_SKILLS = [
+// The two target lanes, set side by side. These are claims, so they render as
+// running text - boxing a phrase in a chip makes the eye skim it as a tag.
+export const SKILL_LANES = [
     {
+        rank: 'Primary lane',
         title: 'IT Support',
         skills: [
             'Troubleshooting & issue diagnosis',
@@ -82,6 +84,7 @@ export const EDITORIAL_SKILLS = [
         ],
     },
     {
+        rank: 'Secondary lane',
         title: 'Software QA',
         skills: [
             'End-to-end, functional & user testing',
@@ -90,12 +93,18 @@ export const EDITORIAL_SKILLS = [
             'Reads & writes code - tests from the inside',
         ],
     },
+] as const;
+
+// Single tokens, so these stay chips. `note` renders in the accent under the
+// label - CLAUDE.md's tools rule requires it on coursework.
+export const SKILL_BANDS = [
     {
-        title: 'Code & tools',
+        title: 'Tools',
         skills: ['Python', 'React & TypeScript', 'Git (clean, atomic history)'],
     },
     {
-        title: 'Currently learning',
+        title: 'Learning',
+        note: 'in progress',
         skills: ['SQL (SQLBolt)', 'Computer networking (Coursera)', 'Azure Fundamentals (AZ-900)'],
     },
 ] as const;

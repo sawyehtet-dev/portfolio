@@ -17,11 +17,8 @@ const LINE = '#d8d3c6';
 const ACCENT = '#cc2a10';
 const SANS = "'Adwaita Sans', 'Inter', system-ui, sans-serif";
 
-// One boundary, one screen: it wraps the whole router in App.tsx, so anything it
-// catches has taken the page down, and a reload is the only honest recovery.
-// (A second "window level" variant with a Retry button existed for the removed
-// desktop simulation. Retrying in place just re-throws while the cause is still
-// there - don't reintroduce it.)
+// Wraps the whole router, so anything it catches has taken the page down and a
+// reload is the only honest recovery. Don't add a Retry button - it re-throws.
 export class ErrorBoundary extends Component<Props, State> {
     state: State = { hasError: false };
 
