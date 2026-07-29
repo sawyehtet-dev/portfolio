@@ -274,6 +274,17 @@ npm run generate:meta    # dist/<route>/index.html head shells (runs in build, n
 11. **`SOCIAL_LINKS` renders in exactly one place: the Contact section**, with handles,
     beside the email and form. The footer links to `/#contact` rather than repeating the
     list. Don't re-add a social list to the footer.
+12. **CI's security gate is `scripts/audit-ci.mjs`, not bare `npm audit`.** npm has no way
+    to ignore a single advisory, so one unfixable-but-inapplicable finding would otherwise
+    force the whole gate down to `--audit-level=critical`. The script fails on any
+    high/critical advisory except the GHSA ids in its `ALLOWED` map, and warns when an
+    entry stops matching so the list gets pruned. Currently one entry: react-router's
+    RSC-mode CSRF, which has **no patched release** (all of 7.12.0 - 8.2.0 is affected,
+    7.18.2 is latest) and does not apply here (no RSC APIs). **Do not "fix" it by
+    downgrading** - `npm audit fix --force` suggests 7.11.0, which carries 14 high
+    advisories including open redirect in `<Link>`/`useNavigate` and stored XSS in
+    prerendered redirect HTML, and this site prerenders. Every `ALLOWED` entry needs a
+    reason and an exit condition.
 
 ## Prettier Config
 
