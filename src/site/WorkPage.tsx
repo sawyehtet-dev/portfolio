@@ -26,7 +26,7 @@ function Hero() {
             </div>
 
             <h1 className="ed-hero-head">
-                <span className="ed-sr-only">Saw Ye Htet - </span>IT support &amp; software QA
+                <span className="ed-sr-only">Saw Ye Htet - </span>Desktop support &amp; software QA
             </h1>
 
             <div className="ed-hero-foot">
@@ -34,9 +34,8 @@ function Hero() {
                     <p className="ed-hero-lead">
                         IT diploma graduate with a year of technical work: setup, troubleshooting,
                         testing, and documentation for a VR training system. I trace problems to the{' '}
-                        <strong>root cause</strong> and document the fix. Looking for IT support and
-                        service desk roles; software QA is the second lane, since I read and write
-                        code.
+                        <strong>root cause</strong> and document the fix. Looking for desktop support
+                        roles; software QA is the second lane, since I read and write code.
                     </p>
                     <div className="ed-cta-row">
                         <a
@@ -78,9 +77,9 @@ function About() {
                             me.
                         </p>
                         <p>
-                            I'm aiming for IT support and service desk roles, with software QA a
-                            close second. The difference from most manual testers is that I read and
-                            write code - 70+ tests on my own tool - so I can test from the inside.
+                            I'm aiming for desktop support roles, with software QA a close second.
+                            The difference from most manual testers is that I read and write code -
+                            70+ tests on my own tool - so I can test from the inside.
                             The part I like most is debugging: staying with a stack trace until the
                             real cause shows up, not the line that happened to throw.
                         </p>
@@ -96,13 +95,13 @@ function About() {
 export function WorkPage() {
     return (
         <div className="ed">
-            <title>Saw Ye Htet - IT Support &amp; QA Specialist</title>
+            <title>Saw Ye Htet - Desktop Support &amp; QA Specialist</title>
             {/* Must stay identical to the static description in index.html - React
                 hoists this into <head> alongside it, and two different strings would
                 leave crawlers picking one at random. */}
             <meta
                 name="description"
-                content="Saw Ye Htet is an IT support and service desk graduate in Singapore, with software QA as a coding-backed edge. View experience, projects, skills, resume, and contact details."
+                content="Saw Ye Htet is a desktop support graduate in Singapore, with software QA as a coding-backed edge. View experience, projects, skills, resume, and contact details."
             />
             <Nav />
             <main id="main-content">

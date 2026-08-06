@@ -14,8 +14,8 @@ export function Resume() {
                         ready to forward.
                     </p>
                     <p className="ed-resume-note">
-                        Two one-page versions, kept current: one for IT support / service desk, one
-                        for software QA.
+                        Two one-page versions, kept current: one for desktop support, one for
+                        software QA.
                     </p>
                     <div className="ed-cta-row">
                         <a
@@ -24,7 +24,7 @@ export function Resume() {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            IT Support PDF <span className="ed-btn-arrow">↗</span>
+                            Desktop Support PDF <span className="ed-btn-arrow">↗</span>
                         </a>
                         <a
                             className="ed-btn ed-btn-ghost"

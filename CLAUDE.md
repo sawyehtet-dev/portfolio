@@ -30,9 +30,9 @@ Markdown in `src/site/blog/posts/*.md` (loader: `src/site/blog/posts.ts`).
 This site sells **one person, two target lanes**. Hold this across every section, every
 edit, every session. Do not reintroduce retired framing.
 
-- **Primary lane: IT Support / Service Desk** (service desk, desktop support, IT
-  technician, IT support engineer). Lead with troubleshooting, end-to-end testing, user
-  testing, issue reproduction, and documentation.
+- **Primary lane: Desktop Support** (desktop support engineer, L1/L2 desktop support,
+  IT support engineer). Lead with troubleshooting, hardware/peripherals setup, Windows &
+  macOS diagnostics, incident documentation, and ticket management.
 - **Secondary lane: Software QA** - the real edge, because he can **read code and
   understand APIs**, which is the differentiator over most manual testers. Lean on this,
   not on "developer."
@@ -44,11 +44,12 @@ edit, every session. Do not reintroduce retired framing.
 - **VR/Unity stays light** - it's the setting for the support/testing/documentation story,
   not the headline. Don't foreground FPS, headsets, or game-dev.
 - **Tools rule:** list only tools genuinely used. **In-progress items must be marked "in
-  progress":** SQL (via SQLBolt), computer networking course (Coursera), Azure Fundamentals
-  (AZ-900). **Do NOT list MS-900** (retired - Microsoft 365 Fundamentals no longer offered).
+  progress":** SQL (via SQLBolt), computer networking course (Coursera), Microsoft Certified:
+  Endpoint Administrator Associate (MD-102). **Do NOT list MS-900** (retired - Microsoft 365
+  Fundamentals no longer offered) or Azure Fundamentals (AZ-900, dropped - swapped for MD-102).
   Do not claim hands-on Windows or
   M365 admin, ServiceNow, hardware repair, ITIL, or AV gear.
-- Canonical résumé content lives in two `.docx` lanes (IT Support, Software QA) in the
+- Canonical résumé content lives in two `.docx` lanes (Desktop Support, Software QA) in the
   user's local files; the site copy is derived from them. The OG image
   (`scripts/generate-og.mjs`) bakes this positioning too - keep it in sync and regenerate
   with `npm run generate:og` when the headline/role copy changes.

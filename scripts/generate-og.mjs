@@ -101,17 +101,17 @@ const html = /* html */ `<!DOCTYPE html>
     <div class="main">
       <div class="text">
         <h1 class="head">
-          <span>IT Support &amp;</span>
+          <span>Desktop Support &amp;</span>
           <span class="accent">QA</span>
           <span>Specialist</span>
         </h1>
         <p class="role">
-          <b>IT support and software QA</b> - troubleshooting, end-to-end testing, and
+          <b>Desktop support and software QA</b> - troubleshooting, end-to-end testing, and
           documented fixes. I read code and understand APIs.
         </p>
       </div>
       <div class="specsheet">
-        <div class="srow"><span class="skey">Focus</span><span class="sval">IT Support / Service Desk</span></div>
+        <div class="srow"><span class="skey">Focus</span><span class="sval">Desktop Support</span></div>
         <div class="srow"><span class="skey">Edge</span><span class="sval">Software QA &amp; Testing</span></div>
         <div class="srow"><span class="skey">Based</span><span class="sval">Singapore</span></div>
       </div>

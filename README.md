@@ -7,7 +7,7 @@ Live at [sawyehtet.com](https://sawyehtet.com), deployed on Netlify from `main`.
 
 ## What this is
 
-A single-person portfolio aimed at two target lanes: **IT support / service desk**
+A single-person portfolio aimed at two target lanes: **desktop support**
 (primary) and **software QA** (secondary, the coding-backed edge). Fresh Singapore
 Polytechnic IT graduate with a year of hands-on technical experience.
 

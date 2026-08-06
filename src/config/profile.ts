@@ -1,12 +1,12 @@
-// Two target lanes: IT support / service desk is primary, software QA is the
-// secondary lane and the coding-backed edge. Kept in sync with the IT Support
-// and Software QA résumés.
+// Two target lanes: desktop support is primary, software QA is the secondary
+// lane and the coding-backed edge. Kept in sync with the Desktop Support and
+// Software QA résumés.
 export const PROFILE = {
     name: 'Saw Ye Htet',
-    role: 'IT Support & QA Specialist',
-    roleTarget: 'IT Support / Service Desk · Software QA',
+    role: 'Desktop Support & QA Specialist',
+    roleTarget: 'Desktop Support · Software QA',
     email: 'sawyehtet.dev@gmail.com',
-    resumePath: '/resume/SawYeHtet_ITSupport.pdf',
+    resumePath: '/resume/SawYeHtet_DesktopSupport.pdf',
     resumeQaPath: '/resume/SawYeHtet_SoftwareQA.pdf',
     availability: 'Fresh grad · open to opportunities',
     location: 'Singapore / remote-friendly',

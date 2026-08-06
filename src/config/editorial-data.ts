@@ -7,15 +7,16 @@ import type { Project, ExperienceItem, StatItem, Testimonial } from '../types';
 export const EXPERIENCE: ExperienceItem[] = [
     {
         org: 'Centre of Excellence in Maritime Safety (CEMS)',
-        role: 'QA & Support',
+        role: 'Technical Support',
         period: 'Apr 2025 – Feb 2026',
         location: 'Singapore',
         bullets: [
-            'Set up, configured, and troubleshot a Unity VR training system on Meta Quest 3 headsets and bHaptics gloves, keeping user sessions running.',
-            'Ran testing end to end: designed and ran user testing sessions, and turned the findings into reports for the dev team.',
-            'Reproduced reported issues with exact steps, tracked them to resolution, and wrote setup and troubleshooting guides so other staff could run the system without me.',
+            'Provided technical support for workstations, VR headsets, and computer peripherals to maintain system uptime.',
+            'Diagnosed, reproduced, and documented 40+ hardware and software incidents, tracking them through to resolution.',
+            'Managed device setup, system configuration, and software deployment across live testing environments.',
+            'Authored actionable user feedback reports and technical documentation.',
         ],
-        stack: ['Troubleshooting', 'User Testing', 'QA', 'Technical Writing', 'Unity / C#'],
+        stack: ['Troubleshooting', 'Ticket Management', 'QA', 'Technical Writing', 'Unity / C#'],
     },
 ];
 
@@ -75,12 +76,12 @@ export const PROJECTS: Project[] = [
 export const SKILL_LANES = [
     {
         rank: 'Primary lane',
-        title: 'IT Support',
+        title: 'Desktop Support',
         skills: [
             'Troubleshooting & issue diagnosis',
             'Issue reproduction & defect tracking',
             'User support & technical documentation',
-            'Windows (daily use) · Linux (CLI, scripting)',
+            'Windows & macOS (daily use) · Linux (CLI, scripting)',
         ],
     },
     {
@@ -105,6 +106,10 @@ export const SKILL_BANDS = [
     {
         title: 'Learning',
         note: 'in progress',
-        skills: ['SQL (SQLBolt)', 'Computer networking (Coursera)', 'Azure Fundamentals (AZ-900)'],
+        skills: [
+            'SQL (SQLBolt)',
+            'Computer networking (Coursera)',
+            'Microsoft Endpoint Administrator Associate (MD-102)',
+        ],
     },
 ] as const;
