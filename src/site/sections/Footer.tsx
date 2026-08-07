@@ -14,8 +14,7 @@ export function Footer() {
                         <span className="dot">.</span>
                     </p>
                     <p className="ed-footer-tag">
-                        Desktop Support &amp; QA Specialist. This site is built from scratch in React +
-                        TypeScript.
+                        Unity VR Developer · Meta Quest, Hand Tracking &amp; Immersive Training. Built in React + TypeScript.
                     </p>
                 </div>
 

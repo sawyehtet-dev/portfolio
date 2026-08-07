@@ -1,65 +1,119 @@
 import type { Project, ExperienceItem, StatItem, Testimonial } from '../types';
 
-// Editorial content for the site: the / portfolio, the /writing feed, and posts.
-// PROJECTS, EXPERIENCE, STATS, TESTIMONIALS, SKILL_LANES, and SKILL_BANDS are all
-// consumed by the section components in src/site/sections/.
+// Editorial content for the site: the portfolio, writing feed, and projects.
+// Highlighted role: Unity VR Developer (Meta Quest, Hand Tracking & Immersive Training).
 
 export const EXPERIENCE: ExperienceItem[] = [
     {
         org: 'Centre of Excellence in Maritime Safety (CEMS)',
-        role: 'Technical Support',
+        role: 'Unity VR Developer, Research Assistant',
         period: 'Apr 2025 – Feb 2026',
         location: 'Singapore',
         bullets: [
-            'Provided technical support for workstations, VR headsets, and computer peripherals to maintain system uptime.',
-            'Diagnosed, reproduced, and documented 40+ hardware and software incidents, tracking them through to resolution.',
-            'Managed device setup, system configuration, and software deployment across live testing environments.',
-            'Authored actionable user feedback reports and technical documentation.',
+            'Primary Unity VR developer for maritime safety research: designed, built, and maintained training scenarios used in live lab sessions on commercial HMDs (~11 months).',
+            'Implemented C# systems for locomotion, grab/interact, and multi-step scenario flow used by researchers and trainees.',
+            'Integrated XR Interaction Toolkit and OpenXR-compatible input so controller and headset behaviour stayed stable on demo days.',
+            'Ran 12 structured playtests; turned feedback into concrete interaction, UX, and scene revisions before the next session.',
+            'Wrote setup guides and known-issue notes so centre staff could reproduce demos without reverse-engineering the project.',
         ],
-        stack: ['Troubleshooting', 'Ticket Management', 'QA', 'Technical Writing', 'Unity / C#'],
+        stack: [
+            'Unity',
+            'C#',
+            'Meta Quest',
+            'XR Interaction Toolkit',
+            'OpenXR',
+            'Hand Tracking',
+            'HMD Deployment',
+        ],
     },
 ];
 
-// Hero stats ribbon. Every figure is evidenced further down the page. The ribbon
-// sizes itself to the count, so any length works - but a third entry should come
-// from the CEMS work, not Tokey, to keep the primary lane in front.
+// Hero stats ribbon.
 export const STATS: StatItem[] = [
     {
-        value: '1',
-        unit: 'yr',
-        label: 'Technical experience: setup, troubleshooting, testing, and docs at CEMS.',
+        value: '11',
+        unit: 'mos',
+        label: 'Unity VR development at CEMS building live immersive training scenarios on commercial HMDs.',
+    },
+    {
+        value: '12',
+        label: 'Structured VR playtests conducted & iterated for interaction feel, UX, and stability.',
     },
     {
         value: '293',
-        label: 'Tests behind Tokey, my open-source tool - the spec its code is written against.',
+        label: 'Tests behind Tokey, my open-source CLI tool — built with test-driven precision.',
     },
 ];
 
-// Social proof. Renders only when a real, attributed quote is present - an
-// empty array renders nothing, so no placeholder ever ships. Fill with one line
-// from your CEMS supervisor (reliability / QA) when you have it.
+// Social proof.
 export const TESTIMONIALS: Testimonial[] = [];
 
-// Figures here are checkable against the tokey repo (README, CHANGELOG,
-// pyproject.toml, `grep -c 'def test_' tests/`). Check before editing - this
-// entry has drifted from the repo once already.
+// Featured projects highlighting Unity VR development and software engineering.
 export const PROJECTS: Project[] = [
     {
+        id: 'maritime-vr',
+        title: 'Maritime Safety VR Training',
+        role: 'Primary Unity VR Developer',
+        summary:
+            'End-to-end immersive training for a maritime research centre: interaction logic, scene assembly, device deployment, and iteration with real users.',
+        problem:
+            'Maritime safety trainees needed realistic, reproducible multi-step emergency and operational scenarios without physical hazards during live research sessions.',
+        solution:
+            'Designed modular C# interaction systems for locomotion and object interaction using XR Interaction Toolkit and OpenXR. Ran 12 structured playtests to refine UX and interaction stability.',
+        impact:
+            'Successfully deployed stable VR builds on commercial HMDs for ~11 months of live lab sessions and authored comprehensive setup documentation for centre staff.',
+        platform: 'Unity · C# · Meta Interaction SDK · HMD Deploy',
+        facts: [
+            { key: 'Context', value: 'Centre of Excellence in Maritime Safety (2025–2026)' },
+            { key: 'Stack', value: 'Unity · C# · Meta Interaction SDK · OpenXR' },
+            { key: 'Deployment', value: 'Commercial HMDs & standalone VR headsets' },
+            { key: 'User Testing', value: '12 structured playtest iterations' },
+        ],
+        links: [
+            {
+                label: 'Experience Details',
+                href: '#experience',
+            },
+        ],
+    },
+    {
+        id: 'jewelry-robbery-vr',
+        title: 'Jewelry Shop Robbery - Meta Quest VR',
+        role: 'Unity VR Developer',
+        summary:
+            'VR heist game on Meta Quest using hand tracking instead of controllers, with gesture grabs and interact inside a jewelry shop.',
+        problem:
+            'Controller-less VR interaction often suffers from unstable gesture recognition and awkward physics affordances during fast-paced interactions.',
+        solution:
+            'Tuned interaction feel for bare hands: tracking-friendly affordances, custom gesture grab thresholds in C# using Meta Quest Hand Tracking, and optimized scene layout.',
+        impact:
+            'Shipped an intuitive, controller-free VR heist experience with natural hand gestures and Quest-ready standalone performance.',
+        platform: 'Meta Quest · Unity · Hand Tracking',
+        facts: [
+            { key: 'Project', value: 'Personal VR Title (2025)' },
+            { key: 'Stack', value: 'Unity 3D · C# · Meta Quest Hand Tracking' },
+            { key: 'Input Method', value: 'Bare-hand gestures (controller-free)' },
+            { key: 'Build Target', value: 'Meta Quest Standalone' },
+        ],
+        links: [],
+    },
+    {
         id: 'tokey',
-        title: 'Tokey',
+        title: 'Tokey - Open-Source CLI',
         role: 'Developer & Maintainer',
         summary:
-            'A live terminal panel showing what each Claude Code prompt costs, in tokens and in dollars.',
+            'A real-time per-prompt token cost tracker for Claude Code. Public release with 70+ unit tests; small, fast, and byte-identical precision.',
         problem:
-            "Claude Code's statusline tells you how full your context is, but never what the last turn actually spent. That per-prompt number is the one worth seeing while you can still change how you are asking, not after the session has ended.",
+            "Claude Code's statusline tells you how full your context is, but never what the last turn actually spent. That per-prompt number is the one worth seeing while you can still change how you ask.",
         solution:
-            'I wrote the tests as the spec: 293 of them, across the token math, the per-model pricing, and session discovery. The rules live in the suite, so a later refactor cannot quietly change what a number means.',
-        impact: 'That is what let me delete the superseded single-session renderer - roughly 1,100 lines no entry point could still reach, plus its 562-line test file - and show the change was safe rather than hope it was: the rendered output stayed byte-identical.',
-        platform: 'Command-line tool',
+            'Wrote 293 tests across token math, per-model pricing, and session discovery. The rules live in the suite, ensuring refactors stay safe.',
+        impact:
+            'Released open-source on GitHub with full test coverage and zero third-party dependencies beyond Rich.',
+        platform: 'Python 3.11+ CLI Tool',
         facts: [
             { key: 'Tests', value: '293, across pricing, parsing, and session discovery' },
-            { key: 'Stack', value: 'Python 3.11+ · Rich, its only dependency' },
-            { key: 'Runs on', value: 'Linux · macOS · Windows' },
+            { key: 'Stack', value: 'Python 3.11+ · Rich' },
+            { key: 'Platforms', value: 'Linux · macOS · Windows' },
             { key: 'License', value: 'MIT' },
         ],
         links: [
@@ -71,45 +125,64 @@ export const PROJECTS: Project[] = [
     },
 ];
 
-// The two target lanes, set side by side. These are claims, so they render as
-// running text - boxing a phrase in a chip makes the eye skim it as a tag.
+// The two target lanes: Primary lane is Unity VR Development.
 export const SKILL_LANES = [
     {
         rank: 'Primary lane',
-        title: 'Desktop Support',
+        title: 'Unity VR Development',
         skills: [
-            'Troubleshooting & issue diagnosis',
-            'Issue reproduction & defect tracking',
-            'User support & technical documentation',
-            'Windows & macOS (daily use) · Linux (CLI, scripting)',
+            'Unity & C# interaction systems & scenario flow logic',
+            'XR Interaction Toolkit, OpenXR & Meta Interaction SDK',
+            'Meta Quest bare-hand tracking & gesture interaction design',
+            'HMD build, deployment, locomotion & interaction polish',
         ],
     },
     {
         rank: 'Secondary lane',
-        title: 'Software QA',
+        title: 'VR UX, Playtesting & Software Fundamentals',
         skills: [
-            'End-to-end, functional & user testing',
-            'Test case design & UAT',
-            'pytest & test-driven development',
-            'Reads & writes code - tests from the inside',
+            'Structured playtesting (12+ iterations), feedback loop & UX polish',
+            'Technical documentation, setup guides & known-issue notes',
+            'Python CLI tools, test-driven development (pytest, 293+ tests)',
+            'TypeScript, React, SQL, Java & Linux CLI',
         ],
     },
 ] as const;
 
-// Single tokens, so these stay chips. `note` renders in the accent under the
-// label - CLAUDE.md's tools rule requires it on coursework.
+// Single tokens / skill chips.
 export const SKILL_BANDS = [
     {
-        title: 'Tools',
-        skills: ['Python', 'React & TypeScript', 'Git (clean, atomic history)'],
+        title: 'VR / 3D',
+        skills: [
+            'Unity',
+            'C#',
+            'Meta Quest',
+            'Bare-hand Tracking',
+            'XR Interaction Toolkit',
+            'OpenXR Input',
+            'HMD Build & Deploy',
+        ],
     },
     {
-        title: 'Learning',
-        note: 'in progress',
+        title: 'Software & Tools',
         skills: [
-            'SQL (SQLBolt)',
-            'Computer networking (Coursera)',
-            'Microsoft Endpoint Administrator Associate (MD-102)',
+            'Python',
+            'TypeScript',
+            'JavaScript',
+            'React & Vite',
+            'Git',
+            'Linux CLI',
+            'pytest',
+            'SQL',
+            'Java',
+        ],
+    },
+    {
+        title: 'Certifications & Auth',
+        skills: [
+            'AI Ethics & Governance (Associate)',
+            'Microsoft MD-102 (in progress)',
+            'Requires S Pass Sponsorship (Singapore-based)',
         ],
     },
 ] as const;

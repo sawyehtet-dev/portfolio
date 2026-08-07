@@ -10,12 +10,10 @@ export function Resume() {
             <div className="ed-resume-grid">
                 <div>
                     <p className="ed-resume-statement">
-                        The full résumé is a one-page PDF: education, coursework, and the work,
-                        ready to forward.
+                        The full résumé is a concise one-page PDF covering VR development, CEMS research work, Meta Quest projects, and software engineering skills.
                     </p>
                     <p className="ed-resume-note">
-                        Two one-page versions, kept current: one for desktop support, one for
-                        software QA.
+                        Targeting Unity VR Developer positions in Singapore. Available immediately; S Pass sponsorship required.
                     </p>
                     <div className="ed-cta-row">
                         <a
@@ -24,15 +22,7 @@ export function Resume() {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            Desktop Support PDF <span className="ed-btn-arrow">↗</span>
-                        </a>
-                        <a
-                            className="ed-btn ed-btn-ghost"
-                            href={PROFILE.resumeQaPath}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Software QA PDF <span className="ed-btn-arrow">↗</span>
+                            Unity VR Developer Résumé (PDF) <span className="ed-btn-arrow">↗</span>
                         </a>
                     </div>
                 </div>
@@ -41,19 +31,19 @@ export function Resume() {
                     <div className="ed-spec-row">
                         <dt className="ed-spec-key">Education</dt>
                         <dd className="ed-spec-val">
-                            Diploma in Information Technology - Singapore Polytechnic, 2026
+                            Diploma in Information Technology - Singapore Polytechnic (2023 – 2026)
                         </dd>
                     </div>
                     <div className="ed-spec-row">
-                        <dt className="ed-spec-key">Target</dt>
+                        <dt className="ed-spec-key">Target Role</dt>
                         <dd className="ed-spec-val">{PROFILE.roleTarget}</dd>
                     </div>
                     <div className="ed-spec-row">
-                        <dt className="ed-spec-key">Stack</dt>
+                        <dt className="ed-spec-key">Primary Stack</dt>
                         <dd className="ed-spec-val">{PROFILE.primaryStack.join(' · ')}</dd>
                     </div>
                     <div className="ed-spec-row">
-                        <dt className="ed-spec-key">Based</dt>
+                        <dt className="ed-spec-key">Location</dt>
                         <dd className="ed-spec-val">{PROFILE.location}</dd>
                     </div>
                     <div className="ed-spec-row">

@@ -22,20 +22,21 @@ function Hero() {
         <section className="ed-hero ed-container" id="top">
             <div className="ed-hero-top">
                 <span className="ed-eyebrow">Portfolio - 2026</span>
-                <span className="ed-eyebrow">Singapore · Remote-friendly</span>
+                <span className="ed-eyebrow">Singapore · S Pass Sponsorship Required</span>
             </div>
 
             <h1 className="ed-hero-head">
-                <span className="ed-sr-only">Saw Ye Htet - </span>Desktop support &amp; software QA
+                <span className="ed-sr-only">Saw Ye Htet - </span>Unity VR Developer
             </h1>
 
             <div className="ed-hero-foot">
                 <div>
                     <p className="ed-hero-lead">
-                        IT diploma graduate with a year of technical work: setup, troubleshooting,
-                        testing, and documentation for a VR training system. I trace problems to the{' '}
-                        <strong>root cause</strong> and document the fix. Looking for desktop support
-                        roles; software QA is the second lane, since I read and write code.
+                        IT diploma graduate and <strong>Unity VR Developer</strong> based in Singapore.
+                        Hands-on experience building immersive training scenarios at the Centre of
+                        Excellence in Maritime Safety and shipping a Meta Quest VR title with bare-hand
+                        tracking. Owning the full loop: C# interaction systems, XR input, headset builds,
+                        playtesting, and polish.
                     </p>
                     <div className="ed-cta-row">
                         <a
@@ -44,7 +45,7 @@ function Hero() {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            Résumé <span className="ed-btn-arrow">↗</span>
+                            VR Résumé <span className="ed-btn-arrow">↗</span>
                         </a>
                         <a className="ed-btn ed-btn-ghost" href="#contact">
                             Get in touch
@@ -66,22 +67,25 @@ function About() {
             <div className="ed-about-grid">
                 <div>
                     <p className="ed-lead">
-                        I find the root cause, then write it down so it stays fixed.
+                        Building immersive VR experiences, gesture-driven interactions, and robust C# systems.
                     </p>
                     <div className="ed-prose">
                         <p>
-                            I just finished an IT diploma at Singapore Polytechnic (2026) and have a
-                            year of technical work behind it: at a maritime research centre I set up
-                            and troubleshot a VR training system, ran user testing, reproduced and
-                            tracked issues, and wrote the guides so other staff could run it without
-                            me.
+                            I recently graduated with a Diploma in Information Technology from Singapore
+                            Polytechnic (2026). Over ~11 months as a Unity VR Developer &amp; Research Assistant
+                            at the Centre of Excellence in Maritime Safety (CEMS), I designed, built, and maintained
+                            multi-step VR training scenarios deployed on commercial HMDs for live research lab sessions.
                         </p>
                         <p>
-                            I'm aiming for desktop support roles, with software QA a close second.
-                            The difference from most manual testers is that I read and write code -
-                            70+ tests on my own tool - so I can test from the inside.
-                            The part I like most is debugging: staying with a stack trace until the
-                            real cause shows up, not the line that happened to throw.
+                            My focus is on interactive C# systems, Meta Quest bare-hand tracking, OpenXR input, and
+                            XR Interaction Toolkit integration. I take pride in the full VR development loop:
+                            building modular interaction logic, conducting structured playtests (12+ iterations), tuning UX feel,
+                            and creating clear setup guides for team members.
+                        </p>
+                        <p>
+                            Alongside VR, I maintain strong software engineering fundamentals in Python and TypeScript
+                            (author of Tokey, an open-source CLI with 293+ tests). Based in Singapore and available immediately;
+                            requires S Pass sponsorship.
                         </p>
                     </div>
                 </div>
@@ -95,13 +99,13 @@ function About() {
 export function WorkPage() {
     return (
         <div className="ed">
-            <title>Saw Ye Htet - Desktop Support &amp; QA Specialist</title>
+            <title>Saw Ye Htet - Unity VR Developer</title>
             {/* Must stay identical to the static description in index.html - React
                 hoists this into <head> alongside it, and two different strings would
                 leave crawlers picking one at random. */}
             <meta
                 name="description"
-                content="Saw Ye Htet is a desktop support graduate in Singapore, with software QA as a coding-backed edge. View experience, projects, skills, resume, and contact details."
+                content="Saw Ye Htet is a Unity VR Developer in Singapore specializing in Meta Quest, bare-hand tracking, C# interaction systems, and immersive training. View VR experience, projects, skills, resume, and contact."
             />
             <Nav />
             <main id="main-content">

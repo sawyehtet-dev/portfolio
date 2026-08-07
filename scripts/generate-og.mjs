@@ -101,18 +101,16 @@ const html = /* html */ `<!DOCTYPE html>
     <div class="main">
       <div class="text">
         <h1 class="head">
-          <span>Desktop Support &amp;</span>
-          <span class="accent">QA</span>
-          <span>Specialist</span>
+          <span>Unity VR</span>
+          <span class="accent">Developer</span>
         </h1>
         <p class="role">
-          <b>Desktop support and software QA</b> - troubleshooting, end-to-end testing, and
-          documented fixes. I read code and understand APIs.
+          <b>Unity VR Developer</b> - Meta Quest, bare-hand tracking, C# interaction systems, OpenXR, and immersive training.
         </p>
       </div>
       <div class="specsheet">
-        <div class="srow"><span class="skey">Focus</span><span class="sval">Desktop Support</span></div>
-        <div class="srow"><span class="skey">Edge</span><span class="sval">Software QA &amp; Testing</span></div>
+        <div class="srow"><span class="skey">Focus</span><span class="sval">Unity VR &amp; C# Systems</span></div>
+        <div class="srow"><span class="skey">Platform</span><span class="sval">Meta Quest &amp; OpenXR</span></div>
         <div class="srow"><span class="skey">Based</span><span class="sval">Singapore</span></div>
       </div>
     </div>
@@ -120,8 +118,8 @@ const html = /* html */ `<!DOCTYPE html>
     <div class="rule"></div>
     <div class="bottom">
       <div class="specs">
-        <span><b>Stack</b>Python · React · Linux · Git</span>
-        <span><b>Status</b>Open to work</span>
+        <span><b>Stack</b>Unity · C# · Quest · Hand Tracking</span>
+        <span><b>Status</b>S Pass Required</span>
       </div>
       <div class="url">sawyehtet.com</div>
     </div>

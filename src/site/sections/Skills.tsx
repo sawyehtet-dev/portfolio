@@ -29,7 +29,9 @@ export function Skills() {
                     <div className="ed-band" key={band.title}>
                         <dt className="ed-band-key">
                             {band.title}
-                            {'note' in band && <span className="ed-band-note">{band.note}</span>}
+                            {'note' in band ? (
+                                <span className="ed-band-note">{String((band as Record<string, unknown>).note)}</span>
+                            ) : null}
                         </dt>
                         <dd className="ed-band-val">
                             {band.skills.map(skill => (
