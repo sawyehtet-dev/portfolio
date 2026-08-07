@@ -1,4 +1,4 @@
-import type { Project, ExperienceItem, StatItem } from '../types';
+import type { ExperienceItem, StatItem } from '../types';
 
 // Archived data for previous Desktop Support and Software QA roles.
 // Stored here so it is not shown on the live site, but can be retrieved anytime.
