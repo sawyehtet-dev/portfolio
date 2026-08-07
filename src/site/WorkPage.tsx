@@ -22,7 +22,7 @@ function Hero() {
         <section className="ed-hero ed-container" id="top">
             <div className="ed-hero-top">
                 <span className="ed-eyebrow">Portfolio - 2026</span>
-                <span className="ed-eyebrow">Singapore · S Pass Sponsorship Required</span>
+                <span className="ed-eyebrow">Singapore</span>
             </div>
 
             <h1 className="ed-hero-head">
