@@ -14,13 +14,7 @@ import { execFileSync } from 'child_process';
  * GHSA id -> why it is accepted, and what makes it removable. Every entry needs
  * both: an exception with no exit condition never leaves.
  */
-const ALLOWED = {
-    'GHSA-qwww-vcr4-c8h2':
-        'react-router RSC-mode CSRF. No patched release exists (7.12.0 - 8.2.0 is affected and ' +
-        '7.18.2 is latest), and downgrading to the unaffected 7.11.0 trades this for 14 high ' +
-        'advisories, several of which DO apply here. This site uses no RSC APIs. ' +
-        'Remove once react-router ships a fixed release.',
-};
+const ALLOWED = {};
 
 const BLOCKING = new Set(['high', 'critical']);
 
