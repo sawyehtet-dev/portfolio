@@ -67,7 +67,12 @@ export const PROJECTS: Project[] = [
         outcome:
             'Shipped a responsive, controller-free VR heist prototype running natively on Meta Quest standalone.',
         videoPreview: '/images/projects/jewelry-robbery-preview.mp4',
-        links: [],
+        links: [
+            {
+                label: 'View on GitHub',
+                href: 'https://github.com/sawyehtet-dev/Jewelry-Shop-Robbery-game-with-Meta-Quest-hand-tracking',
+            },
+        ],
     },
     {
         id: 'tokey',
