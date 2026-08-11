@@ -51,7 +51,7 @@ body:has(.ed) {
 
     /* ---- layout ---- */
     --maxw: 900px;
-    --gutter: clamp(20px, 5vw, 36px);
+    --gutter: clamp(16px, 4vw, 36px);
 
     /* ---- typography ---- */
     --sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -69,7 +69,7 @@ body:has(.ed) {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     color-scheme: light;
-    overflow-x: clip;
+    overflow-x: hidden;
 }
 
 .ed > main {
@@ -137,8 +137,9 @@ body:has(.ed) {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
+    gap: 16px;
     height: 60px;
+    width: 100%;
 }
 
 .ed-wordmark {
@@ -149,12 +150,22 @@ body:has(.ed) {
     color: var(--ink);
     text-decoration: none;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .ed-nav-links {
     display: flex;
     align-items: center;
-    gap: clamp(16px, 3vw, 28px);
+    gap: clamp(12px, 2.5vw, 28px);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+.ed-nav-links::-webkit-scrollbar {
+    display: none;
 }
 
 .ed-nav-link {
@@ -227,6 +238,17 @@ body:has(.ed) {
     flex-wrap: wrap;
     align-items: center;
     gap: 12px;
+}
+
+@media (max-width: 480px) {
+    .ed-hero-actions {
+        width: 100%;
+    }
+    .ed-hero-actions .ed-btn {
+        flex: 1 1 100%;
+        width: 100%;
+        text-align: center;
+    }
 }
 
 /* Buttons */
@@ -311,7 +333,7 @@ body:has(.ed) {
     border: 1px solid var(--line);
     border-radius: 6px;
     overflow: hidden;
-    padding: clamp(20px, 4vw, 32px);
+    padding: clamp(16px, 4vw, 32px);
     transition: border-color 0.2s ease;
 }
 .ed-case-study:hover {
@@ -323,7 +345,7 @@ body:has(.ed) {
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 16px;
+    gap: 12px;
     margin-bottom: 20px;
     padding-bottom: 16px;
     border-bottom: 1px solid var(--line);
@@ -337,16 +359,17 @@ body:has(.ed) {
 }
 
 .ed-case-meta {
-    flex: 1;
-    min-width: 260px;
+    flex: 1 1 240px;
+    min-width: 0;
 }
 
 .ed-case-title {
-    font-size: 1.25rem;
+    font-size: clamp(1.15rem, 2.5vw, 1.25rem);
     font-weight: 700;
     letter-spacing: -0.01em;
     color: var(--ink);
     margin-bottom: 4px;
+    overflow-wrap: break-word;
 }
 
 .ed-case-subtitle {
@@ -372,8 +395,33 @@ body:has(.ed) {
 
 .ed-case-links {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 12px;
+}
+
+@media (max-width: 580px) {
+    .ed-case-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .ed-case-meta {
+        width: 100%;
+        min-width: 0;
+    }
+    .ed-case-subtitle {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    .ed-case-subtitle .ed-sep {
+        display: none;
+    }
+    .ed-case-links {
+        width: 100%;
+        padding-top: 4px;
+    }
 }
 
 .ed-text-link {
@@ -691,11 +739,14 @@ body:has(.ed) {
 .ed-contact-email {
     display: inline-block;
     font-family: var(--mono);
-    font-size: 0.95rem;
+    font-size: clamp(0.82rem, 2.5vw, 0.95rem);
     color: var(--accent);
     text-decoration: none;
     margin-bottom: 12px;
     font-weight: 500;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    max-width: 100%;
 }
 .ed-contact-email:hover {
     text-decoration: underline;
