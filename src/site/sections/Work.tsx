@@ -16,7 +16,28 @@ export function Work() {
                 {PROJECTS.map((project, idx) => (
                     <article className="ed-case-study" key={project.id}>
                         <header className="ed-case-header">
-                            <div className="ed-case-num">0{idx + 1}</div>
+                            <div className="ed-case-header-top">
+                                <div className="ed-case-num">0{idx + 1}</div>
+                                {project.links.length > 0 && (
+                                    <div className="ed-case-links">
+                                        {project.links.map(link => (
+                                            <a
+                                                key={link.href}
+                                                className="ed-text-link"
+                                                href={link.href}
+                                                target={isExternal(link.href) ? '_blank' : undefined}
+                                                rel={
+                                                    isExternal(link.href)
+                                                        ? 'noopener noreferrer'
+                                                        : undefined
+                                                }
+                                            >
+                                                {link.label} ↗
+                                            </a>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
                             <div className="ed-case-meta">
                                 <h3 className="ed-case-title">{project.title}</h3>
                                 <p className="ed-case-subtitle">
@@ -25,25 +46,6 @@ export function Work() {
                                     <span className="ed-case-context">{project.context}</span>
                                 </p>
                             </div>
-                            {project.links.length > 0 && (
-                                <div className="ed-case-links">
-                                    {project.links.map(link => (
-                                        <a
-                                            key={link.href}
-                                            className="ed-text-link"
-                                            href={link.href}
-                                            target={isExternal(link.href) ? '_blank' : undefined}
-                                            rel={
-                                                isExternal(link.href)
-                                                    ? 'noopener noreferrer'
-                                                    : undefined
-                                            }
-                                        >
-                                            {link.label} ↗
-                                        </a>
-                                    ))}
-                                </div>
-                            )}
                         </header>
 
                         {project.videoPreview && (

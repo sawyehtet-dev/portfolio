@@ -342,13 +342,19 @@ body:has(.ed) {
 
 .ed-case-header {
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+}
+
+.ed-case-header-top {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
     gap: 12px;
-    margin-bottom: 20px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--line);
+    width: 100%;
 }
 
 .ed-case-num {
@@ -359,12 +365,11 @@ body:has(.ed) {
 }
 
 .ed-case-meta {
-    flex: 1 1 240px;
-    min-width: 0;
+    width: 100%;
 }
 
 .ed-case-title {
-    font-size: clamp(1.15rem, 2.5vw, 1.25rem);
+    font-size: clamp(1.15rem, 2.5vw, 1.35rem);
     font-weight: 700;
     letter-spacing: -0.01em;
     color: var(--ink);
@@ -373,12 +378,12 @@ body:has(.ed) {
 }
 
 .ed-case-subtitle {
-    font-size: 0.88rem;
+    font-size: 0.86rem;
     color: var(--ink-2);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
 }
 
 .ed-case-role {
@@ -397,31 +402,7 @@ body:has(.ed) {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 12px;
-}
-
-@media (max-width: 580px) {
-    .ed-case-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-    .ed-case-meta {
-        width: 100%;
-        min-width: 0;
-    }
-    .ed-case-subtitle {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-    }
-    .ed-case-subtitle .ed-sep {
-        display: none;
-    }
-    .ed-case-links {
-        width: 100%;
-        padding-top: 4px;
-    }
+    gap: 10px;
 }
 
 .ed-text-link {
@@ -608,12 +589,13 @@ body:has(.ed) {
 .ed-skills-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 16px;
 }
 
 @media (min-width: 640px) {
     .ed-skills-grid {
         grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
     }
 }
 
@@ -621,7 +603,7 @@ body:has(.ed) {
     background: var(--paper-card);
     border: 1px solid var(--line);
     border-radius: 6px;
-    padding: 20px;
+    padding: clamp(14px, 3vw, 20px);
 }
 
 .ed-skill-cat {
