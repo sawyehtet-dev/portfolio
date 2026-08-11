@@ -10,7 +10,7 @@ export function Resume() {
 
             <div className="ed-resume-card">
                 <div className="ed-resume-info">
-                    <h3 className="ed-resume-heading">Saw Ye Htet — Unity / XR Developer</h3>
+                    <h3 className="ed-resume-heading">Saw Ye Htet - Unity / XR Developer</h3>
                     <p className="ed-resume-desc">
                         Full one-page PDF details experience at CEMS, Meta Quest VR projects,
                         technical stack, and education.

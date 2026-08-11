@@ -48,7 +48,7 @@ function Hero() {
 export function WorkPage() {
     return (
         <div className="ed">
-            <title>Saw Ye Htet — Unity / XR Developer</title>
+            <title>Saw Ye Htet - Unity / XR Developer</title>
             <meta
                 name="description"
                 content="Saw Ye Htet is a Unity / XR Developer in Singapore specializing in Meta Quest, bare-hand tracking, C# interaction systems, and immersive training. View case studies, experience, skills, resume, and contact."
