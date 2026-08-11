@@ -25,8 +25,8 @@ function Masthead() {
                 <span className="dot">.</span>
             </h1>
             <p className="ed-masthead-intro">
-                I build Unity VR experiences and software tools. These are notes on interaction design, C#,
-                testing, and what I&apos;m learning along the way.
+                I build Unity VR experiences and software tools. These are notes on interaction
+                design, C#, testing, and what I&apos;m learning along the way.
             </p>
             <Link className="ed-home-cta" to="/">
                 My experience and projects are on the <strong>home page</strong>

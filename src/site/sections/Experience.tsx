@@ -4,26 +4,24 @@ export function Experience() {
     return (
         <section className="ed-section ed-container" id="experience">
             <div className="ed-section-head">
+                <span className="ed-section-tag">02 / PROFESSIONAL EXPERIENCE</span>
                 <h2 className="ed-section-title">Experience</h2>
             </div>
 
             <div className="ed-exp-list">
                 {EXPERIENCE.map(item => (
-                    <article className="ed-exp-item" key={`${item.org}-${item.period}`}>
-                        <header className="ed-exp-head">
-                            <div className="ed-exp-titlewrap">
+                    <article className="ed-exp-card" key={`${item.org}-${item.period}`}>
+                        <header className="ed-exp-header">
+                            <div>
                                 <h3 className="ed-exp-org">{item.org}</h3>
-                                <p className="ed-exp-role">
-                                    <span>{item.role}</span>
-                                    {item.location && (
-                                        <>
-                                            <span className="sep">/</span>
-                                            <span>{item.location}</span>
-                                        </>
-                                    )}
-                                </p>
+                                <p className="ed-exp-role">{item.role}</p>
                             </div>
-                            <span className="ed-exp-period">{item.period}</span>
+                            <div className="ed-exp-meta">
+                                <span className="ed-exp-period">{item.period}</span>
+                                {item.location && (
+                                    <span className="ed-exp-loc">{item.location}</span>
+                                )}
+                            </div>
                         </header>
 
                         <ul className="ed-exp-bullets">
@@ -33,11 +31,11 @@ export function Experience() {
                         </ul>
 
                         {item.stack && item.stack.length > 0 && (
-                            <div className="ed-exp-stack">
-                                <span className="ed-side-label">Stack</span>
-                                <div className="ed-chip-row">
+                            <div className="ed-exp-tools">
+                                <span className="ed-tools-label">Stack:</span>
+                                <div className="ed-tools-list">
                                     {item.stack.map(tech => (
-                                        <span key={tech} className="ed-chip">
+                                        <span key={tech} className="ed-tool-tag">
                                             {tech}
                                         </span>
                                     ))}
