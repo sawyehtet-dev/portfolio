@@ -15,10 +15,7 @@ function Hero() {
     return (
         <section className="ed-hero ed-container" id="top">
             <div className="ed-hero-header">
-                <div className="ed-hero-meta-row">
-                    <span className="ed-hero-eyebrow">PORTFOLIO · SINGAPORE</span>
-                    <span className="ed-visa-pill">{PROFILE.availability}</span>
-                </div>
+                <span className="ed-hero-eyebrow">PORTFOLIO · SINGAPORE</span>
                 <h1 className="ed-hero-name">Saw Ye Htet</h1>
                 <p className="ed-hero-title">Unity / XR Developer</p>
             </div>
