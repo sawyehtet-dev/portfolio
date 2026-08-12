@@ -10,7 +10,9 @@ export function Resume() {
 
             <div className="ed-resume-card">
                 <div className="ed-resume-info">
-                    <h3 className="ed-resume-heading">Saw Ye Htet - Unity / XR Developer</h3>
+                    <h3 className="ed-resume-heading">
+                        {PROFILE.name} - {PROFILE.role}
+                    </h3>
                     <p className="ed-resume-desc">
                         Full one-page PDF details experience at CEMS, Meta Quest VR projects,
                         technical stack, and education.
@@ -21,28 +23,22 @@ export function Resume() {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        Download Résumé (PDF) ↗
+                        Download résumé (PDF) ↗
                     </a>
                 </div>
 
                 <div className="ed-resume-meta">
                     <div className="ed-meta-item">
                         <span className="ed-meta-label">Education</span>
-                        <span className="ed-meta-val">
-                            Diploma in Information Technology, Singapore Polytechnic (2023–2026)
-                        </span>
+                        <span className="ed-meta-val">{PROFILE.education}</span>
                     </div>
                     <div className="ed-meta-item">
                         <span className="ed-meta-label">Target Roles</span>
-                        <span className="ed-meta-val">
-                            Unity Developer · XR / VR Developer · Simulation Engineer
-                        </span>
+                        <span className="ed-meta-val">{PROFILE.roleTarget}</span>
                     </div>
                     <div className="ed-meta-item">
                         <span className="ed-meta-label">Location &amp; Status</span>
-                        <span className="ed-meta-val">
-                            Singapore · Requires S Pass Sponsorship · Available Immediately
-                        </span>
+                        <span className="ed-meta-val">{PROFILE.availability}</span>
                     </div>
                 </div>
             </div>

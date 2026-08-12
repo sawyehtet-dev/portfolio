@@ -20,8 +20,8 @@ export function Footer() {
 
                 <nav className="ed-footer-col" aria-label="Contact">
                     <span className="ed-side-label">Get in touch</span>
-                    <a className="ed-footer-link" href="/#contact">
-                        Email, socials, and the form →
+                    <a className="ed-footer-link" href={`mailto:${PROFILE.email}`}>
+                        {PROFILE.email} →
                     </a>
                 </nav>
             </div>

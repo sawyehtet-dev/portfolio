@@ -31,9 +31,6 @@ function Hero() {
                     <a className="ed-btn ed-btn-primary" href={`mailto:${PROFILE.email}`}>
                         Email me ↗
                     </a>
-                    <a className="ed-btn ed-btn-secondary" href="#work">
-                        View work ↓
-                    </a>
                     <a
                         className="ed-btn ed-btn-secondary"
                         href={PROFILE.resumePath}

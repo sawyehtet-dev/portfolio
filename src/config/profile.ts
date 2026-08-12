@@ -2,8 +2,9 @@
 // Kept in sync with Saw_Ye_Htet_Unity_VR_Developer_Resume.pdf.
 export const PROFILE = {
     name: 'Saw Ye Htet',
-    role: 'Unity VR Developer',
-    roleTarget: 'Unity VR Developer · Meta Quest, Hand Tracking & Immersive Training',
+    role: 'Unity / XR Developer',
+    roleTarget: 'Unity Developer · XR / VR Developer · Simulation Engineer',
+    education: 'Diploma in Information Technology, Singapore Polytechnic (2023–2026)',
     email: 'sawyehtet.dev@gmail.com',
     resumePath: '/resume/Saw_Ye_Htet_Unity_VR_Developer_Resume.pdf',
     availability: 'Singapore · Requires S Pass Sponsorship · Available Immediately',
