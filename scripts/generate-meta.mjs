@@ -102,7 +102,7 @@ const pages = [
         route: 'writing',
         title: 'Saw Ye Htet - Writing',
         description:
-            'Writing by Saw Ye Htet - notes on desktop support, troubleshooting, and building software. The portfolio lives on the home page.',
+            'Writing by Saw Ye Htet - notes on Unity VR development, interactive C# systems, and software engineering. The portfolio lives on the home page.',
         url: `${SITE_URL}/writing`,
         type: 'website',
     },

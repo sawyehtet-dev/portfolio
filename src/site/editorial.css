@@ -196,6 +196,15 @@ body:has(.ed) {
     margin-bottom: 24px;
 }
 
+.ed-hero-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
 .ed-hero-eyebrow {
     display: block;
     font-family: var(--mono);
@@ -203,7 +212,18 @@ body:has(.ed) {
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--ink-3);
-    margin-bottom: 12px;
+}
+
+.ed-visa-pill {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+    background: var(--accent-light);
+    border: 1px solid #bfdbfe;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-weight: 500;
 }
 
 .ed-hero-name {

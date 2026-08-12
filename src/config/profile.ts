@@ -6,7 +6,7 @@ export const PROFILE = {
     roleTarget: 'Unity VR Developer · Meta Quest, Hand Tracking & Immersive Training',
     email: 'sawyehtet.dev@gmail.com',
     resumePath: '/resume/Saw_Ye_Htet_Unity_VR_Developer_Resume.pdf',
-    availability: 'Requires S Pass sponsorship · Singapore-based · Available immediately',
+    availability: 'Singapore · Requires S Pass Sponsorship · Available Immediately',
     location: 'Singapore / Remote-friendly',
     primaryStack: ['Unity (C#)', 'Meta Quest', 'Hand Tracking', 'XR Interaction Toolkit', 'OpenXR'],
 };

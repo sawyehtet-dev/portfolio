@@ -15,7 +15,10 @@ function Hero() {
     return (
         <section className="ed-hero ed-container" id="top">
             <div className="ed-hero-header">
-                <span className="ed-hero-eyebrow">PORTFOLIO · SINGAPORE</span>
+                <div className="ed-hero-meta-row">
+                    <span className="ed-hero-eyebrow">PORTFOLIO · SINGAPORE</span>
+                    <span className="ed-visa-pill">{PROFILE.availability}</span>
+                </div>
                 <h1 className="ed-hero-name">Saw Ye Htet</h1>
                 <p className="ed-hero-title">Unity / XR Developer</p>
             </div>
@@ -28,7 +31,10 @@ function Hero() {
                 </p>
 
                 <div className="ed-hero-actions">
-                    <a className="ed-btn ed-btn-primary" href="#work">
+                    <a className="ed-btn ed-btn-primary" href={`mailto:${PROFILE.email}`}>
+                        Email me ↗
+                    </a>
+                    <a className="ed-btn ed-btn-secondary" href="#work">
                         View work ↓
                     </a>
                     <a
@@ -37,7 +43,7 @@ function Hero() {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        Download résumé ↗
+                        Download résumé (PDF) ↗
                     </a>
                 </div>
             </div>
@@ -51,7 +57,7 @@ export function WorkPage() {
             <title>Saw Ye Htet - Unity / XR Developer</title>
             <meta
                 name="description"
-                content="Saw Ye Htet is a Unity / XR Developer in Singapore specializing in Meta Quest, bare-hand tracking, C# interaction systems, and immersive training. View case studies, experience, skills, resume, and contact."
+                content="Unity & XR Developer in Singapore specializing in Meta Quest, bare-hand tracking, C# interaction systems, and immersive training. S Pass sponsorship required."
             />
             <Nav />
             <main id="main-content">

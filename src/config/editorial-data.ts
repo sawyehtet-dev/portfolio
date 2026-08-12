@@ -29,18 +29,18 @@ export const PROJECTS: Project[] = [
         title: 'Methanol Bunkering Safety VR Training',
         role: 'Primary Unity VR Developer',
         summary:
-            'Interactive VR training scenarios built for commercial HMDs in maritime emergency response and clean fuel handling research.',
+            'Interactive VR safety training scenarios for maritime emergency response and clean fuel handling research.',
         context:
             'Centre of Excellence in Maritime Safety (CEMS), Singapore Polytechnic (Apr 2025 – Feb 2026)',
         whatIBuilt:
-            'Modular C# interaction systems for locomotion, object manipulation, pre-bunkering safety inspections, hose leak response, and multi-stage scenario state machines used in live research sessions across 11 months.',
+            'Engineered modular C# interaction systems for locomotion, object manipulation, pre-bunkering safety inspections, hose leak response, and multi-stage state machines deployed in live research sessions over 11 months.',
         technicalDecisions:
             'Standardized input on OpenXR and XR Interaction Toolkit to support multiple commercial headsets without duplicating interaction logic. Integrated event-driven state handling to decouple scenario steps from visual assets.',
         tools: ['Unity 3D', 'C#', 'XR Interaction Toolkit', 'OpenXR', 'Meta Quest HMDs'],
         constraints:
-            'Hardware performance budgets on standalone HMDs required draw call optimization and sub-11ms frame rendering to prevent trainee motion discomfort.',
+            'Hardware performance budgets on standalone HMDs required draw call batching, dynamic LOD tuning, and sub-11ms frame rendering (90 FPS) to eliminate trainee motion discomfort.',
         outcome:
-            'Successfully deployed across 11 months of live research lab sessions; conducted 12 structured playtests and authored operational setup documentation for centre staff.',
+            'Deployed across 11 months of live maritime research lab sessions, conducting 12 structured playtests and authoring operational setup documentation for centre staff.',
         videoPreview: '/images/projects/methanol-bunkering-preview.mp4',
         links: [
             {
@@ -54,17 +54,17 @@ export const PROJECTS: Project[] = [
         title: 'Jewelry Shop Robbery – Meta Quest VR Game',
         role: 'Unity VR Developer',
         summary:
-            'VR heist game using bare-hand tracking instead of controllers, with gesture-based grab and interact mechanics.',
+            'Controller-free VR heist prototype built for Meta Quest using bare-hand tracking and custom gesture interaction mechanics.',
         context: 'Independent VR project focused on controller-free interaction (2025)',
         whatIBuilt:
-            'Built a VR heist game using bare-hand tracking instead of controllers, with gesture-based grab and interact mechanics.',
+            'Engineered custom gesture-based interaction mechanics, physics-driven grab affordances, and item manipulation triggers using Meta XR SDK without physical controllers.',
         technicalDecisions:
-            'Tuned interaction feel for hand tracking (affordances, scene layout) and shipped Quest-ready Unity builds.',
-        tools: ['Unity', 'C#', 'Hand Tracking', 'Meta Quest'],
+            'Optimized hand-tracking pose detection and visual affordances, tuning interaction boundaries to eliminate false gesture triggers during fast gameplay.',
+        tools: ['Unity 3D', 'C#', 'Meta XR SDK', 'Hand Tracking', 'Meta Quest'],
         constraints:
-            'Bare-hand tracking lacks physical controller buttons; tuned interaction feel, affordances, and scene layout.',
+            'Controller-free hand tracking lacks physical button feedback; designed visual and spatial audio affordances to reinforce grab and release state recognition.',
         outcome:
-            'Shipped Quest-ready Unity builds with responsive bare-hand interaction mechanics.',
+            'Shipped Quest-ready Unity build running at stable 72/90 FPS with responsive bare-hand interaction mechanics.',
         videoPreview: '/images/projects/jewelry-robbery-preview.mp4',
         links: [
             {
@@ -78,17 +78,17 @@ export const PROJECTS: Project[] = [
         title: 'Tokey – Open-Source CLI',
         role: 'Author & Developer',
         summary:
-            'Real-time per-prompt token cost tracker for Claude Code with 70+ unit tests.',
+            'Real-time per-prompt token cost tracker CLI tool for Claude Code with 293 automated unit tests.',
         context: 'Independent open-source CLI tool (2026)',
         whatIBuilt:
-            'Published a real-time per-prompt token cost tracker for Claude Code with 70+ unit tests.',
+            'Engineered a Python CLI tool that parses Claude Code streams in real time to calculate live token usage and per-prompt cost estimations.',
         technicalDecisions:
-            'Built with test-driven development: authored 70+ automated unit tests covering pricing tables and token tracking.',
-        tools: ['Python', 'pytest', 'MIT License', 'Git'],
+            'Architected using Test-Driven Development (TDD) with 293 unit tests, ensuring robust edge-case coverage for API cost calculation tables and terminal formatting.',
+        tools: ['Python', 'pytest', 'TDD', 'MIT License', 'Git'],
         constraints:
-            'Must provide real-time token tracking for developer terminal workflows.',
+            'Must operate asynchronously with zero noticeable latency impact on developer terminal workflows.',
         outcome:
-            'Published as an open-source tool on GitHub with 70+ unit tests.',
+            'Published as an open-source CLI package on GitHub backed by a 293-test test suite and active community usage.',
         videoPreview: '/images/projects/tokey-preview.mp4',
         links: [
             {

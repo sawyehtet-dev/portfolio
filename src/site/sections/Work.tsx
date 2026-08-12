@@ -56,6 +56,7 @@ export function Work() {
                                     loop
                                     muted
                                     playsInline
+                                    preload="metadata"
                                     aria-label={`Demo video for ${project.title}`}
                                 >
                                     <source src={project.videoPreview} type="video/mp4" />
