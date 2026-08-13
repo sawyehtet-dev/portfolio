@@ -69,25 +69,29 @@ export function Work() {
 
                             <div className="ed-case-grid">
                                 <div className="ed-case-col">
-                                    <h4 className="ed-field-label">What I Built</h4>
+                                    <h4 className="ed-field-label">Key Engineering</h4>
                                     <p className="ed-field-text">{project.whatIBuilt}</p>
-
-                                    <h4 className="ed-field-label">Technical Decisions</h4>
-                                    <p className="ed-field-text">{project.technicalDecisions}</p>
+                                    {project.technicalDecisions && (
+                                        <>
+                                            <h4 className="ed-field-label">Technical Decisions</h4>
+                                            <p className="ed-field-text">{project.technicalDecisions}</p>
+                                        </>
+                                    )}
                                 </div>
 
                                 <div className="ed-case-col">
+                                    <h4 className="ed-field-label">Outcome &amp; Impact</h4>
+                                    <p className="ed-field-text">{project.outcome}</p>
                                     {project.constraints && (
                                         <>
                                             <h4 className="ed-field-label">Constraints</h4>
                                             <p className="ed-field-text">{project.constraints}</p>
                                         </>
                                     )}
-
-                                    <h4 className="ed-field-label">Outcome</h4>
-                                    <p className="ed-field-text">{project.outcome}</p>
                                 </div>
                             </div>
+
+
 
                             <div className="ed-case-tools">
                                 <span className="ed-tools-label">Tools:</span>

@@ -10,7 +10,7 @@ export interface Project {
     summary: string;
     context: string;
     whatIBuilt: string;
-    technicalDecisions: string;
+    technicalDecisions?: string;
     tools: string[];
     constraints?: string;
     outcome: string;

@@ -15,16 +15,17 @@ function Hero() {
     return (
         <section className="ed-hero ed-container" id="top">
             <div className="ed-hero-header">
-                <span className="ed-hero-eyebrow">PORTFOLIO · SINGAPORE</span>
+                <span className="ed-hero-eyebrow">
+                    PORTFOLIO · SINGAPORE · {PROFILE.availability}
+                </span>
                 <h1 className="ed-hero-name">Saw Ye Htet</h1>
-                <p className="ed-hero-title">Unity / XR Developer</p>
+                <p className="ed-hero-title">{PROFILE.role}</p>
             </div>
 
             <div className="ed-hero-body">
                 <p className="ed-hero-summary">
-                    Unity / XR developer based in Singapore building performance-critical VR training
-                    systems and bare-hand interaction mechanics. Specializing in OpenXR, C# architecture,
-                    and Meta Quest optimization.
+                    Software engineer based in Singapore building Unity games, interactive systems, and software tooling.
+                    I work across game mechanics and C# architecture, with XR &amp; immersive VR turning out to be what I do best.
                 </p>
 
                 <div className="ed-hero-actions">
@@ -48,10 +49,10 @@ function Hero() {
 export function WorkPage() {
     return (
         <div className="ed">
-            <title>Saw Ye Htet - Unity / XR Developer</title>
+            <title>Saw Ye Htet - Software Engineer</title>
             <meta
                 name="description"
-                content="Unity & XR Developer in Singapore specializing in Meta Quest, bare-hand tracking, C# interaction systems, and immersive training."
+                content="Software Engineer in Singapore specializing in C# architecture, Unity VR simulation systems, and software tooling."
             />
             <Nav />
             <main id="main-content">

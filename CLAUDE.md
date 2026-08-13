@@ -27,28 +27,13 @@ Markdown in `src/site/blog/posts/*.md` (loader: `src/site/blog/posts.ts`).
 
 ## 🎯 Positioning (content rule - do not drift)
 
-This site sells **one person, two target lanes**. Hold this across every section, every
-edit, every session. Do not reintroduce retired framing.
+This site positions Saw Ye Htet as a **Software Engineer specializing in C#, Unity Game/XR Development, and Systems & Tooling**.
 
-- **Primary lane: Desktop Support** (desktop support engineer, L1/L2 desktop support,
-  IT support engineer). Lead with troubleshooting, hardware/peripherals setup, Windows &
-  macOS diagnostics, incident documentation, and ticket management.
-- **Secondary lane: Software QA** - the real edge, because he can **read code and
-  understand APIs**, which is the differentiator over most manual testers. Lean on this,
-  not on "developer."
-- **Seniority:** a **fresh grad with one year of technical experience** (the CEMS VR
-  work), not zero, and not a senior. Singapore Polytechnic IT diploma, 2026.
-- **RETIRED framing - never reintroduce:** "Application Support" / "Production Support",
-  "Java developer", "Operations Specialist", or anything that positions him as a software
-  developer by trade. App Support is dead.
-- **VR/Unity stays light** - it's the setting for the support/testing/documentation story,
-  not the headline. Don't foreground FPS, headsets, or game-dev.
-- **Tools rule:** list only tools genuinely used. **In-progress items must be marked "in
-  progress":** SQL (via SQLBolt), computer networking course (Coursera), Microsoft Certified:
-  Endpoint Administrator Associate (MD-102). **Do NOT list MS-900** (retired - Microsoft 365
-  Fundamentals no longer offered) or Azure Fundamentals (AZ-900, dropped - swapped for MD-102).
-  Do not claim hands-on Windows or
-  M365 admin, ServiceNow, hardware repair, ITIL, or AV gear.
+- **Primary positioning:** Software Engineer
+- **Core Narrative:** Software engineer based in Singapore building Unity games, interactive systems, and software tooling. Works across game mechanics, C# architecture, and Python/TDD developer tooling, with XR & immersive VR turning out to be what he excels at most.
+- **Target Roles:** Software Engineer, Junior Backend / C# / Java Developer, Unity / XR Developer, Systems Developer.
+- **Background:** Fresh graduate with one year of technical engineering experience at SP CEMS (Methanol Bunkering VR research). Singapore Polytechnic IT Diploma, 2026. S-Pass eligible.
+- **Typography Rule:** Never use em dashes (`—`) anywhere in code, markdown, comments, or documentation. Use standard hyphens (`-`), en dashes (`–`), colons (`:`), or pipes (`|`).
 - Canonical résumé content lives in two `.docx` lanes (Desktop Support, Software QA) in the
   user's local files; the site copy is derived from them. The OG image
   (`scripts/generate-og.mjs`) bakes this positioning too - keep it in sync and regenerate

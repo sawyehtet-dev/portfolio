@@ -2,14 +2,14 @@
 // Kept in sync with Saw_Ye_Htet_Unity_VR_Developer_Resume.pdf.
 export const PROFILE = {
     name: 'Saw Ye Htet',
-    role: 'Unity / XR Developer',
-    focus: 'Immersive VR Training · Bare-Hand Tracking · C# Interaction Systems',
+    role: 'Software Engineer',
+    focus: 'Unity & Game Development · Specialized in XR Systems & Immersive VR',
     education: 'Diploma in Information Technology, Singapore Polytechnic (2023–2026)',
     email: 'sawyehtet.dev@gmail.com',
     resumePath: '/resume/Saw_Ye_Htet_Unity_VR_Developer_Resume.pdf',
-    availability: 'Singapore (S Pass eligible) · Available Immediately',
+    availability: 'S Pass Eligible · Available Immediately',
     location: 'Singapore / Remote-friendly',
-    primaryStack: ['Unity (C#)', 'Meta Quest', 'Hand Tracking', 'XR Interaction Toolkit', 'OpenXR'],
+    primaryStack: ['C#', 'Unity', 'Java', 'Python', 'OpenXR', 'SQL'],
 };
 
 export const SOCIAL_LINKS = [

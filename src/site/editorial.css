@@ -54,7 +54,7 @@ body:has(.ed) {
     --gutter: clamp(16px, 4vw, 36px);
 
     /* ---- typography ---- */
-    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --sans: 'Adwaita Sans', 'Inter', system-ui, -apple-system, sans-serif;
     --mono: 'Adwaita Mono', 'JetBrains Mono', monospace;
 
     position: relative;
@@ -1058,6 +1058,46 @@ body:has(.ed) {
 }
 .ed-footer-link:hover {
     text-decoration: underline;
+}
+
+/* ============================================================
+   THEME TOGGLE & CODE ACCORDION
+   ============================================================ */
+
+.ed-code-accordion {
+    margin-top: 16px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--paper-subtle);
+    overflow: hidden;
+}
+
+.ed-code-summary {
+    padding: 10px 14px;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.ed-code-summary:hover {
+    background: var(--paper-card);
+}
+
+.ed-code-block {
+    padding: 14px;
+    margin: 0;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    background: #0d1117;
+    color: #e6edf3;
+    overflow-x: auto;
+    border-top: 1px solid var(--line);
 }
 
 .ed-footer-bar {

@@ -14,7 +14,7 @@ export function Footer() {
                         <span className="dot">.</span>
                     </p>
                     <p className="ed-footer-tag">
-                        Unity / XR Developer based in Singapore. Built with React &amp; TypeScript.
+                        Software Engineer based in Singapore. Built with React &amp; TypeScript.
                     </p>
                 </div>
 
