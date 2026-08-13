@@ -33,8 +33,8 @@ export function Resume() {
                         <span className="ed-meta-val">{PROFILE.education}</span>
                     </div>
                     <div className="ed-meta-item">
-                        <span className="ed-meta-label">Target Roles</span>
-                        <span className="ed-meta-val">{PROFILE.roleTarget}</span>
+                        <span className="ed-meta-label">Specialization</span>
+                        <span className="ed-meta-val">{PROFILE.focus}</span>
                     </div>
                     <div className="ed-meta-item">
                         <span className="ed-meta-label">Location &amp; Status</span>

@@ -22,9 +22,9 @@ function Hero() {
 
             <div className="ed-hero-body">
                 <p className="ed-hero-summary">
-                    Unity / XR developer based in Singapore with ~11 months of experience building
-                    and deploying interactive VR training scenarios for the Centre of Excellence in
-                    Maritime Safety.
+                    Unity / XR developer based in Singapore building performance-critical VR training
+                    systems and bare-hand interaction mechanics. Specializing in OpenXR, C# architecture,
+                    and Meta Quest optimization.
                 </p>
 
                 <div className="ed-hero-actions">
@@ -51,7 +51,7 @@ export function WorkPage() {
             <title>Saw Ye Htet - Unity / XR Developer</title>
             <meta
                 name="description"
-                content="Unity & XR Developer in Singapore specializing in Meta Quest, bare-hand tracking, C# interaction systems, and immersive training. S Pass sponsorship required."
+                content="Unity & XR Developer in Singapore specializing in Meta Quest, bare-hand tracking, C# interaction systems, and immersive training."
             />
             <Nav />
             <main id="main-content">
