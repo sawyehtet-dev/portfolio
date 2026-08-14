@@ -1,6 +1,5 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { PROFILE } from '../config/profile';
-import { hasPublishedPosts } from './blog/posts';
 
 export function Nav() {
     return (
@@ -25,16 +24,6 @@ export function Nav() {
                     <a className="ed-nav-link" href="/#contact">
                         Contact
                     </a>
-                    {hasPublishedPosts && (
-                        <>
-                            <NavLink className="ed-nav-link" to="/writing">
-                                Writing
-                            </NavLink>
-                            <a className="ed-nav-link" href="/rss.xml" title="RSS feed">
-                                RSS
-                            </a>
-                        </>
-                    )}
                 </nav>
             </div>
         </header>

@@ -1,16 +1,15 @@
 {
     "name": "sawyehtet-com",
     "version": "3.0.0",
-    "description": "Personal site of Saw Ye Htet: an editorial portfolio and writing feed built with React, TypeScript, and Vite.",
+    "description": "Personal site of Saw Ye Htet: an editorial portfolio built with React, TypeScript, and Vite.",
     "type": "module",
     "main": "index.html",
     "scripts": {
         "dev": "vite",
-        "build": "npm run typecheck && npm run generate:feeds && vite build && npm run generate:meta && npm run build:ssr && npm run prerender",
+        "build": "npm run typecheck && npm run generate:sitemap && vite build && npm run build:ssr && npm run prerender",
         "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist-ssr",
         "prerender": "node scripts/prerender.mjs",
-        "generate:feeds": "node scripts/generate-feeds.mjs",
-        "generate:meta": "node scripts/generate-meta.mjs",
+        "generate:sitemap": "node scripts/generate-sitemap.mjs",
         "preview": "vite preview",
         "lint": "eslint \"src/**/*.{ts,tsx}\"",
         "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
@@ -59,8 +58,6 @@
     "dependencies": {
         "react": "^19.2.7",
         "react-dom": "^19.2.7",
-        "react-markdown": "^10.1.0",
-        "react-router-dom": "^7.18.2",
-        "remark-gfm": "^4.0.1"
+        "react-router-dom": "^7.18.2"
     }
 }

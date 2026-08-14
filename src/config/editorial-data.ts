@@ -49,18 +49,18 @@ export const PROJECTS: Project[] = [
     },
     {
         id: 'jewelry-robbery-vr',
-        title: 'Bare-Hand Gesture Interaction Mechanics (Meta Quest VR)',
+        title: 'Jewelry Shop Robbery VR (bHaptics Gloves & Hand Tracking)',
         role: 'Unity VR Developer',
         summary:
-            'Controller-free VR prototype built for Meta Quest exploring bare-hand tracking and gesture physics.',
-        context: 'Independent VR project focused on controller-free interaction (2025)',
+            'Immersive VR heist game built for Meta Quest featuring bHaptics haptic feedback gloves and hand tracking mechanics.',
+        context: 'Independent VR project focused on haptic feedback & hand tracking (2025)',
         whatIBuilt:
-            'Implemented custom gesture recognition mechanics, physics-based grab affordances, and spatial audio feedback in C# using the Meta XR SDK without physical controllers.',
+            'Integrated bHaptics haptic gloves SDK and Meta Quest hand tracking in C#, mapping custom tactile feedback profiles, gesture grab affordances, and spatial audio to physical heist interactions.',
         technicalDecisions:
-            'Added velocity smoothing filters and intentional dwell thresholds to eliminate false-positive pinch triggers during fast hand movements.',
-        tools: ['Unity 3D', 'C#', 'Meta XR SDK', 'Hand Tracking', 'Meta Quest'],
+            'Calibrated per-finger actuation profiles and velocity thresholds to differentiate delicate object grasping from high-impact physical interactions like glass shattering.',
+        tools: ['Unity 3D', 'C#', 'bHaptics SDK', 'Meta Quest', 'Hand Tracking', 'Haptic Feedback'],
         outcome:
-            'Delivered a responsive controller-free build running at a stable 72/90 FPS with predictable physics handling.',
+            'Delivered a responsive APK build for Meta Quest running at a stable 72/90 FPS with synchronized tactile haptic responses.',
         videoPreview: '/images/projects/jewelry-robbery-preview.mp4',
         links: [
             {
@@ -95,27 +95,6 @@ export const PROJECTS: Project[] = [
             },
         ],
     },
-    {
-        id: 'web-platform',
-        title: 'Modern Web Architecture & Editorial Platform',
-        role: 'Frontend & Web Developer',
-        summary:
-            'Lightweight, SSR-prerendered personal web platform built with React 19, TypeScript, and a vanilla CSS design system.',
-        context: 'Independent web engineering project (2026)',
-        whatIBuilt:
-            'Built a lightweight single-page web app with Node-based static SSR prerendering for instant first paint, responsive typography, semantic accessibility, and native HTML constraint validation.',
-        technicalDecisions:
-            'Built without heavy UI or validation libraries to keep the total client bundle under 25 kB while maintaining 100/100 Lighthouse performance.',
-        tools: ['React 19', 'TypeScript', 'Vite', 'Vanilla CSS', 'SSR Prerender', 'Vitest', 'GitHub Actions'],
-        outcome:
-            'Delivered zero-layout-shift rendering, deterministic build-time feed and sitemap generation, and clean CI test gates.',
-        links: [
-            {
-                label: 'View on GitHub',
-                href: 'https://github.com/sawyehtet-dev/portfolio',
-            },
-        ],
-    },
 ];
 
 export const SKILLS: SkillGroup[] = [
@@ -139,6 +118,7 @@ export const SKILLS: SkillGroup[] = [
             'C#',
             'XR Interaction Toolkit',
             'OpenXR',
+            'bHaptics SDK',
             'Meta Quest',
             'Hand Tracking',
             'HMD Deployment',
@@ -160,4 +140,3 @@ export const SKILLS: SkillGroup[] = [
         ],
     },
 ];
-

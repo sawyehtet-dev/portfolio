@@ -25,7 +25,9 @@ export function Work() {
                                                 key={link.href}
                                                 className="ed-text-link"
                                                 href={link.href}
-                                                target={isExternal(link.href) ? '_blank' : undefined}
+                                                target={
+                                                    isExternal(link.href) ? '_blank' : undefined
+                                                }
                                                 rel={
                                                     isExternal(link.href)
                                                         ? 'noopener noreferrer'
@@ -74,7 +76,9 @@ export function Work() {
                                     {project.technicalDecisions && (
                                         <>
                                             <h4 className="ed-field-label">Technical Decisions</h4>
-                                            <p className="ed-field-text">{project.technicalDecisions}</p>
+                                            <p className="ed-field-text">
+                                                {project.technicalDecisions}
+                                            </p>
                                         </>
                                     )}
                                 </div>
@@ -90,8 +94,6 @@ export function Work() {
                                     )}
                                 </div>
                             </div>
-
-
 
                             <div className="ed-case-tools">
                                 <span className="ed-tools-label">Tools:</span>

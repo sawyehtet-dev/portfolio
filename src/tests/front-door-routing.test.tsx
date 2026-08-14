@@ -16,13 +16,23 @@ describe('Front-door routing', () => {
         renderAppAt('/');
 
         expect(await screen.findByText(/PORTFOLIO · SINGAPORE/)).toBeInTheDocument();
-        expect(screen.queryByText(/Writing · Singapore/)).not.toBeInTheDocument();
     });
 
-    it('serves the writing feed (masthead) at /writing', async () => {
+    it('redirects /writing to /', async () => {
         renderAppAt('/writing');
 
-        expect(await screen.findByText(/Writing · Singapore/)).toBeInTheDocument();
-        expect(screen.queryByText(/PORTFOLIO · SINGAPORE/)).not.toBeInTheDocument();
+        expect(await screen.findByText(/PORTFOLIO · SINGAPORE/)).toBeInTheDocument();
+    });
+
+    it('redirects /work to /', async () => {
+        renderAppAt('/work');
+
+        expect(await screen.findByText(/PORTFOLIO · SINGAPORE/)).toBeInTheDocument();
+    });
+
+    it('redirects /blog to /', async () => {
+        renderAppAt('/blog');
+
+        expect(await screen.findByText(/PORTFOLIO · SINGAPORE/)).toBeInTheDocument();
     });
 });

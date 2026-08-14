@@ -2,30 +2,21 @@
 
 > Quick-reference for any AI assistant or new contributor working on this codebase.
 
-## ⚡ Current architecture (read first)
+## Current architecture (read first)
 
 This is a **single portfolio site** in the Editorial / Swiss style: big display type,
 strict grid, hairline structure, one signal-red accent, a warm "paper" light theme, and
-self-hosted Adwaita Sans/Mono. There is no desktop simulation - it was removed; everything
-lives in `src/site/`.
+self-hosted Adwaita Sans/Mono. Everything lives in `src/site/`.
 
 - **Front door (`/`) is the portfolio** (`src/site/WorkPage.tsx`), a single page:
-  Hero · **Stats ribbon** · About · Experience · **Testimonial** · Projects · Skills ·
-  Résumé · Contact · **Writing**. Section heads are unnumbered; Stats and Testimonial
-  are ribbons, and Testimonial renders nothing while `TESTIMONIALS` is empty. The
-  Writing section surfaces the three newest posts and links out to the feed.
-- **Writing feed at `/writing`** (`src/site/Home.tsx`): a compact masthead (name ·
-  tagline · intro · link back to the portfolio) over the newest-first list of posts.
-- **Posts render at clean root slugs** (`/<slug>`, e.g. `/my-post`),
-  `src/site/BlogPost.tsx`. (No posts are published right now - the only published
-  essay was removed; `first-post.md` is a draft, so the feed shows its empty state.)
+  Hero, Selected Work, Experience, Skills, Resume, Contact, and Footer.
+- Legacy routes (`/work`, `/writing`, `/blog`, `/blog/*`) 301-redirect to `/`.
 
 Styles live in `src/site/editorial.css` (scoped under `.ed`, self-contained: it declares
 its own `@font-face` for the subset fonts and depends on no token system). Portfolio
-content comes from `src/config/editorial-data.ts` + `src/config/profile.ts`; posts are
-Markdown in `src/site/blog/posts/*.md` (loader: `src/site/blog/posts.ts`).
+content comes from `src/config/editorial-data.ts` + `src/config/profile.ts`.
 
-## 🎯 Positioning (content rule - do not drift)
+## Positioning (content rule - do not drift)
 
 This site positions Saw Ye Htet as a **Software Engineer specializing in Full-Stack Web Development, Unity Game/XR Systems, and Software Tooling**.
 
@@ -34,143 +25,81 @@ This site positions Saw Ye Htet as a **Software Engineer specializing in Full-St
 - **Target Roles:** Software Engineer, Full-Stack / Backend / Java / Web Developer, Unity / XR Developer, Systems Developer.
 - **Background:** Fresh graduate with one year of technical engineering experience at SP CEMS (Methanol Bunkering VR research). Singapore Polytechnic IT Diploma, 2026. S-Pass eligible.
 - **Typography Rule:** Never use em dashes (`—`) anywhere in code, markdown, comments, or documentation. Use standard hyphens (`-`), en dashes (`–`), colons (`:`), or pipes (`|`).
-- Canonical résumé content lives in two `.docx` lanes (Desktop Support, Software QA) in the
-  user's local files; the site copy is derived from them. The OG image
-  (`scripts/generate-og.mjs`) bakes this positioning too - keep it in sync and regenerate
-  with `npm run generate:og` when the headline/role copy changes.
+- The OG image (`scripts/generate-og.mjs`) bakes this positioning too: keep it in sync and regenerate with `npm run generate:og` when the headline/role copy changes.
 
 ## Stack & Key Dependencies
 
-| Layer     | Technology                                    | Version | Notes                                                                                                                                   |
-| --------- | --------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| Framework | React                                         | 19      | StrictMode enabled                                                                                                                      |
-| Language  | TypeScript                                    | 5       | Strict, `noEmit`, bundler module resolution                                                                                             |
-| Bundler   | Vite                                          | 8       | Dev on `:3000`, builds to `dist/`                                                                                                       |
-| Styling   | Vanilla CSS                                   | -       | `src/site/editorial.css`, scoped under `.ed`. No Tailwind, no CSS-in-JS                                                                 |
-| Routing   | React Router DOM                              | 7       | BrowserRouter. `/` (portfolio), `/writing` (feed), `/:slug` (posts); `/work`→`/`, `/blog`→`/writing`, `/blog/:slug`→`/:slug`; `*` → 404 |
-| Forms     | None - plain React state                      | -       | The `/` Contact section validates in ~20 lines against HTML constraints. React Hook Form, Zod, and `@hookform/resolvers` were removed   |
-| Markdown  | react-markdown + remark-gfm                   | 10 / 4  | Renders posts; rides with the lazy `BlogPost` chunk                                                                                     |
-| Fonts     | Adwaita Sans/Mono (self-hosted WOFF2, subset) | -       | Self-hosted in `public/fonts/` with SIL license. **No external font requests**                                                          |
-| Testing   | Vitest + Testing Library + jsdom              | 4 / 16  | `vmForks` pool, globals enabled                                                                                                         |
-| Linting   | ESLint flat config + Prettier                 | 9 / 3   | 4-space indent, single quotes, trailing comma es5                                                                                       |
-| Analytics | Plausible                                     | -       | Script tag in index.html, domain `sawyehtet.com`                                                                                        |
-| Deploy    | Netlify                                       | -       | Build: `npm run build`, publish: `dist/`; SPA rewrite + 301s; RSS + sitemap + per-route head shells at build                            |
-| PWA       | Service worker (`public/sw.js`) + manifest    | -       | Per-build cache version (`__BUILD_HASH__`); registered in `main.tsx` (prod) / unregistered (dev)                                        |
+| Layer     | Technology                                    | Version | Notes                                                                                                   |
+| --------- | --------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------- |
+| Framework | React                                         | 19      | StrictMode enabled                                                                                      |
+| Language  | TypeScript                                    | 5       | Strict, `noEmit`, bundler module resolution                                                             |
+| Bundler   | Vite                                          | 8       | Dev on `:3000`, builds to `dist/`                                                                       |
+| Styling   | Vanilla CSS                                   | -       | `src/site/editorial.css`, scoped under `.ed`. No Tailwind, no CSS-in-JS                                 |
+| Routing   | React Router DOM                              | 7       | BrowserRouter. `/` (portfolio), `/work`->`/`, `/writing`->`/`, `/blog`->`/`; `*` -> 404                 |
+| Forms     | None - plain React state                      | -       | The `/` Contact section validates in ~20 lines against HTML constraints. No heavy third-party libraries |
+| Fonts     | Adwaita Sans/Mono (self-hosted WOFF2, subset) | -       | Self-hosted in `public/fonts/` with SIL license. **No external font requests**                          |
+| Testing   | Vitest + Testing Library + jsdom              | 4 / 16  | `vmForks` pool, globals enabled                                                                         |
+| Linting   | ESLint flat config + Prettier                 | 9 / 3   | 4-space indent, single quotes, trailing comma es5                                                       |
+| Analytics | Plausible                                     | -       | Script tag in index.html, domain `sawyehtet.com`                                                        |
+| Deploy    | Netlify                                       | -       | Build: `npm run build`, publish: `dist/`; SPA rewrite + 301s; sitemap + SSR prerender at build          |
+| PWA       | Service worker (`public/sw.js`) + manifest    | -       | Per-build cache version (`__BUILD_HASH__`); registered in `main.tsx` (prod) / unregistered (dev)        |
 
 ## Entry Point & Routing
 
 ```
-index.html                       ← Vite HTML entry, loads /src/main.tsx
-  └─ src/main.tsx                ← ReactDOM.createRoot; registers the service worker
-       └─ src/App.tsx            ← ErrorBoundary + BrowserRouter + ScrollToTop + Routes
-            ├─ /                 → WorkPage   (src/site/, the portfolio - EAGER)
-            ├─ /writing          → Home       (lazy, the writing feed)
-            ├─ /work             → Navigate → /        (redirect)
-            ├─ /blog             → Navigate → /writing (legacy redirect)
-            ├─ /blog/:slug       → Navigate → /:slug   (legacy redirect via BlogRedirect)
-            ├─ /:slug            → BlogPost   (lazy; unknown/draft slug → not-found)
-            └─ *                 → NotFound   (lazy, editorial 404)
+index.html                       <- Vite HTML entry, loads /src/main.tsx
+  └─ src/main.tsx                <- ReactDOM.createRoot; registers the service worker
+       └─ src/App.tsx            <- ErrorBoundary + BrowserRouter + ScrollToTop + Routes
+            ├─ /                 -> WorkPage (src/site/, the portfolio - EAGER)
+            ├─ /work             -> Navigate -> /
+            ├─ /writing          -> Navigate -> /
+            ├─ /blog             -> Navigate -> /
+            ├─ /blog/*           -> Navigate -> /
+            └─ *                 -> NotFound (lazy, editorial 404)
 ```
 
-`WorkPage` is eager (the front door); `Home`, `BlogPost`, and `NotFound` are
-`React.lazy`-loaded inside a `Suspense` boundary. The portfolio's `Contact` section is
-_itself_ lazy (a local `Suspense` inside `WorkPage`) so its markup stays off the initial
-bundle; `react-markdown` rides with `BlogPost`.
-
-An unknown `/:slug` is a **mistyped page far more often than a missing post**, so
-`BlogPost` renders `<NotFound />` on a miss rather than its own "that post doesn't exist"
-copy. There is one 404 component in the codebase.
-
-**No context providers.** `App.tsx` is just `ErrorBoundary` → `BrowserRouter` →
-`ScrollToTop` → `Routes`. The editorial site is theme-independent (light only) and uses no
-global state, so there is no theme bootstrap and no `data-theme` handling.
+`WorkPage` is eager (the front door); `NotFound` is `React.lazy`-loaded inside a `Suspense` boundary. The portfolio's `Contact` section is _itself_ lazy (a local `Suspense` inside `WorkPage`) so its markup stays off the initial bundle.
 
 ## Project Layout
 
 ```
 src/
-  main.tsx               ← createRoot, SW register/unregister, axe in dev
-  App.tsx                ← router + routes (no providers)
-  site/                  ← THE SITE
-    WorkPage.tsx         ← front-door portfolio (Hero/About defined inline here)
-    Home.tsx             ← /writing feed (masthead + post list)
-    BlogPost.tsx         ← a published post (react-markdown)
-    NotFound.tsx         ← editorial 404 (catch-all route)
+  main.tsx               <- createRoot, SW register/unregister, axe in dev
+  App.tsx                <- router + routes (no providers)
+  site/                  <- THE SITE
+    WorkPage.tsx         <- front-door portfolio (Hero defined inline here)
+    NotFound.tsx         <- editorial 404 (catch-all route)
     Nav.tsx
-    editorial.css        ← the entire design system, scoped .ed, self-contained
-    sections/            ← Stats, Experience, Testimonial, Work (projects), Skills,
-                           Resume, Contact (lazy), Writing, Footer
-    blog/
-      posts.ts           ← Vite Markdown loader (frontmatter + reading time)
-      posts/*.md         ← the posts
+    editorial.css        <- the entire design system, scoped .ed, self-contained
+    sections/            <- Experience, Work (projects), Skills, Resume, Contact (lazy), Footer
   config/
-    editorial-data.ts    ← PROJECTS, EXPERIENCE, STATS, TESTIMONIALS, SKILL_LANES,
-                           SKILL_BANDS
-    profile.ts           ← PROFILE (name, role, email, resume paths) + SOCIAL_LINKS
-  types/index.ts         ← front-door content types (Project, ExperienceItem, StatItem,
-                           Testimonial, ProjectLink). Every field is rendered - keep it
-                           that way
+    editorial-data.ts    <- PROJECTS, EXPERIENCE, SKILLS
+    profile.ts           <- PROFILE (name, role, email, resume paths) + SOCIAL_LINKS
+  types/index.ts         <- front-door content types (Project, ExperienceItem, SkillGroup, etc.)
   components/
-    ErrorBoundary.tsx    ← the only remaining component; generic, wraps the router in App
-  tests/                 ← see Tests below
+    ErrorBoundary.tsx    <- generic error boundary, wraps the router in App
+  tests/                 <- Vitest test suites
 ```
 
 ## Data & Config
 
 - **`src/config/editorial-data.ts`** - the single source of truth for portfolio content:
-    - `PROJECTS` (`Project[]`) - title, role, one-line `summary`, problem/solution/impact
-      narrative, `platform`, `facts` (the spec list), `links`.
+    - `PROJECTS` (`Project[]`) - title, role, summary, key engineering narrative, technical decisions, tools, outcome, video preview, links.
     - `EXPERIENCE` (`ExperienceItem[]`) - org, role, period, bullets, stack.
-    - `STATS` (`StatItem[]`) - the hero ribbon's headline figures (each is something already
-      evidenced elsewhere on the page).
-    - `TESTIMONIALS` (`Testimonial[]`) - references. **Empty renders nothing**, so a
-      placeholder never ships; add only real, attributed quotes.
-    - `SKILL_LANES` / `SKILL_BANDS` - the Skills section's two shapes: the target roles
-      side by side, then the tools/coursework rows. Lane claims are running text, **not**
-      chips.
-- **`src/config/profile.ts`** - `PROFILE` (name, role, taglines, email, resume path,
-  availability, location) and `SOCIAL_LINKS`.
-- **Posts** - Markdown in `src/site/blog/posts/*.md`. `src/site/blog/posts.ts` parses
-  frontmatter, computes reading time, and exposes `PUBLISHED_POSTS` / `FEATURED_POSTS`.
-  `scripts/lib/posts.mjs` is a standalone Node mirror used by the feed/meta scripts - keep
-  its frontmatter parser in sync with `posts.ts`.
+    - `SKILLS` (`SkillGroup[]`) - categorized skill groups (Web & Backend, Game & XR Development, Languages, Engineering & Tools).
+- **`src/config/profile.ts`** - `PROFILE` (name, role, taglines, email, resume path, availability, location) and `SOCIAL_LINKS`.
 
 ## Build & Deploy
 
-- **Build:** `npm run build` → typecheck → `scripts/generate-feeds.mjs` → `vite build` →
-  `scripts/generate-meta.mjs` → `build:ssr` (`vite build --ssr src/entry-server.tsx` →
-  `dist-ssr/`) → `scripts/prerender.mjs`. Manual chunks (eager vendors ONLY):
+- **Build:** `npm run build` -> typecheck -> `scripts/generate-sitemap.mjs` -> `vite build` -> `build:ssr` (`vite build --ssr src/entry-server.tsx` -> `dist-ssr/`) -> `scripts/prerender.mjs`.
+- **Manual chunks (eager vendors ONLY):**
     - `vendor-react` (react, react-dom, scheduler)
     - `vendor-router` (react-router)
-    - react-markdown (BlogPost) is intentionally unlisted; Rolldown hoists manual chunks
-      into the entry's static imports, so naming a lazy-only vendor there would
-      modulepreload code the front door does not need. It rides with its lazy importer.
 - **Multi-page:** Vite builds `index.html` and `offline.html` as entries.
-- **Feeds:** `scripts/generate-feeds.mjs` writes `public/rss.xml` + `public/sitemap.xml`
-  (committed, deterministic, served in dev too).
-- **Head shells:** `scripts/generate-meta.mjs` (post-build) copies `dist/index.html` to
-  `dist/<route>/index.html` for `/writing` and every published post, rewriting title,
-  description, OG/Twitter, and canonical per route so social crawlers (which don't run JS)
-  see the right card. Shell titles must match what the React components set at runtime; it
-  throws if `index.html`'s head shape drifts.
-- **Homepage prerender:** `scripts/prerender.mjs` (post-build, AFTER generate-meta) renders
-  `WorkPage` to static markup via `src/entry-server.tsx` (compiled to `dist-ssr/` by
-  `build:ssr`) and injects it into `dist/index.html`'s `#root`, so non-JS crawlers/scrapers
-  get the real front-door body (head/OG/JSON-LD already carry the positioning; this fills
-  the body). Pure Node `react-dom/server` - no headless browser, so it stays Netlify-safe.
-  Runs after generate-meta so the per-route head shells keep their empty-root bodies; only
-  `/` is prerendered. It strips React's hoisted `<title>`/`<meta>`/`<link>` hints from the
-  fragment (the head owns those, and the head's image `prefetch` is deliberately
-  low-priority). The client boots with `createRoot`, which replaces the markup on mount, so
-  there is no hydration step to mismatch.
-- **Netlify** (`netlify.toml`): publish `dist/`. SPA catch-all `/*` → `/index.html`
-  (status 200); `/work` → `/`, legacy `/blog` → `/writing` and `/blog/*` → `/:splat` are
-  **301 redirects**. Static files (offline.html, assets, head shells) are served
-  before redirects, so shells win over the SPA catch-all.
-- **PWA:** `main.tsx` registers `public/sw.js` in production and unregisters stale workers
-  in dev. Cache-first for `/assets/` + `/fonts/`, stale-while-revalidate for other statics,
-  network-first HTML with `offline.html` fallback. Cache version is per-build
-  (`__BUILD_HASH__` injected by `vite.config.js`).
+- **Sitemap:** `scripts/generate-sitemap.mjs` writes `public/sitemap.xml`.
+- **Homepage prerender:** `scripts/prerender.mjs` renders `WorkPage` to static markup via `src/entry-server.tsx` (compiled to `dist-ssr/` by `build:ssr`) and injects it into `dist/index.html`'s `#root`, so non-JS crawlers get the real front-door body.
+- **Netlify** (`netlify.toml`): publish `dist/`. SPA catch-all `/*` -> `/index.html` (status 200); `/work`, `/writing`, `/blog` are 301 redirects to `/`.
+- **PWA:** `main.tsx` registers `public/sw.js` in production and unregisters stale workers in dev.
 
 ## Scripts Reference
 
@@ -181,112 +110,34 @@ npm run lint:fix
 npm run typecheck        # tsc --noEmit
 npm run test             # Vitest run (single pass)
 npm run test:watch
-npm run validate         # lint → typecheck → test (full CI gate)
+npm run validate         # lint -> typecheck -> test (full CI gate)
 npm run format           # Prettier write
 npm run format:check
-npm run build            # typecheck → feeds → vite build → meta → build:ssr → prerender → dist/
+npm run build            # typecheck -> sitemap -> vite build -> build:ssr -> prerender -> dist/
 npm run preview          # Serve dist/ locally
-npm run build:ssr        # Compile src/entry-server.tsx → dist-ssr/ (runs in build)
+npm run build:ssr        # Compile src/entry-server.tsx -> dist-ssr/ (runs in build)
 npm run prerender        # Inject prerendered homepage body into dist/index.html (runs in build)
 npm run generate:og      # Puppeteer script to regenerate the OG preview image
-npm run generate:feeds   # public/rss.xml + public/sitemap.xml (runs in build)
-npm run generate:meta    # dist/<route>/index.html head shells (runs in build, needs dist/)
+npm run generate:sitemap # public/sitemap.xml (runs in build)
 ```
 
 ## Tests
 
-- **`src/tests/front-door-routing.test.tsx`** - renders the real `<App>` and asserts the
-  portfolio hero at `/` and the writing-feed masthead at `/writing`. Guards the routing.
-- **`src/tests/error-boundary.test.tsx`** - crash screen, error logging, and pass-through
-  when nothing throws. `ErrorBoundary` takes only `children` now: the second "window
-  level" render branch and its `appId` prop were desktop-sim leftovers that only the
-  tests still exercised.
-- **`src/tests/frontmatter-parity.test.tsx`** - runs the same fixtures through the app
-  parser (`src/site/blog/posts.ts`) and the Node mirror (`scripts/lib/posts.mjs`) and
-  fails if they disagree. **This is the guard that makes the duplication safe** - without
-  it, drift silently gives RSS/sitemap/head-shells a different view of the posts than the
-  pages render, at build time, with no error. Both files export `parseFrontmatter` and
-  `parseTags` solely for this test.
-- **`src/tests/contact-form.test.tsx`** - validation (empty, whitespace-only, bad email,
-  short message), the trimmed POST body, success/failure/network-error states, the
-  honeypot drop, and the live character counter.
-- **Setup** (`src/tests/setup.ts`): imports `@testing-library/jest-dom`, nothing else.
+- **`src/tests/front-door-routing.test.tsx`** - asserts the portfolio hero at `/` and redirects from `/writing`, `/work`, `/blog`.
+- **`src/tests/error-boundary.test.tsx`** - crash screen, error logging, and pass-through when nothing throws.
+- **`src/tests/contact-form.test.tsx`** - validation (empty, whitespace-only, bad email, short message), trimmed POST body, success/failure states, honeypot drop, and live character counter.
+- **Setup** (`src/tests/setup.ts`): imports `@testing-library/jest-dom`.
 - **Environment:** jsdom with `vmForks` pool.
 
 ## Conventions & Non-Obvious Details
 
-1. **No em dashes anywhere** in the project - use a spaced hyphen or restructure.
-2. **`editorial.css` is the whole design system** - scoped `.ed`, self-contained, declares
-   its own subset `@font-face`. Add new sections with the existing `ed-*` vocabulary
-   (`ed-section`, `ed-container`, `ed-section-head`, `ed-chip`, hairline `--line` borders,
-   the single `--accent`). Section heads are unnumbered; `ed-section-num` survives only
-   as the 404 page's "404" label.
-3. **Contact form** - plain `useState` plus a ~20-line `validate()`, POSTing to Formspree
-   via native `fetch()`. Inputs carry the real HTML constraints (`required`, `type=email`,
-   `maxlength`) for autofill and mobile keyboards; `validate()` re-checks on **trimmed**
-   values so a field of spaces fails like an empty one. Includes an off-screen honeypot
-   (`website_url`, positioned off-screen, NOT `display:none`, because bots detect that).
-   Do not reintroduce a form/validation library for three fields. **The Formspree
-   endpoint is hardcoded in `Contact.tsx` and there is no `.env`** - a form ID is public
-   by design (it ships in the bundle regardless), so the env var bought no secrecy and
-   the two copies drifted, leaving local dev posting to a dead form. One value, one place.
-4. **Self-hosted fonts** - `public/fonts/` holds ONLY the subset Adwaita Sans/Mono the site
-   loads, plus the SIL license. The full weights live in `assets-src/fonts/` (outside
-   `public/`, so they are never shipped to visitors) and exist solely for
-   `scripts/generate-og.mjs`, which inlines them as base64.
-5. **One 404, and it is `src/site/NotFound.tsx`.** A static `404.html` + `src/styles/404.css`
-   pair used to mirror it; both were deleted because the SPA catch-all
-   (`/* → /index.html 200`) meant Netlify never served them, and the two copies had
-   already drifted. Unknown paths get the React NotFound with HTTP 200 - a soft 404, the
-   standard SPA tradeoff, accepted deliberately.
+1. **No em dashes anywhere** in the project - use a standard hyphen, en dash, colon, or pipe.
+2. **`editorial.css` is the whole design system** - scoped `.ed`, self-contained, declares its own subset `@font-face`.
+3. **Contact form** - plain `useState` plus a ~20-line `validate()`, POSTing to Formspree via native `fetch()`. Includes an off-screen honeypot (`website_url`).
+4. **Self-hosted fonts** - `public/fonts/` holds ONLY the subset Adwaita Sans/Mono the site loads. Full weights live in `assets-src/fonts/` for OG generation.
+5. **One 404, and it is `src/site/NotFound.tsx`.**
 6. **`google0e39a960e13ab711.html`** - Google Search Console verification. Do not delete.
-7. **There is no `docs/`.** It held ~1,250 lines of GNOME HIG / libadwaita / design-token
-   reference for the deleted desktop simulation, opening "this portfolio is judged as a
-   desktop simulation" and citing a `src/styles/adwaita-tokens.css` that no longer exists.
-   Deleted as actively misleading. This file is the only architecture doc.
-8. **The writing surface hides itself while empty.** With zero published posts, the Nav
-   drops both the Writing and RSS links, the front-door Writing section renders nothing,
-   and `generate-feeds.mjs` omits `/writing` from the sitemap. All four gate on the same
-   `hasPublishedPosts` / `posts.length` check, and all four come back on their own the
-   moment a post ships. This is deliberate: pointing a recruiter at a page reading "no
-   posts published yet" costs more than the missing link does. `/writing` still routes.
-9. **No pre-React splash in `index.html`.** `scripts/prerender.mjs` bakes the real
-   homepage into `#root`, so the first paint is already the page. The old `#static-shell`
-   overlay covered that prerendered markup and was removed. Don't add one back.
-10. **Images are palette-quantized.** The icons and OG card are 256-colour PNGs (flat
-    editorial art, so it is visually lossless at ~45-64 dB PSNR and roughly a third of the
-    bytes). `generate-og.mjs` re-applies this after each screenshot via ImageMagick, and
-    skips the step with a note if ImageMagick is missing.
-11. **`SOCIAL_LINKS` renders in exactly one place: the Contact section**, with handles,
-    beside the email and form. The footer links to `/#contact` rather than repeating the
-    list. Don't re-add a social list to the footer.
-12. **CI's security gate is `scripts/audit-ci.mjs`, not bare `npm audit`.** npm has no way
-    to ignore a single advisory, so one unfixable-but-inapplicable finding would otherwise
-    force the whole gate down to `--audit-level=critical`. The script fails on any
-    high/critical advisory except the GHSA ids in its `ALLOWED` map, and warns when an
-    entry stops matching so the list gets pruned. Currently one entry: react-router's
-    RSC-mode CSRF, which has **no patched release** (all of 7.12.0 - 8.2.0 is affected,
-    7.18.2 is latest) and does not apply here (no RSC APIs). **Do not "fix" it by
-    downgrading** - `npm audit fix --force` suggests 7.11.0, which carries 14 high
-    advisories including open redirect in `<Link>`/`useNavigate` and stored XSS in
-    prerendered redirect HTML, and this site prerenders. Every `ALLOWED` entry needs a
-    reason and an exit condition.
-
-## Prettier Config
-
-```json
-{
-    "semi": true,
-    "singleQuote": true,
-    "tabWidth": 4,
-    "trailingComma": "es5",
-    "printWidth": 100,
-    "bracketSpacing": true,
-    "arrowParens": "avoid",
-    "endOfLine": "lf"
-}
-```
-
-## Node Version
-
-Requires Node `^20.19.0 || >=22.12.0` (see `engines` in package.json). CI uses Node 22.
+7. **No pre-React splash in `index.html`.** `scripts/prerender.mjs` bakes the real homepage into `#root`.
+8. **Images are palette-quantized.**
+9. **`SOCIAL_LINKS` renders in the Contact section.** The footer links to `/#contact`.
+10. **CI security gate is `scripts/audit-ci.mjs`.**

@@ -73,12 +73,7 @@ export default defineConfig({
                     if (id.includes('node_modules/react-router')) {
                         return 'vendor-router';
                     }
-                    // Only EAGER vendors (react, router above) get manual chunks.
-                    // Rolldown hoists manual chunks into the entry's static
-                    // imports, so naming a lazy-only vendor here (react-markdown,
-                    // which only BlogPost needs) would make the front door
-                    // modulepreload it. Left to natural code splitting, it rides
-                    // with its lazy importer.
+                    // Only eager vendors (react, router above) get manual chunks.
                 },
             },
         },

@@ -9,12 +9,9 @@
  * src/entry-server.tsx, built to dist-ssr by `npm run build:ssr`) and injects it
  * into the root container so non-JS crawlers and link scrapers get real text.
  *
- * Runs LAST in the build, AFTER generate-meta: npm run build → tsc &&
- * generate-feeds && vite build && generate-meta && build:ssr && prerender.
- * generate-meta derives the per-route head shells from the empty-root
- * dist/index.html first, so /writing and post shells keep their own (empty)
- * bodies; only the homepage gets a prerendered body here. The client boots with
- * createRoot, which replaces this markup on mount - there is no hydration to
+ * Runs LAST in the build: npm run build -> tsc &&
+ * generate:sitemap && vite build && build:ssr && prerender.
+ * The client boots with createRoot, which replaces this markup on mount: there is no hydration to
  * mismatch.
  */
 

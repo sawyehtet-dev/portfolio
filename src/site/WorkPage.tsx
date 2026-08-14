@@ -6,7 +6,6 @@ import { Work } from './sections/Work';
 import { Experience } from './sections/Experience';
 import { Skills } from './sections/Skills';
 import { Resume } from './sections/Resume';
-import { Writing } from './sections/Writing';
 import { Footer } from './sections/Footer';
 
 const Contact = lazy(() => import('./sections/Contact').then(m => ({ default: m.Contact })));
@@ -24,8 +23,9 @@ function Hero() {
 
             <div className="ed-hero-body">
                 <p className="ed-hero-summary">
-                    Software engineer building full-stack web applications, Unity VR simulations, and developer tools.
-                    I focus on writing clear, testable code across TypeScript, Java, Python, and C#, with practical experience in real-time systems and OpenXR.
+                    Software engineer building full-stack web applications, Unity VR simulations,
+                    and developer tools. I focus on writing clear, testable code across TypeScript,
+                    Java, Python, and C#, with practical experience in real-time systems and OpenXR.
                 </p>
 
                 <div className="ed-hero-actions">
@@ -72,7 +72,6 @@ export function WorkPage() {
                 >
                     <Contact />
                 </Suspense>
-                <Writing />
             </main>
             <Footer />
         </div>

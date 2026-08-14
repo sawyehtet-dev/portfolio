@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import { Nav } from './Nav';
 import { Footer } from './sections/Footer';
 
-// The one editorial 404. Rendered by the catch-all route, and by BlogPost when a
-// /:slug miss turns out to be a mistyped page rather than a post.
+// The one editorial 404. Rendered by the catch-all route.
 export function NotFound() {
     return (
         <div className="ed">
@@ -17,11 +16,11 @@ export function NotFound() {
                         <h1 className="ed-section-title">Not found</h1>
                         <span className="ed-section-meta">No such page</span>
                     </div>
-                    <p className="ed-blog-empty">
-                        That page doesn&apos;t exist. Head to the <Link to="/">home page</Link> or
-                        browse the <Link to="/writing">writing</Link>.
+                    <p className="ed-notfound-text">
+                        That page doesn&apos;t exist. Head back to the <Link to="/">home page</Link>
+                        .
                     </p>
-                    <Link className="ed-blog-back" to="/">
+                    <Link className="ed-notfound-back" to="/">
                         ← Back home
                     </Link>
                 </section>

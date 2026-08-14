@@ -68,28 +68,32 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Moved/legacy URLs → new shapes. The portfolio is now the front door at /, and
-# the writing feed moved to /writing: /work → / (old portfolio route), /blog →
-# /writing, and /blog/:slug → the clean root slug /:slug. 301 so old links and
-# search results migrate cleanly. Must precede the SPA catch-all below.
+# Moved/legacy URLs -> root.
+# 301 so old links and search results migrate cleanly.
 [[redirects]]
   from = "/work"
   to = "/"
   status = 301
 
 [[redirects]]
+  from = "/writing"
+  to = "/"
+  status = 301
+
+[[redirects]]
   from = "/blog"
-  to = "/writing"
+  to = "/"
   status = 301
 
 [[redirects]]
   from = "/blog/*"
-  to = "/:splat"
+  to = "/"
   status = 301
 
-# SPA catch-all: client routes (/, /writing, /:slug) resolve to the app.
-# Static files (offline.html, assets, head shells) are served before this applies.
+# SPA catch-all: client routes resolve to the app.
+# Static files (offline.html, assets) are served before this applies.
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
