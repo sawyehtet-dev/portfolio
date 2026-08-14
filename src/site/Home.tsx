@@ -25,8 +25,8 @@ function Masthead() {
                 <span className="dot">.</span>
             </h1>
             <p className="ed-masthead-intro">
-                I build Unity VR experiences and software tools. These are notes on interaction
-                design, C#, testing, and what I&apos;m learning along the way.
+                I build web applications, Unity games, and developer tools. These are notes on
+                full-stack development, real-time systems, software architecture, and testing.
             </p>
             <Link className="ed-home-cta" to="/">
                 My experience and projects are on the <strong>home page</strong>
@@ -78,7 +78,7 @@ export function Home() {
             <title>Saw Ye Htet - Writing</title>
             <meta
                 name="description"
-                content="Writing by Saw Ye Htet - notes on Unity VR development, interactive C# systems, and software engineering. The portfolio lives on the home page."
+                content="Writing by Saw Ye Htet - notes on full-stack web development, Unity games, and software engineering. The portfolio lives on the home page."
             />
             <Nav />
             <main id="main-content">

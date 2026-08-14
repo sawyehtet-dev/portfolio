@@ -24,8 +24,8 @@ function Hero() {
 
             <div className="ed-hero-body">
                 <p className="ed-hero-summary">
-                    Software engineer based in Singapore building Unity games, interactive systems, and software tooling.
-                    I work across game mechanics and C# architecture, with XR &amp; immersive VR turning out to be what I do best.
+                    Software engineer building full-stack web applications, Unity VR simulations, and developer tools.
+                    I focus on writing clear, testable code across TypeScript, Java, Python, and C#, with practical experience in real-time systems and OpenXR.
                 </p>
 
                 <div className="ed-hero-actions">
@@ -52,7 +52,7 @@ export function WorkPage() {
             <title>Saw Ye Htet - Software Engineer</title>
             <meta
                 name="description"
-                content="Software Engineer in Singapore specializing in C# architecture, Unity VR simulation systems, and software tooling."
+                content="Software Engineer in Singapore building full-stack web applications, Unity game & VR systems, and developer tooling."
             />
             <Nav />
             <main id="main-content">

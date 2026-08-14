@@ -101,16 +101,16 @@ const html = /* html */ `<!DOCTYPE html>
     <div class="main">
       <div class="text">
         <h1 class="head">
-          <span>Unity VR</span>
-          <span class="accent">Developer</span>
+          <span>Software</span>
+          <span class="accent">Engineer</span>
         </h1>
         <p class="role">
-          <b>Unity VR Developer</b> - Meta Quest, bare-hand tracking, C# interaction systems, OpenXR, and immersive training.
+          <b>Software Engineer</b> - Modern web applications, Unity games, and developer tooling.
         </p>
       </div>
       <div class="specsheet">
-        <div class="srow"><span class="skey">Focus</span><span class="sval">Unity VR &amp; C# Systems</span></div>
-        <div class="srow"><span class="skey">Platform</span><span class="sval">Meta Quest &amp; OpenXR</span></div>
+        <div class="srow"><span class="skey">Focus</span><span class="sval">Web &amp; Game Development</span></div>
+        <div class="srow"><span class="skey">Stack</span><span class="sval">React · TypeScript · Unity · C#</span></div>
         <div class="srow"><span class="skey">Based</span><span class="sval">Singapore</span></div>
       </div>
     </div>
@@ -118,8 +118,8 @@ const html = /* html */ `<!DOCTYPE html>
     <div class="rule"></div>
     <div class="bottom">
       <div class="specs">
-        <span><b>Stack</b>Unity · C# · Quest · Hand Tracking</span>
-        <span><b>Status</b>S Pass Required</span>
+        <span><b>Core</b>React · TypeScript · Java · C# · Unity</span>
+        <span><b>Status</b>S Pass Eligible</span>
       </div>
       <div class="url">sawyehtet.com</div>
     </div>

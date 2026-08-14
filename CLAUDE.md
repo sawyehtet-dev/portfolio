@@ -27,11 +27,11 @@ Markdown in `src/site/blog/posts/*.md` (loader: `src/site/blog/posts.ts`).
 
 ## 🎯 Positioning (content rule - do not drift)
 
-This site positions Saw Ye Htet as a **Software Engineer specializing in C#, Unity Game/XR Development, and Systems & Tooling**.
+This site positions Saw Ye Htet as a **Software Engineer specializing in Full-Stack Web Development, Unity Game/XR Systems, and Software Tooling**.
 
 - **Primary positioning:** Software Engineer
-- **Core Narrative:** Software engineer based in Singapore building Unity games, interactive systems, and software tooling. Works across game mechanics, C# architecture, and Python/TDD developer tooling, with XR & immersive VR turning out to be what he excels at most.
-- **Target Roles:** Software Engineer, Junior Backend / C# / Java Developer, Unity / XR Developer, Systems Developer.
+- **Core Narrative:** Software engineer based in Singapore building modern web applications, Unity games, and developer tooling. Works across full-stack web technologies and interactive real-time systems, combining clean frontend/backend architecture with robust test-driven engineering.
+- **Target Roles:** Software Engineer, Full-Stack / Backend / Java / Web Developer, Unity / XR Developer, Systems Developer.
 - **Background:** Fresh graduate with one year of technical engineering experience at SP CEMS (Methanol Bunkering VR research). Singapore Polytechnic IT Diploma, 2026. S-Pass eligible.
 - **Typography Rule:** Never use em dashes (`—`) anywhere in code, markdown, comments, or documentation. Use standard hyphens (`-`), en dashes (`–`), colons (`:`), or pipes (`|`).
 - Canonical résumé content lives in two `.docx` lanes (Desktop Support, Software QA) in the

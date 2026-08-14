@@ -592,10 +592,17 @@ body:has(.ed) {
     gap: 16px;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 600px) {
     .ed-skills-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (min-width: 960px) {
+    .ed-skills-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
     }
 }
 

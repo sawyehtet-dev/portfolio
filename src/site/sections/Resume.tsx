@@ -14,8 +14,8 @@ export function Resume() {
                         {PROFILE.name} - {PROFILE.role}
                     </h3>
                     <p className="ed-resume-desc">
-                        Full one-page PDF details experience at CEMS, Meta Quest VR projects,
-                        technical stack, and education.
+                        Full one-page PDF details full-stack web and game development projects,
+                        experience at CEMS, technical stack, and education.
                     </p>
                     <a
                         className="ed-btn ed-btn-primary"

@@ -1,15 +1,15 @@
-// Primary focus: Unity VR Developer role (Meta Quest, Hand Tracking, Immersive Training).
+// Primary focus: Full-Stack Web & Game Development (React, TypeScript, Java, C#, Unity, XR Systems).
 // Kept in sync with Saw_Ye_Htet_Unity_VR_Developer_Resume.pdf.
 export const PROFILE = {
     name: 'Saw Ye Htet',
     role: 'Software Engineer',
-    focus: 'Unity & Game Development · Specialized in XR Systems & Immersive VR',
+    focus: 'Full-Stack Web & Game Development · Modern Web Applications & XR Systems',
     education: 'Diploma in Information Technology, Singapore Polytechnic (2023–2026)',
     email: 'sawyehtet.dev@gmail.com',
     resumePath: '/resume/Saw_Ye_Htet_Unity_VR_Developer_Resume.pdf',
     availability: 'S Pass Eligible · Available Immediately',
     location: 'Singapore / Remote-friendly',
-    primaryStack: ['C#', 'Unity', 'Java', 'Python', 'OpenXR', 'SQL'],
+    primaryStack: ['TypeScript', 'React', 'Java', 'C#', 'Unity', 'Python', 'SQL'],
 };
 
 export const SOCIAL_LINKS = [
