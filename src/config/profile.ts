@@ -1,12 +1,12 @@
 // Primary focus: Full-Stack Web & Game Development (React, TypeScript, Java, C#, Unity, XR Systems).
-// Kept in sync with Saw_Ye_Htet_Unity_VR_Developer_Resume.pdf.
+// Kept in sync with Saw_Ye_Htet_Software_Engineer_Resume.pdf.
 export const PROFILE = {
     name: 'Saw Ye Htet',
     role: 'Software Engineer',
     focus: 'Full-Stack Web & Game Development · Modern Web Applications & XR Systems',
     education: 'Diploma in Information Technology (GPA 3.55), Singapore Polytechnic (2023–2026)',
     email: 'sawyehtet.dev@gmail.com',
-    resumePath: '/resume/Saw_Ye_Htet_Unity_VR_Developer_Resume.pdf',
+    resumePath: '/resume/Saw_Ye_Htet_Software_Engineer_Resume.pdf',
     availability: 'S Pass Eligible · Available Immediately',
     location: 'Singapore / Remote-friendly',
     primaryStack: ['TypeScript', 'React', 'Java', 'C#', 'Unity', 'Python', 'SQL'],
