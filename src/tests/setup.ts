@@ -1,3 +1,8 @@
 import '@testing-library/jest-dom';
+import { cleanup } from '@testing-library/react';
+import { afterEach } from 'vitest';
 
-// Nothing else to stub - jsdom covers what the components use.
+// Explicitly clean up rendered trees between tests
+afterEach(() => {
+    cleanup();
+});

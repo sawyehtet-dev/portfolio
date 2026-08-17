@@ -7,10 +7,9 @@ import { Experience } from './sections/Experience';
 import { Skills } from './sections/Skills';
 import { Resume } from './sections/Resume';
 import { Footer } from './sections/Footer';
+import { ArrowUpRight } from '../components/Icons';
 
 const Contact = lazy(() => import('./sections/Contact').then(m => ({ default: m.Contact })));
-
-import { ArrowUpRight } from '../components/Icons';
 
 function Hero() {
     return (
