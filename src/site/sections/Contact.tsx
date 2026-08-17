@@ -1,5 +1,6 @@
 import { useRef, useState, type ChangeEvent, type FormEvent } from 'react';
 import { PROFILE, SOCIAL_LINKS } from '../../config/profile';
+import { ArrowUpRight, CheckIcon, CopyIcon } from '../../components/Icons';
 
 const MESSAGE_MAX = 2000;
 const MESSAGE_MIN = 10;
@@ -112,12 +113,30 @@ export function Contact() {
             <div className="ed-contact-grid">
                 <div>
                     <p className="ed-contact-lead">Let&apos;s work together.</p>
-                    <a className="ed-contact-email" href={`mailto:${PROFILE.email}`}>
-                        {PROFILE.email}
-                    </a>
-                    <button type="button" className="ed-copy-btn" onClick={copyEmail}>
-                        {copied ? 'Copied' : 'Copy'}
-                    </button>
+                    <div className="ed-contact-email-row">
+                        <a className="ed-contact-email" href={`mailto:${PROFILE.email}`}>
+                            {PROFILE.email}
+                        </a>
+                        <button
+                            type="button"
+                            className={`ed-copy-btn${copied ? ' is-copied' : ''}`}
+                            onClick={copyEmail}
+                            aria-label={copied ? 'Email copied to clipboard' : 'Copy email address'}
+                            title="Copy email address"
+                        >
+                            {copied ? (
+                                <>
+                                    <CheckIcon size={12} />
+                                    <span>Copied</span>
+                                </>
+                            ) : (
+                                <>
+                                    <CopyIcon size={12} />
+                                    <span>Copy</span>
+                                </>
+                            )}
+                        </button>
+                    </div>
 
                     <nav className="ed-contact-socials" aria-label="Social links">
                         {SOCIAL_LINKS.map(link => (
@@ -129,7 +148,10 @@ export function Contact() {
                                 rel="noopener noreferrer"
                             >
                                 <span className="label">{link.label}</span>
-                                <span className="handle">{link.handle} ↗</span>
+                                <span className="handle">
+                                    <span>{link.handle}</span>
+                                    <ArrowUpRight className="ed-social-icon" size={13} />
+                                </span>
                             </a>
                         ))}
                     </nav>
@@ -235,7 +257,7 @@ export function Contact() {
                         aria-busy={isSubmitting ? 'true' : 'false'}
                     >
                         {isSubmitting ? 'Sending…' : 'Send message'}
-                        {!isSubmitting && <span className="ed-btn-arrow">↗</span>}
+                        {!isSubmitting && <ArrowUpRight className="ed-btn-icon" size={15} />}
                     </button>
                 </form>
             </div>

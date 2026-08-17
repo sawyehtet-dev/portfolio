@@ -1,4 +1,5 @@
 import { PROFILE } from '../../config/profile';
+import { ArrowUpRight } from '../../components/Icons';
 
 export function Resume() {
     return (
@@ -23,7 +24,8 @@ export function Resume() {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        Download résumé (PDF) ↗
+                        <span>Download résumé (PDF)</span>
+                        <ArrowUpRight className="ed-btn-icon" size={15} />
                     </a>
                 </div>
 

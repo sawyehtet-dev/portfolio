@@ -1,5 +1,6 @@
 import { PROJECTS } from '../../config/editorial-data';
 import { LazyVideo } from '../../components/LazyVideo';
+import { ArrowUpRight } from '../../components/Icons';
 
 const isExternal = (href: string) => href.startsWith('http');
 
@@ -35,7 +36,8 @@ export function Work() {
                                                         : undefined
                                                 }
                                             >
-                                                {link.label} ↗
+                                                <span>{link.label}</span>
+                                                <ArrowUpRight className="ed-link-icon" size={13} />
                                             </a>
                                         ))}
                                     </div>

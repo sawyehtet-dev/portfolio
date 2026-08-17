@@ -1,4 +1,5 @@
 import { PROFILE } from '../../config/profile';
+import { ArrowRight, ArrowUp } from '../../components/Icons';
 
 // SOCIAL_LINKS renders in Contact only; this points there rather than repeating
 // it. /#contact is a cross-page anchor, same as Nav's /#about.
@@ -21,7 +22,8 @@ export function Footer() {
                 <nav className="ed-footer-col" aria-label="Contact">
                     <span className="ed-side-label">Get in touch</span>
                     <a className="ed-footer-link" href={`mailto:${PROFILE.email}`}>
-                        {PROFILE.email} →
+                        <span>{PROFILE.email}</span>
+                        <ArrowRight className="ed-footer-icon" size={14} />
                     </a>
                 </nav>
             </div>
@@ -31,7 +33,8 @@ export function Footer() {
                     © {year} {PROFILE.name} · Singapore
                 </span>
                 <a className="ed-totop" href="#top">
-                    Back to top ↑
+                    <span>Back to top</span>
+                    <ArrowUp className="ed-totop-icon" size={13} />
                 </a>
             </div>
         </footer>

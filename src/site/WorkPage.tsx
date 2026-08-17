@@ -10,6 +10,8 @@ import { Footer } from './sections/Footer';
 
 const Contact = lazy(() => import('./sections/Contact').then(m => ({ default: m.Contact })));
 
+import { ArrowUpRight } from '../components/Icons';
+
 function Hero() {
     return (
         <section className="ed-hero ed-container" id="top">
@@ -31,7 +33,8 @@ function Hero() {
 
                 <div className="ed-hero-actions">
                     <a className="ed-btn ed-btn-primary" href={`mailto:${PROFILE.email}`}>
-                        Email me ↗
+                        <span>Email me</span>
+                        <ArrowUpRight className="ed-btn-icon" size={15} />
                     </a>
                     <a
                         className="ed-btn ed-btn-secondary"
@@ -39,7 +42,8 @@ function Hero() {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        Download résumé (PDF) ↗
+                        <span>Download résumé (PDF)</span>
+                        <ArrowUpRight className="ed-btn-icon" size={15} />
                     </a>
                 </div>
             </div>

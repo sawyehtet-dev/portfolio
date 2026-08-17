@@ -2,6 +2,7 @@ import './editorial.css';
 import { Link } from 'react-router-dom';
 import { Nav } from './Nav';
 import { Footer } from './sections/Footer';
+import { ArrowLeft } from '../components/Icons';
 
 // The one editorial 404. Rendered by the catch-all route.
 export function NotFound() {
@@ -21,7 +22,8 @@ export function NotFound() {
                         .
                     </p>
                     <Link className="ed-notfound-back" to="/">
-                        ← Back home
+                        <ArrowLeft className="ed-notfound-icon" size={14} />
+                        <span>Back home</span>
                     </Link>
                 </section>
             </main>
