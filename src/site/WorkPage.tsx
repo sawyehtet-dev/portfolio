@@ -26,7 +26,7 @@ function Hero() {
                 <p className="ed-hero-summary">
                     Software engineer in Singapore building full-stack applications, real-time
                     systems, and developer tools. Focused on test-driven development, clear API
-                    design, and performant C#, Java, and TypeScript code.
+                    design, and performant Java, TypeScript, Python, and C# code.
                 </p>
 
                 <div className="ed-hero-actions">
