@@ -1,7 +1,7 @@
 {
-    "name": "Saw Ye Htet - Portfolio",
-    "short_name": "SYH Portfolio",
-    "description": "Recruiter-friendly portfolio for desktop support & QA specialist Saw Ye Htet, built with React and TypeScript",
+    "name": "Saw Ye Htet",
+    "short_name": "Saw Ye Htet",
+    "description": "Personal portfolio of Saw Ye Htet: Software Engineer in Singapore building full-stack web applications, Unity game & VR systems, and developer tooling.",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#f7f5ef",

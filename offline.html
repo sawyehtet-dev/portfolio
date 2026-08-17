@@ -4,32 +4,20 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="noindex, nofollow" />
-        <meta name="theme-color" content="#f7f5ef" />
-        <title>Offline - Saw Ye Htet</title>
-        <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
+        <title>Saw Ye Htet</title>
+        <link rel="icon" href="/favicon.ico?v=3" sizes="any" />
+        <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml" />
+        <link rel="icon" href="/assets/favicon-32.png?v=3" sizes="32x32" type="image/png" />
+        <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=3" sizes="180x180" />
         <style>
-            @font-face {
-                font-family: 'Adwaita Sans';
-                src: url('/fonts/AdwaitaSans-Regular.subset.woff2') format('woff2');
-                font-display: swap;
-                font-weight: 400 800;
-                font-style: normal;
-            }
-            @font-face {
-                font-family: 'Adwaita Mono';
-                src: url('/fonts/AdwaitaMono-Regular.subset.woff2') format('woff2');
-                font-display: swap;
-                font-weight: 400;
-                font-style: normal;
-            }
             :root {
-                --paper: #f7f5ef;
-                --ink: #161410;
-                --ink-3: #6d685b;
-                --line: #d8d3c6;
-                --accent: #a8432b;
-                --sans: 'Adwaita Sans', 'Inter', system-ui, sans-serif;
-                --mono: 'Adwaita Mono', 'SF Mono', ui-monospace, monospace;
+                --paper: #f0eee6;
+                --ink: #1f1e1d;
+                --ink-2: #3d3d3a;
+                --ink-3: #5e5d59;
+                --line: #d1cfc5;
+                --serif:
+                    'Newsreader', Charter, 'Iowan Old Style', 'Times New Roman', Georgia, serif;
             }
             * {
                 margin: 0;
@@ -37,63 +25,66 @@
                 box-sizing: border-box;
             }
             body {
-                font-family: var(--sans);
+                font-family: var(--serif);
                 background: var(--paper);
                 color: var(--ink);
                 min-height: 100dvh;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                padding: 20px;
+                padding: 24px;
+                font-size: 1.25rem;
+                line-height: 1.6;
                 -webkit-font-smoothing: antialiased;
             }
             .offline {
                 width: 100%;
-                max-width: 460px;
+                max-width: 480px;
             }
             .offline-eyebrow {
-                font-family: var(--mono);
-                font-size: 0.66rem;
-                letter-spacing: 0.1em;
+                font-family: var(--serif);
+                font-size: 0.85rem;
+                font-weight: 600;
+                letter-spacing: 0.08em;
                 text-transform: uppercase;
-                color: var(--accent);
+                color: var(--ink-3);
             }
             h1 {
                 margin: 8px 0 0;
-                font-size: clamp(2.2rem, 7vw, 3.2rem);
-                font-weight: 800;
-                letter-spacing: -0.03em;
-                line-height: 0.95;
-            }
-            h1 .dot {
-                color: var(--accent);
+                font-size: clamp(2.4rem, 7vw, 3.2rem);
+                font-weight: 700;
+                letter-spacing: -0.025em;
+                line-height: 1.1;
             }
             p {
                 max-width: 42ch;
                 margin-top: 20px;
                 padding-top: 20px;
                 border-top: 1px solid var(--line);
-                font-size: 1.05rem;
-                line-height: 1.6;
+                font-size: 1.15rem;
+                line-height: 1.65;
+                color: var(--ink-2);
             }
             .retry {
                 display: inline-block;
                 margin-top: 28px;
-                font-family: var(--mono);
-                font-size: 0.78rem;
-                letter-spacing: 0.06em;
-                text-transform: uppercase;
+                font-family: var(--serif);
+                font-size: 1.05rem;
                 color: var(--ink);
-                text-decoration: none;
-                border-bottom: 1px solid var(--accent);
+                text-decoration: underline;
+                text-underline-offset: 3px;
+                text-decoration-color: var(--line);
                 padding-bottom: 2px;
+            }
+            .retry:hover {
+                text-decoration-color: var(--ink);
             }
         </style>
     </head>
     <body>
         <main class="offline">
             <span class="offline-eyebrow">No connection</span>
-            <h1>Offline<span class="dot">.</span></h1>
+            <h1>Offline</h1>
             <p>
                 This page will reconnect when your network is back. The résumé, projects, and
                 contact details are all on the main site once you are online again.

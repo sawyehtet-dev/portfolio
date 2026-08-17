@@ -10,7 +10,8 @@ self-hosted Adwaita Sans/Mono. Everything lives in `src/site/`.
 
 - **Front door (`/`) is the portfolio** (`src/site/WorkPage.tsx`), a single page:
   Hero, Selected Work, Experience, Skills, Resume, Contact, and Footer.
-- Legacy routes (`/work`, `/writing`, `/blog`, `/blog/*`) 301-redirect to `/`.
+- Active routes include `/` (portfolio) and `*` (NotFound 404).
+- Legacy routes (`/work`, `/writing`, `/writing/*`, `/blog`, `/blog/*`) 301-redirect to `/`.
 
 Styles live in `src/site/editorial.css` (scoped under `.ed`, self-contained: it declares
 its own `@font-face` for the subset fonts and depends on no token system). Portfolio
@@ -29,20 +30,20 @@ This site positions Saw Ye Htet as a **Software Engineer specializing in Full-St
 
 ## Stack & Key Dependencies
 
-| Layer     | Technology                                    | Version | Notes                                                                                                   |
-| --------- | --------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------- |
-| Framework | React                                         | 19      | StrictMode enabled                                                                                      |
-| Language  | TypeScript                                    | 5       | Strict, `noEmit`, bundler module resolution                                                             |
-| Bundler   | Vite                                          | 8       | Dev on `:3000`, builds to `dist/`                                                                       |
-| Styling   | Vanilla CSS                                   | -       | `src/site/editorial.css`, scoped under `.ed`. No Tailwind, no CSS-in-JS                                 |
-| Routing   | React Router DOM                              | 7       | BrowserRouter. `/` (portfolio), `/work`->`/`, `/writing`->`/`, `/blog`->`/`; `*` -> 404                 |
-| Forms     | None - plain React state                      | -       | The `/` Contact section validates in ~20 lines against HTML constraints. No heavy third-party libraries |
-| Fonts     | Adwaita Sans/Mono (self-hosted WOFF2, subset) | -       | Self-hosted in `public/fonts/` with SIL license. **No external font requests**                          |
-| Testing   | Vitest + Testing Library + jsdom              | 4 / 16  | `vmForks` pool, globals enabled                                                                         |
-| Linting   | ESLint flat config + Prettier                 | 9 / 3   | 4-space indent, single quotes, trailing comma es5                                                       |
-| Analytics | Plausible                                     | -       | Script tag in index.html, domain `sawyehtet.com`                                                        |
-| Deploy    | Netlify                                       | -       | Build: `npm run build`, publish: `dist/`; SPA rewrite + 301s; sitemap + SSR prerender at build          |
-| PWA       | Service worker (`public/sw.js`) + manifest    | -       | Per-build cache version (`__BUILD_HASH__`); registered in `main.tsx` (prod) / unregistered (dev)        |
+| Layer     | Technology                                    | Version | Notes                                                                                                    |
+| --------- | --------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------- |
+| Framework | React                                         | 19      | StrictMode enabled                                                                                       |
+| Language  | TypeScript                                    | 5       | Strict, `noEmit`, bundler module resolution                                                              |
+| Bundler   | Vite                                          | 8       | Dev on `:3000`, builds to `dist/`                                                                        |
+| Styling   | Vanilla CSS                                   | -       | `src/site/editorial.css`, scoped under `.ed`. No Tailwind, no CSS-in-JS                                  |
+| Routing   | React Router DOM                              | 7       | BrowserRouter. `/` (portfolio); `/work`, `/writing`, `/writing/*`, `/blog`, `/blog/*` -> `/`; `*` -> 404 |
+| Forms     | None - plain React state                      | -       | The `/` Contact section validates in ~20 lines against HTML constraints. No heavy third-party libraries  |
+| Fonts     | Adwaita Sans/Mono (self-hosted WOFF2, subset) | -       | Self-hosted in `public/fonts/` with SIL license. **No external font requests**                           |
+| Testing   | Vitest + Testing Library + jsdom              | 4 / 16  | `vmForks` pool, globals enabled                                                                          |
+| Linting   | ESLint flat config + Prettier                 | 9 / 3   | 4-space indent, single quotes, trailing comma es5                                                        |
+| Analytics | Plausible                                     | -       | Script tag in index.html, domain `sawyehtet.com`                                                         |
+| Deploy    | Netlify                                       | -       | Build: `npm run build`, publish: `dist/`; SPA rewrite + 301s; sitemap + SSR prerender at build           |
+| PWA       | Service worker (`public/sw.js`) + manifest    | -       | Per-build cache version (`__BUILD_HASH__`); registered in `main.tsx` (prod) / unregistered (dev)         |
 
 ## Entry Point & Routing
 
@@ -53,6 +54,7 @@ index.html                       <- Vite HTML entry, loads /src/main.tsx
             ├─ /                 -> WorkPage (src/site/, the portfolio - EAGER)
             ├─ /work             -> Navigate -> /
             ├─ /writing          -> Navigate -> /
+            ├─ /writing/*        -> Navigate -> /
             ├─ /blog             -> Navigate -> /
             ├─ /blog/*           -> Navigate -> /
             └─ *                 -> NotFound (lazy, editorial 404)
@@ -98,7 +100,7 @@ src/
 - **Multi-page:** Vite builds `index.html` and `offline.html` as entries.
 - **Sitemap:** `scripts/generate-sitemap.mjs` writes `public/sitemap.xml`.
 - **Homepage prerender:** `scripts/prerender.mjs` renders `WorkPage` to static markup via `src/entry-server.tsx` (compiled to `dist-ssr/` by `build:ssr`) and injects it into `dist/index.html`'s `#root`, so non-JS crawlers get the real front-door body.
-- **Netlify** (`netlify.toml`): publish `dist/`. SPA catch-all `/*` -> `/index.html` (status 200); `/work`, `/writing`, `/blog` are 301 redirects to `/`.
+- **Netlify** (`netlify.toml`): publish `dist/`. SPA catch-all `/*` -> `/index.html` (status 200); `/work`, `/writing`, `/writing/*`, `/blog`, `/blog/*` are 301 redirects to `/`.
 - **PWA:** `main.tsx` registers `public/sw.js` in production and unregisters stale workers in dev.
 
 ## Scripts Reference

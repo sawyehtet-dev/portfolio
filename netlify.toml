@@ -14,8 +14,8 @@
     Content-Security-Policy = """
       default-src 'self'; \
       script-src 'self' https://plausible.io; \
-      style-src 'self' 'unsafe-inline'; \
-      font-src 'self'; \
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; \
+      font-src 'self' https://fonts.gstatic.com; \
       img-src 'self' data:; \
       connect-src 'self' https://formspree.io https://plausible.io; \
       worker-src 'self'; \
@@ -68,7 +68,7 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Moved/legacy URLs -> root.
+# Moved/legacy URLs.
 # 301 so old links and search results migrate cleanly.
 [[redirects]]
   from = "/work"
@@ -77,6 +77,11 @@
 
 [[redirects]]
   from = "/writing"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/writing/*"
   to = "/"
   status = 301
 

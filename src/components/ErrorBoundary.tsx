@@ -10,12 +10,12 @@ interface State {
 
 // Editorial palette (mirrors src/site/editorial.css), inlined so the boundary
 // has no stylesheet dependency and renders correctly even if CSS failed to load.
-const PAPER = '#f7f5ef';
-const INK = '#161410';
-const INK_2 = '#57534a';
-const LINE = '#d8d3c6';
-const ACCENT = '#cc2a10';
-const SANS = "'Adwaita Sans', 'Inter', system-ui, sans-serif";
+const PAPER = '#f0eee6';
+const INK = '#1f1e1d';
+const INK_2 = '#3d3d3a';
+const LINE = '#d1cfc5';
+const ACCENT = '#1f1e1d';
+const SERIF = "'Newsreader', Charter, 'Iowan Old Style', 'Times New Roman', Georgia, serif";
 
 // Wraps the whole router, so anything it catches has taken the page down and a
 // reload is the only honest recovery. Don't add a Retry button - it re-throws.
@@ -43,7 +43,7 @@ export class ErrorBoundary extends Component<Props, State> {
                     justifyContent: 'center',
                     background: PAPER,
                     color: INK,
-                    fontFamily: SANS,
+                    fontFamily: SERIF,
                 }}
             >
                 <div

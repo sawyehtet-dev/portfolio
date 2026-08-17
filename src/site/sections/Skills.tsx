@@ -9,16 +9,19 @@ export function Skills() {
             </div>
 
             <div className="ed-skills-grid">
-                {SKILLS.map(group => (
-                    <div className="ed-skill-group" key={group.category}>
-                        <h3 className="ed-skill-cat">{group.category}</h3>
-                        <ul className="ed-skill-list">
+                {SKILLS.map((group, idx) => (
+                    <div className="ed-skill-card" key={group.category}>
+                        <div className="ed-skill-card-header">
+                            <h3 className="ed-skill-heading">{group.category}</h3>
+                            <span className="ed-skill-count">0{idx + 1}</span>
+                        </div>
+                        <div className="ed-skill-tags">
                             {group.tools.map(tool => (
-                                <li className="ed-skill-item" key={tool}>
+                                <span className="ed-skill-tag" key={tool}>
                                     {tool}
-                                </li>
+                                </span>
                             ))}
-                        </ul>
+                        </div>
                     </div>
                 ))}
             </div>

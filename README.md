@@ -35,8 +35,8 @@ portfolio/
 │   │   ├── NotFound.tsx        # Editorial 404 (catch-all route)
 │   │   ├── editorial.css       # The whole design system, scoped under .ed
 │   │   └── sections/           # Experience, Work, Skills, Resume, Contact, Footer
-│   ├── components/             # ErrorBoundary
-│   ├── config/                 # editorial-data.ts (content) + profile.ts
+│   ├── components/             # ErrorBoundary, LazyVideo
+│   ├── config/                 # editorial-data.ts, profile.ts
 │   └── tests/                  # Vitest suites
 ├── scripts/                    # Build-time generators (sitemap, SSR prerender, OG image)
 ├── public/                     # Static assets, fonts, resume PDF, sw.js
@@ -66,7 +66,7 @@ CI runs the same chain (plus build) on every push and PR to `main`.
 Netlify builds with `npm run build` and publishes `dist/`. Routing in `netlify.toml`:
 
 - the catch-all `/*` rewrites to the SPA entry (status 200)
-- `/work`, `/writing`, and `/blog` 301-redirect to `/`
+- `/work`, `/writing`, `/writing/*`, `/blog`, and `/blog/*` 301-redirect to `/`
 - Static files (`index.html`, `offline.html`, assets) are served before the catch-all
 
 ### Post-deploy checklist

@@ -1,4 +1,5 @@
 import { PROJECTS } from '../../config/editorial-data';
+import { LazyVideo } from '../../components/LazyVideo';
 
 const isExternal = (href: string) => href.startsWith('http');
 
@@ -52,17 +53,11 @@ export function Work() {
 
                         {project.videoPreview && (
                             <div className="ed-case-media">
-                                <video
+                                <LazyVideo
                                     className="ed-case-video"
-                                    autoPlay
-                                    loop
-                                    muted
-                                    playsInline
-                                    preload="metadata"
-                                    aria-label={`Demo video for ${project.title}`}
-                                >
-                                    <source src={project.videoPreview} type="video/mp4" />
-                                </video>
+                                    src={project.videoPreview}
+                                    ariaLabel={`Demo video for ${project.title}`}
+                                />
                             </div>
                         )}
 
@@ -73,25 +68,11 @@ export function Work() {
                                 <div className="ed-case-col">
                                     <h4 className="ed-field-label">Key Engineering</h4>
                                     <p className="ed-field-text">{project.whatIBuilt}</p>
-                                    {project.technicalDecisions && (
-                                        <>
-                                            <h4 className="ed-field-label">Technical Decisions</h4>
-                                            <p className="ed-field-text">
-                                                {project.technicalDecisions}
-                                            </p>
-                                        </>
-                                    )}
                                 </div>
 
                                 <div className="ed-case-col">
                                     <h4 className="ed-field-label">Outcome &amp; Impact</h4>
                                     <p className="ed-field-text">{project.outcome}</p>
-                                    {project.constraints && (
-                                        <>
-                                            <h4 className="ed-field-label">Constraints</h4>
-                                            <p className="ed-field-text">{project.constraints}</p>
-                                        </>
-                                    )}
                                 </div>
                             </div>
 

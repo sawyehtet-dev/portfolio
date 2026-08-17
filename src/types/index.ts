@@ -10,18 +10,10 @@ export interface Project {
     summary: string;
     context: string;
     whatIBuilt: string;
-    technicalDecisions?: string;
     tools: string[];
-    constraints?: string;
     outcome: string;
     videoPreview?: string;
     links: ProjectLink[];
-}
-
-export interface StatItem {
-    value: string;
-    unit?: string;
-    label: string;
 }
 
 export interface ExperienceItem {

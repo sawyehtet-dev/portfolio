@@ -13,16 +13,28 @@ import { WorkPage } from './site/WorkPage';
 // WorkPage is the eager front door; NotFound is lazy so it ships lean.
 const NotFound = lazy(() => import('./site/NotFound').then(m => ({ default: m.NotFound })));
 
-// <Link> navigation keeps the previous scroll offset. Reset on forward nav only:
-// POP keeps the browser's own restore, and hash targets keep in-page anchors.
 function ScrollToTop() {
     const { pathname, hash } = useLocation();
     const navigationType = useNavigationType();
 
     useEffect(() => {
         if (navigationType === 'POP') return;
-        if (hash) return;
-        window.scrollTo(0, 0);
+        if (hash) {
+            const id = hash.replace('#', '');
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+            const timer = setTimeout(() => {
+                const target = document.getElementById(id);
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            }, 50);
+            return () => clearTimeout(timer);
+        }
+        if (typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
+            window.scrollTo(0, 0);
+        }
     }, [pathname, hash, navigationType]);
 
     return null;
@@ -38,6 +50,7 @@ function App() {
                         <Route path="/" element={<WorkPage />} />
                         <Route path="/work" element={<Navigate to="/" replace />} />
                         <Route path="/writing" element={<Navigate to="/" replace />} />
+                        <Route path="/writing/*" element={<Navigate to="/" replace />} />
                         <Route path="/blog" element={<Navigate to="/" replace />} />
                         <Route path="/blog/*" element={<Navigate to="/" replace />} />
                         <Route path="*" element={<NotFound />} />

@@ -25,7 +25,8 @@ function Hero() {
                 <p className="ed-hero-summary">
                     Software engineer building full-stack web applications, Unity VR simulations,
                     and developer tools. I focus on writing clear, testable code across TypeScript,
-                    Java, Python, and C#, with practical experience in real-time systems and OpenXR.
+                    Java, Python, and C#, with practical experience in real-time systems, OpenXR,
+                    and Meta XR development.
                 </p>
 
                 <div className="ed-hero-actions">
@@ -49,7 +50,7 @@ function Hero() {
 export function WorkPage() {
     return (
         <div className="ed">
-            <title>Saw Ye Htet - Software Engineer</title>
+            <title>Saw Ye Htet</title>
             <meta
                 name="description"
                 content="Software Engineer in Singapore building full-stack web applications, Unity game & VR systems, and developer tooling."

@@ -18,8 +18,8 @@ const devCspPlugin = () => ({
         const csp = [
             "default-src 'self'",
             `script-src 'self' ${reactRefreshPreambleHash} https://plausible.io`,
-            "style-src 'self' 'unsafe-inline'",
-            "font-src 'self'",
+            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+            "font-src 'self' https://fonts.gstatic.com",
             "img-src 'self' data:",
             "connect-src 'self' https://formspree.io https://plausible.io ws://localhost:* http://localhost:* ws://127.0.0.1:* http://127.0.0.1:*",
             "worker-src 'self'",

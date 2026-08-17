@@ -24,6 +24,12 @@ describe('Front-door routing', () => {
         expect(await screen.findByText(/PORTFOLIO · SINGAPORE/)).toBeInTheDocument();
     });
 
+    it('redirects /writing/:slug to /', async () => {
+        renderAppAt('/writing/vr-state-machine-maritime-safety');
+
+        expect(await screen.findByText(/PORTFOLIO · SINGAPORE/)).toBeInTheDocument();
+    });
+
     it('redirects /work to /', async () => {
         renderAppAt('/work');
 
