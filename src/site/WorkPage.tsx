@@ -24,10 +24,9 @@ function Hero() {
 
             <div className="ed-hero-body">
                 <p className="ed-hero-summary">
-                    Software engineer building full-stack web applications, Unity VR simulations,
-                    and developer tools. I focus on writing clear, testable code across TypeScript,
-                    Java, Python, and C#, with practical experience in real-time systems, OpenXR,
-                    and Meta XR development.
+                    Software engineer in Singapore building full-stack applications, real-time
+                    systems, and developer tools. Focused on test-driven development, clear API
+                    design, and performant C#, Java, and TypeScript code.
                 </p>
 
                 <div className="ed-hero-actions">
