@@ -119,7 +119,7 @@ const html = /* html */ `<!DOCTYPE html>
     <div class="bottom">
       <div class="specs">
         <span><b>Core</b>React · TypeScript · Java · C# · Unity</span>
-        <span><b>Status</b>S Pass Eligible</span>
+        <span><b>Status</b>Open to Opportunities</span>
       </div>
       <div class="url">sawyehtet.com</div>
     </div>

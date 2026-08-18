@@ -7,7 +7,7 @@ export const PROFILE = {
     education: 'Diploma in Information Technology (GPA 3.55), Singapore Polytechnic (2023–2026)',
     email: 'sawyehtet.dev@gmail.com',
     resumePath: '/resume/Saw_Ye_Htet_Software_Engineer_Resume.pdf',
-    availability: 'S Pass Eligible · Available Immediately',
+    availability: 'Open to Opportunities · Available Immediately',
     location: 'Singapore / Remote-friendly',
     primaryStack: ['TypeScript', 'React', 'Java', 'C#', 'Unity', 'Python', 'SQL'],
 };
