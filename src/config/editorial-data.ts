@@ -19,7 +19,7 @@ export const EXPERIENCE: ExperienceItem[] = [
         period: '2023 – 2026',
         location: 'Singapore',
         bullets: [
-            'Graduated with a GPA of 3.55, building a foundation across software development, data structures, and networking.',
+            'Graduated with a GPA of 3.55/4, building a foundation across software development, data structures, and networking.',
             'Focused coursework and projects on full-stack web applications, Unity game development, and XR systems.',
         ],
     },
