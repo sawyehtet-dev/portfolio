@@ -1,11 +1,11 @@
 {
     "name": "Saw Ye Htet",
     "short_name": "Saw Ye Htet",
-    "description": "Personal portfolio of Saw Ye Htet: Software Engineer in Singapore building full-stack web applications, Unity game & VR systems, and developer tooling.",
+    "description": "Personal portfolio of Saw Ye Htet: Software Engineer in Singapore building modern web applications, Unity games, and developer tooling.",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#f7f5ef",
-    "theme_color": "#f7f5ef",
+    "background_color": "#f0eee6",
+    "theme_color": "#f0eee6",
     "orientation": "any",
     "icons": [
         {

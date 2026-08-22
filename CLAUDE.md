@@ -75,6 +75,7 @@ src/
     WorkPage.tsx         <- front-door portfolio (Hero defined inline here)
     NotFound.tsx         <- editorial 404 (catch-all route)
     Nav.tsx
+    BackToTop.tsx        <- floating back-to-top button; hidden on mobile and while the footer's .ed-totop link is visible
     editorial.css        <- the entire design system, scoped .ed, self-contained
     sections/            <- Experience, Work (projects), Skills, Resume, Contact (lazy), Footer
   config/
@@ -92,7 +93,7 @@ src/
     - `PROJECTS` (`Project[]`) - title, role, summary, context, whatIBuilt (key engineering narrative), tools, outcome, optional videoPreview, links.
     - `EXPERIENCE` (`ExperienceItem[]`) - org, role, period, bullets, stack.
     - `SKILLS` (`SkillGroup[]`) - categorized skill groups (Web & Backend, Game & XR Development, Languages, Engineering & Tools).
-- **`src/config/profile.ts`** - `PROFILE` (name, role, focus, education, email, resume path, availability) and `SOCIAL_LINKS`.
+- **`src/config/profile.ts`** - `PROFILE` (name, role, email, resume path, availability) and `SOCIAL_LINKS`. Education lives only in `EXPERIENCE` (`editorial-data.ts`); do not duplicate it in other sections.
 
 ## Build & Deploy
 

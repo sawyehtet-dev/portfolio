@@ -13,6 +13,16 @@ export const EXPERIENCE: ExperienceItem[] = [
         ],
         stack: ['Unity (C#)', 'Meta Quest', 'XR Interaction Toolkit', 'OculusXR'],
     },
+    {
+        org: 'Singapore Polytechnic',
+        role: 'Diploma in Information Technology',
+        period: '2023 – 2026',
+        location: 'Singapore',
+        bullets: [
+            'Graduated with a GPA of 3.55, building a foundation across software development, data structures, and networking.',
+            'Focused coursework and projects on full-stack web applications, Unity game development, and XR systems.',
+        ],
+    },
 ];
 
 export const PROJECTS: Project[] = [
@@ -92,37 +102,6 @@ export const PROJECTS: Project[] = [
     },
 ];
 
-export const ARCHIVED_PROJECTS: Project[] = [
-    {
-        id: 'hand-tracking-bunkering',
-        title: 'Hand-Tracking Bunkering Safety VR',
-        role: 'Unity VR Developer',
-        summary:
-            'Controller-free rebuild of the centre\'s methanol bunkering safety trainer: same scenario scenes and scripts, re-driven entirely by tracked hands.',
-        context:
-            'Centre of Excellence in Maritime Safety (CEMS), Singapore Polytechnic (2026)',
-        whatIBuilt:
-            'Commissioned to convert the controller-based bunkering trainer to hand tracking. Ported the interaction layer on top of the proven gesture system from an independent Quest game: pinch-driven UI navigation, walkie-talkie reporting, PPE locker equipping, and hose/flange inspection validated by gesture input over the existing scenario state machines.',
-        tools: [
-            'Unity 3D',
-            'C#',
-            'Meta Interaction SDK',
-            'OpenXR',
-            'Meta Quest',
-            'Hand Tracking',
-        ],
-        outcome:
-            'Working Quest build running the full report, PPE, and inspection loop without controllers, validating optical hand tracking as a viable input direction for the centre\'s training programmes.',
-        videoPreview: '/images/projects/hand-tracking-bunkering-preview.mp4',
-        links: [
-            {
-                label: 'Experience Details',
-                href: '#experience',
-            },
-        ],
-    },
-];
-
 export const SKILLS: SkillGroup[] = [
     {
         category: 'Programming Languages',
@@ -135,11 +114,8 @@ export const SKILLS: SkillGroup[] = [
             'Meta Interaction SDK',
             'XR Interaction Toolkit',
             'OpenXR',
-            'OculusXR',
             'bHaptics SDK',
-            'Meta Quest',
             'Hand Tracking',
-            'HMD Deployment',
         ],
     },
     {

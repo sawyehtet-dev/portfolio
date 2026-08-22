@@ -15,8 +15,8 @@ export function Resume() {
                         {PROFILE.name} - {PROFILE.role}
                     </h3>
                     <p className="ed-resume-desc">
-                        Full one-page PDF details full-stack web and game development projects,
-                        experience at CEMS, technical stack, and education.
+                        A one-page PDF covering my selected projects, experience, technical stack,
+                        and education.
                     </p>
                     <a
                         className="ed-btn ed-btn-primary"
@@ -27,21 +27,6 @@ export function Resume() {
                         <span>Download résumé (PDF)</span>
                         <ArrowUpRight className="ed-btn-icon" size={15} />
                     </a>
-                </div>
-
-                <div className="ed-resume-meta">
-                    <div className="ed-meta-item">
-                        <span className="ed-meta-label">Education</span>
-                        <span className="ed-meta-val">{PROFILE.education}</span>
-                    </div>
-                    <div className="ed-meta-item">
-                        <span className="ed-meta-label">Specialization</span>
-                        <span className="ed-meta-val">{PROFILE.focus}</span>
-                    </div>
-                    <div className="ed-meta-item">
-                        <span className="ed-meta-label">Location &amp; Status</span>
-                        <span className="ed-meta-val">{PROFILE.availability}</span>
-                    </div>
                 </div>
             </div>
         </section>

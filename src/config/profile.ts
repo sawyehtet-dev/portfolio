@@ -3,8 +3,6 @@
 export const PROFILE = {
     name: 'Saw Ye Htet',
     role: 'Software Engineer',
-    focus: 'Full-Stack Web & Game Development · Modern Web Applications & XR Systems',
-    education: 'Diploma in Information Technology (GPA 3.55), Singapore Polytechnic (2023–2026)',
     email: 'sawyehtet.dev@gmail.com',
     resumePath: '/resume/Saw_Ye_Htet_Software_Engineer_Resume.pdf',
     availability: 'Open to Opportunities · Available Immediately',

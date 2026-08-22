@@ -2,6 +2,7 @@ import './editorial.css';
 import { lazy, Suspense } from 'react';
 import { PROFILE } from '../config/profile';
 import { Nav } from './Nav';
+import { BackToTop } from './BackToTop';
 import { Work } from './sections/Work';
 import { Experience } from './sections/Experience';
 import { Skills } from './sections/Skills';
@@ -24,9 +25,9 @@ function Hero() {
 
             <div className="ed-hero-body">
                 <p className="ed-hero-summary">
-                    Software engineer in Singapore building full-stack applications, real-time
-                    systems, and developer tools. Focused on test-driven development, clear API
-                    design, and performant Java, TypeScript, Python, and C# code.
+                    Software engineer in Singapore building modern web applications, Unity games,
+                    and developer tooling. Focused on test-driven development, clear API design,
+                    and performant Java, TypeScript, Python, and C# code.
                 </p>
 
                 <div className="ed-hero-actions">
@@ -40,7 +41,7 @@ function Hero() {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <span>Download résumé (PDF)</span>
+                        <span>Résumé (PDF)</span>
                         <ArrowUpRight className="ed-btn-icon" size={15} />
                     </a>
                 </div>
@@ -72,6 +73,7 @@ export function WorkPage() {
                 </Suspense>
             </main>
             <Footer />
+            <BackToTop />
         </div>
     );
 }
