@@ -2,7 +2,7 @@ import { PROFILE } from '../../config/profile';
 import { ArrowRight, ArrowUp } from '../../components/Icons';
 
 // SOCIAL_LINKS renders in Contact only; this points there rather than repeating
-// it. /#contact is a cross-page anchor, same as Nav's /#about.
+// it. /#contact is a cross-page anchor, same as Nav's section links.
 export function Footer() {
     const year = new Date().getFullYear();
 

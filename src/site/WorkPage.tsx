@@ -52,11 +52,6 @@ function Hero() {
 export function WorkPage() {
     return (
         <div className="ed">
-            <title>Saw Ye Htet</title>
-            <meta
-                name="description"
-                content="Software Engineer in Singapore building full-stack web applications, Unity game & VR systems, and developer tooling."
-            />
             <Nav />
             <main id="main-content">
                 <Hero />

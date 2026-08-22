@@ -6,12 +6,11 @@
 // unregisters all service workers in dev mode.
 const CACHE = 'portfolio-__BUILD_HASH__';
 
-// Hashed build output and self-hosted fonts never change at a given URL, so
-// cache-first is safe for them. Everything else static (unhashed images,
-// icons, root-level scripts) is served from cache for speed but refreshed in
-// the background, so an edit reaches returning visitors on their next view
-// instead of never.
-const IMMUTABLE_PATHS = /^\/(assets|fonts)\//;
+// Hashed build output never changes at a given URL, so cache-first is safe
+// for it. Everything else static (unhashed images, icons, root-level scripts)
+// is served from cache for speed but refreshed in the background, so an edit
+// reaches returning visitors on their next view instead of never.
+const IMMUTABLE_PATHS = /^\/assets\//;
 const STATIC_EXTENSIONS = /\.(?:woff2?|ttf|otf|png|jpg|jpeg|webp|svg|ico|css|js)$/i;
 
 self.addEventListener('install', event => {
@@ -21,10 +20,9 @@ self.addEventListener('install', event => {
         caches.open(CACHE).then(cache =>
             cache.addAll([
                 '/offline.html',
-                // The subsetted editorial fonts. Any other static assets are
-                // runtime-cached (cache-first) on first visit rather than precached.
-                '/fonts/AdwaitaSans-Regular.subset.woff2',
-                '/fonts/AdwaitaMono-Regular.subset.woff2',
+                // Any other static assets are runtime-cached (cache-first) on
+                // first visit rather than precached. Web fonts come from the
+                // Google Fonts CDN at runtime and are not cached here.
             ])
         )
     );

@@ -5,10 +5,11 @@ import { Footer } from './sections/Footer';
 import { ArrowLeft } from '../components/Icons';
 
 // The one editorial 404. Rendered by the catch-all route.
+// This import is NOT a duplicate of WorkPage's: NotFound is lazy-loaded and can
+// render without WorkPage ever mounting, so it must pull the stylesheet itself.
 export function NotFound() {
     return (
         <div className="ed">
-            <title>Saw Ye Htet</title>
             <Nav />
             <main id="main-content">
                 <section className="ed-section ed-container" id="top">

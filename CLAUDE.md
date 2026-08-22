@@ -4,9 +4,10 @@
 
 ## Current architecture (read first)
 
-This is a **single portfolio site** in the Editorial / Swiss style: big display type,
-strict grid, hairline structure, one signal-red accent, a warm "paper" light theme, and
-self-hosted Adwaita Sans/Mono. Everything lives in `src/site/`.
+This is a **single portfolio site** in the Editorial / Swiss style: big Newsreader serif
+display type, strict grid, hairline structure, an ink-on-paper palette with a warm ivory
+light theme and a matching slate dark theme (the "accent" is the ink color itself).
+Everything lives in `src/site/`.
 
 - **Front door (`/`) is the portfolio** (`src/site/WorkPage.tsx`), a single page:
   Hero, Selected Work, Experience, Skills, Resume, Contact, and Footer.
@@ -14,8 +15,10 @@ self-hosted Adwaita Sans/Mono. Everything lives in `src/site/`.
 - Legacy routes (`/work`, `/writing`, `/writing/*`, `/blog`, `/blog/*`) 301-redirect to `/`.
 
 Styles live in `src/site/editorial.css` (scoped under `.ed`, self-contained: it declares
-its own `@font-face` for the subset fonts and depends on no token system). Portfolio
-content comes from `src/config/editorial-data.ts` + `src/config/profile.ts`.
+its own CSS custom-property tokens and depends on no token system). Fonts load from
+Google Fonts in `index.html` (Newsreader variable font); there are no local `@font-face`
+declarations anywhere in the app. Portfolio content comes from
+`src/config/editorial-data.ts` + `src/config/profile.ts`.
 
 ## Positioning (content rule - do not drift)
 
@@ -38,7 +41,7 @@ This site positions Saw Ye Htet as a **Software Engineer specializing in Full-St
 | Styling   | Vanilla CSS                                   | -       | `src/site/editorial.css`, scoped under `.ed`. No Tailwind, no CSS-in-JS                                  |
 | Routing   | React Router DOM                              | 7       | BrowserRouter. `/` (portfolio); `/work`, `/writing`, `/writing/*`, `/blog`, `/blog/*` -> `/`; `*` -> 404 |
 | Forms     | None - plain React state                      | -       | The `/` Contact section validates in ~20 lines against HTML constraints. No heavy third-party libraries  |
-| Fonts     | Adwaita Sans/Mono (self-hosted WOFF2, subset) | -       | Self-hosted in `public/fonts/` with SIL license. **No external font requests**                           |
+| Fonts     | Newsreader variable serif (Google Fonts CDN)  | -       | Stylesheet in `index.html`; system serif/mono fallbacks. External request by design          |
 | Testing   | Vitest + Testing Library + jsdom              | 4 / 16  | `vmForks` pool, globals enabled                                                                          |
 | Linting   | ESLint flat config + Prettier                 | 9 / 3   | 4-space indent, single quotes, trailing comma es5                                                        |
 | Analytics | Plausible                                     | -       | Script tag in index.html, domain `sawyehtet.com`                                                         |
@@ -86,10 +89,10 @@ src/
 ## Data & Config
 
 - **`src/config/editorial-data.ts`** - the single source of truth for portfolio content:
-    - `PROJECTS` (`Project[]`) - title, role, summary, key engineering narrative, technical decisions, tools, outcome, video preview, links.
+    - `PROJECTS` (`Project[]`) - title, role, summary, context, whatIBuilt (key engineering narrative), tools, outcome, optional videoPreview, links.
     - `EXPERIENCE` (`ExperienceItem[]`) - org, role, period, bullets, stack.
     - `SKILLS` (`SkillGroup[]`) - categorized skill groups (Web & Backend, Game & XR Development, Languages, Engineering & Tools).
-- **`src/config/profile.ts`** - `PROFILE` (name, role, taglines, email, resume path, availability, location) and `SOCIAL_LINKS`.
+- **`src/config/profile.ts`** - `PROFILE` (name, role, focus, education, email, resume path, availability) and `SOCIAL_LINKS`.
 
 ## Build & Deploy
 
@@ -134,9 +137,9 @@ npm run generate:sitemap # public/sitemap.xml (runs in build)
 ## Conventions & Non-Obvious Details
 
 1. **No em dashes anywhere** in the project - use a standard hyphen, en dash, colon, or pipe.
-2. **`editorial.css` is the whole design system** - scoped `.ed`, self-contained, declares its own subset `@font-face`.
+2. **`editorial.css` is the whole design system** - scoped `.ed`, self-contained, declares its own tokens; no `@font-face`.
 3. **Contact form** - plain `useState` plus a ~20-line `validate()`, POSTing to Formspree via native `fetch()`. Includes an off-screen honeypot (`website_url`).
-4. **Self-hosted fonts** - `public/fonts/` holds ONLY the subset Adwaita Sans/Mono the site loads. Full weights live in `assets-src/fonts/` for OG generation.
+4. **Fonts** - Newsreader loads from Google Fonts; nothing is self-hosted. `assets-src/fonts/` holds full-weight fonts used ONLY by generation scripts (favicons use Newsreader24pt-Bold, OG image embeds Adwaita Sans/Mono as base64), with the Adwaita license file alongside.
 5. **One 404, and it is `src/site/NotFound.tsx`.**
 6. **`google0e39a960e13ab711.html`** - Google Search Console verification. Do not delete.
 7. **No pre-React splash in `index.html`.** `scripts/prerender.mjs` bakes the real homepage into `#root`.

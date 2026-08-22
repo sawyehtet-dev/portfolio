@@ -7,19 +7,11 @@ export const EXPERIENCE: ExperienceItem[] = [
         period: 'Apr 2025 – Feb 2026',
         location: 'Singapore',
         bullets: [
-            'Built and maintained interactive maritime emergency scenarios in Unity (C#) deployed on Meta Quest headsets for training research.',
-            'Implemented locomotion, object manipulation, and scenario state flows using XR Interaction Toolkit and OculusXR.',
-            'Ran 12 structured playtest sessions with researchers and trainees, iterating on grab affordances and input boundaries based on user feedback.',
-            'Wrote reproducible hardware setup documentation and troubleshooting notes for centre staff.',
+            'Built and maintained Unity (C#) VR training scenarios used across the centre\'s maritime safety research programmes on Meta Quest hardware.',
+            'Owned the delivery loop end to end: translating researcher requirements into scenario flows, shipping builds, and running user testing with trainees.',
+            'Authored reproducible setup and troubleshooting guides that let centre staff run lab sessions without developer support.',
         ],
-        stack: [
-            'Unity (C#)',
-            'Meta Quest',
-            'XR Interaction Toolkit',
-            'OculusXR',
-            'Hand Tracking',
-            'HMD Deployment',
-        ],
+        stack: ['Unity (C#)', 'Meta Quest', 'XR Interaction Toolkit', 'OculusXR'],
     },
 ];
 
@@ -33,7 +25,7 @@ export const PROJECTS: Project[] = [
         context: 'Independent open-source CLI tool for Claude Code (2026)',
         whatIBuilt:
             'Built an asynchronous Python CLI tool that parses terminal event streams in real time to calculate live token usage and per-prompt cost estimations directly without external transcript scraping dependencies or latency overhead.',
-        tools: ['Python', 'Claude Code', 'pytest', 'TDD', 'CLI Architecture', 'Git'],
+        tools: ['Python', 'pytest', 'CLI Architecture', 'Git'],
         outcome:
             'Published as an open-source CLI package on GitHub backed by a 293-test unit test suite built with Test-Driven Development (TDD).',
         videoPreview: '/images/projects/tokey-preview.mp4',
@@ -71,7 +63,7 @@ export const PROJECTS: Project[] = [
     },
     {
         id: 'jewelry-robbery-vr',
-        title: 'Jewelry Shop Robbery VR (bHaptics Gloves & Hand Tracking)',
+        title: 'Jewelry Shop Robbery VR',
         role: 'Unity VR Developer',
         summary:
             'Immersive VR heist game built for Meta Quest featuring bHaptics haptic feedback gloves and hand tracking mechanics.',
@@ -100,6 +92,37 @@ export const PROJECTS: Project[] = [
     },
 ];
 
+export const ARCHIVED_PROJECTS: Project[] = [
+    {
+        id: 'hand-tracking-bunkering',
+        title: 'Hand-Tracking Bunkering Safety VR',
+        role: 'Unity VR Developer',
+        summary:
+            'Controller-free rebuild of the centre\'s methanol bunkering safety trainer: same scenario scenes and scripts, re-driven entirely by tracked hands.',
+        context:
+            'Centre of Excellence in Maritime Safety (CEMS), Singapore Polytechnic (2026)',
+        whatIBuilt:
+            'Commissioned to convert the controller-based bunkering trainer to hand tracking. Ported the interaction layer on top of the proven gesture system from an independent Quest game: pinch-driven UI navigation, walkie-talkie reporting, PPE locker equipping, and hose/flange inspection validated by gesture input over the existing scenario state machines.',
+        tools: [
+            'Unity 3D',
+            'C#',
+            'Meta Interaction SDK',
+            'OpenXR',
+            'Meta Quest',
+            'Hand Tracking',
+        ],
+        outcome:
+            'Working Quest build running the full report, PPE, and inspection loop without controllers, validating optical hand tracking as a viable input direction for the centre\'s training programmes.',
+        videoPreview: '/images/projects/hand-tracking-bunkering-preview.mp4',
+        links: [
+            {
+                label: 'Experience Details',
+                href: '#experience',
+            },
+        ],
+    },
+];
+
 export const SKILLS: SkillGroup[] = [
     {
         category: 'Programming Languages',
@@ -121,7 +144,7 @@ export const SKILLS: SkillGroup[] = [
     },
     {
         category: 'Web & Backend',
-        tools: ['React', 'TypeScript', 'Node.js', 'REST APIs', 'Java', 'SQL', 'HTML5 / CSS3'],
+        tools: ['React', 'Node.js', 'REST APIs', 'HTML5 / CSS3'],
     },
     {
         category: 'Engineering & Tools',

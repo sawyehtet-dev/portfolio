@@ -48,6 +48,9 @@ function App() {
                 <Suspense fallback={null}>
                     <Routes>
                         <Route path="/" element={<WorkPage />} />
+                        {/* Legacy URLs. Netlify 301s these before the SPA loads
+                            (see netlify.toml); these client routes cover the dev
+                            server and direct SPA navigations - keep both in sync. */}
                         <Route path="/work" element={<Navigate to="/" replace />} />
                         <Route path="/writing" element={<Navigate to="/" replace />} />
                         <Route path="/writing/*" element={<Navigate to="/" replace />} />

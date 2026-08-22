@@ -8,8 +8,6 @@ export const PROFILE = {
     email: 'sawyehtet.dev@gmail.com',
     resumePath: '/resume/Saw_Ye_Htet_Software_Engineer_Resume.pdf',
     availability: 'Open to Opportunities · Available Immediately',
-    location: 'Singapore / Remote-friendly',
-    primaryStack: ['TypeScript', 'React', 'Java', 'C#', 'Unity', 'Python', 'SQL'],
 };
 
 export const SOCIAL_LINKS = [

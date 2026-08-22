@@ -28,7 +28,6 @@ html:has(.ed) {
 
 /* ---- palette tokens: dark theme (Dario Amodei Slate Dark & Ivory) ---- */
 :root[data-theme='dark'],
-html[data-theme='dark'],
 .ed[data-theme='dark'] {
     --paper: #1a1918;
     --paper-card: #252421;
@@ -1144,7 +1143,6 @@ body:has(.ed) {
 }
 
 :root[data-theme='dark'] .ed-form-status.ok,
-html[data-theme='dark'] .ed-form-status.ok,
 .ed[data-theme='dark'] .ed-form-status.ok {
     background: rgba(16, 185, 129, 0.15);
     color: #34d399;
@@ -1152,7 +1150,6 @@ html[data-theme='dark'] .ed-form-status.ok,
 }
 
 :root[data-theme='dark'] .ed-form-status.err,
-html[data-theme='dark'] .ed-form-status.err,
 .ed[data-theme='dark'] .ed-form-status.err {
     background: rgba(239, 68, 68, 0.15);
     color: #f87171;

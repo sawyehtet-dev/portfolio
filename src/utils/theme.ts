@@ -1,3 +1,6 @@
+// Theme source of truth for the app side. index.html also carries a tiny
+// pre-bundle inline script that reads the same 'theme' key to set data-theme
+// before first paint (flash prevention) - keep the two in sync.
 export type Theme = 'light' | 'dark';
 
 export function getInitialTheme(): Theme {

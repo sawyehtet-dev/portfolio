@@ -70,6 +70,7 @@
 
 # Moved/legacy URLs.
 # 301 so old links and search results migrate cleanly.
+# Mirrored client-side by App.tsx (dev server + SPA navigations) - keep in sync.
 [[redirects]]
   from = "/work"
   to = "/"

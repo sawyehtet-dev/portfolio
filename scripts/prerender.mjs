@@ -32,15 +32,7 @@ if (!existsSync(SSR_ENTRY)) {
 
 const { renderHome } = await import(pathToFileURL(SSR_ENTRY).href);
 
-let body = renderHome();
-
-// React 19 hoists metadata and resource hints into the markup. Strip them: the
-// head already owns title/description, and its image hint is deliberately a
-// low-priority prefetch that a body preload would outrank. No-op if absent.
-body = body
-    .replace(/<title[^>]*>[\s\S]*?<\/title>/gi, '')
-    .replace(/<meta\s+name="description"[^>]*\/?>/gi, '')
-    .replace(/<link\b[^>]*>/gi, '');
+const body = renderHome();
 
 const indexPath = join(DIST, 'index.html');
 let html = readFileSync(indexPath, 'utf8');

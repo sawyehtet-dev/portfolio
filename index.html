@@ -74,22 +74,8 @@
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-        <link
-            rel="preload"
-            href="/fonts/AdwaitaSans-Regular.subset.woff2"
-            as="font"
-            type="font/woff2"
-            crossorigin
-        />
-        <!-- Adwaita Mono is above the fold too (nav links, eyebrows, spec keys),
-             so preload it alongside Sans to avoid a late swap. -->
-        <link
-            rel="preload"
-            href="/fonts/AdwaitaMono-Regular.subset.woff2"
-            as="font"
-            type="font/woff2"
-            crossorigin
-        />
+        <!-- Fonts: Newsreader loads from Google Fonts (stylesheet above).
+             No self-hosted font preloads: there is no @font-face for local files. -->
 
         <!-- Skip-link styles -->
         <style>
@@ -113,8 +99,10 @@
             }
         </style>
 
-        <!-- Structured Data (JSON-LD) -->
-        <script type="application/ld+json">
+                <!-- Structured Data (JSON-LD).
+                     Keep knowsAbout in sync with SKILLS (src/config/editorial-data.ts)
+                     and sameAs in sync with SOCIAL_LINKS (src/config/profile.ts). -->
+                <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
                 "@type": "Person",
@@ -162,6 +150,7 @@
                 "sameAs": [
                     "https://github.com/sawyehtet-dev",
                     "https://www.linkedin.com/in/sawyehtet/",
+                    "https://t.me/saulyehtet",
                     "https://x.com/saulyehtet_"
                 ]
             }
