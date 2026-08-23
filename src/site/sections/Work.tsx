@@ -58,6 +58,7 @@ export function Work() {
                                 <LazyVideo
                                     className="ed-case-video"
                                     src={project.videoPreview}
+                                    poster={project.videoPreview.replace(/\.mp4$/, '.jpg')}
                                     ariaLabel={`Demo video for ${project.title}`}
                                 />
                             </div>

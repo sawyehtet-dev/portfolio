@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 interface LazyVideoProps {
     src: string;
+    poster?: string;
     className?: string;
     ariaLabel?: string;
 }
@@ -12,7 +13,7 @@ interface LazyVideoProps {
  * Uses IntersectionObserver with 200px rootMargin to start loading
  * slightly before the user reaches the element.
  */
-export function LazyVideo({ src, className, ariaLabel }: LazyVideoProps) {
+export function LazyVideo({ src, poster, className, ariaLabel }: LazyVideoProps) {
     const ref = useRef<HTMLVideoElement>(null);
     const [isVisible, setVisible] = useState(false);
 
@@ -52,6 +53,7 @@ export function LazyVideo({ src, className, ariaLabel }: LazyVideoProps) {
             muted
             playsInline
             preload="none"
+            poster={poster}
             aria-label={ariaLabel}
             {...(isVisible ? { src } : {})}
         />
