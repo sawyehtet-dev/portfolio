@@ -7,9 +7,9 @@ export const EXPERIENCE: ExperienceItem[] = [
         period: 'Apr 2025 – Feb 2026',
         location: 'Singapore',
         bullets: [
-            'Built and maintained Unity (C#) VR training scenarios used across the centre\'s maritime safety research programmes on Meta Quest hardware.',
-            'Owned the delivery loop end to end: translating researcher requirements into scenario flows, shipping builds, and running user testing with trainees.',
-            'Authored reproducible setup and troubleshooting guides that let centre staff run lab sessions without developer support.',
+            'Built and maintained Unity (C#) training environments and scenarios used across the centre\'s maritime safety research programmes on Meta Quest hardware.',
+            'Owned the delivery loop end to end: translating subject-matter-expert requirements into configurable scenario flows, shipping builds, and running user testing with trainees to keep training realism.',
+            'Authored reproducible setup and troubleshooting guides that ensured codebase and lab continuity, letting centre staff run sessions without developer support.',
         ],
         stack: ['Unity (C#)', 'Meta Quest', 'XR Interaction Toolkit', 'OculusXR'],
     },
@@ -27,42 +27,18 @@ export const EXPERIENCE: ExperienceItem[] = [
 
 export const PROJECTS: Project[] = [
     {
-        id: 'tokey',
-        title: 'Tokey: Token & Cost Tracker for Claude Code',
-        role: 'Developer',
-        summary:
-            'Real-time per-prompt token cost tracker CLI for Claude Code, built to monitor LLM usage directly in developer terminal workflows.',
-        context: 'Independent open-source CLI tool for Claude Code (2026)',
-        whatIBuilt:
-            'Built an asynchronous Python CLI tool that parses terminal event streams in real time to calculate live token usage and per-prompt cost estimations directly without external transcript scraping dependencies or latency overhead.',
-        tools: ['Python', 'pytest', 'CLI Architecture', 'Git'],
-        outcome:
-            'Published as an open-source CLI package on GitHub backed by a 293-test unit test suite built with Test-Driven Development (TDD).',
-        videoPreview: '/images/projects/tokey-preview.mp4',
-        links: [
-            {
-                label: 'View on GitHub',
-                href: 'https://github.com/sawyehtet-dev/tokey',
-            },
-            {
-                label: 'LinkedIn Post',
-                href: 'https://www.linkedin.com/posts/sawyehtet_i-made-a-small-tool-for-claude-code-cli-called-ugcPost-7472600055208865792-RM7I/',
-            },
-        ],
-    },
-    {
         id: 'maritime-vr',
         title: 'Methanol Bunkering Safety VR Training',
         role: 'Unity VR Developer',
         summary:
-            'Interactive VR safety training scenarios for maritime emergency response and clean fuel handling research at SP CEMS.',
+            'Interactive VR training simulation for maritime emergency response and clean fuel handling, built with Unity for safety research at SP CEMS.',
         context:
             'Centre of Excellence in Maritime Safety (CEMS), Singapore Polytechnic (Apr 2025 – Feb 2026)',
         whatIBuilt:
-            'Built modular C# state machines with explicit step preconditions for maritime emergency procedures, integrating OculusXR and XR Interaction Toolkit for reliable Quest controller mapping. Tuned dynamic LOD and draw call batching to maintain 90 FPS on standalone Quest hardware.',
-        tools: ['Unity 3D', 'C#', 'XR Interaction Toolkit', 'OculusXR', 'Meta Quest'],
+            'Designed a modular C# state-machine architecture with explicit step preconditions for configurable training scenarios, integrating OculusXR and XR Interaction Toolkit for reliable operator-facing interactions on Quest controllers. Tuned dynamic LOD and draw call batching to maintain 90 FPS on standalone hardware.',
+        tools: ['Unity 3D', 'C#', 'Scene Management', 'XR Interaction Toolkit', 'OculusXR', 'Meta Quest'],
         outcome:
-            'Deployed in 12 structured lab sessions over 11 months, providing researchers with consistent simulation data and staff with independent setup guides.',
+            'Deployed in 12 structured lab sessions over 11 months, giving researchers consistent simulation data and staff documentation to run sessions independently.',
         videoPreview: '/images/projects/methanol-bunkering-preview.mp4',
         links: [
             {
@@ -100,23 +76,49 @@ export const PROJECTS: Project[] = [
             },
         ],
     },
+    {
+        id: 'tokey',
+        title: 'Tokey: Token & Cost Tracker for Claude Code',
+        role: 'Developer',
+        summary:
+            'Real-time per-prompt token cost tracker CLI for Claude Code, built to monitor LLM usage directly in developer terminal workflows.',
+        context: 'Independent open-source CLI tool for Claude Code (2026)',
+        whatIBuilt:
+            'Built an asynchronous Python CLI tool that parses terminal event streams in real time to calculate live token usage and per-prompt cost estimations directly without external transcript scraping dependencies or latency overhead.',
+        tools: ['Python', 'pytest', 'CLI Architecture', 'Git'],
+        outcome:
+            'Published as an open-source CLI package on GitHub backed by a 293-test unit test suite built with Test-Driven Development (TDD).',
+        videoPreview: '/images/projects/tokey-preview.mp4',
+        links: [
+            {
+                label: 'View on GitHub',
+                href: 'https://github.com/sawyehtet-dev/tokey',
+            },
+            {
+                label: 'LinkedIn Post',
+                href: 'https://www.linkedin.com/posts/sawyehtet_i-made-a-small-tool-for-claude-code-cli-called-ugcPost-7472600055208865792-RM7I/',
+            },
+        ],
+    },
 ];
 
 export const SKILLS: SkillGroup[] = [
     {
-        category: 'Programming Languages',
-        tools: ['Java', 'C#', 'TypeScript', 'JavaScript', 'Python', 'SQL'],
-    },
-    {
         category: 'Game & XR Development',
         tools: [
             'Unity 3D (C#)',
+            'Scene Management',
+            'Performance Optimization',
             'Meta Interaction SDK',
             'XR Interaction Toolkit',
             'OpenXR',
             'bHaptics SDK',
             'Hand Tracking',
         ],
+    },
+    {
+        category: 'Programming Languages',
+        tools: ['C#', 'Python', 'Java', 'TypeScript', 'JavaScript', 'SQL'],
     },
     {
         category: 'Web & Backend',
@@ -126,8 +128,8 @@ export const SKILLS: SkillGroup[] = [
         category: 'Engineering & Tools',
         tools: [
             'Test-Driven Development (TDD)',
-            'pytest',
             'Git & GitHub',
+            'pytest',
             'Linux CLI',
             'Postman',
             'Vite',

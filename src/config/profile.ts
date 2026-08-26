@@ -1,5 +1,5 @@
-// Primary focus: Full-Stack Web & Game Development (React, TypeScript, Java, C#, Unity, XR Systems).
-// Kept in sync with Saw_Ye_Htet_Software_Engineer_Resume.pdf.
+// Primary focus: Software Engineer - Unity simulation systems and full-stack web,
+// emphasizing architecture, documentation, and cross-team collaboration.
 export const PROFILE = {
     name: 'Saw Ye Htet',
     role: 'Software Engineer',

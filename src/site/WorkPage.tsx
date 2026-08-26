@@ -25,9 +25,11 @@ function Hero() {
 
             <div className="ed-hero-body">
                 <p className="ed-hero-summary">
-                    Software engineer in Singapore building modern web applications, Unity games,
-                    and developer tooling. Focused on test-driven development, clear API design,
-                    and performant Java, TypeScript, Python, and C# code.
+                    Software engineer in Singapore building Unity training simulations, modern web
+                    applications, and developer tooling. Focused on modular architecture,
+                    test-driven C#, Python, and TypeScript, and the clear documentation and
+                    collaboration that keep a codebase healthy across engineering, research, and
+                    operational teams.
                 </p>
 
                 <div className="ed-hero-actions">

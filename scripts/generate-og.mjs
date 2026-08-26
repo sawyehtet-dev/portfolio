@@ -105,12 +105,12 @@ const html = /* html */ `<!DOCTYPE html>
           <span class="accent">Engineer</span>
         </h1>
         <p class="role">
-          <b>Software Engineer</b> - Modern web applications, Unity games, and developer tooling.
+          <b>Software Engineer</b> - Unity training simulations, full-stack web apps, and developer tooling.
         </p>
       </div>
       <div class="specsheet">
-        <div class="srow"><span class="skey">Focus</span><span class="sval">Web &amp; Game Development</span></div>
-        <div class="srow"><span class="skey">Stack</span><span class="sval">React · TypeScript · Unity · C#</span></div>
+        <div class="srow"><span class="skey">Focus</span><span class="sval">Architecture &amp; Simulation Systems</span></div>
+        <div class="srow"><span class="skey">Stack</span><span class="sval">Unity · C# · React · TypeScript</span></div>
         <div class="srow"><span class="skey">Based</span><span class="sval">Singapore</span></div>
       </div>
     </div>
@@ -118,7 +118,7 @@ const html = /* html */ `<!DOCTYPE html>
     <div class="rule"></div>
     <div class="bottom">
       <div class="specs">
-        <span><b>Core</b>React · TypeScript · Java · C# · Unity</span>
+        <span><b>Core</b>Unity · C# · TypeScript · Python</span>
         <span><b>Status</b>Open to Opportunities</span>
       </div>
       <div class="url">sawyehtet.com</div>
