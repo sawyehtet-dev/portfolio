@@ -33,20 +33,20 @@ This site positions Saw Ye Htet as a **Software Engineer specializing in Full-St
 
 ## Stack & Key Dependencies
 
-| Layer     | Technology                                    | Version | Notes                                                                                                    |
-| --------- | --------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------- |
-| Framework | React                                         | 19      | StrictMode enabled                                                                                       |
-| Language  | TypeScript                                    | 5       | Strict, `noEmit`, bundler module resolution                                                              |
-| Bundler   | Vite                                          | 8       | Dev on `:3000`, builds to `dist/`                                                                        |
-| Styling   | Vanilla CSS                                   | -       | `src/site/editorial.css`, scoped under `.ed`. No Tailwind, no CSS-in-JS                                  |
-| Routing   | React Router DOM                              | 7       | BrowserRouter. `/` (portfolio); `/work`, `/writing`, `/writing/*`, `/blog`, `/blog/*` -> `/`; `*` -> 404 |
-| Forms     | None - plain React state                      | -       | The `/` Contact section validates in ~20 lines against HTML constraints. No heavy third-party libraries  |
-| Fonts     | Newsreader variable serif (Google Fonts CDN)  | -       | Stylesheet in `index.html`; system serif/mono fallbacks. External request by design          |
-| Testing   | Vitest + Testing Library + jsdom              | 4 / 16  | `vmForks` pool, globals enabled                                                                          |
-| Linting   | ESLint flat config + Prettier                 | 9 / 3   | 4-space indent, single quotes, trailing comma es5                                                        |
-| Analytics | Plausible                                     | -       | Script tag in index.html, domain `sawyehtet.com`                                                         |
-| Deploy    | Netlify                                       | -       | Build: `npm run build`, publish: `dist/`; SPA rewrite + 301s; sitemap + SSR prerender at build           |
-| PWA       | Service worker (`public/sw.js`) + manifest    | -       | Per-build cache version (`__BUILD_HASH__`); registered in `main.tsx` (prod) / unregistered (dev)         |
+| Layer     | Technology                                   | Version | Notes                                                                                                    |
+| --------- | -------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------- |
+| Framework | React                                        | 19      | StrictMode enabled                                                                                       |
+| Language  | TypeScript                                   | 5       | Strict, `noEmit`, bundler module resolution                                                              |
+| Bundler   | Vite                                         | 8       | Dev on `:3000`, builds to `dist/`                                                                        |
+| Styling   | Vanilla CSS                                  | -       | `src/site/editorial.css`, scoped under `.ed`. No Tailwind, no CSS-in-JS                                  |
+| Routing   | React Router DOM                             | 7       | BrowserRouter. `/` (portfolio); `/work`, `/writing`, `/writing/*`, `/blog`, `/blog/*` -> `/`; `*` -> 404 |
+| Forms     | None - plain React state                     | -       | The `/` Contact section validates in ~20 lines against HTML constraints. No heavy third-party libraries  |
+| Fonts     | Newsreader variable serif (Google Fonts CDN) | -       | Stylesheet in `index.html`; system serif/mono fallbacks. External request by design                      |
+| Testing   | Vitest + Testing Library + jsdom             | 4 / 16  | `vmForks` pool, globals enabled                                                                          |
+| Linting   | ESLint flat config + Prettier                | 9 / 3   | 4-space indent, single quotes, trailing comma es5                                                        |
+| Analytics | Plausible                                    | -       | Script tag in index.html, domain `sawyehtet.com`                                                         |
+| Deploy    | Netlify                                      | -       | Build: `npm run build`, publish: `dist/`; SPA rewrite + 301s; sitemap + SSR prerender at build           |
+| PWA       | Service worker (`public/sw.js`) + manifest   | -       | Per-build cache version (`__BUILD_HASH__`); registered in `main.tsx` (prod) / unregistered (dev)         |
 
 ## Entry Point & Routing
 
@@ -77,11 +77,11 @@ src/
     Nav.tsx
     BackToTop.tsx        <- floating back-to-top button; hidden on mobile and while the footer's .ed-totop link is visible
     editorial.css        <- the entire design system, scoped .ed, self-contained
-    sections/            <- Experience, Work (projects), Skills, Resume, Contact (lazy), Footer
+    sections/            <- Experience, Work (projects), Skills, Contact (lazy), Footer
   config/
-    editorial-data.ts    <- PROJECTS, EXPERIENCE, SKILLS
+    editorial-data.ts    <- PROJECTS, EXPERIENCE, EDUCATION, SKILLS
     profile.ts           <- PROFILE (name, role, email, resume paths) + SOCIAL_LINKS
-  types/index.ts         <- front-door content types (Project, ExperienceItem, SkillGroup, etc.)
+  types/index.ts         <- front-door content types (Project, ExperienceItem, EducationItem, SkillGroup, etc.)
   components/
     ErrorBoundary.tsx    <- generic error boundary, wraps the router in App
   tests/                 <- Vitest test suites
@@ -92,8 +92,9 @@ src/
 - **`src/config/editorial-data.ts`** - the single source of truth for portfolio content:
     - `PROJECTS` (`Project[]`) - title, role, summary, context, whatIBuilt (key engineering narrative), tools, outcome, optional videoPreview, links.
     - `EXPERIENCE` (`ExperienceItem[]`) - org, role, period, bullets, stack.
+    - `EDUCATION` (`EducationItem[]`) - institution, degree, period, location, bullets.
     - `SKILLS` (`SkillGroup[]`) - categorized skill groups (Web & Backend, Game & XR Development, Languages, Engineering & Tools).
-- **`src/config/profile.ts`** - `PROFILE` (name, role, email, resume path, availability) and `SOCIAL_LINKS`. Education lives only in `EXPERIENCE` (`editorial-data.ts`); do not duplicate it in other sections.
+- **`src/config/profile.ts`** - `PROFILE` (name, role, email, resume path, availability) and `SOCIAL_LINKS`. Education lives in `EDUCATION` (`editorial-data.ts`); do not duplicate it in other sections.
 
 ## Build & Deploy
 

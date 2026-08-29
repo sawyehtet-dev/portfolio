@@ -62,9 +62,6 @@ export function Nav() {
                         <Link className="ed-nav-link ed-nav-link-extra" to="/#skills">
                             Skills
                         </Link>
-                        <Link className="ed-nav-link" to="/#resume">
-                            Resume
-                        </Link>
                         <Link className="ed-nav-link" to="/#contact">
                             Contact
                         </Link>

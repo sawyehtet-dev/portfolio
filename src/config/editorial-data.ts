@@ -1,26 +1,29 @@
-import type { Project, ExperienceItem, SkillGroup } from '../types';
+import type { Project, ExperienceItem, EducationItem, SkillGroup } from '../types';
 
 export const EXPERIENCE: ExperienceItem[] = [
     {
         org: 'Centre of Excellence in Maritime Safety (CEMS)',
-        role: 'Unity VR Developer, Research Assistant',
+        role: 'Software Developer (XR Systems), Research Assistant',
         period: 'Apr 2025 – Feb 2026',
         location: 'Singapore',
         bullets: [
-            'Built and maintained Unity (C#) training environments and scenarios used across the centre\'s maritime safety research programmes on Meta Quest hardware.',
-            'Owned the delivery loop end to end: translating subject-matter-expert requirements into configurable scenario flows, shipping builds, and running user testing with trainees to keep training realism.',
-            'Authored reproducible setup and troubleshooting guides that ensured codebase and lab continuity, letting centre staff run sessions without developer support.',
+            "Architected and maintained modular C# simulation systems and runtime environments used across the centre's maritime safety research programmes on Meta Quest hardware.",
+            'Owned the delivery loop end to end: translated domain requirements into configurable state-machine scenario flows, shipped standalone builds, and ran iterative user testing with trainees.',
+            'Authored reproducible developer setup and troubleshooting guides that ensured codebase and lab continuity, enabling non-technical staff to run sessions independently.',
         ],
-        stack: ['Unity (C#)', 'Meta Quest', 'XR Interaction Toolkit', 'OculusXR'],
+        stack: ['C#', 'Unity', 'Modular Architecture', 'Meta Quest', 'XR Interaction Toolkit'],
     },
+];
+
+export const EDUCATION: EducationItem[] = [
     {
-        org: 'Singapore Polytechnic',
-        role: 'Diploma in Information Technology',
+        institution: 'Singapore Polytechnic',
+        degree: 'Diploma in Information Technology',
         period: '2023 – 2026',
         location: 'Singapore',
         bullets: [
-            'Graduated with a GPA of 3.55/4, building a foundation across software development, data structures, and networking.',
-            'Focused coursework and projects on full-stack web applications, Unity game development, and XR systems.',
+            'Graduated with a GPA of 3.55/4, building a solid foundation in full-stack software development, data structures, and computer networking.',
+            'Focused coursework and projects on full-stack web applications, REST APIs, relational databases, and interactive C# simulation engines.',
         ],
     },
 ];
@@ -29,36 +32,38 @@ export const PROJECTS: Project[] = [
     {
         id: 'maritime-vr',
         title: 'Methanol Bunkering Safety VR Training',
-        role: 'Unity VR Developer',
+        role: 'Software Developer (C# / Unity)',
         summary:
             'Interactive VR training simulation for maritime emergency response and clean fuel handling, built with Unity for safety research at SP CEMS.',
         context:
             'Centre of Excellence in Maritime Safety (CEMS), Singapore Polytechnic (Apr 2025 – Feb 2026)',
         whatIBuilt:
             'Designed a modular C# state-machine architecture with explicit step preconditions for configurable training scenarios, integrating OculusXR and XR Interaction Toolkit for reliable operator-facing interactions on Quest controllers. Tuned dynamic LOD and draw call batching to maintain 90 FPS on standalone hardware.',
-        tools: ['Unity 3D', 'C#', 'Scene Management', 'XR Interaction Toolkit', 'OculusXR', 'Meta Quest'],
+        tools: [
+            'C#',
+            'Unity 3D',
+            'Modular Architecture',
+            'XR Interaction Toolkit',
+            'OculusXR',
+            'Meta Quest',
+        ],
         outcome:
             'Deployed in 12 structured lab sessions over 11 months, giving researchers consistent simulation data and staff documentation to run sessions independently.',
         videoPreview: '/images/projects/methanol-bunkering-preview.mp4',
-        links: [
-            {
-                label: 'Experience Details',
-                href: '#experience',
-            },
-        ],
+        links: [],
     },
     {
         id: 'jewelry-robbery-vr',
         title: 'Jewelry Shop Robbery VR',
-        role: 'Unity VR Developer',
+        role: 'Software Developer (C# / Unity)',
         summary:
             'Immersive VR heist game built for Meta Quest featuring bHaptics haptic feedback gloves and hand tracking mechanics.',
         context: 'Independent VR project focused on haptic feedback & hand tracking (2025)',
         whatIBuilt:
             'Integrated bHaptics haptic gloves SDK and Meta Interaction SDK over OpenXR in C#, calibrating per-finger actuation profiles and velocity thresholds to differentiate delicate object grasping from high-impact physical interactions.',
         tools: [
-            'Unity 3D',
             'C#',
+            'Unity 3D',
             'Meta Interaction SDK',
             'OpenXR',
             'bHaptics SDK',
@@ -85,7 +90,7 @@ export const PROJECTS: Project[] = [
         context: 'Independent open-source CLI tool for Claude Code (2026)',
         whatIBuilt:
             'Built an asynchronous Python CLI tool that parses terminal event streams in real time to calculate live token usage and per-prompt cost estimations directly without external transcript scraping dependencies or latency overhead.',
-        tools: ['Python', 'pytest', 'CLI Architecture', 'Git'],
+        tools: ['Python', 'pytest', 'CLI Architecture', 'Git', 'TDD'],
         outcome:
             'Published as an open-source CLI package on GitHub backed by a 293-test unit test suite built with Test-Driven Development (TDD).',
         videoPreview: '/images/projects/tokey-preview.mp4',
@@ -104,35 +109,24 @@ export const PROJECTS: Project[] = [
 
 export const SKILLS: SkillGroup[] = [
     {
-        category: 'Game & XR Development',
-        tools: [
-            'Unity 3D (C#)',
-            'Scene Management',
-            'Performance Optimization',
-            'Meta Interaction SDK',
-            'XR Interaction Toolkit',
-            'OpenXR',
-            'bHaptics SDK',
-            'Hand Tracking',
-        ],
+        category: 'Full-Stack & Web',
+        tools: ['React', 'TypeScript', 'Node.js', 'REST APIs', 'SQL'],
     },
     {
         category: 'Programming Languages',
-        tools: ['C#', 'Python', 'Java', 'TypeScript', 'JavaScript', 'SQL'],
+        tools: ['Java', 'TypeScript', 'JavaScript', 'Python', 'C#', 'SQL'],
     },
     {
-        category: 'Web & Backend',
-        tools: ['React', 'Node.js', 'REST APIs', 'HTML5 / CSS3'],
+        category: 'Engineering & DevOps',
+        tools: ['Test-Driven Development (TDD)', 'Git & GitHub', 'Linux CLI', 'pytest'],
     },
     {
-        category: 'Engineering & Tools',
+        category: 'Interactive & Systems',
         tools: [
-            'Test-Driven Development (TDD)',
-            'Git & GitHub',
-            'pytest',
-            'Linux CLI',
-            'Postman',
-            'Vite',
+            'Unity 3D (C#)',
+            'Modular Architecture',
+            'Performance Optimization',
+            'Meta Quest / OpenXR',
         ],
     },
 ];

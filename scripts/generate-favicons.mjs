@@ -54,7 +54,7 @@ function createIco(pngBuffers) {
         offset += img.buffer.length;
     }
 
-    return Buffer.concat([header, ...dirEntries, ...pngBuffers.map((img) => img.buffer)]);
+    return Buffer.concat([header, ...dirEntries, ...pngBuffers.map(img => img.buffer)]);
 }
 
 async function main() {
@@ -94,11 +94,11 @@ async function main() {
 
         await page.evaluate(() => document.fonts.ready);
 
-        const rendered = await page.evaluate((sizes) => {
+        const rendered = await page.evaluate(sizes => {
             const canvas = document.getElementById('c');
             const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
-            return sizes.map((item) => {
+            return sizes.map(item => {
                 const size = item.size;
                 const radius = item.rx;
                 const ratioH = 0.68; // Bold visual presence matching Dario's D
@@ -173,13 +173,13 @@ async function main() {
         }
 
         // 2. Build multi-resolution favicon.ico
-        const icoSizes = renderedPngs.filter((p) => [16, 32, 48].includes(p.width));
+        const icoSizes = renderedPngs.filter(p => [16, 32, 48].includes(p.width));
         const icoBuffer = createIco(icoSizes);
         writeFileSync(join(__dirname, '../public/favicon.ico'), icoBuffer);
         console.log('Generated: public/favicon.ico (16x16, 32x32, 48x48)');
 
         // 3. Write public/favicon.svg
-        const item512 = rendered.find((r) => r.size === 512);
+        const item512 = rendered.find(r => r.size === 512);
         const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <style>
     @font-face {
@@ -206,7 +206,7 @@ async function main() {
     }
 }
 
-main().catch((err) => {
+main().catch(err => {
     console.error('Failed to generate favicons:', err);
     process.exit(1);
 });

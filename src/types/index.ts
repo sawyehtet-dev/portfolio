@@ -25,6 +25,14 @@ export interface ExperienceItem {
     stack?: string[];
 }
 
+export interface EducationItem {
+    institution: string;
+    degree: string;
+    period: string;
+    location?: string;
+    bullets: string[];
+}
+
 export interface SkillGroup {
     category: string;
     tools: string[];

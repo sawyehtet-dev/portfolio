@@ -1,5 +1,5 @@
-// Primary focus: Software Engineer - Unity simulation systems and full-stack web,
-// emphasizing architecture, documentation, and cross-team collaboration.
+// Primary focus: Full-Stack Software Engineer - Web applications, developer tooling,
+// and modular interactive systems, emphasizing architecture, TDD, and documentation.
 export const PROFILE = {
     name: 'Saw Ye Htet',
     role: 'Software Engineer',

@@ -82,7 +82,7 @@ Netlify builds with `npm run build` and publishes `dist/`. Routing in `netlify.t
 Portfolio content lives in two config files:
 
 - **`src/config/profile.ts`**: name, role, taglines, email, resume path, availability, location, primary stack, social links.
-- **`src/config/editorial-data.ts`**: `PROJECTS`, `EXPERIENCE`, `SKILLS`.
+- **`src/config/editorial-data.ts`**: `PROJECTS`, `EXPERIENCE`, `EDUCATION`, `SKILLS`.
 
 To add a project, append a `Project` object to the `PROJECTS` array in `editorial-data.ts`. After any content change run `npm run validate`.
 

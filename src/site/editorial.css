@@ -667,6 +667,27 @@ body:has(.ed) {
 /* ============================================================
    EXPERIENCE SECTION
    ============================================================ */
+.ed-exp-sections {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(28px, 5vw, 36px);
+}
+
+.ed-exp-group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.ed-exp-group-title {
+    font-family: var(--serif);
+    font-size: clamp(1.05rem, 2.4vw, 1.18rem);
+    font-weight: 600;
+    font-variation-settings: 'opsz' 32;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+}
+
 .ed-exp-list {
     display: flex;
     flex-direction: column;
@@ -834,41 +855,6 @@ body:has(.ed) {
     color: var(--ink);
     border-color: var(--line-dark);
     background: var(--paper);
-}
-
-/* ============================================================
-   RESUME SECTION
-   ============================================================ */
-.ed-resume-card {
-    background: var(--paper-card);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: clamp(18px, 3.5vw, 30px);
-}
-
-@media (max-width: 719px) {
-    .ed-resume-info .ed-btn {
-        width: 100%;
-        text-align: center;
-    }
-}
-
-.ed-resume-heading {
-    font-family: var(--serif);
-    font-size: clamp(1.15rem, 2.8vw, 1.25rem);
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 6px;
-    overflow-wrap: break-word;
-}
-
-.ed-resume-desc {
-    font-family: var(--serif);
-    font-size: clamp(0.98rem, 2.2vw, 1.05rem);
-    color: var(--ink-2);
-    margin-bottom: 20px;
-    line-height: 1.6;
-    overflow-wrap: break-word;
 }
 
 /* ============================================================

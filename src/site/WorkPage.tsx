@@ -6,7 +6,6 @@ import { BackToTop } from './BackToTop';
 import { Work } from './sections/Work';
 import { Experience } from './sections/Experience';
 import { Skills } from './sections/Skills';
-import { Resume } from './sections/Resume';
 import { Footer } from './sections/Footer';
 import { ArrowUpRight } from '../components/Icons';
 
@@ -25,11 +24,9 @@ function Hero() {
 
             <div className="ed-hero-body">
                 <p className="ed-hero-summary">
-                    Software engineer in Singapore building Unity training simulations, modern web
-                    applications, and developer tooling. Focused on modular architecture,
-                    test-driven C#, Python, and TypeScript, and the clear documentation and
-                    collaboration that keep a codebase healthy across engineering, research, and
-                    operational teams.
+                    Full-stack software engineer in Singapore building responsive web applications,
+                    developer tooling, and modular interactive systems. Focused on clean
+                    architecture, test-driven development (TDD), and building reliable software.
                 </p>
 
                 <div className="ed-hero-actions">
@@ -61,7 +58,6 @@ export function WorkPage() {
                 <Work />
                 <Experience />
                 <Skills />
-                <Resume />
                 <Suspense
                     fallback={
                         <div
