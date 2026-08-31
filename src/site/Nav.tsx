@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { PROFILE } from '../config/profile';
 import { getInitialTheme, applyTheme, Theme } from '../utils/theme';
 import { SunIcon, MoonIcon } from '../components/Icons';
@@ -48,23 +47,23 @@ export function Nav() {
     return (
         <header className="ed-nav">
             <div className="ed-nav-inner ed-container">
-                <Link className="ed-wordmark" to="/">
+                <a className="ed-wordmark" href="#top">
                     {PROFILE.name}
-                </Link>
+                </a>
                 <div className="ed-nav-right">
                     <nav className="ed-nav-links" aria-label="Primary navigation">
-                        <Link className="ed-nav-link" to="/#work">
+                        <a className="ed-nav-link" href="#work">
                             Work
-                        </Link>
-                        <Link className="ed-nav-link ed-nav-link-extra" to="/#experience">
+                        </a>
+                        <a className="ed-nav-link ed-nav-link-extra" href="#experience">
                             Experience
-                        </Link>
-                        <Link className="ed-nav-link ed-nav-link-extra" to="/#skills">
+                        </a>
+                        <a className="ed-nav-link ed-nav-link-extra" href="#skills">
                             Skills
-                        </Link>
-                        <Link className="ed-nav-link" to="/#contact">
+                        </a>
+                        <a className="ed-nav-link" href="#contact">
                             Contact
-                        </Link>
+                        </a>
                     </nav>
                     <ThemeToggle />
                 </div>

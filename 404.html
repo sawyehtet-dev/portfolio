@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="noindex, nofollow" />
+        <title>Page not found - Saw Ye Htet</title>
+        <link rel="icon" href="/favicon.ico?v=3" sizes="any" />
+        <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml" />
+        <link rel="icon" href="/assets/favicon-32.png?v=3" sizes="32x32" type="image/png" />
+        <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=3" sizes="180x180" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&display=swap"
+            rel="stylesheet"
+        />
+        <!-- ponytail: the palette and type scale below are duplicated from
+             editorial.css on purpose. A JS-free page cannot import the app's
+             stylesheet without shipping the build graph with it, and a 404
+             nobody should reach is not worth a React entry point. Same trade
+             offline.html already makes. Ceiling: if a third static page turns
+             up, extract these tokens to one small CSS file all three link. -->
+        <style>
+            :root {
+                color-scheme: light dark;
+                --paper: #f0eee6;
+                --ink: #1f1e1d;
+                --ink-2: #3d3d3a;
+                --ink-3: #5e5d59;
+                --line: #d1cfc5;
+                --serif:
+                    'Newsreader', Charter, 'Iowan Old Style', 'Times New Roman', Georgia, serif;
+            }
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --paper: #1a1918;
+                    --ink: #eceae3;
+                    --ink-2: #c6c3ba;
+                    --ink-3: #8e8b82;
+                    --line: #33322f;
+                }
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-family: var(--serif);
+                background: var(--paper);
+                color: var(--ink);
+                min-height: 100dvh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 24px;
+                line-height: 1.6;
+                -webkit-font-smoothing: antialiased;
+            }
+            main {
+                width: 100%;
+                max-width: 480px;
+            }
+            .eyebrow {
+                font-size: 0.85rem;
+                font-weight: 600;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                color: var(--ink-3);
+            }
+            h1 {
+                margin: 8px 0 0;
+                font-size: clamp(2.4rem, 7vw, 3.2rem);
+                font-weight: 700;
+                letter-spacing: -0.025em;
+                line-height: 1.1;
+            }
+            p {
+                max-width: 42ch;
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 1px solid var(--line);
+                font-size: 1.15rem;
+                line-height: 1.65;
+                color: var(--ink-2);
+            }
+            .back {
+                display: inline-block;
+                margin-top: 28px;
+                font-size: 1.05rem;
+                color: var(--ink);
+                text-decoration: underline;
+                text-underline-offset: 3px;
+                text-decoration-color: var(--line);
+                padding-bottom: 2px;
+            }
+            .back:hover {
+                text-decoration-color: var(--ink);
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <span class="eyebrow">404</span>
+            <h1>Not found</h1>
+            <p>
+                That page doesn&rsquo;t exist. The work, experience, résumé, and contact details are
+                all on the home page.
+            </p>
+            <a class="back" href="/">&larr; Back home</a>
+        </main>
+    </body>
+</html>

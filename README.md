@@ -8,16 +8,15 @@ Live at [sawyehtet.com](https://sawyehtet.com), deployed on Netlify from `main`.
 
 A single-page developer portfolio showcasing full-stack web applications, game & VR development, and developer tooling. Fresh Singapore Polytechnic IT graduate with hands-on research lab and engineering experience.
 
-| Route | What you get                                                                                                    |
-| ----- | --------------------------------------------------------------------------------------------------------------- |
-| `/`   | The portfolio: a single-page Editorial / Swiss layout. Hero, Selected Work, Experience, Skills, Resume, Contact |
+| Route | What you get                                                                                            |
+| ----- | ------------------------------------------------------------------------------------------------------- |
+| `/`   | The portfolio: a single-page Editorial / Swiss layout. Hero, Selected Work, Experience, Skills, Contact |
 
 The site speaks one design language: big display type, strict grid, hairline structure, a single red accent, warm paper-light theme, and self-hosted Adwaita Sans/Mono fonts.
 
 ## Tech stack
 
 - React 19 + TypeScript 5, built with Vite 8
-- React Router 7
 - Vanilla CSS scoped under `.ed`; no CSS framework
 - No form library: the contact form is plain React state over native HTML constraints, posting to Formspree
 - Vitest + Testing Library; ESLint flat config + Prettier
@@ -29,12 +28,11 @@ The site speaks one design language: big display type, strict grid, hairline str
 portfolio/
 ├── src/
 │   ├── main.tsx                # createRoot + service-worker register/unregister
-│   ├── App.tsx                 # ErrorBoundary + router + routes
+│   ├── App.tsx                 # ErrorBoundary + WorkPage (no router)
 │   ├── site/                   # The portfolio site
 │   │   ├── WorkPage.tsx        # The front door at /
-│   │   ├── NotFound.tsx        # Editorial 404 (catch-all route)
 │   │   ├── editorial.css       # The whole design system, scoped under .ed
-│   │   └── sections/           # Experience, Work, Skills, Resume, Contact, Footer
+│   │   └── sections/           # Experience, Work, Skills, Contact, Footer
 │   ├── components/             # ErrorBoundary, LazyVideo
 │   ├── config/                 # editorial-data.ts, profile.ts
 │   └── tests/                  # Vitest suites
@@ -65,9 +63,8 @@ CI runs the same chain (plus build) on every push and PR to `main`.
 
 Netlify builds with `npm run build` and publishes `dist/`. Routing in `netlify.toml`:
 
-- the catch-all `/*` rewrites to the SPA entry (status 200)
 - `/work`, `/writing`, `/writing/*`, `/blog`, and `/blog/*` 301-redirect to `/`
-- Static files (`index.html`, `offline.html`, assets) are served before the catch-all
+- there is no SPA catch-all: unmatched paths serve the static `404.html` with a real 404 status
 
 ### Post-deploy checklist
 

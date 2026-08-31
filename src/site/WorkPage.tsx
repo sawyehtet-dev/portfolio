@@ -1,5 +1,4 @@
 import './editorial.css';
-import { lazy, Suspense } from 'react';
 import { PROFILE } from '../config/profile';
 import { Nav } from './Nav';
 import { BackToTop } from './BackToTop';
@@ -7,9 +6,13 @@ import { Work } from './sections/Work';
 import { Experience } from './sections/Experience';
 import { Skills } from './sections/Skills';
 import { Footer } from './sections/Footer';
+import { Contact } from './sections/Contact';
 import { ArrowUpRight } from '../components/Icons';
 
-const Contact = lazy(() => import('./sections/Contact').then(m => ({ default: m.Contact })));
+// ponytail: Contact is imported eagerly, not lazily. It is under 2 kB gzip, and
+// lazying it cost more than it saved: #contact had no anchor target until the
+// chunk resolved, the Suspense fallback reserved 40vh of empty space, and the
+// prerendered HTML shipped no email or socials for crawlers to read.
 
 function Hero() {
     return (
@@ -58,17 +61,7 @@ export function WorkPage() {
                 <Work />
                 <Experience />
                 <Skills />
-                <Suspense
-                    fallback={
-                        <div
-                            className="ed-section ed-container"
-                            aria-hidden="true"
-                            style={{ minHeight: '40vh' }}
-                        />
-                    }
-                >
-                    <Contact />
-                </Suspense>
+                <Contact />
             </main>
             <Footer />
             <BackToTop />

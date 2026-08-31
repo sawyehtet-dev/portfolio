@@ -60,6 +60,7 @@ export default defineConfig({
             input: {
                 main: './index.html',
                 offline: './offline.html',
+                notfound: './404.html',
             },
             output: {
                 manualChunks(id) {
@@ -70,10 +71,7 @@ export default defineConfig({
                     ) {
                         return 'vendor-react';
                     }
-                    if (id.includes('node_modules/react-router')) {
-                        return 'vendor-router';
-                    }
-                    // Only eager vendors (react, router above) get manual chunks.
+                    // Only eager vendors (react above) get manual chunks.
                 },
             },
         },

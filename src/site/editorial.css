@@ -1103,41 +1103,6 @@ body:has(.ed) {
 }
 
 /* ============================================================
-   NOT FOUND STYLES
-   ============================================================ */
-.ed-notfound-text {
-    font-family: var(--serif);
-    font-size: 1.2rem;
-    color: var(--ink-2);
-    margin-bottom: 24px;
-    overflow-wrap: break-word;
-}
-.ed-notfound-text a {
-    color: var(--ink);
-    text-decoration: underline;
-}
-
-.ed-notfound-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-family: var(--serif);
-    font-size: 1.05rem;
-    color: var(--ink);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    min-height: 40px;
-}
-.ed-notfound-back .ed-notfound-icon {
-    display: inline-block;
-    flex-shrink: 0;
-    transition: transform 0.15s ease;
-}
-.ed-notfound-back:hover .ed-notfound-icon {
-    transform: translateX(-3px);
-}
-
-/* ============================================================
    FOOTER
    ============================================================ */
 .ed-footer {

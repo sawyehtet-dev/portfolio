@@ -30,6 +30,30 @@ export const EDUCATION: EducationItem[] = [
 
 export const PROJECTS: Project[] = [
     {
+        id: 'tokey',
+        title: 'Tokey: Token & Cost Tracker for Claude Code',
+        role: 'Developer (Python)',
+        summary:
+            'Real-time per-prompt token and cost tracker for Claude Code, built to make LLM spend visible inside the terminal while the work is still running.',
+        context: 'Independent open-source CLI tool (2026)',
+        whatIBuilt:
+            'Built an asynchronous Python CLI that parses terminal event streams in real time to calculate live token usage and per-prompt cost, without scraping external transcripts or adding latency to the session. Developed test-first: every parser branch and pricing rule was specified as a failing test before it was written.',
+        tools: ['Python', 'pytest', 'TDD', 'CLI Architecture', 'Git'],
+        outcome:
+            'Surfaces the running cost of a session as it happens, so an expensive agent run can be stopped mid-flight instead of discovered on the invoice. Open source, with a 293-test suite guarding the parsing and pricing paths.',
+        videoPreview: '/images/projects/tokey-preview.mp4',
+        links: [
+            {
+                label: 'View on GitHub',
+                href: 'https://github.com/sawyehtet-dev/tokey',
+            },
+            {
+                label: 'LinkedIn Post',
+                href: 'https://www.linkedin.com/posts/sawyehtet_i-made-a-small-tool-for-claude-code-cli-called-ugcPost-7472600055208865792-RM7I/',
+            },
+        ],
+    },
+    {
         id: 'maritime-vr',
         title: 'Methanol Bunkering Safety VR Training',
         role: 'Software Developer (C# / Unity)',
@@ -72,36 +96,12 @@ export const PROJECTS: Project[] = [
             'Haptic Feedback',
         ],
         outcome:
-            'Delivered a responsive APK build for Meta Quest running at a stable 72/90 FPS with synchronized tactile haptic responses.',
+            'Haptic response lands in the same frame as the grab that caused it, holding a stable 72/90 FPS on-device so what the player feels never drifts from what they see.',
         videoPreview: '/images/projects/jewelry-robbery-preview.mp4',
         links: [
             {
                 label: 'View on GitHub',
                 href: 'https://github.com/sawyehtet-dev/Jewelry-Shop-Robbery-game-with-Meta-Quest-hand-tracking',
-            },
-        ],
-    },
-    {
-        id: 'tokey',
-        title: 'Tokey: Token & Cost Tracker for Claude Code',
-        role: 'Developer',
-        summary:
-            'Real-time per-prompt token cost tracker CLI for Claude Code, built to monitor LLM usage directly in developer terminal workflows.',
-        context: 'Independent open-source CLI tool for Claude Code (2026)',
-        whatIBuilt:
-            'Built an asynchronous Python CLI tool that parses terminal event streams in real time to calculate live token usage and per-prompt cost estimations directly without external transcript scraping dependencies or latency overhead.',
-        tools: ['Python', 'pytest', 'CLI Architecture', 'Git', 'TDD'],
-        outcome:
-            'Published as an open-source CLI package on GitHub backed by a 293-test unit test suite built with Test-Driven Development (TDD).',
-        videoPreview: '/images/projects/tokey-preview.mp4',
-        links: [
-            {
-                label: 'View on GitHub',
-                href: 'https://github.com/sawyehtet-dev/tokey',
-            },
-            {
-                label: 'LinkedIn Post',
-                href: 'https://www.linkedin.com/posts/sawyehtet_i-made-a-small-tool-for-claude-code-cli-called-ugcPost-7472600055208865792-RM7I/',
             },
         ],
     },

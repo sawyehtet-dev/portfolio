@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom';
 import { PROFILE } from '../../config/profile';
 import { ArrowRight, ArrowUp } from '../../components/Icons';
 
 // Email + socials live in Contact only; this points there rather than repeating
-// them. /#contact is a cross-page anchor, same as Nav's section links.
+// them. Plain #anchor, same as Nav's section links.
 export function Footer() {
     const year = new Date().getFullYear();
 
@@ -22,10 +21,10 @@ export function Footer() {
 
                 <nav className="ed-footer-col" aria-label="Contact">
                     <span className="ed-side-label">Get in touch</span>
-                    <Link className="ed-footer-link" to="/#contact">
+                    <a className="ed-footer-link" href="#contact">
                         <span>Contact form &amp; socials</span>
                         <ArrowRight className="ed-footer-icon" size={14} />
-                    </Link>
+                    </a>
                 </nav>
             </div>
 

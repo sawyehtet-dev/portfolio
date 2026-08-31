@@ -70,7 +70,8 @@
 
 # Moved/legacy URLs.
 # 301 so old links and search results migrate cleanly.
-# Mirrored client-side by App.tsx (dev server + SPA navigations) - keep in sync.
+# These are the only redirects: the app is a single page with no client router,
+# so there is nothing to mirror in JS. Guarded by src/tests/front-door.test.tsx.
 [[redirects]]
   from = "/work"
   to = "/"
@@ -96,10 +97,9 @@
   to = "/"
   status = 301
 
-# SPA catch-all: client routes resolve to the app.
-# Static files (offline.html, assets) are served before this applies.
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# ponytail: no SPA catch-all on purpose. There are no client-side routes, so
+# Netlify serves 404.html (built from ./404.html) with a real 404 status for
+# anything unmatched - a catch-all would turn every typo into a soft 404 (200 +
+# homepage), which search engines index as a duplicate. Add one back only if a
+# real client-side route appears, and give it its own `from` rather than `/*`.
 
