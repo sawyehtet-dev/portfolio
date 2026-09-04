@@ -55,10 +55,10 @@ export function Nav() {
                         <a className="ed-nav-link" href="#work">
                             Work
                         </a>
-                        <a className="ed-nav-link ed-nav-link-extra" href="#experience">
+                        <a className="ed-nav-link" href="#experience">
                             Experience
                         </a>
-                        <a className="ed-nav-link ed-nav-link-extra" href="#skills">
+                        <a className="ed-nav-link" href="#skills">
                             Skills
                         </a>
                         <a className="ed-nav-link" href="#contact">
